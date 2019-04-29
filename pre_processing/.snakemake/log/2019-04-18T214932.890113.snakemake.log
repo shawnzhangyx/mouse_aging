@@ -1,0 +1,313 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	21	align_bowtie2
+	9	combine_demulti_fastq_files
+	21	dedup_bam
+	12	demultiplex
+	21	filter_bam
+	1	requrie_filter_bam
+	21	sort_bam
+	106
+
+[Thu Apr 18 21:49:41 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/LM_10_rep1/L1/Undetermined_S0_L001_R1_001_LM_10_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/LM_10_rep1/L1/Undetermined_S0_L001_R2_001_LM_10_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 193
+    wildcards: sample=LM_10_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name LM_10_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/LM_10_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 97-192 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 193 with external jobid '15124230.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:48 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/HT_03_rep2/HT_03_rep2.R1.fastq.gz, fastq.demultiplex/HT_03_rep2/HT_03_rep2.R2.fastq.gz
+    output: bam.raw/HT_03_rep2/HT_03_rep2.raw.bam
+    jobid: 93
+    wildcards: sample=HT_03_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/HT_03_rep2/HT_03_rep2.R1.fastq.gz -2 fastq.demultiplex/HT_03_rep2/HT_03_rep2.R2.fastq.gz -p 8 |     awk -v id=HT_03_rep2 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/HT_03_rep2/HT_03_rep2.raw.bam; 
+Submitted job 93 with external jobid '15124231.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:48 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_03_rep2/DH_03_rep2.R1.fastq.gz, fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz
+    output: bam.raw/DH_03_rep2/DH_03_rep2.raw.bam
+    jobid: 80
+    wildcards: sample=DH_03_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/DH_03_rep2/DH_03_rep2.R1.fastq.gz -2 fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz -p 8 |     awk -v id=DH_03_rep2 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/DH_03_rep2/DH_03_rep2.raw.bam; 
+Submitted job 80 with external jobid '15124232.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:48 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/HT_10_rep1/HT_10_rep1.R1.fastq.gz, fastq.demultiplex/HT_10_rep1/HT_10_rep1.R2.fastq.gz
+    output: bam.raw/HT_10_rep1/HT_10_rep1.raw.bam
+    jobid: 90
+    wildcards: sample=HT_10_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/HT_10_rep1/HT_10_rep1.R1.fastq.gz -2 fastq.demultiplex/HT_10_rep1/HT_10_rep1.R2.fastq.gz -p 8 |     awk -v id=HT_10_rep1 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/HT_10_rep1/HT_10_rep1.raw.bam; 
+Submitted job 90 with external jobid '15124233.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:48 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 154
+    wildcards: sample=FC_18_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name FC_18_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_18_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 193-288 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 154 with external jobid '15124234.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:48 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/HT_18_rep2/HT_18_rep2.R1.fastq.gz, fastq.demultiplex/HT_18_rep2/HT_18_rep2.R2.fastq.gz
+    output: bam.raw/HT_18_rep2/HT_18_rep2.raw.bam
+    jobid: 92
+    wildcards: sample=HT_18_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/HT_18_rep2/HT_18_rep2.R1.fastq.gz -2 fastq.demultiplex/HT_18_rep2/HT_18_rep2.R2.fastq.gz -p 8 |     awk -v id=HT_18_rep2 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/HT_18_rep2/HT_18_rep2.raw.bam; 
+Submitted job 92 with external jobid '15124235.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:48 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 155
+    wildcards: sample=FC_18_rep1, lane=2
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz -output_tag_name FC_18_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_18_rep1/L2 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 193-288 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 155 with external jobid '15124236.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:48 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_18_rep2/DH_18_rep2.R1.fastq.gz, fastq.demultiplex/DH_18_rep2/DH_18_rep2.R2.fastq.gz
+    output: bam.raw/DH_18_rep2/DH_18_rep2.raw.bam
+    jobid: 82
+    wildcards: sample=DH_18_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/DH_18_rep2/DH_18_rep2.R1.fastq.gz -2 fastq.demultiplex/DH_18_rep2/DH_18_rep2.R2.fastq.gz -p 8 |     awk -v id=DH_18_rep2 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/DH_18_rep2/DH_18_rep2.raw.bam; 
+Submitted job 82 with external jobid '15124237.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:48 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/LM_18_rep2/L1/Undetermined_S0_L001_R1_001_LM_18_rep2.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/LM_18_rep2/L1/Undetermined_S0_L001_R2_001_LM_18_rep2.demultiplexed.R2.repl1.fastq.gz
+    jobid: 197
+    wildcards: sample=LM_18_rep2, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name LM_18_rep2 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/LM_18_rep2/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 193-288 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 197 with external jobid '15124238.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:48 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/LM_18_rep1/L1/Undetermined_S0_L001_R1_001_LM_18_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/LM_18_rep1/L1/Undetermined_S0_L001_R2_001_LM_18_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 194
+    wildcards: sample=LM_18_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name LM_18_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/LM_18_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 193-288 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 194 with external jobid '15124239.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:49 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/HT_10_rep2/HT_10_rep2.R1.fastq.gz, fastq.demultiplex/HT_10_rep2/HT_10_rep2.R2.fastq.gz
+    output: bam.raw/HT_10_rep2/HT_10_rep2.raw.bam
+    jobid: 94
+    wildcards: sample=HT_10_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/HT_10_rep2/HT_10_rep2.R1.fastq.gz -2 fastq.demultiplex/HT_10_rep2/HT_10_rep2.R2.fastq.gz -p 8 |     awk -v id=HT_10_rep2 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/HT_10_rep2/HT_10_rep2.raw.bam; 
+Submitted job 94 with external jobid '15124240.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:49 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_10_rep1/L2/Undetermined_S0_L002_R1_001_FC_10_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_10_rep1/L2/Undetermined_S0_L002_R2_001_FC_10_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 153
+    wildcards: sample=FC_10_rep1, lane=2
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz -output_tag_name FC_10_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_10_rep1/L2 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 97-192 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 153 with external jobid '15124241.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:49 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/LM_03_rep2/L1/Undetermined_S0_L001_R1_001_LM_03_rep2.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/LM_03_rep2/L1/Undetermined_S0_L001_R2_001_LM_03_rep2.demultiplexed.R2.repl1.fastq.gz
+    jobid: 195
+    wildcards: sample=LM_03_rep2, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name LM_03_rep2 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/LM_03_rep2/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 1-96 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 195 with external jobid '15124242.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:49 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_10_rep1/L1/Undetermined_S0_L001_R1_001_FC_10_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_10_rep1/L1/Undetermined_S0_L001_R2_001_FC_10_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 152
+    wildcards: sample=FC_10_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name FC_10_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_10_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 97-192 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 152 with external jobid '15124243.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:49 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/FC_10_rep2/FC_10_rep2.R1.fastq.gz, fastq.demultiplex/FC_10_rep2/FC_10_rep2.R2.fastq.gz
+    output: bam.raw/FC_10_rep2/FC_10_rep2.raw.bam
+    jobid: 87
+    wildcards: sample=FC_10_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/FC_10_rep2/FC_10_rep2.R1.fastq.gz -2 fastq.demultiplex/FC_10_rep2/FC_10_rep2.R2.fastq.gz -p 8 |     awk -v id=FC_10_rep2 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/FC_10_rep2/FC_10_rep2.raw.bam; 
+Submitted job 87 with external jobid '15124244.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:49 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/HT_18_rep1/HT_18_rep1.R1.fastq.gz, fastq.demultiplex/HT_18_rep1/HT_18_rep1.R2.fastq.gz
+    output: bam.raw/HT_18_rep1/HT_18_rep1.raw.bam
+    jobid: 91
+    wildcards: sample=HT_18_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/HT_18_rep1/HT_18_rep1.R1.fastq.gz -2 fastq.demultiplex/HT_18_rep1/HT_18_rep1.R2.fastq.gz -p 8 |     awk -v id=HT_18_rep1 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/HT_18_rep1/HT_18_rep1.raw.bam; 
+Submitted job 91 with external jobid '15124245.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:50 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/HT_03_rep1/HT_03_rep1.R1.fastq.gz, fastq.demultiplex/HT_03_rep1/HT_03_rep1.R2.fastq.gz
+    output: bam.raw/HT_03_rep1/HT_03_rep1.raw.bam
+    jobid: 89
+    wildcards: sample=HT_03_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/HT_03_rep1/HT_03_rep1.R1.fastq.gz -2 fastq.demultiplex/HT_03_rep1/HT_03_rep1.R2.fastq.gz -p 8 |     awk -v id=HT_03_rep1 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/HT_03_rep1/HT_03_rep1.raw.bam; 
+Submitted job 89 with external jobid '15124246.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:50 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 150
+    wildcards: sample=FC_03_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name FC_03_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_03_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 1-96 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 150 with external jobid '15124247.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:50 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/FC_18_rep2/FC_18_rep2.R1.fastq.gz, fastq.demultiplex/FC_18_rep2/FC_18_rep2.R2.fastq.gz
+    output: bam.raw/FC_18_rep2/FC_18_rep2.raw.bam
+    jobid: 88
+    wildcards: sample=FC_18_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/FC_18_rep2/FC_18_rep2.R1.fastq.gz -2 fastq.demultiplex/FC_18_rep2/FC_18_rep2.R2.fastq.gz -p 8 |     awk -v id=FC_18_rep2 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/FC_18_rep2/FC_18_rep2.raw.bam; 
+Submitted job 88 with external jobid '15124248.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:50 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/LM_10_rep2/L1/Undetermined_S0_L001_R1_001_LM_10_rep2.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/LM_10_rep2/L1/Undetermined_S0_L001_R2_001_LM_10_rep2.demultiplexed.R2.repl1.fastq.gz
+    jobid: 196
+    wildcards: sample=LM_10_rep2, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2019_04_03_DIP_A8/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name LM_10_rep2 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/LM_10_rep2/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 97-192 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 196 with external jobid '15124249.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:50 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/FC_03_rep2/FC_03_rep2.R1.fastq.gz, fastq.demultiplex/FC_03_rep2/FC_03_rep2.R2.fastq.gz
+    output: bam.raw/FC_03_rep2/FC_03_rep2.raw.bam
+    jobid: 86
+    wildcards: sample=FC_03_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/FC_03_rep2/FC_03_rep2.R1.fastq.gz -2 fastq.demultiplex/FC_03_rep2/FC_03_rep2.R2.fastq.gz -p 8 |     awk -v id=FC_03_rep2 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/FC_03_rep2/FC_03_rep2.raw.bam; 
+Submitted job 86 with external jobid '15124250.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:50 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/LM_03_rep1/L1/Undetermined_S0_L001_R1_001_LM_03_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/LM_03_rep1/L1/Undetermined_S0_L001_R2_001_LM_03_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 192
+    wildcards: sample=LM_03_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2019_04_03_DIP_A7/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name LM_03_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/LM_03_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 1-96 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 192 with external jobid '15124251.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:50 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_10_rep2/DH_10_rep2.R1.fastq.gz, fastq.demultiplex/DH_10_rep2/DH_10_rep2.R2.fastq.gz
+    output: bam.raw/DH_10_rep2/DH_10_rep2.raw.bam
+    jobid: 81
+    wildcards: sample=DH_10_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/DH_10_rep2/DH_10_rep2.R1.fastq.gz -2 fastq.demultiplex/DH_10_rep2/DH_10_rep2.R2.fastq.gz -p 8 |     awk -v id=DH_10_rep2 '{ if ($1 ~ "@"){print $0} else
+      {print id "." $0"	BX:Z:" id "."  substr($1,1,22) } }' |     samtools view -bS - > bam.raw/DH_10_rep2/DH_10_rep2.raw.bam; 
+Submitted job 81 with external jobid '15124252.tscc-mgr.local'.
+
+[Thu Apr 18 21:49:51 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 151
+    wildcards: sample=FC_03_rep1, lane=2
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz -output_tag_name FC_03_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_03_rep1/L2 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 1-96 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 151 with external jobid '15124253.tscc-mgr.local'.
+[Thu Apr 18 21:50:15 2019]
+Error in rule align_bowtie2:
+    jobid: 93
+    output: bam.raw/HT_03_rep2/HT_03_rep2.raw.bam
+    cluster_jobid: 15124231.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu Apr 18 21:50:27 2019]
+Error in rule align_bowtie2:
+    jobid: 80
+    output: bam.raw/DH_03_rep2/DH_03_rep2.raw.bam
+    cluster_jobid: 15124232.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu Apr 18 21:50:27 2019]
+Error in rule align_bowtie2:
+    jobid: 90
+    output: bam.raw/HT_10_rep1/HT_10_rep1.raw.bam
+    cluster_jobid: 15124233.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Terminating processes on user request, this might take some time.
+Will exit after finishing currently running jobs.
+Cancelling snakemake on user request.

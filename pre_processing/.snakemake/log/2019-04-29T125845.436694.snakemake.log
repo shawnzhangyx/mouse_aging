@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 26 of /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/pre_processing/Snakefile:
+Missing input files for rule require_everything:
+bam.filter.sort.files.list.txt

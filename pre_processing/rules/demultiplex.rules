@@ -1,0 +1,49 @@
+#! /usr/bin/env python
+## Snakefile
+####################
+import pandas as pd
+sample_info = pd.read_table("demultiplex.sample_info.txt",sep=" ")
+
+
+# sample info is a pandas data frame 
+
+rule demultiplex: 
+  output: 
+    R1 = "fastq.demultiplex/{sample}.{lane}.R1.fastq.gz",
+    R2 = "fastq.demultiplex/{sample}.{lane}.R2.fastq.gz"
+  input: 
+    indexF = lamda wildcards: sample_info[wildcards.sample]['barcodes'],
+    R1 = lamda wildcards: 'fastq.raw/" + sample_info[wildcards.sample]['run'] + "/" + \ 
+      "Undetermined_S0_L00" + wildcards.lane + "_R1_001.fastq.gz",
+    R2 = lamda wildcards: 'fastq.raw/" + sample_info[wildcards.sample]['run'] + "/" + \
+      "Undetermined_S0_L00" + wildcards.lane + "_R2_001.fastq.gz",
+    I1 = lamda wildcards: 'fastq.raw/" + sample_info[wildcards.sample]['run'] + "/" + \
+      "Undetermined_S0_L00" + wildcards.lane + "_I1_001.fastq.gz",
+    I2 = lamda wildcards: 'fastq.raw/" + sample_info[wildcards.sample]['run'] + "/" + \
+      "Undetermined_S0_L00" + wildcards.lane + "_I2_001.fastq.gz"
+
+  threads: 4
+  params: 
+    name = wildcards.sample
+    nb_mistake = 2
+    out_path = "fastq.demultiplex/"
+    i5 = sample_info[wildcards.sample]['p5_range']
+    i7 = sample_info[wildcards.sample['p7_range']
+  shell: 
+    "ATACdemultiplex  "
+               "-fastq_R1 {input.R1} "
+               "-fastq_R2 {input.R2} "
+               "-fastq_I1 {input.I1} "
+               "-fastq_I2 {input.I2} "
+               "-output_tag_name {params.name} "
+               "-max_nb_reads 0 "
+               "--nbThreads {threads} "
+               "-max_nb_mistake {params.nb_mistake} "
+               "-shift_p5 0 "
+               "-output_path {params.out_path} "
+               "-write_logs  "
+               "-plate_size 96 "
+               "-i5_ranges {params.i5} "
+               "-p7_ranges {params.i7} "
+               "-index_no_replicate {input.indexF}"
+

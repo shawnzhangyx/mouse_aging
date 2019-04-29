@@ -1,0 +1,58 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	3	combine_demulti_fastq_files
+	3	demultiplex
+	1	require_demulti_fastq_files
+	7
+
+[Wed Apr 24 15:21:31 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq_comp.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_10_rep1/L1/Undetermined_S0_L001_R1_001_FC_10_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_10_rep1/L1/Undetermined_S0_L001_R2_001_FC_10_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 51
+    wildcards: sample=FC_10_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name FC_10_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_10_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 97-192 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq_comp.txt
+Submitted job 51 with external jobid '15167778.tscc-mgr.local'.
+
+[Wed Apr 24 15:21:37 2019]
+rule combine_demulti_fastq_files:
+    input: fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz
+    output: fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz, fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz
+    jobid: 9
+    wildcards: sample=FC_18_rep1
+
+cat fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz > fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz;cat fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz > fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz;
+Submitted job 9 with external jobid '15167779.tscc-mgr.local'.
+
+[Wed Apr 24 15:21:37 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 49
+    wildcards: sample=FC_03_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name FC_03_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_03_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 1-96 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 49 with external jobid '15167780.tscc-mgr.local'.
+
+[Wed Apr 24 15:21:37 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 50
+    wildcards: sample=FC_03_rep1, lane=2
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz -output_tag_name FC_03_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_03_rep1/L2 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 1-96 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq.txt
+Submitted job 50 with external jobid '15167781.tscc-mgr.local'.
+[Wed Apr 24 15:22:31 2019]
+Finished job 9.
+1 of 7 steps (14%) done
+Terminating processes on user request, this might take some time.
+Will exit after finishing currently running jobs.
+Cancelling snakemake on user request.

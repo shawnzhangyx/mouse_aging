@@ -1,0 +1,67 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	3	align_bowtie2
+	1	require_raw_bam
+	4
+
+[Thu Apr 25 12:39:05 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_03_rep1/DH_03_rep1.R1.fastq.gz, fastq.demultiplex/DH_03_rep1/DH_03_rep1.R2.fastq.gz
+    output: bam.raw/DH_03_rep1/DH_03_rep1.raw.bam
+    jobid: 1
+    wildcards: sample=DH_03_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/DH_03_rep1/DH_03_rep1.R1.fastq.gz -2 fastq.demultiplex/DH_03_rep1/DH_03_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }' | \    
+    samtools view -bS > bam.raw/DH_03_rep1/DH_03_rep1.raw.bam 
+Submitted job 1 with external jobid '15172782.tscc-mgr.local'.
+
+[Thu Apr 25 12:39:11 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_18_rep1/DH_18_rep1.R1.fastq.gz, fastq.demultiplex/DH_18_rep1/DH_18_rep1.R2.fastq.gz
+    output: bam.raw/DH_18_rep1/DH_18_rep1.raw.bam
+    jobid: 3
+    wildcards: sample=DH_18_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/DH_18_rep1/DH_18_rep1.R1.fastq.gz -2 fastq.demultiplex/DH_18_rep1/DH_18_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }' | \    
+    samtools view -bS > bam.raw/DH_18_rep1/DH_18_rep1.raw.bam 
+Submitted job 3 with external jobid '15172784.tscc-mgr.local'.
+
+[Thu Apr 25 12:39:11 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_10_rep1/DH_10_rep1.R1.fastq.gz, fastq.demultiplex/DH_10_rep1/DH_10_rep1.R2.fastq.gz
+    output: bam.raw/DH_10_rep1/DH_10_rep1.raw.bam
+    jobid: 2
+    wildcards: sample=DH_10_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10     -1 fastq.demultiplex/DH_10_rep1/DH_10_rep1.R1.fastq.gz -2 fastq.demultiplex/DH_10_rep1/DH_10_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }' | \    
+    samtools view -bS > bam.raw/DH_10_rep1/DH_10_rep1.raw.bam 
+Submitted job 2 with external jobid '15172785.tscc-mgr.local'.
+[Thu Apr 25 12:39:35 2019]
+Error in rule align_bowtie2:
+    jobid: 1
+    output: bam.raw/DH_03_rep1/DH_03_rep1.raw.bam
+    cluster_jobid: 15172782.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu Apr 25 12:39:45 2019]
+Error in rule align_bowtie2:
+    jobid: 3
+    output: bam.raw/DH_18_rep1/DH_18_rep1.raw.bam
+    cluster_jobid: 15172784.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu Apr 25 12:39:45 2019]
+Error in rule align_bowtie2:
+    jobid: 2
+    output: bam.raw/DH_10_rep1/DH_10_rep1.raw.bam
+    cluster_jobid: 15172785.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Exiting because a job execution failed. Look above for error message
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/pre_processing/.snakemake/log/2019-04-25T123904.542490.snakemake.log

@@ -1,0 +1,541 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	18	csort_bam
+	18	dedup_bam
+	1	require_dedup_bam
+	37
+
+[Fri Apr 26 18:38:40 2019]
+rule csort_bam:
+    input: bam.raw/DH_03_rep2/DH_03_rep2.raw.bam
+    output: bam.csort/DH_03_rep2/DH_03_rep2.picard.csort.bam
+    log: bam.csort/log/DH_03_rep2.csort.log
+    jobid: 28
+    wildcards: sample=DH_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_03_rep2/DH_03_rep2.raw.bam         O=bam.csort/DH_03_rep2/DH_03_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_03_rep2.csort.log
+Submitted job 28 with external jobid '15181953.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:47 2019]
+rule csort_bam:
+    input: bam.raw/LM_18_rep2/LM_18_rep2.raw.bam
+    output: bam.csort/LM_18_rep2/LM_18_rep2.picard.csort.bam
+    log: bam.csort/log/LM_18_rep2.csort.log
+    jobid: 48
+    wildcards: sample=LM_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_18_rep2/LM_18_rep2.raw.bam         O=bam.csort/LM_18_rep2/LM_18_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_18_rep2.csort.log
+Submitted job 48 with external jobid '15181954.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:47 2019]
+rule csort_bam:
+    input: bam.raw/DH_18_rep2/DH_18_rep2.raw.bam
+    output: bam.csort/DH_18_rep2/DH_18_rep2.picard.csort.bam
+    log: bam.csort/log/DH_18_rep2.csort.log
+    jobid: 30
+    wildcards: sample=DH_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_18_rep2/DH_18_rep2.raw.bam         O=bam.csort/DH_18_rep2/DH_18_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_18_rep2.csort.log
+Submitted job 30 with external jobid '15181955.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:47 2019]
+rule csort_bam:
+    input: bam.raw/FC_18_rep2/FC_18_rep2.raw.bam
+    output: bam.csort/FC_18_rep2/FC_18_rep2.picard.csort.bam
+    log: bam.csort/log/FC_18_rep2.csort.log
+    jobid: 36
+    wildcards: sample=FC_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_18_rep2/FC_18_rep2.raw.bam         O=bam.csort/FC_18_rep2/FC_18_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_18_rep2.csort.log
+Submitted job 36 with external jobid '15181956.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:47 2019]
+rule csort_bam:
+    input: bam.raw/LM_03_rep1/LM_03_rep1.raw.bam
+    output: bam.csort/LM_03_rep1/LM_03_rep1.picard.csort.bam
+    log: bam.csort/log/LM_03_rep1.csort.log
+    jobid: 43
+    wildcards: sample=LM_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_03_rep1/LM_03_rep1.raw.bam         O=bam.csort/LM_03_rep1/LM_03_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_03_rep1.csort.log
+Submitted job 43 with external jobid '15181957.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:47 2019]
+rule csort_bam:
+    input: bam.raw/DH_03_rep1/DH_03_rep1.raw.bam
+    output: bam.csort/DH_03_rep1/DH_03_rep1.picard.csort.bam
+    log: bam.csort/log/DH_03_rep1.csort.log
+    jobid: 25
+    wildcards: sample=DH_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_03_rep1/DH_03_rep1.raw.bam         O=bam.csort/DH_03_rep1/DH_03_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_03_rep1.csort.log
+Submitted job 25 with external jobid '15181958.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:47 2019]
+rule csort_bam:
+    input: bam.raw/LM_03_rep2/LM_03_rep2.raw.bam
+    output: bam.csort/LM_03_rep2/LM_03_rep2.picard.csort.bam
+    log: bam.csort/log/LM_03_rep2.csort.log
+    jobid: 46
+    wildcards: sample=LM_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_03_rep2/LM_03_rep2.raw.bam         O=bam.csort/LM_03_rep2/LM_03_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_03_rep2.csort.log
+Submitted job 46 with external jobid '15181959.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:47 2019]
+rule csort_bam:
+    input: bam.raw/LM_10_rep2/LM_10_rep2.raw.bam
+    output: bam.csort/LM_10_rep2/LM_10_rep2.picard.csort.bam
+    log: bam.csort/log/LM_10_rep2.csort.log
+    jobid: 47
+    wildcards: sample=LM_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_10_rep2/LM_10_rep2.raw.bam         O=bam.csort/LM_10_rep2/LM_10_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_10_rep2.csort.log
+Submitted job 47 with external jobid '15181960.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:47 2019]
+rule csort_bam:
+    input: bam.raw/LM_18_rep1/LM_18_rep1.raw.bam
+    output: bam.csort/LM_18_rep1/LM_18_rep1.picard.csort.bam
+    log: bam.csort/log/LM_18_rep1.csort.log
+    jobid: 45
+    wildcards: sample=LM_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_18_rep1/LM_18_rep1.raw.bam         O=bam.csort/LM_18_rep1/LM_18_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_18_rep1.csort.log
+Submitted job 45 with external jobid '15181961.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:47 2019]
+rule csort_bam:
+    input: bam.raw/FC_10_rep1/FC_10_rep1.raw.bam
+    output: bam.csort/FC_10_rep1/FC_10_rep1.picard.csort.bam
+    log: bam.csort/log/FC_10_rep1.csort.log
+    jobid: 32
+    wildcards: sample=FC_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_10_rep1/FC_10_rep1.raw.bam         O=bam.csort/FC_10_rep1/FC_10_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_10_rep1.csort.log
+Submitted job 32 with external jobid '15181962.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:48 2019]
+rule csort_bam:
+    input: bam.raw/DH_10_rep2/DH_10_rep2.raw.bam
+    output: bam.csort/DH_10_rep2/DH_10_rep2.picard.csort.bam
+    log: bam.csort/log/DH_10_rep2.csort.log
+    jobid: 29
+    wildcards: sample=DH_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_10_rep2/DH_10_rep2.raw.bam         O=bam.csort/DH_10_rep2/DH_10_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_10_rep2.csort.log
+Submitted job 29 with external jobid '15181963.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:48 2019]
+rule csort_bam:
+    input: bam.raw/DH_18_rep1/DH_18_rep1.raw.bam
+    output: bam.csort/DH_18_rep1/DH_18_rep1.picard.csort.bam
+    log: bam.csort/log/DH_18_rep1.csort.log
+    jobid: 27
+    wildcards: sample=DH_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_18_rep1/DH_18_rep1.raw.bam         O=bam.csort/DH_18_rep1/DH_18_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_18_rep1.csort.log
+Submitted job 27 with external jobid '15181964.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:48 2019]
+rule csort_bam:
+    input: bam.raw/FC_10_rep2/FC_10_rep2.raw.bam
+    output: bam.csort/FC_10_rep2/FC_10_rep2.picard.csort.bam
+    log: bam.csort/log/FC_10_rep2.csort.log
+    jobid: 35
+    wildcards: sample=FC_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_10_rep2/FC_10_rep2.raw.bam         O=bam.csort/FC_10_rep2/FC_10_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_10_rep2.csort.log
+Submitted job 35 with external jobid '15181965.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:48 2019]
+rule csort_bam:
+    input: bam.raw/FC_03_rep1/FC_03_rep1.raw.bam
+    output: bam.csort/FC_03_rep1/FC_03_rep1.picard.csort.bam
+    log: bam.csort/log/FC_03_rep1.csort.log
+    jobid: 31
+    wildcards: sample=FC_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_03_rep1/FC_03_rep1.raw.bam         O=bam.csort/FC_03_rep1/FC_03_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_03_rep1.csort.log
+Submitted job 31 with external jobid '15181966.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:48 2019]
+rule csort_bam:
+    input: bam.raw/LM_10_rep1/LM_10_rep1.raw.bam
+    output: bam.csort/LM_10_rep1/LM_10_rep1.picard.csort.bam
+    log: bam.csort/log/LM_10_rep1.csort.log
+    jobid: 44
+    wildcards: sample=LM_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_10_rep1/LM_10_rep1.raw.bam         O=bam.csort/LM_10_rep1/LM_10_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_10_rep1.csort.log
+Submitted job 44 with external jobid '15181967.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:48 2019]
+rule csort_bam:
+    input: bam.raw/FC_18_rep1/FC_18_rep1.raw.bam
+    output: bam.csort/FC_18_rep1/FC_18_rep1.picard.csort.bam
+    log: bam.csort/log/FC_18_rep1.csort.log
+    jobid: 33
+    wildcards: sample=FC_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_18_rep1/FC_18_rep1.raw.bam         O=bam.csort/FC_18_rep1/FC_18_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_18_rep1.csort.log
+Submitted job 33 with external jobid '15181968.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:48 2019]
+rule csort_bam:
+    input: bam.raw/DH_10_rep1/DH_10_rep1.raw.bam
+    output: bam.csort/DH_10_rep1/DH_10_rep1.picard.csort.bam
+    log: bam.csort/log/DH_10_rep1.csort.log
+    jobid: 26
+    wildcards: sample=DH_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_10_rep1/DH_10_rep1.raw.bam         O=bam.csort/DH_10_rep1/DH_10_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_10_rep1.csort.log
+Submitted job 26 with external jobid '15181969.tscc-mgr.local'.
+
+[Fri Apr 26 18:38:48 2019]
+rule csort_bam:
+    input: bam.raw/FC_03_rep2/FC_03_rep2.raw.bam
+    output: bam.csort/FC_03_rep2/FC_03_rep2.picard.csort.bam
+    log: bam.csort/log/FC_03_rep2.csort.log
+    jobid: 34
+    wildcards: sample=FC_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_03_rep2/FC_03_rep2.raw.bam         O=bam.csort/FC_03_rep2/FC_03_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_03_rep2.csort.log
+Submitted job 34 with external jobid '15181970.tscc-mgr.local'.
+[Fri Apr 26 18:55:24 2019]
+Finished job 31.
+1 of 37 steps (3%) done
+
+[Fri Apr 26 18:55:24 2019]
+rule dedup_bam:
+    input: bam.csort/FC_03_rep1/FC_03_rep1.picard.csort.bam
+    output: bam.dedup/FC_03_rep1/FC_03_rep1.dedup.bam
+    log: bam.dedup/FC_03_rep1/FC_03_rep1.dedup.log
+    jobid: 7
+    wildcards: sample=FC_03_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_03_rep1     INPUT=bam.csort/FC_03_rep1/FC_03_rep1.picard.csort.bam OUTPUT= bam.dedup/FC_03_rep1/FC_03_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_03_rep1/FC_03_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_03_rep1/FC_03_rep1.dedup.log
+Submitted job 7 with external jobid '15182077.tscc-mgr.local'.
+[Fri Apr 26 18:59:05 2019]
+Finished job 27.
+2 of 37 steps (5%) done
+
+[Fri Apr 26 18:59:05 2019]
+rule dedup_bam:
+    input: bam.csort/DH_18_rep1/DH_18_rep1.picard.csort.bam
+    output: bam.dedup/DH_18_rep1/DH_18_rep1.dedup.bam
+    log: bam.dedup/DH_18_rep1/DH_18_rep1.dedup.log
+    jobid: 3
+    wildcards: sample=DH_18_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_18_rep1     INPUT=bam.csort/DH_18_rep1/DH_18_rep1.picard.csort.bam OUTPUT= bam.dedup/DH_18_rep1/DH_18_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_18_rep1/DH_18_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_18_rep1/DH_18_rep1.dedup.log
+Submitted job 3 with external jobid '15182081.tscc-mgr.local'.
+[Fri Apr 26 19:00:33 2019]
+Finished job 33.
+3 of 37 steps (8%) done
+
+[Fri Apr 26 19:00:33 2019]
+rule dedup_bam:
+    input: bam.csort/FC_18_rep1/FC_18_rep1.picard.csort.bam
+    output: bam.dedup/FC_18_rep1/FC_18_rep1.dedup.bam
+    log: bam.dedup/FC_18_rep1/FC_18_rep1.dedup.log
+    jobid: 9
+    wildcards: sample=FC_18_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_18_rep1     INPUT=bam.csort/FC_18_rep1/FC_18_rep1.picard.csort.bam OUTPUT= bam.dedup/FC_18_rep1/FC_18_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_18_rep1/FC_18_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_18_rep1/FC_18_rep1.dedup.log
+Submitted job 9 with external jobid '15182103.tscc-mgr.local'.
+[Fri Apr 26 19:07:20 2019]
+Finished job 25.
+4 of 37 steps (11%) done
+
+[Fri Apr 26 19:07:20 2019]
+rule dedup_bam:
+    input: bam.csort/DH_03_rep1/DH_03_rep1.picard.csort.bam
+    output: bam.dedup/DH_03_rep1/DH_03_rep1.dedup.bam
+    log: bam.dedup/DH_03_rep1/DH_03_rep1.dedup.log
+    jobid: 1
+    wildcards: sample=DH_03_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_03_rep1     INPUT=bam.csort/DH_03_rep1/DH_03_rep1.picard.csort.bam OUTPUT= bam.dedup/DH_03_rep1/DH_03_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_03_rep1/DH_03_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_03_rep1/DH_03_rep1.dedup.log
+Submitted job 1 with external jobid '15182131.tscc-mgr.local'.
+[Fri Apr 26 19:12:40 2019]
+Finished job 26.
+5 of 37 steps (14%) done
+
+[Fri Apr 26 19:12:40 2019]
+rule dedup_bam:
+    input: bam.csort/DH_10_rep1/DH_10_rep1.picard.csort.bam
+    output: bam.dedup/DH_10_rep1/DH_10_rep1.dedup.bam
+    log: bam.dedup/DH_10_rep1/DH_10_rep1.dedup.log
+    jobid: 2
+    wildcards: sample=DH_10_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_10_rep1     INPUT=bam.csort/DH_10_rep1/DH_10_rep1.picard.csort.bam OUTPUT= bam.dedup/DH_10_rep1/DH_10_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_10_rep1/DH_10_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_10_rep1/DH_10_rep1.dedup.log
+Submitted job 2 with external jobid '15182158.tscc-mgr.local'.
+[Fri Apr 26 19:13:14 2019]
+Finished job 7.
+6 of 37 steps (16%) done
+[Fri Apr 26 19:16:09 2019]
+Finished job 32.
+7 of 37 steps (19%) done
+
+[Fri Apr 26 19:16:09 2019]
+rule dedup_bam:
+    input: bam.csort/FC_10_rep1/FC_10_rep1.picard.csort.bam
+    output: bam.dedup/FC_10_rep1/FC_10_rep1.dedup.bam
+    log: bam.dedup/FC_10_rep1/FC_10_rep1.dedup.log
+    jobid: 8
+    wildcards: sample=FC_10_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_10_rep1     INPUT=bam.csort/FC_10_rep1/FC_10_rep1.picard.csort.bam OUTPUT= bam.dedup/FC_10_rep1/FC_10_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_10_rep1/FC_10_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_10_rep1/FC_10_rep1.dedup.log
+Submitted job 8 with external jobid '15182170.tscc-mgr.local'.
+[Fri Apr 26 19:16:31 2019]
+Finished job 45.
+8 of 37 steps (22%) done
+
+[Fri Apr 26 19:16:31 2019]
+rule dedup_bam:
+    input: bam.csort/LM_18_rep1/LM_18_rep1.picard.csort.bam
+    output: bam.dedup/LM_18_rep1/LM_18_rep1.dedup.bam
+    log: bam.dedup/LM_18_rep1/LM_18_rep1.dedup.log
+    jobid: 21
+    wildcards: sample=LM_18_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_18_rep1     INPUT=bam.csort/LM_18_rep1/LM_18_rep1.picard.csort.bam OUTPUT= bam.dedup/LM_18_rep1/LM_18_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_18_rep1/LM_18_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_18_rep1/LM_18_rep1.dedup.log
+Submitted job 21 with external jobid '15182172.tscc-mgr.local'.
+[Fri Apr 26 19:18:54 2019]
+Finished job 43.
+9 of 37 steps (24%) done
+
+[Fri Apr 26 19:18:54 2019]
+rule dedup_bam:
+    input: bam.csort/LM_03_rep1/LM_03_rep1.picard.csort.bam
+    output: bam.dedup/LM_03_rep1/LM_03_rep1.dedup.bam
+    log: bam.dedup/LM_03_rep1/LM_03_rep1.dedup.log
+    jobid: 19
+    wildcards: sample=LM_03_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_03_rep1     INPUT=bam.csort/LM_03_rep1/LM_03_rep1.picard.csort.bam OUTPUT= bam.dedup/LM_03_rep1/LM_03_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_03_rep1/LM_03_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_03_rep1/LM_03_rep1.dedup.log
+Submitted job 19 with external jobid '15182174.tscc-mgr.local'.
+[Fri Apr 26 19:19:06 2019]
+Finished job 3.
+10 of 37 steps (27%) done
+[Fri Apr 26 19:20:34 2019]
+Error in rule csort_bam:
+    jobid: 47
+    output: bam.csort/LM_10_rep2/LM_10_rep2.picard.csort.bam
+    log: bam.csort/log/LM_10_rep2.csort.log
+    cluster_jobid: 15181960.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Fri Apr 26 19:20:46 2019]
+Finished job 9.
+11 of 37 steps (30%) done
+[Fri Apr 26 19:20:56 2019]
+Finished job 34.
+12 of 37 steps (32%) done
+
+[Fri Apr 26 19:20:56 2019]
+rule dedup_bam:
+    input: bam.csort/FC_03_rep2/FC_03_rep2.picard.csort.bam
+    output: bam.dedup/FC_03_rep2/FC_03_rep2.dedup.bam
+    log: bam.dedup/FC_03_rep2/FC_03_rep2.dedup.log
+    jobid: 10
+    wildcards: sample=FC_03_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_03_rep2     INPUT=bam.csort/FC_03_rep2/FC_03_rep2.picard.csort.bam OUTPUT= bam.dedup/FC_03_rep2/FC_03_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_03_rep2/FC_03_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_03_rep2/FC_03_rep2.dedup.log
+Submitted job 10 with external jobid '15182182.tscc-mgr.local'.
+[Fri Apr 26 19:30:51 2019]
+Finished job 1.
+13 of 37 steps (35%) done
+[Fri Apr 26 19:35:26 2019]
+Finished job 44.
+14 of 37 steps (38%) done
+
+[Fri Apr 26 19:35:26 2019]
+rule dedup_bam:
+    input: bam.csort/LM_10_rep1/LM_10_rep1.picard.csort.bam
+    output: bam.dedup/LM_10_rep1/LM_10_rep1.dedup.bam
+    log: bam.dedup/LM_10_rep1/LM_10_rep1.dedup.log
+    jobid: 20
+    wildcards: sample=LM_10_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_10_rep1     INPUT=bam.csort/LM_10_rep1/LM_10_rep1.picard.csort.bam OUTPUT= bam.dedup/LM_10_rep1/LM_10_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_10_rep1/LM_10_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_10_rep1/LM_10_rep1.dedup.log
+Submitted job 20 with external jobid '15182222.tscc-mgr.local'.
+[Fri Apr 26 19:35:37 2019]
+Finished job 30.
+15 of 37 steps (41%) done
+
+[Fri Apr 26 19:35:37 2019]
+rule dedup_bam:
+    input: bam.csort/DH_18_rep2/DH_18_rep2.picard.csort.bam
+    output: bam.dedup/DH_18_rep2/DH_18_rep2.dedup.bam
+    log: bam.dedup/DH_18_rep2/DH_18_rep2.dedup.log
+    jobid: 6
+    wildcards: sample=DH_18_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_18_rep2     INPUT=bam.csort/DH_18_rep2/DH_18_rep2.picard.csort.bam OUTPUT= bam.dedup/DH_18_rep2/DH_18_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_18_rep2/DH_18_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_18_rep2/DH_18_rep2.dedup.log
+Submitted job 6 with external jobid '15182223.tscc-mgr.local'.
+[Fri Apr 26 19:38:00 2019]
+Finished job 46.
+16 of 37 steps (43%) done
+
+[Fri Apr 26 19:38:00 2019]
+rule dedup_bam:
+    input: bam.csort/LM_03_rep2/LM_03_rep2.picard.csort.bam
+    output: bam.dedup/LM_03_rep2/LM_03_rep2.dedup.bam
+    log: bam.dedup/LM_03_rep2/LM_03_rep2.dedup.log
+    jobid: 22
+    wildcards: sample=LM_03_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_03_rep2     INPUT=bam.csort/LM_03_rep2/LM_03_rep2.picard.csort.bam OUTPUT= bam.dedup/LM_03_rep2/LM_03_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_03_rep2/LM_03_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_03_rep2/LM_03_rep2.dedup.log
+Submitted job 22 with external jobid '15182234.tscc-mgr.local'.
+[Fri Apr 26 19:38:11 2019]
+Finished job 28.
+17 of 37 steps (46%) done
+
+[Fri Apr 26 19:38:11 2019]
+rule dedup_bam:
+    input: bam.csort/DH_03_rep2/DH_03_rep2.picard.csort.bam
+    output: bam.dedup/DH_03_rep2/DH_03_rep2.dedup.bam
+    log: bam.dedup/DH_03_rep2/DH_03_rep2.dedup.log
+    jobid: 4
+    wildcards: sample=DH_03_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_03_rep2     INPUT=bam.csort/DH_03_rep2/DH_03_rep2.picard.csort.bam OUTPUT= bam.dedup/DH_03_rep2/DH_03_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_03_rep2/DH_03_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_03_rep2/DH_03_rep2.dedup.log
+Submitted job 4 with external jobid '15182235.tscc-mgr.local'.
+[Fri Apr 26 19:39:51 2019]
+Finished job 29.
+18 of 37 steps (49%) done
+
+[Fri Apr 26 19:39:51 2019]
+rule dedup_bam:
+    input: bam.csort/DH_10_rep2/DH_10_rep2.picard.csort.bam
+    output: bam.dedup/DH_10_rep2/DH_10_rep2.dedup.bam
+    log: bam.dedup/DH_10_rep2/DH_10_rep2.dedup.log
+    jobid: 5
+    wildcards: sample=DH_10_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_10_rep2     INPUT=bam.csort/DH_10_rep2/DH_10_rep2.picard.csort.bam OUTPUT= bam.dedup/DH_10_rep2/DH_10_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_10_rep2/DH_10_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_10_rep2/DH_10_rep2.dedup.log
+Submitted job 5 with external jobid '15182261.tscc-mgr.local'.
+[Fri Apr 26 19:44:15 2019]
+Finished job 48.
+19 of 37 steps (51%) done
+
+[Fri Apr 26 19:44:15 2019]
+rule dedup_bam:
+    input: bam.csort/LM_18_rep2/LM_18_rep2.picard.csort.bam
+    output: bam.dedup/LM_18_rep2/LM_18_rep2.dedup.bam
+    log: bam.dedup/LM_18_rep2/LM_18_rep2.dedup.log
+    jobid: 24
+    wildcards: sample=LM_18_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_18_rep2     INPUT=bam.csort/LM_18_rep2/LM_18_rep2.picard.csort.bam OUTPUT= bam.dedup/LM_18_rep2/LM_18_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_18_rep2/LM_18_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_18_rep2/LM_18_rep2.dedup.log
+Submitted job 24 with external jobid '15182276.tscc-mgr.local'.
+[Fri Apr 26 19:44:59 2019]
+Finished job 35.
+20 of 37 steps (54%) done
+
+[Fri Apr 26 19:44:59 2019]
+rule dedup_bam:
+    input: bam.csort/FC_10_rep2/FC_10_rep2.picard.csort.bam
+    output: bam.dedup/FC_10_rep2/FC_10_rep2.dedup.bam
+    log: bam.dedup/FC_10_rep2/FC_10_rep2.dedup.log
+    jobid: 11
+    wildcards: sample=FC_10_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_10_rep2     INPUT=bam.csort/FC_10_rep2/FC_10_rep2.picard.csort.bam OUTPUT= bam.dedup/FC_10_rep2/FC_10_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_10_rep2/FC_10_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_10_rep2/FC_10_rep2.dedup.log
+Submitted job 11 with external jobid '15182302.tscc-mgr.local'.
+[Fri Apr 26 19:46:05 2019]
+Finished job 2.
+21 of 37 steps (57%) done
+[Fri Apr 26 19:47:45 2019]
+Finished job 36.
+22 of 37 steps (59%) done
+
+[Fri Apr 26 19:47:45 2019]
+rule dedup_bam:
+    input: bam.csort/FC_18_rep2/FC_18_rep2.picard.csort.bam
+    output: bam.dedup/FC_18_rep2/FC_18_rep2.dedup.bam
+    log: bam.dedup/FC_18_rep2/FC_18_rep2.dedup.log
+    jobid: 12
+    wildcards: sample=FC_18_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_18_rep2     INPUT=bam.csort/FC_18_rep2/FC_18_rep2.picard.csort.bam OUTPUT= bam.dedup/FC_18_rep2/FC_18_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_18_rep2/FC_18_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_18_rep2/FC_18_rep2.dedup.log
+Submitted job 12 with external jobid '15182322.tscc-mgr.local'.
+[Fri Apr 26 19:50:08 2019]
+Finished job 21.
+23 of 37 steps (62%) done
+[Fri Apr 26 19:53:26 2019]
+Finished job 19.
+24 of 37 steps (65%) done
+[Fri Apr 26 20:00:14 2019]
+Finished job 8.
+25 of 37 steps (68%) done
+[Fri Apr 26 20:03:26 2019]
+Finished job 10.
+26 of 37 steps (70%) done
+[Fri Apr 26 20:04:16 2019]
+Finished job 22.
+27 of 37 steps (73%) done
+[Fri Apr 26 20:19:17 2019]
+Finished job 24.
+28 of 37 steps (76%) done
+[Fri Apr 26 20:19:37 2019]
+Finished job 6.
+29 of 37 steps (78%) done
+[Fri Apr 26 20:25:48 2019]
+Finished job 4.
+30 of 37 steps (81%) done
+[Fri Apr 26 20:29:48 2019]
+Finished job 20.
+31 of 37 steps (84%) done
+[Fri Apr 26 20:32:39 2019]
+Finished job 12.
+32 of 37 steps (86%) done
+[Fri Apr 26 20:39:09 2019]
+Finished job 5.
+33 of 37 steps (89%) done
+[Fri Apr 26 20:54:30 2019]
+Finished job 11.
+34 of 37 steps (92%) done
+Exiting because a job execution failed. Look above for error message
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/pre_processing/.snakemake/log/2019-04-26T183839.356624.snakemake.log

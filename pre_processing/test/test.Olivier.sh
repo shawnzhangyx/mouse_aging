@@ -1,0 +1,15 @@
+ATACdemultiplex -fastq_R1 Undetermined_S0_L001_R1_001.fastq.gz \
+               -fastq_R2 Undetermined_S0_L001_R2_001.fastq.gz \
+               -fastq_I1 Undetermined_S0_L001_I1_001.fastq.gz \
+               -fastq_I2 Undetermined_S0_L001_I2_001.fastq.gz \
+               -output_tag_name DH_03_rep1.nbmis2 \
+               -max_nb_reads 0 \
+               --nbThreads 4 \
+               -max_nb_mistake 2 \
+               -shift_p5 0 \
+               -output_path ./ \
+               -write_logs  \
+               -plate_size 96 \
+               -i5_ranges 1-768 \
+               -p7_ranges 1-96 \
+               -index_no_replicate ../barcodes_nextSeq_comp.txt   

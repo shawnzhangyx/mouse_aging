@@ -1,0 +1,7 @@
+run barcodes p7_range p5_range lanes
+HT_18_rep2 181219_NB501692 barcodes_nextSeq_comp.txt 97-192 1-768 4
+HT_03_rep2 181219_NB501692 barcodes_nextSeq_comp.txt 193-288 1-768 4
+HT_10_rep2 181219_NB501692 barcodes_nextSeq_comp.txt 1-96 1-768 4
+HT_03_rep1 181119_NB501692 barcodes_nextSeq_comp.txt 1-96 1-768 4
+HT_10_rep1 181119_NB501692 barcodes_nextSeq_comp.txt 97-192 1-768 4
+HT_18_rep1 181119_NB501692 barcodes_nextSeq_comp.txt 193-288 1-768 4

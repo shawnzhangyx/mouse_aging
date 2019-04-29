@@ -1,0 +1,1434 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	18	align_bowtie2
+	18	bamToBigWig
+	3	call_peaks
+	72	count_barcode
+	18	csort_bam
+	18	dedup_bam
+	18	filter_bam
+	24	nsort_bam
+	1	require_barcodes
+	1	require_dedup_bam
+	1	require_demulti_fastq_files
+	1	require_everything
+	1	require_filter_bam
+	1	require_filter_bigWig
+	1	require_filter_sort_bam
+	1	require_nsort_bam
+	1	require_peaks
+	1	require_raw_bam
+	18	sort_filter_bam
+	217
+
+[Mon Apr 29 12:59:46 2019]
+rule count_barcode:
+    input: bam.raw/HT_10_rep1/HT_10_rep1.raw.bam
+    output: bam.raw/HT_10_rep1/HT_10_rep1.raw.barcode.cnts.txt
+    jobid: 27
+    wildcards: dir=bam.raw/HT_10_rep1, sample=HT_10_rep1.raw
+
+samtools view bam.raw/HT_10_rep1/HT_10_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/HT_10_rep1/HT_10_rep1.raw.barcode.cnts.txt
+    
+Submitted job 27 with external jobid '15201379.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:53 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/FC_10_rep1/FC_10_rep1.R1.fastq.gz, fastq.demultiplex/FC_10_rep1/FC_10_rep1.R2.fastq.gz
+    output: bam.raw/FC_10_rep1/FC_10_rep1.raw.bam
+    jobid: 213
+    wildcards: sample=FC_10_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/FC_10_rep1/FC_10_rep1.R1.fastq.gz -2 fastq.demultiplex/FC_10_rep1/FC_10_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/FC_10_rep1/FC_10_rep1.raw.bam 
+Submitted job 213 with external jobid '15201380.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:53 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_18_rep1/DH_18_rep1.R1.fastq.gz, fastq.demultiplex/DH_18_rep1/DH_18_rep1.R2.fastq.gz
+    output: bam.raw/DH_18_rep1/DH_18_rep1.raw.bam
+    jobid: 208
+    wildcards: sample=DH_18_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/DH_18_rep1/DH_18_rep1.R1.fastq.gz -2 fastq.demultiplex/DH_18_rep1/DH_18_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/DH_18_rep1/DH_18_rep1.raw.bam 
+Submitted job 208 with external jobid '15201381.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:53 2019]
+rule nsort_bam:
+    input: bam.raw/HT_10_rep1/HT_10_rep1.raw.bam
+    output: bam.nsort/HT_10_rep1/HT_10_rep1.picard.nsort.bam
+    log: bam.nsort/log/HT_10_rep1.nsort.log
+    jobid: 195
+    wildcards: sample=HT_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/HT_10_rep1/HT_10_rep1.raw.bam         O=bam.nsort/HT_10_rep1/HT_10_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/HT_10_rep1.nsort.log
+Submitted job 195 with external jobid '15201382.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:53 2019]
+rule count_barcode:
+    input: bam.dedup/HT_03_rep2/HT_03_rep2.dedup.bam
+    output: bam.dedup/HT_03_rep2/HT_03_rep2.dedup.barcode.cnts.txt
+    jobid: 54
+    wildcards: dir=bam.dedup/HT_03_rep2, sample=HT_03_rep2.dedup
+
+samtools view bam.dedup/HT_03_rep2/HT_03_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/HT_03_rep2/HT_03_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 54 with external jobid '15201383.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:53 2019]
+rule count_barcode:
+    input: bam.raw/HT_03_rep2/HT_03_rep2.raw.bam
+    output: bam.raw/HT_03_rep2/HT_03_rep2.raw.barcode.cnts.txt
+    jobid: 30
+    wildcards: dir=bam.raw/HT_03_rep2, sample=HT_03_rep2.raw
+
+samtools view bam.raw/HT_03_rep2/HT_03_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/HT_03_rep2/HT_03_rep2.raw.barcode.cnts.txt
+    
+Submitted job 30 with external jobid '15201384.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:53 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz, fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz
+    output: bam.raw/FC_18_rep1/FC_18_rep1.raw.bam
+    jobid: 214
+    wildcards: sample=FC_18_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz -2 fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/FC_18_rep1/FC_18_rep1.raw.bam 
+Submitted job 214 with external jobid '15201385.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:53 2019]
+rule count_barcode:
+    input: bam.raw/HT_03_rep1/HT_03_rep1.raw.bam
+    output: bam.raw/HT_03_rep1/HT_03_rep1.raw.barcode.cnts.txt
+    jobid: 26
+    wildcards: dir=bam.raw/HT_03_rep1, sample=HT_03_rep1.raw
+
+samtools view bam.raw/HT_03_rep1/HT_03_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/HT_03_rep1/HT_03_rep1.raw.barcode.cnts.txt
+    
+Submitted job 26 with external jobid '15201386.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:53 2019]
+rule count_barcode:
+    input: bam.filter/HT_03_rep2/HT_03_rep2.filter.bam
+    output: bam.filter/HT_03_rep2/HT_03_rep2.filter.barcode.cnts.txt
+    jobid: 78
+    wildcards: dir=bam.filter/HT_03_rep2, sample=HT_03_rep2.filter
+
+samtools view bam.filter/HT_03_rep2/HT_03_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/HT_03_rep2/HT_03_rep2.filter.barcode.cnts.txt
+    
+Submitted job 78 with external jobid '15201387.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:53 2019]
+rule count_barcode:
+    input: bam.dedup/HT_10_rep1/HT_10_rep1.dedup.bam
+    output: bam.dedup/HT_10_rep1/HT_10_rep1.dedup.barcode.cnts.txt
+    jobid: 51
+    wildcards: dir=bam.dedup/HT_10_rep1, sample=HT_10_rep1.dedup
+
+samtools view bam.dedup/HT_10_rep1/HT_10_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/HT_10_rep1/HT_10_rep1.dedup.barcode.cnts.txt
+    
+Submitted job 51 with external jobid '15201388.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/FC_03_rep1/FC_03_rep1.R1.fastq.gz, fastq.demultiplex/FC_03_rep1/FC_03_rep1.R2.fastq.gz
+    output: bam.raw/FC_03_rep1/FC_03_rep1.raw.bam
+    jobid: 212
+    wildcards: sample=FC_03_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/FC_03_rep1/FC_03_rep1.R1.fastq.gz -2 fastq.demultiplex/FC_03_rep1/FC_03_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/FC_03_rep1/FC_03_rep1.raw.bam 
+Submitted job 212 with external jobid '15201389.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/LM_18_rep1/LM_18_rep1.R1.fastq.gz, fastq.demultiplex/LM_18_rep1/LM_18_rep1.R2.fastq.gz
+    output: bam.raw/LM_18_rep1/LM_18_rep1.raw.bam
+    jobid: 226
+    wildcards: sample=LM_18_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/LM_18_rep1/LM_18_rep1.R1.fastq.gz -2 fastq.demultiplex/LM_18_rep1/LM_18_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/LM_18_rep1/LM_18_rep1.raw.bam 
+Submitted job 226 with external jobid '15201390.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+rule count_barcode:
+    input: bam.filter/HT_18_rep1/HT_18_rep1.filter.bam
+    output: bam.filter/HT_18_rep1/HT_18_rep1.filter.barcode.cnts.txt
+    jobid: 76
+    wildcards: dir=bam.filter/HT_18_rep1, sample=HT_18_rep1.filter
+
+samtools view bam.filter/HT_18_rep1/HT_18_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/HT_18_rep1/HT_18_rep1.filter.barcode.cnts.txt
+    
+Submitted job 76 with external jobid '15201391.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+rule count_barcode:
+    input: bam.filter/HT_03_rep1/HT_03_rep1.filter.bam
+    output: bam.filter/HT_03_rep1/HT_03_rep1.filter.barcode.cnts.txt
+    jobid: 74
+    wildcards: dir=bam.filter/HT_03_rep1, sample=HT_03_rep1.filter
+
+samtools view bam.filter/HT_03_rep1/HT_03_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/HT_03_rep1/HT_03_rep1.filter.barcode.cnts.txt
+    
+Submitted job 74 with external jobid '15201392.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_10_rep2/DH_10_rep2.R1.fastq.gz, fastq.demultiplex/DH_10_rep2/DH_10_rep2.R2.fastq.gz
+    output: bam.raw/DH_10_rep2/DH_10_rep2.raw.bam
+    jobid: 210
+    wildcards: sample=DH_10_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/DH_10_rep2/DH_10_rep2.R1.fastq.gz -2 fastq.demultiplex/DH_10_rep2/DH_10_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/DH_10_rep2/DH_10_rep2.raw.bam 
+Submitted job 210 with external jobid '15201393.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+rule count_barcode:
+    input: bam.dedup/HT_10_rep2/HT_10_rep2.dedup.bam
+    output: bam.dedup/HT_10_rep2/HT_10_rep2.dedup.barcode.cnts.txt
+    jobid: 55
+    wildcards: dir=bam.dedup/HT_10_rep2, sample=HT_10_rep2.dedup
+
+samtools view bam.dedup/HT_10_rep2/HT_10_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/HT_10_rep2/HT_10_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 55 with external jobid '15201394.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+rule count_barcode:
+    input: bam.filter/HT_18_rep2/HT_18_rep2.filter.bam
+    output: bam.filter/HT_18_rep2/HT_18_rep2.filter.barcode.cnts.txt
+    jobid: 77
+    wildcards: dir=bam.filter/HT_18_rep2, sample=HT_18_rep2.filter
+
+samtools view bam.filter/HT_18_rep2/HT_18_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/HT_18_rep2/HT_18_rep2.filter.barcode.cnts.txt
+    
+Submitted job 77 with external jobid '15201395.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+rule count_barcode:
+    input: bam.dedup/HT_03_rep1/HT_03_rep1.dedup.bam
+    output: bam.dedup/HT_03_rep1/HT_03_rep1.dedup.barcode.cnts.txt
+    jobid: 50
+    wildcards: dir=bam.dedup/HT_03_rep1, sample=HT_03_rep1.dedup
+
+samtools view bam.dedup/HT_03_rep1/HT_03_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/HT_03_rep1/HT_03_rep1.dedup.barcode.cnts.txt
+    
+Submitted job 50 with external jobid '15201396.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_03_rep1/DH_03_rep1.R1.fastq.gz, fastq.demultiplex/DH_03_rep1/DH_03_rep1.R2.fastq.gz
+    output: bam.raw/DH_03_rep1/DH_03_rep1.raw.bam
+    jobid: 206
+    wildcards: sample=DH_03_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/DH_03_rep1/DH_03_rep1.R1.fastq.gz -2 fastq.demultiplex/DH_03_rep1/DH_03_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/DH_03_rep1/DH_03_rep1.raw.bam 
+Submitted job 206 with external jobid '15201397.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:54 2019]
+localrule require_demulti_fastq_files:
+    input: fastq.demultiplex/DH_03_rep1/DH_03_rep1.R1.fastq.gz, fastq.demultiplex/DH_10_rep1/DH_10_rep1.R1.fastq.gz, fastq.demultiplex/DH_18_rep1/DH_18_rep1.R1.fastq.gz, fastq.demultiplex/DH_03_rep2/DH_03_rep2.R1.fastq.gz, fastq.demultiplex/DH_10_rep2/DH_10_rep2.R1.fastq.gz, fastq.demultiplex/DH_18_rep2/DH_18_rep2.R1.fastq.gz, fastq.demultiplex/FC_03_rep1/FC_03_rep1.R1.fastq.gz, fastq.demultiplex/FC_10_rep1/FC_10_rep1.R1.fastq.gz, fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz, fastq.demultiplex/FC_03_rep2/FC_03_rep2.R1.fastq.gz, fastq.demultiplex/FC_10_rep2/FC_10_rep2.R1.fastq.gz, fastq.demultiplex/FC_18_rep2/FC_18_rep2.R1.fastq.gz, fastq.demultiplex/HT_03_rep1/HT_03_rep1.R1.fastq.gz, fastq.demultiplex/HT_10_rep1/HT_10_rep1.R1.fastq.gz, fastq.demultiplex/HT_18_rep1/HT_18_rep1.R1.fastq.gz, fastq.demultiplex/HT_18_rep2/HT_18_rep2.R1.fastq.gz, fastq.demultiplex/HT_03_rep2/HT_03_rep2.R1.fastq.gz, fastq.demultiplex/HT_10_rep2/HT_10_rep2.R1.fastq.gz, fastq.demultiplex/LM_03_rep1/LM_03_rep1.R1.fastq.gz, fastq.demultiplex/LM_10_rep1/LM_10_rep1.R1.fastq.gz, fastq.demultiplex/LM_18_rep1/LM_18_rep1.R1.fastq.gz, fastq.demultiplex/LM_03_rep2/LM_03_rep2.R1.fastq.gz, fastq.demultiplex/LM_10_rep2/LM_10_rep2.R1.fastq.gz, fastq.demultiplex/LM_18_rep2/LM_18_rep2.R1.fastq.gz, fastq.demultiplex/DH_03_rep1/DH_03_rep1.R2.fastq.gz, fastq.demultiplex/DH_10_rep1/DH_10_rep1.R2.fastq.gz, fastq.demultiplex/DH_18_rep1/DH_18_rep1.R2.fastq.gz, fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz, fastq.demultiplex/DH_10_rep2/DH_10_rep2.R2.fastq.gz, fastq.demultiplex/DH_18_rep2/DH_18_rep2.R2.fastq.gz, fastq.demultiplex/FC_03_rep1/FC_03_rep1.R2.fastq.gz, fastq.demultiplex/FC_10_rep1/FC_10_rep1.R2.fastq.gz, fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz, fastq.demultiplex/FC_03_rep2/FC_03_rep2.R2.fastq.gz, fastq.demultiplex/FC_10_rep2/FC_10_rep2.R2.fastq.gz, fastq.demultiplex/FC_18_rep2/FC_18_rep2.R2.fastq.gz, fastq.demultiplex/HT_03_rep1/HT_03_rep1.R2.fastq.gz, fastq.demultiplex/HT_10_rep1/HT_10_rep1.R2.fastq.gz, fastq.demultiplex/HT_18_rep1/HT_18_rep1.R2.fastq.gz, fastq.demultiplex/HT_18_rep2/HT_18_rep2.R2.fastq.gz, fastq.demultiplex/HT_03_rep2/HT_03_rep2.R2.fastq.gz, fastq.demultiplex/HT_10_rep2/HT_10_rep2.R2.fastq.gz, fastq.demultiplex/LM_03_rep1/LM_03_rep1.R2.fastq.gz, fastq.demultiplex/LM_10_rep1/LM_10_rep1.R2.fastq.gz, fastq.demultiplex/LM_18_rep1/LM_18_rep1.R2.fastq.gz, fastq.demultiplex/LM_03_rep2/LM_03_rep2.R2.fastq.gz, fastq.demultiplex/LM_10_rep2/LM_10_rep2.R2.fastq.gz, fastq.demultiplex/LM_18_rep2/LM_18_rep2.R2.fastq.gz
+    output: fastq.demultiplex.files.list.txt
+    jobid: 9
+
+ls -lh fastq.demultiplex/DH_03_rep1/DH_03_rep1.R1.fastq.gz fastq.demultiplex/DH_10_rep1/DH_10_rep1.R1.fastq.gz fastq.demultiplex/DH_18_rep1/DH_18_rep1.R1.fastq.gz fastq.demultiplex/DH_03_rep2/DH_03_rep2.R1.fastq.gz fastq.demultiplex/DH_10_rep2/DH_10_rep2.R1.fastq.gz fastq.demultiplex/DH_18_rep2/DH_18_rep2.R1.fastq.gz fastq.demultiplex/FC_03_rep1/FC_03_rep1.R1.fastq.gz fastq.demultiplex/FC_10_rep1/FC_10_rep1.R1.fastq.gz fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz fastq.demultiplex/FC_03_rep2/FC_03_rep2.R1.fastq.gz fastq.demultiplex/FC_10_rep2/FC_10_rep2.R1.fastq.gz fastq.demultiplex/FC_18_rep2/FC_18_rep2.R1.fastq.gz fastq.demultiplex/HT_03_rep1/HT_03_rep1.R1.fastq.gz fastq.demultiplex/HT_10_rep1/HT_10_rep1.R1.fastq.gz fastq.demultiplex/HT_18_rep1/HT_18_rep1.R1.fastq.gz fastq.demultiplex/HT_18_rep2/HT_18_rep2.R1.fastq.gz fastq.demultiplex/HT_03_rep2/HT_03_rep2.R1.fastq.gz fastq.demultiplex/HT_10_rep2/HT_10_rep2.R1.fastq.gz fastq.demultiplex/LM_03_rep1/LM_03_rep1.R1.fastq.gz fastq.demultiplex/LM_10_rep1/LM_10_rep1.R1.fastq.gz fastq.demultiplex/LM_18_rep1/LM_18_rep1.R1.fastq.gz fastq.demultiplex/LM_03_rep2/LM_03_rep2.R1.fastq.gz fastq.demultiplex/LM_10_rep2/LM_10_rep2.R1.fastq.gz fastq.demultiplex/LM_18_rep2/LM_18_rep2.R1.fastq.gz fastq.demultiplex/DH_03_rep1/DH_03_rep1.R2.fastq.gz fastq.demultiplex/DH_10_rep1/DH_10_rep1.R2.fastq.gz fastq.demultiplex/DH_18_rep1/DH_18_rep1.R2.fastq.gz fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz fastq.demultiplex/DH_10_rep2/DH_10_rep2.R2.fastq.gz fastq.demultiplex/DH_18_rep2/DH_18_rep2.R2.fastq.gz fastq.demultiplex/FC_03_rep1/FC_03_rep1.R2.fastq.gz fastq.demultiplex/FC_10_rep1/FC_10_rep1.R2.fastq.gz fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz fastq.demultiplex/FC_03_rep2/FC_03_rep2.R2.fastq.gz fastq.demultiplex/FC_10_rep2/FC_10_rep2.R2.fastq.gz fastq.demultiplex/FC_18_rep2/FC_18_rep2.R2.fastq.gz fastq.demultiplex/HT_03_rep1/HT_03_rep1.R2.fastq.gz fastq.demultiplex/HT_10_rep1/HT_10_rep1.R2.fastq.gz fastq.demultiplex/HT_18_rep1/HT_18_rep1.R2.fastq.gz fastq.demultiplex/HT_18_rep2/HT_18_rep2.R2.fastq.gz fastq.demultiplex/HT_03_rep2/HT_03_rep2.R2.fastq.gz fastq.demultiplex/HT_10_rep2/HT_10_rep2.R2.fastq.gz fastq.demultiplex/LM_03_rep1/LM_03_rep1.R2.fastq.gz fastq.demultiplex/LM_10_rep1/LM_10_rep1.R2.fastq.gz fastq.demultiplex/LM_18_rep1/LM_18_rep1.R2.fastq.gz fastq.demultiplex/LM_03_rep2/LM_03_rep2.R2.fastq.gz fastq.demultiplex/LM_10_rep2/LM_10_rep2.R2.fastq.gz fastq.demultiplex/LM_18_rep2/LM_18_rep2.R2.fastq.gz > fastq.demultiplex.files.list.txt
+[Mon Apr 29 12:59:54 2019]
+Finished job 9.
+1 of 217 steps (0.46%) done
+
+[Mon Apr 29 12:59:55 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_03_rep2/DH_03_rep2.R1.fastq.gz, fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz
+    output: bam.raw/DH_03_rep2/DH_03_rep2.raw.bam
+    jobid: 209
+    wildcards: sample=DH_03_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/DH_03_rep2/DH_03_rep2.R1.fastq.gz -2 fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/DH_03_rep2/DH_03_rep2.raw.bam 
+Submitted job 209 with external jobid '15201398.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:55 2019]
+rule nsort_bam:
+    input: bam.raw/HT_10_rep2/HT_10_rep2.raw.bam
+    output: bam.nsort/HT_10_rep2/HT_10_rep2.picard.nsort.bam
+    log: bam.nsort/log/HT_10_rep2.nsort.log
+    jobid: 199
+    wildcards: sample=HT_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/HT_10_rep2/HT_10_rep2.raw.bam         O=bam.nsort/HT_10_rep2/HT_10_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/HT_10_rep2.nsort.log
+Submitted job 199 with external jobid '15201399.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:55 2019]
+rule nsort_bam:
+    input: bam.raw/HT_18_rep2/HT_18_rep2.raw.bam
+    output: bam.nsort/HT_18_rep2/HT_18_rep2.picard.nsort.bam
+    log: bam.nsort/log/HT_18_rep2.nsort.log
+    jobid: 197
+    wildcards: sample=HT_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/HT_18_rep2/HT_18_rep2.raw.bam         O=bam.nsort/HT_18_rep2/HT_18_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/HT_18_rep2.nsort.log
+Submitted job 197 with external jobid '15201400.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:55 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/FC_10_rep2/FC_10_rep2.R1.fastq.gz, fastq.demultiplex/FC_10_rep2/FC_10_rep2.R2.fastq.gz
+    output: bam.raw/FC_10_rep2/FC_10_rep2.raw.bam
+    jobid: 216
+    wildcards: sample=FC_10_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/FC_10_rep2/FC_10_rep2.R1.fastq.gz -2 fastq.demultiplex/FC_10_rep2/FC_10_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/FC_10_rep2/FC_10_rep2.raw.bam 
+Submitted job 216 with external jobid '15201401.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:55 2019]
+rule count_barcode:
+    input: bam.filter/HT_10_rep2/HT_10_rep2.filter.bam
+    output: bam.filter/HT_10_rep2/HT_10_rep2.filter.barcode.cnts.txt
+    jobid: 79
+    wildcards: dir=bam.filter/HT_10_rep2, sample=HT_10_rep2.filter
+
+samtools view bam.filter/HT_10_rep2/HT_10_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/HT_10_rep2/HT_10_rep2.filter.barcode.cnts.txt
+    
+Submitted job 79 with external jobid '15201402.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:55 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/LM_18_rep2/LM_18_rep2.R1.fastq.gz, fastq.demultiplex/LM_18_rep2/LM_18_rep2.R2.fastq.gz
+    output: bam.raw/LM_18_rep2/LM_18_rep2.raw.bam
+    jobid: 229
+    wildcards: sample=LM_18_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/LM_18_rep2/LM_18_rep2.R1.fastq.gz -2 fastq.demultiplex/LM_18_rep2/LM_18_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/LM_18_rep2/LM_18_rep2.raw.bam 
+Submitted job 229 with external jobid '15201403.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:55 2019]
+rule nsort_bam:
+    input: bam.raw/HT_03_rep2/HT_03_rep2.raw.bam
+    output: bam.nsort/HT_03_rep2/HT_03_rep2.picard.nsort.bam
+    log: bam.nsort/log/HT_03_rep2.nsort.log
+    jobid: 198
+    wildcards: sample=HT_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/HT_03_rep2/HT_03_rep2.raw.bam         O=bam.nsort/HT_03_rep2/HT_03_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/HT_03_rep2.nsort.log
+Submitted job 198 with external jobid '15201404.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:55 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_10_rep1/DH_10_rep1.R1.fastq.gz, fastq.demultiplex/DH_10_rep1/DH_10_rep1.R2.fastq.gz
+    output: bam.raw/DH_10_rep1/DH_10_rep1.raw.bam
+    jobid: 207
+    wildcards: sample=DH_10_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/DH_10_rep1/DH_10_rep1.R1.fastq.gz -2 fastq.demultiplex/DH_10_rep1/DH_10_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/DH_10_rep1/DH_10_rep1.raw.bam 
+Submitted job 207 with external jobid '15201405.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:55 2019]
+rule count_barcode:
+    input: bam.dedup/HT_18_rep2/HT_18_rep2.dedup.bam
+    output: bam.dedup/HT_18_rep2/HT_18_rep2.dedup.barcode.cnts.txt
+    jobid: 53
+    wildcards: dir=bam.dedup/HT_18_rep2, sample=HT_18_rep2.dedup
+
+samtools view bam.dedup/HT_18_rep2/HT_18_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/HT_18_rep2/HT_18_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 53 with external jobid '15201406.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:55 2019]
+rule count_barcode:
+    input: bam.dedup/HT_18_rep1/HT_18_rep1.dedup.bam
+    output: bam.dedup/HT_18_rep1/HT_18_rep1.dedup.barcode.cnts.txt
+    jobid: 52
+    wildcards: dir=bam.dedup/HT_18_rep1, sample=HT_18_rep1.dedup
+
+samtools view bam.dedup/HT_18_rep1/HT_18_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/HT_18_rep1/HT_18_rep1.dedup.barcode.cnts.txt
+    
+Submitted job 52 with external jobid '15201407.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule count_barcode:
+    input: bam.raw/HT_18_rep1/HT_18_rep1.raw.bam
+    output: bam.raw/HT_18_rep1/HT_18_rep1.raw.barcode.cnts.txt
+    jobid: 28
+    wildcards: dir=bam.raw/HT_18_rep1, sample=HT_18_rep1.raw
+
+samtools view bam.raw/HT_18_rep1/HT_18_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/HT_18_rep1/HT_18_rep1.raw.barcode.cnts.txt
+    
+Submitted job 28 with external jobid '15201408.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule count_barcode:
+    input: bam.raw/HT_10_rep2/HT_10_rep2.raw.bam
+    output: bam.raw/HT_10_rep2/HT_10_rep2.raw.barcode.cnts.txt
+    jobid: 31
+    wildcards: dir=bam.raw/HT_10_rep2, sample=HT_10_rep2.raw
+
+samtools view bam.raw/HT_10_rep2/HT_10_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/HT_10_rep2/HT_10_rep2.raw.barcode.cnts.txt
+    
+Submitted job 31 with external jobid '15201409.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/LM_03_rep2/LM_03_rep2.R1.fastq.gz, fastq.demultiplex/LM_03_rep2/LM_03_rep2.R2.fastq.gz
+    output: bam.raw/LM_03_rep2/LM_03_rep2.raw.bam
+    jobid: 227
+    wildcards: sample=LM_03_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/LM_03_rep2/LM_03_rep2.R1.fastq.gz -2 fastq.demultiplex/LM_03_rep2/LM_03_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/LM_03_rep2/LM_03_rep2.raw.bam 
+Submitted job 227 with external jobid '15201410.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/LM_10_rep1/LM_10_rep1.R1.fastq.gz, fastq.demultiplex/LM_10_rep1/LM_10_rep1.R2.fastq.gz
+    output: bam.raw/LM_10_rep1/LM_10_rep1.raw.bam
+    jobid: 225
+    wildcards: sample=LM_10_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/LM_10_rep1/LM_10_rep1.R1.fastq.gz -2 fastq.demultiplex/LM_10_rep1/LM_10_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/LM_10_rep1/LM_10_rep1.raw.bam 
+Submitted job 225 with external jobid '15201411.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule nsort_bam:
+    input: bam.raw/HT_03_rep1/HT_03_rep1.raw.bam
+    output: bam.nsort/HT_03_rep1/HT_03_rep1.picard.nsort.bam
+    log: bam.nsort/log/HT_03_rep1.nsort.log
+    jobid: 194
+    wildcards: sample=HT_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/HT_03_rep1/HT_03_rep1.raw.bam         O=bam.nsort/HT_03_rep1/HT_03_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/HT_03_rep1.nsort.log
+Submitted job 194 with external jobid '15201412.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/DH_18_rep2/DH_18_rep2.R1.fastq.gz, fastq.demultiplex/DH_18_rep2/DH_18_rep2.R2.fastq.gz
+    output: bam.raw/DH_18_rep2/DH_18_rep2.raw.bam
+    jobid: 211
+    wildcards: sample=DH_18_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/DH_18_rep2/DH_18_rep2.R1.fastq.gz -2 fastq.demultiplex/DH_18_rep2/DH_18_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/DH_18_rep2/DH_18_rep2.raw.bam 
+Submitted job 211 with external jobid '15201413.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/FC_03_rep2/FC_03_rep2.R1.fastq.gz, fastq.demultiplex/FC_03_rep2/FC_03_rep2.R2.fastq.gz
+    output: bam.raw/FC_03_rep2/FC_03_rep2.raw.bam
+    jobid: 215
+    wildcards: sample=FC_03_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/FC_03_rep2/FC_03_rep2.R1.fastq.gz -2 fastq.demultiplex/FC_03_rep2/FC_03_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/FC_03_rep2/FC_03_rep2.raw.bam 
+Submitted job 215 with external jobid '15201414.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule count_barcode:
+    input: bam.raw/HT_18_rep2/HT_18_rep2.raw.bam
+    output: bam.raw/HT_18_rep2/HT_18_rep2.raw.barcode.cnts.txt
+    jobid: 29
+    wildcards: dir=bam.raw/HT_18_rep2, sample=HT_18_rep2.raw
+
+samtools view bam.raw/HT_18_rep2/HT_18_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/HT_18_rep2/HT_18_rep2.raw.barcode.cnts.txt
+    
+Submitted job 29 with external jobid '15201415.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule count_barcode:
+    input: bam.filter/HT_10_rep1/HT_10_rep1.filter.bam
+    output: bam.filter/HT_10_rep1/HT_10_rep1.filter.barcode.cnts.txt
+    jobid: 75
+    wildcards: dir=bam.filter/HT_10_rep1, sample=HT_10_rep1.filter
+
+samtools view bam.filter/HT_10_rep1/HT_10_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/HT_10_rep1/HT_10_rep1.filter.barcode.cnts.txt
+    
+Submitted job 75 with external jobid '15201416.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:56 2019]
+rule nsort_bam:
+    input: bam.raw/HT_18_rep1/HT_18_rep1.raw.bam
+    output: bam.nsort/HT_18_rep1/HT_18_rep1.picard.nsort.bam
+    log: bam.nsort/log/HT_18_rep1.nsort.log
+    jobid: 196
+    wildcards: sample=HT_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/HT_18_rep1/HT_18_rep1.raw.bam         O=bam.nsort/HT_18_rep1/HT_18_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/HT_18_rep1.nsort.log
+Submitted job 196 with external jobid '15201417.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:57 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/LM_10_rep2/LM_10_rep2.R1.fastq.gz, fastq.demultiplex/LM_10_rep2/LM_10_rep2.R2.fastq.gz
+    output: bam.raw/LM_10_rep2/LM_10_rep2.raw.bam
+    jobid: 228
+    wildcards: sample=LM_10_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/LM_10_rep2/LM_10_rep2.R1.fastq.gz -2 fastq.demultiplex/LM_10_rep2/LM_10_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/LM_10_rep2/LM_10_rep2.raw.bam 
+Submitted job 228 with external jobid '15201418.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:57 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/LM_03_rep1/LM_03_rep1.R1.fastq.gz, fastq.demultiplex/LM_03_rep1/LM_03_rep1.R2.fastq.gz
+    output: bam.raw/LM_03_rep1/LM_03_rep1.raw.bam
+    jobid: 224
+    wildcards: sample=LM_03_rep1
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/LM_03_rep1/LM_03_rep1.R1.fastq.gz -2 fastq.demultiplex/LM_03_rep1/LM_03_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/LM_03_rep1/LM_03_rep1.raw.bam 
+Submitted job 224 with external jobid '15201419.tscc-mgr.local'.
+
+[Mon Apr 29 12:59:57 2019]
+rule align_bowtie2:
+    input: fastq.demultiplex/FC_18_rep2/FC_18_rep2.R1.fastq.gz, fastq.demultiplex/FC_18_rep2/FC_18_rep2.R2.fastq.gz
+    output: bam.raw/FC_18_rep2/FC_18_rep2.raw.bam
+    jobid: 217
+    wildcards: sample=FC_18_rep2
+    threads: 8
+
+bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000     -1 fastq.demultiplex/FC_18_rep2/FC_18_rep2.R1.fastq.gz -2 fastq.demultiplex/FC_18_rep2/FC_18_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/FC_18_rep2/FC_18_rep2.raw.bam 
+Submitted job 217 with external jobid '15201420.tscc-mgr.local'.
+[Mon Apr 29 13:04:09 2019]
+Finished job 74.
+2 of 217 steps (0.92%) done
+[Mon Apr 29 13:06:03 2019]
+Finished job 76.
+3 of 217 steps (1%) done
+[Mon Apr 29 13:06:05 2019]
+Finished job 50.
+4 of 217 steps (2%) done
+[Mon Apr 29 13:09:08 2019]
+Finished job 79.
+5 of 217 steps (2%) done
+[Mon Apr 29 13:09:09 2019]
+Finished job 52.
+6 of 217 steps (3%) done
+[Mon Apr 29 13:09:59 2019]
+Finished job 75.
+7 of 217 steps (3%) done
+[Mon Apr 29 13:10:51 2019]
+Finished job 54.
+8 of 217 steps (4%) done
+[Mon Apr 29 13:11:44 2019]
+Finished job 55.
+9 of 217 steps (4%) done
+[Mon Apr 29 13:11:57 2019]
+Finished job 77.
+10 of 217 steps (5%) done
+[Mon Apr 29 13:16:04 2019]
+Finished job 78.
+11 of 217 steps (5%) done
+[Mon Apr 29 13:18:01 2019]
+Finished job 51.
+12 of 217 steps (6%) done
+[Mon Apr 29 13:21:04 2019]
+Finished job 26.
+13 of 217 steps (6%) done
+[Mon Apr 29 13:21:05 2019]
+Finished job 31.
+14 of 217 steps (6%) done
+[Mon Apr 29 13:23:54 2019]
+Finished job 28.
+15 of 217 steps (7%) done
+[Mon Apr 29 13:26:40 2019]
+Finished job 30.
+16 of 217 steps (7%) done
+[Mon Apr 29 13:26:42 2019]
+Finished job 53.
+17 of 217 steps (8%) done
+[Mon Apr 29 13:28:29 2019]
+Finished job 27.
+18 of 217 steps (8%) done
+[Mon Apr 29 13:39:19 2019]
+Finished job 29.
+19 of 217 steps (9%) done
+[Mon Apr 29 13:44:56 2019]
+Finished job 194.
+20 of 217 steps (9%) done
+[Mon Apr 29 13:48:42 2019]
+Finished job 212.
+21 of 217 steps (10%) done
+
+[Mon Apr 29 13:48:42 2019]
+rule csort_bam:
+    input: bam.raw/FC_03_rep1/FC_03_rep1.raw.bam
+    output: bam.csort/FC_03_rep1/FC_03_rep1.picard.csort.bam
+    log: bam.csort/log/FC_03_rep1.csort.log
+    jobid: 260
+    wildcards: sample=FC_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_03_rep1/FC_03_rep1.raw.bam         O=bam.csort/FC_03_rep1/FC_03_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_03_rep1.csort.log
+Submitted job 260 with external jobid '15201634.tscc-mgr.local'.
+
+[Mon Apr 29 13:48:49 2019]
+rule count_barcode:
+    input: bam.raw/FC_03_rep1/FC_03_rep1.raw.bam
+    output: bam.raw/FC_03_rep1/FC_03_rep1.raw.barcode.cnts.txt
+    jobid: 20
+    wildcards: dir=bam.raw/FC_03_rep1, sample=FC_03_rep1.raw
+
+samtools view bam.raw/FC_03_rep1/FC_03_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/FC_03_rep1/FC_03_rep1.raw.barcode.cnts.txt
+    
+Submitted job 20 with external jobid '15201635.tscc-mgr.local'.
+
+[Mon Apr 29 13:48:49 2019]
+rule nsort_bam:
+    input: bam.raw/FC_03_rep1/FC_03_rep1.raw.bam
+    output: bam.nsort/FC_03_rep1/FC_03_rep1.picard.nsort.bam
+    log: bam.nsort/log/FC_03_rep1.nsort.log
+    jobid: 188
+    wildcards: sample=FC_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_03_rep1/FC_03_rep1.raw.bam         O=bam.nsort/FC_03_rep1/FC_03_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/FC_03_rep1.nsort.log
+Submitted job 188 with external jobid '15201636.tscc-mgr.local'.
+[Mon Apr 29 13:53:31 2019]
+Finished job 208.
+22 of 217 steps (10%) done
+
+[Mon Apr 29 13:53:31 2019]
+rule count_barcode:
+    input: bam.raw/DH_18_rep1/DH_18_rep1.raw.bam
+    output: bam.raw/DH_18_rep1/DH_18_rep1.raw.barcode.cnts.txt
+    jobid: 16
+    wildcards: dir=bam.raw/DH_18_rep1, sample=DH_18_rep1.raw
+
+samtools view bam.raw/DH_18_rep1/DH_18_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/DH_18_rep1/DH_18_rep1.raw.barcode.cnts.txt
+    
+Submitted job 16 with external jobid '15201665.tscc-mgr.local'.
+
+[Mon Apr 29 13:53:37 2019]
+rule csort_bam:
+    input: bam.raw/DH_18_rep1/DH_18_rep1.raw.bam
+    output: bam.csort/DH_18_rep1/DH_18_rep1.picard.csort.bam
+    log: bam.csort/log/DH_18_rep1.csort.log
+    jobid: 256
+    wildcards: sample=DH_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_18_rep1/DH_18_rep1.raw.bam         O=bam.csort/DH_18_rep1/DH_18_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_18_rep1.csort.log
+Submitted job 256 with external jobid '15201666.tscc-mgr.local'.
+
+[Mon Apr 29 13:53:37 2019]
+rule nsort_bam:
+    input: bam.raw/DH_18_rep1/DH_18_rep1.raw.bam
+    output: bam.nsort/DH_18_rep1/DH_18_rep1.picard.nsort.bam
+    log: bam.nsort/log/DH_18_rep1.nsort.log
+    jobid: 184
+    wildcards: sample=DH_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_18_rep1/DH_18_rep1.raw.bam         O=bam.nsort/DH_18_rep1/DH_18_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/DH_18_rep1.nsort.log
+Submitted job 184 with external jobid '15201667.tscc-mgr.local'.
+[Mon Apr 29 13:58:44 2019]
+Finished job 199.
+23 of 217 steps (11%) done
+[Mon Apr 29 13:58:55 2019]
+Finished job 214.
+24 of 217 steps (11%) done
+
+[Mon Apr 29 13:58:55 2019]
+rule count_barcode:
+    input: bam.raw/FC_18_rep1/FC_18_rep1.raw.bam
+    output: bam.raw/FC_18_rep1/FC_18_rep1.raw.barcode.cnts.txt
+    jobid: 22
+    wildcards: dir=bam.raw/FC_18_rep1, sample=FC_18_rep1.raw
+
+samtools view bam.raw/FC_18_rep1/FC_18_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/FC_18_rep1/FC_18_rep1.raw.barcode.cnts.txt
+    
+Submitted job 22 with external jobid '15201682.tscc-mgr.local'.
+
+[Mon Apr 29 13:59:01 2019]
+rule csort_bam:
+    input: bam.raw/FC_18_rep1/FC_18_rep1.raw.bam
+    output: bam.csort/FC_18_rep1/FC_18_rep1.picard.csort.bam
+    log: bam.csort/log/FC_18_rep1.csort.log
+    jobid: 262
+    wildcards: sample=FC_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_18_rep1/FC_18_rep1.raw.bam         O=bam.csort/FC_18_rep1/FC_18_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_18_rep1.csort.log
+Submitted job 262 with external jobid '15201684.tscc-mgr.local'.
+
+[Mon Apr 29 13:59:01 2019]
+rule nsort_bam:
+    input: bam.raw/FC_18_rep1/FC_18_rep1.raw.bam
+    output: bam.nsort/FC_18_rep1/FC_18_rep1.picard.nsort.bam
+    log: bam.nsort/log/FC_18_rep1.nsort.log
+    jobid: 190
+    wildcards: sample=FC_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_18_rep1/FC_18_rep1.raw.bam         O=bam.nsort/FC_18_rep1/FC_18_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/FC_18_rep1.nsort.log
+Submitted job 190 with external jobid '15201685.tscc-mgr.local'.
+[Mon Apr 29 14:04:33 2019]
+Finished job 260.
+25 of 217 steps (12%) done
+
+[Mon Apr 29 14:04:33 2019]
+rule dedup_bam:
+    input: bam.csort/FC_03_rep1/FC_03_rep1.picard.csort.bam
+    output: bam.dedup/FC_03_rep1/FC_03_rep1.dedup.bam
+    log: bam.dedup/FC_03_rep1/FC_03_rep1.dedup.log
+    jobid: 164
+    wildcards: sample=FC_03_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_03_rep1     INPUT=bam.csort/FC_03_rep1/FC_03_rep1.picard.csort.bam OUTPUT= bam.dedup/FC_03_rep1/FC_03_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_03_rep1/FC_03_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_03_rep1/FC_03_rep1.dedup.log
+[Mon Apr 29 14:04:34 2019]
+Finished job 20.
+26 of 217 steps (12%) done
+Submitted job 164 with external jobid '15201707.tscc-mgr.local'.
+[Mon Apr 29 14:04:45 2019]
+Finished job 198.
+27 of 217 steps (12%) done
+[Mon Apr 29 14:05:21 2019]
+Finished job 16.
+28 of 217 steps (13%) done
+[Mon Apr 29 14:06:09 2019]
+Error in rule csort_bam:
+    jobid: 256
+    output: bam.csort/DH_18_rep1/DH_18_rep1.picard.csort.bam
+    log: bam.csort/log/DH_18_rep1.csort.log
+    cluster_jobid: 15201666.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 14:06:10 2019]
+Finished job 22.
+29 of 217 steps (13%) done
+[Mon Apr 29 14:08:56 2019]
+Finished job 206.
+30 of 217 steps (14%) done
+
+[Mon Apr 29 14:08:56 2019]
+rule csort_bam:
+    input: bam.raw/DH_03_rep1/DH_03_rep1.raw.bam
+    output: bam.csort/DH_03_rep1/DH_03_rep1.picard.csort.bam
+    log: bam.csort/log/DH_03_rep1.csort.log
+    jobid: 254
+    wildcards: sample=DH_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_03_rep1/DH_03_rep1.raw.bam         O=bam.csort/DH_03_rep1/DH_03_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_03_rep1.csort.log
+Submitted job 254 with external jobid '15201733.tscc-mgr.local'.
+
+[Mon Apr 29 14:09:02 2019]
+rule count_barcode:
+    input: bam.raw/DH_03_rep1/DH_03_rep1.raw.bam
+    output: bam.raw/DH_03_rep1/DH_03_rep1.raw.barcode.cnts.txt
+    jobid: 14
+    wildcards: dir=bam.raw/DH_03_rep1, sample=DH_03_rep1.raw
+
+samtools view bam.raw/DH_03_rep1/DH_03_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/DH_03_rep1/DH_03_rep1.raw.barcode.cnts.txt
+    
+Submitted job 14 with external jobid '15201734.tscc-mgr.local'.
+
+[Mon Apr 29 14:09:02 2019]
+rule nsort_bam:
+    input: bam.raw/DH_03_rep1/DH_03_rep1.raw.bam
+    output: bam.nsort/DH_03_rep1/DH_03_rep1.picard.nsort.bam
+    log: bam.nsort/log/DH_03_rep1.nsort.log
+    jobid: 182
+    wildcards: sample=DH_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_03_rep1/DH_03_rep1.raw.bam         O=bam.nsort/DH_03_rep1/DH_03_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/DH_03_rep1.nsort.log
+Submitted job 182 with external jobid '15201735.tscc-mgr.local'.
+[Mon Apr 29 14:20:34 2019]
+Finished job 188.
+31 of 217 steps (14%) done
+[Mon Apr 29 14:20:45 2019]
+Finished job 196.
+32 of 217 steps (15%) done
+[Mon Apr 29 14:22:21 2019]
+Finished job 195.
+33 of 217 steps (15%) done
+[Mon Apr 29 14:25:10 2019]
+Finished job 184.
+34 of 217 steps (16%) done
+[Mon Apr 29 14:25:58 2019]
+Finished job 207.
+35 of 217 steps (16%) done
+
+[Mon Apr 29 14:25:58 2019]
+rule nsort_bam:
+    input: bam.raw/DH_10_rep1/DH_10_rep1.raw.bam
+    output: bam.nsort/DH_10_rep1/DH_10_rep1.picard.nsort.bam
+    log: bam.nsort/log/DH_10_rep1.nsort.log
+    jobid: 183
+    wildcards: sample=DH_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_10_rep1/DH_10_rep1.raw.bam         O=bam.nsort/DH_10_rep1/DH_10_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/DH_10_rep1.nsort.log
+[Mon Apr 29 14:25:58 2019]
+Finished job 262.
+36 of 217 steps (17%) done
+Submitted job 183 with external jobid '15201800.tscc-mgr.local'.
+
+[Mon Apr 29 14:26:04 2019]
+rule count_barcode:
+    input: bam.raw/DH_10_rep1/DH_10_rep1.raw.bam
+    output: bam.raw/DH_10_rep1/DH_10_rep1.raw.barcode.cnts.txt
+    jobid: 15
+    wildcards: dir=bam.raw/DH_10_rep1, sample=DH_10_rep1.raw
+
+samtools view bam.raw/DH_10_rep1/DH_10_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/DH_10_rep1/DH_10_rep1.raw.barcode.cnts.txt
+    
+Submitted job 15 with external jobid '15201801.tscc-mgr.local'.
+
+[Mon Apr 29 14:26:04 2019]
+rule csort_bam:
+    input: bam.raw/DH_10_rep1/DH_10_rep1.raw.bam
+    output: bam.csort/DH_10_rep1/DH_10_rep1.picard.csort.bam
+    log: bam.csort/log/DH_10_rep1.csort.log
+    jobid: 255
+    wildcards: sample=DH_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_10_rep1/DH_10_rep1.raw.bam         O=bam.csort/DH_10_rep1/DH_10_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_10_rep1.csort.log
+Submitted job 255 with external jobid '15201802.tscc-mgr.local'.
+
+[Mon Apr 29 14:26:04 2019]
+rule dedup_bam:
+    input: bam.csort/FC_18_rep1/FC_18_rep1.picard.csort.bam
+    output: bam.dedup/FC_18_rep1/FC_18_rep1.dedup.bam
+    log: bam.dedup/FC_18_rep1/FC_18_rep1.dedup.log
+    jobid: 166
+    wildcards: sample=FC_18_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_18_rep1     INPUT=bam.csort/FC_18_rep1/FC_18_rep1.picard.csort.bam OUTPUT= bam.dedup/FC_18_rep1/FC_18_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_18_rep1/FC_18_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_18_rep1/FC_18_rep1.dedup.log
+Submitted job 166 with external jobid '15201803.tscc-mgr.local'.
+[Mon Apr 29 14:30:46 2019]
+Finished job 14.
+37 of 217 steps (17%) done
+[Mon Apr 29 14:36:23 2019]
+Finished job 15.
+38 of 217 steps (18%) done
+[Mon Apr 29 14:37:11 2019]
+Finished job 254.
+39 of 217 steps (18%) done
+
+[Mon Apr 29 14:37:11 2019]
+rule dedup_bam:
+    input: bam.csort/DH_03_rep1/DH_03_rep1.picard.csort.bam
+    output: bam.dedup/DH_03_rep1/DH_03_rep1.dedup.bam
+    log: bam.dedup/DH_03_rep1/DH_03_rep1.dedup.log
+    jobid: 158
+    wildcards: sample=DH_03_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_03_rep1     INPUT=bam.csort/DH_03_rep1/DH_03_rep1.picard.csort.bam OUTPUT= bam.dedup/DH_03_rep1/DH_03_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_03_rep1/DH_03_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_03_rep1/DH_03_rep1.dedup.log
+Submitted job 158 with external jobid '15201856.tscc-mgr.local'.
+[Mon Apr 29 14:38:59 2019]
+Finished job 190.
+40 of 217 steps (18%) done
+[Mon Apr 29 14:38:59 2019]
+Finished job 164.
+41 of 217 steps (19%) done
+
+[Mon Apr 29 14:38:59 2019]
+rule filter_bam:
+    input: bam.dedup/FC_03_rep1/FC_03_rep1.dedup.bam
+    output: bam.filter/FC_03_rep1/FC_03_rep1.filter.bam
+    jobid: 140
+    wildcards: sample=FC_03_rep1
+
+samtools view -h -f 2 bam.dedup/FC_03_rep1/FC_03_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/FC_03_rep1/FC_03_rep1.filter.bam 
+Submitted job 140 with external jobid '15201871.tscc-mgr.local'.
+
+[Mon Apr 29 14:39:06 2019]
+rule count_barcode:
+    input: bam.dedup/FC_03_rep1/FC_03_rep1.dedup.bam
+    output: bam.dedup/FC_03_rep1/FC_03_rep1.dedup.barcode.cnts.txt
+    jobid: 44
+    wildcards: dir=bam.dedup/FC_03_rep1, sample=FC_03_rep1.dedup
+
+samtools view bam.dedup/FC_03_rep1/FC_03_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/FC_03_rep1/FC_03_rep1.dedup.barcode.cnts.txt
+    
+Submitted job 44 with external jobid '15201872.tscc-mgr.local'.
+[Mon Apr 29 14:44:48 2019]
+Finished job 182.
+42 of 217 steps (19%) done
+[Mon Apr 29 14:48:23 2019]
+Finished job 197.
+43 of 217 steps (20%) done
+[Mon Apr 29 14:49:09 2019]
+Finished job 44.
+44 of 217 steps (20%) done
+[Mon Apr 29 14:55:13 2019]
+Finished job 140.
+45 of 217 steps (21%) done
+
+[Mon Apr 29 14:55:13 2019]
+rule sort_filter_bam:
+    input: bam.filter/FC_03_rep1/FC_03_rep1.filter.bam
+    output: bam.filter.sort/FC_03_rep1/FC_03_rep1.filter.csort.bam
+    jobid: 116
+    wildcards: sample=FC_03_rep1
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/FC_03_rep1/FC_03_rep1.filter.bam -o bam.filter.sort/FC_03_rep1/FC_03_rep1.filter.csort.bam;samtools index bam.filter.sort/FC_03_rep1/FC_03_rep1.filter.csort.bam
+Submitted job 116 with external jobid '15201970.tscc-mgr.local'.
+
+[Mon Apr 29 14:55:19 2019]
+rule count_barcode:
+    input: bam.filter/FC_03_rep1/FC_03_rep1.filter.bam
+    output: bam.filter/FC_03_rep1/FC_03_rep1.filter.barcode.cnts.txt
+    jobid: 68
+    wildcards: dir=bam.filter/FC_03_rep1, sample=FC_03_rep1.filter
+
+samtools view bam.filter/FC_03_rep1/FC_03_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/FC_03_rep1/FC_03_rep1.filter.barcode.cnts.txt
+    
+Submitted job 68 with external jobid '15201971.tscc-mgr.local'.
+[Mon Apr 29 14:55:46 2019]
+Error in rule sort_filter_bam:
+    jobid: 116
+    output: bam.filter.sort/FC_03_rep1/FC_03_rep1.filter.csort.bam
+    cluster_jobid: 15201970.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 14:58:42 2019]
+Finished job 166.
+46 of 217 steps (21%) done
+
+[Mon Apr 29 14:58:42 2019]
+rule count_barcode:
+    input: bam.dedup/FC_18_rep1/FC_18_rep1.dedup.bam
+    output: bam.dedup/FC_18_rep1/FC_18_rep1.dedup.barcode.cnts.txt
+    jobid: 46
+    wildcards: dir=bam.dedup/FC_18_rep1, sample=FC_18_rep1.dedup
+
+samtools view bam.dedup/FC_18_rep1/FC_18_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/FC_18_rep1/FC_18_rep1.dedup.barcode.cnts.txt
+    
+Submitted job 46 with external jobid '15201991.tscc-mgr.local'.
+
+[Mon Apr 29 14:58:48 2019]
+rule filter_bam:
+    input: bam.dedup/FC_18_rep1/FC_18_rep1.dedup.bam
+    output: bam.filter/FC_18_rep1/FC_18_rep1.filter.bam
+    jobid: 142
+    wildcards: sample=FC_18_rep1
+
+samtools view -h -f 2 bam.dedup/FC_18_rep1/FC_18_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/FC_18_rep1/FC_18_rep1.filter.bam 
+Submitted job 142 with external jobid '15201992.tscc-mgr.local'.
+[Mon Apr 29 14:59:15 2019]
+Finished job 68.
+47 of 217 steps (22%) done
+[Mon Apr 29 15:00:00 2019]
+Finished job 158.
+48 of 217 steps (22%) done
+
+[Mon Apr 29 15:00:00 2019]
+rule filter_bam:
+    input: bam.dedup/DH_03_rep1/DH_03_rep1.dedup.bam
+    output: bam.filter/DH_03_rep1/DH_03_rep1.filter.bam
+    jobid: 134
+    wildcards: sample=DH_03_rep1
+
+samtools view -h -f 2 bam.dedup/DH_03_rep1/DH_03_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/DH_03_rep1/DH_03_rep1.filter.bam 
+Submitted job 134 with external jobid '15201995.tscc-mgr.local'.
+
+[Mon Apr 29 15:00:06 2019]
+rule count_barcode:
+    input: bam.dedup/DH_03_rep1/DH_03_rep1.dedup.bam
+    output: bam.dedup/DH_03_rep1/DH_03_rep1.dedup.barcode.cnts.txt
+    jobid: 38
+    wildcards: dir=bam.dedup/DH_03_rep1, sample=DH_03_rep1.dedup
+
+samtools view bam.dedup/DH_03_rep1/DH_03_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/DH_03_rep1/DH_03_rep1.dedup.barcode.cnts.txt
+    
+Submitted job 38 with external jobid '15201996.tscc-mgr.local'.
+[Mon Apr 29 15:04:24 2019]
+Finished job 46.
+49 of 217 steps (23%) done
+[Mon Apr 29 15:05:08 2019]
+Finished job 213.
+50 of 217 steps (23%) done
+
+[Mon Apr 29 15:05:08 2019]
+rule csort_bam:
+    input: bam.raw/FC_10_rep1/FC_10_rep1.raw.bam
+    output: bam.csort/FC_10_rep1/FC_10_rep1.picard.csort.bam
+    log: bam.csort/log/FC_10_rep1.csort.log
+    jobid: 261
+    wildcards: sample=FC_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_10_rep1/FC_10_rep1.raw.bam         O=bam.csort/FC_10_rep1/FC_10_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_10_rep1.csort.log
+[Mon Apr 29 15:05:09 2019]
+Finished job 255.
+51 of 217 steps (24%) done
+Submitted job 261 with external jobid '15202034.tscc-mgr.local'.
+
+[Mon Apr 29 15:05:14 2019]
+rule count_barcode:
+    input: bam.raw/FC_10_rep1/FC_10_rep1.raw.bam
+    output: bam.raw/FC_10_rep1/FC_10_rep1.raw.barcode.cnts.txt
+    jobid: 21
+    wildcards: dir=bam.raw/FC_10_rep1, sample=FC_10_rep1.raw
+
+samtools view bam.raw/FC_10_rep1/FC_10_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/FC_10_rep1/FC_10_rep1.raw.barcode.cnts.txt
+    
+Submitted job 21 with external jobid '15202035.tscc-mgr.local'.
+
+[Mon Apr 29 15:05:14 2019]
+rule nsort_bam:
+    input: bam.raw/FC_10_rep1/FC_10_rep1.raw.bam
+    output: bam.nsort/FC_10_rep1/FC_10_rep1.picard.nsort.bam
+    log: bam.nsort/log/FC_10_rep1.nsort.log
+    jobid: 189
+    wildcards: sample=FC_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_10_rep1/FC_10_rep1.raw.bam         O=bam.nsort/FC_10_rep1/FC_10_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/FC_10_rep1.nsort.log
+Submitted job 189 with external jobid '15202036.tscc-mgr.local'.
+
+[Mon Apr 29 15:05:14 2019]
+rule dedup_bam:
+    input: bam.csort/DH_10_rep1/DH_10_rep1.picard.csort.bam
+    output: bam.dedup/DH_10_rep1/DH_10_rep1.dedup.bam
+    log: bam.dedup/DH_10_rep1/DH_10_rep1.dedup.log
+    jobid: 159
+    wildcards: sample=DH_10_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_10_rep1     INPUT=bam.csort/DH_10_rep1/DH_10_rep1.picard.csort.bam OUTPUT= bam.dedup/DH_10_rep1/DH_10_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_10_rep1/DH_10_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_10_rep1/DH_10_rep1.dedup.log
+Submitted job 159 with external jobid '15202037.tscc-mgr.local'.
+[Mon Apr 29 15:05:58 2019]
+Finished job 183.
+52 of 217 steps (24%) done
+[Mon Apr 29 15:06:43 2019]
+Finished job 38.
+53 of 217 steps (24%) done
+[Mon Apr 29 15:11:52 2019]
+Finished job 142.
+54 of 217 steps (25%) done
+
+[Mon Apr 29 15:11:52 2019]
+rule sort_filter_bam:
+    input: bam.filter/FC_18_rep1/FC_18_rep1.filter.bam
+    output: bam.filter.sort/FC_18_rep1/FC_18_rep1.filter.csort.bam
+    jobid: 118
+    wildcards: sample=FC_18_rep1
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/FC_18_rep1/FC_18_rep1.filter.bam -o bam.filter.sort/FC_18_rep1/FC_18_rep1.filter.csort.bam;samtools index bam.filter.sort/FC_18_rep1/FC_18_rep1.filter.csort.bam
+[Mon Apr 29 15:11:52 2019]
+Finished job 134.
+55 of 217 steps (25%) done
+Submitted job 118 with external jobid '15202101.tscc-mgr.local'.
+
+[Mon Apr 29 15:11:58 2019]
+rule count_barcode:
+    input: bam.filter/FC_18_rep1/FC_18_rep1.filter.bam
+    output: bam.filter/FC_18_rep1/FC_18_rep1.filter.barcode.cnts.txt
+    jobid: 70
+    wildcards: dir=bam.filter/FC_18_rep1, sample=FC_18_rep1.filter
+
+samtools view bam.filter/FC_18_rep1/FC_18_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/FC_18_rep1/FC_18_rep1.filter.barcode.cnts.txt
+    
+Submitted job 70 with external jobid '15202102.tscc-mgr.local'.
+
+[Mon Apr 29 15:11:58 2019]
+rule sort_filter_bam:
+    input: bam.filter/DH_03_rep1/DH_03_rep1.filter.bam
+    output: bam.filter.sort/DH_03_rep1/DH_03_rep1.filter.csort.bam
+    jobid: 110
+    wildcards: sample=DH_03_rep1
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/DH_03_rep1/DH_03_rep1.filter.bam -o bam.filter.sort/DH_03_rep1/DH_03_rep1.filter.csort.bam;samtools index bam.filter.sort/DH_03_rep1/DH_03_rep1.filter.csort.bam
+Submitted job 110 with external jobid '15202103.tscc-mgr.local'.
+
+[Mon Apr 29 15:11:58 2019]
+rule count_barcode:
+    input: bam.filter/DH_03_rep1/DH_03_rep1.filter.bam
+    output: bam.filter/DH_03_rep1/DH_03_rep1.filter.barcode.cnts.txt
+    jobid: 62
+    wildcards: dir=bam.filter/DH_03_rep1, sample=DH_03_rep1.filter
+
+samtools view bam.filter/DH_03_rep1/DH_03_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/DH_03_rep1/DH_03_rep1.filter.barcode.cnts.txt
+    
+Submitted job 62 with external jobid '15202104.tscc-mgr.local'.
+[Mon Apr 29 15:12:39 2019]
+Error in rule sort_filter_bam:
+    jobid: 118
+    output: bam.filter.sort/FC_18_rep1/FC_18_rep1.filter.csort.bam
+    cluster_jobid: 15202101.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 15:12:39 2019]
+Error in rule sort_filter_bam:
+    jobid: 110
+    output: bam.filter.sort/DH_03_rep1/DH_03_rep1.filter.csort.bam
+    cluster_jobid: 15202103.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 15:16:43 2019]
+Finished job 70.
+56 of 217 steps (26%) done
+[Mon Apr 29 15:16:43 2019]
+Finished job 62.
+57 of 217 steps (26%) done
+[Mon Apr 29 15:17:15 2019]
+Finished job 227.
+58 of 217 steps (27%) done
+
+[Mon Apr 29 15:17:15 2019]
+rule nsort_bam:
+    input: bam.raw/LM_03_rep2/LM_03_rep2.raw.bam
+    output: bam.nsort/LM_03_rep2/LM_03_rep2.picard.nsort.bam
+    log: bam.nsort/log/LM_03_rep2.nsort.log
+    jobid: 203
+    wildcards: sample=LM_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_03_rep2/LM_03_rep2.raw.bam         O=bam.nsort/LM_03_rep2/LM_03_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/LM_03_rep2.nsort.log
+Submitted job 203 with external jobid '15202190.tscc-mgr.local'.
+
+[Mon Apr 29 15:17:21 2019]
+rule count_barcode:
+    input: bam.raw/LM_03_rep2/LM_03_rep2.raw.bam
+    output: bam.raw/LM_03_rep2/LM_03_rep2.raw.barcode.cnts.txt
+    jobid: 35
+    wildcards: dir=bam.raw/LM_03_rep2, sample=LM_03_rep2.raw
+
+samtools view bam.raw/LM_03_rep2/LM_03_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/LM_03_rep2/LM_03_rep2.raw.barcode.cnts.txt
+    
+Submitted job 35 with external jobid '15202191.tscc-mgr.local'.
+
+[Mon Apr 29 15:17:21 2019]
+rule csort_bam:
+    input: bam.raw/LM_03_rep2/LM_03_rep2.raw.bam
+    output: bam.csort/LM_03_rep2/LM_03_rep2.picard.csort.bam
+    log: bam.csort/log/LM_03_rep2.csort.log
+    jobid: 275
+    wildcards: sample=LM_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_03_rep2/LM_03_rep2.raw.bam         O=bam.csort/LM_03_rep2/LM_03_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_03_rep2.csort.log
+Submitted job 275 with external jobid '15202192.tscc-mgr.local'.
+[Mon Apr 29 15:19:06 2019]
+Finished job 21.
+59 of 217 steps (27%) done
+[Mon Apr 29 15:30:51 2019]
+Finished job 35.
+60 of 217 steps (28%) done
+[Mon Apr 29 15:39:18 2019]
+Finished job 159.
+61 of 217 steps (28%) done
+
+[Mon Apr 29 15:39:18 2019]
+rule count_barcode:
+    input: bam.dedup/DH_10_rep1/DH_10_rep1.dedup.bam
+    output: bam.dedup/DH_10_rep1/DH_10_rep1.dedup.barcode.cnts.txt
+    jobid: 39
+    wildcards: dir=bam.dedup/DH_10_rep1, sample=DH_10_rep1.dedup
+
+samtools view bam.dedup/DH_10_rep1/DH_10_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/DH_10_rep1/DH_10_rep1.dedup.barcode.cnts.txt
+    
+Submitted job 39 with external jobid '15202476.tscc-mgr.local'.
+
+[Mon Apr 29 15:39:25 2019]
+rule filter_bam:
+    input: bam.dedup/DH_10_rep1/DH_10_rep1.dedup.bam
+    output: bam.filter/DH_10_rep1/DH_10_rep1.filter.bam
+    jobid: 135
+    wildcards: sample=DH_10_rep1
+
+samtools view -h -f 2 bam.dedup/DH_10_rep1/DH_10_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/DH_10_rep1/DH_10_rep1.filter.bam 
+Submitted job 135 with external jobid '15202477.tscc-mgr.local'.
+[Mon Apr 29 15:43:43 2019]
+Finished job 261.
+62 of 217 steps (29%) done
+
+[Mon Apr 29 15:43:43 2019]
+rule dedup_bam:
+    input: bam.csort/FC_10_rep1/FC_10_rep1.picard.csort.bam
+    output: bam.dedup/FC_10_rep1/FC_10_rep1.dedup.bam
+    log: bam.dedup/FC_10_rep1/FC_10_rep1.dedup.log
+    jobid: 165
+    wildcards: sample=FC_10_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_10_rep1     INPUT=bam.csort/FC_10_rep1/FC_10_rep1.picard.csort.bam OUTPUT= bam.dedup/FC_10_rep1/FC_10_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_10_rep1/FC_10_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_10_rep1/FC_10_rep1.dedup.log
+Submitted job 165 with external jobid '15202501.tscc-mgr.local'.
+[Mon Apr 29 15:44:05 2019]
+Finished job 189.
+63 of 217 steps (29%) done
+[Mon Apr 29 15:47:57 2019]
+Finished job 39.
+64 of 217 steps (29%) done
+[Mon Apr 29 15:48:41 2019]
+Finished job 275.
+65 of 217 steps (30%) done
+
+[Mon Apr 29 15:48:41 2019]
+rule dedup_bam:
+    input: bam.csort/LM_03_rep2/LM_03_rep2.picard.csort.bam
+    output: bam.dedup/LM_03_rep2/LM_03_rep2.dedup.bam
+    log: bam.dedup/LM_03_rep2/LM_03_rep2.dedup.log
+    jobid: 179
+    wildcards: sample=LM_03_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_03_rep2     INPUT=bam.csort/LM_03_rep2/LM_03_rep2.picard.csort.bam OUTPUT= bam.dedup/LM_03_rep2/LM_03_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_03_rep2/LM_03_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_03_rep2/LM_03_rep2.dedup.log
+Submitted job 179 with external jobid '15202519.tscc-mgr.local'.
+[Mon Apr 29 15:54:43 2019]
+Finished job 209.
+66 of 217 steps (30%) done
+
+[Mon Apr 29 15:54:43 2019]
+rule csort_bam:
+    input: bam.raw/DH_03_rep2/DH_03_rep2.raw.bam
+    output: bam.csort/DH_03_rep2/DH_03_rep2.picard.csort.bam
+    log: bam.csort/log/DH_03_rep2.csort.log
+    jobid: 257
+    wildcards: sample=DH_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_03_rep2/DH_03_rep2.raw.bam         O=bam.csort/DH_03_rep2/DH_03_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_03_rep2.csort.log
+[Mon Apr 29 15:54:43 2019]
+Finished job 229.
+67 of 217 steps (31%) done
+Submitted job 257 with external jobid '15202602.tscc-mgr.local'.
+
+[Mon Apr 29 15:54:49 2019]
+rule nsort_bam:
+    input: bam.raw/DH_03_rep2/DH_03_rep2.raw.bam
+    output: bam.nsort/DH_03_rep2/DH_03_rep2.picard.nsort.bam
+    log: bam.nsort/log/DH_03_rep2.nsort.log
+    jobid: 185
+    wildcards: sample=DH_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_03_rep2/DH_03_rep2.raw.bam         O=bam.nsort/DH_03_rep2/DH_03_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/DH_03_rep2.nsort.log
+Submitted job 185 with external jobid '15202607.tscc-mgr.local'.
+
+[Mon Apr 29 15:54:50 2019]
+rule count_barcode:
+    input: bam.raw/DH_03_rep2/DH_03_rep2.raw.bam
+    output: bam.raw/DH_03_rep2/DH_03_rep2.raw.barcode.cnts.txt
+    jobid: 17
+    wildcards: dir=bam.raw/DH_03_rep2, sample=DH_03_rep2.raw
+
+samtools view bam.raw/DH_03_rep2/DH_03_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/DH_03_rep2/DH_03_rep2.raw.barcode.cnts.txt
+    
+Submitted job 17 with external jobid '15202608.tscc-mgr.local'.
+
+[Mon Apr 29 15:54:50 2019]
+rule count_barcode:
+    input: bam.raw/LM_18_rep2/LM_18_rep2.raw.bam
+    output: bam.raw/LM_18_rep2/LM_18_rep2.raw.barcode.cnts.txt
+    jobid: 37
+    wildcards: dir=bam.raw/LM_18_rep2, sample=LM_18_rep2.raw
+
+samtools view bam.raw/LM_18_rep2/LM_18_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/LM_18_rep2/LM_18_rep2.raw.barcode.cnts.txt
+    
+Submitted job 37 with external jobid '15202609.tscc-mgr.local'.
+
+[Mon Apr 29 15:54:50 2019]
+rule nsort_bam:
+    input: bam.raw/LM_18_rep2/LM_18_rep2.raw.bam
+    output: bam.nsort/LM_18_rep2/LM_18_rep2.picard.nsort.bam
+    log: bam.nsort/log/LM_18_rep2.nsort.log
+    jobid: 205
+    wildcards: sample=LM_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_18_rep2/LM_18_rep2.raw.bam         O=bam.nsort/LM_18_rep2/LM_18_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/LM_18_rep2.nsort.log
+Submitted job 205 with external jobid '15202610.tscc-mgr.local'.
+
+[Mon Apr 29 15:54:50 2019]
+rule csort_bam:
+    input: bam.raw/LM_18_rep2/LM_18_rep2.raw.bam
+    output: bam.csort/LM_18_rep2/LM_18_rep2.picard.csort.bam
+    log: bam.csort/log/LM_18_rep2.csort.log
+    jobid: 277
+    wildcards: sample=LM_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_18_rep2/LM_18_rep2.raw.bam         O=bam.csort/LM_18_rep2/LM_18_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_18_rep2.csort.log
+Submitted job 277 with external jobid '15202611.tscc-mgr.local'.
+[Mon Apr 29 15:55:27 2019]
+Finished job 203.
+68 of 217 steps (31%) done
+[Mon Apr 29 15:59:30 2019]
+Finished job 135.
+69 of 217 steps (32%) done
+
+[Mon Apr 29 15:59:30 2019]
+rule count_barcode:
+    input: bam.filter/DH_10_rep1/DH_10_rep1.filter.bam
+    output: bam.filter/DH_10_rep1/DH_10_rep1.filter.barcode.cnts.txt
+    jobid: 63
+    wildcards: dir=bam.filter/DH_10_rep1, sample=DH_10_rep1.filter
+
+samtools view bam.filter/DH_10_rep1/DH_10_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/DH_10_rep1/DH_10_rep1.filter.barcode.cnts.txt
+    
+Submitted job 63 with external jobid '15202628.tscc-mgr.local'.
+
+[Mon Apr 29 15:59:36 2019]
+rule sort_filter_bam:
+    input: bam.filter/DH_10_rep1/DH_10_rep1.filter.bam
+    output: bam.filter.sort/DH_10_rep1/DH_10_rep1.filter.csort.bam
+    jobid: 111
+    wildcards: sample=DH_10_rep1
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/DH_10_rep1/DH_10_rep1.filter.bam -o bam.filter.sort/DH_10_rep1/DH_10_rep1.filter.csort.bam;samtools index bam.filter.sort/DH_10_rep1/DH_10_rep1.filter.csort.bam
+Submitted job 111 with external jobid '15202629.tscc-mgr.local'.
+[Mon Apr 29 16:00:15 2019]
+Finished job 226.
+70 of 217 steps (32%) done
+
+[Mon Apr 29 16:00:15 2019]
+rule csort_bam:
+    input: bam.raw/LM_18_rep1/LM_18_rep1.raw.bam
+    output: bam.csort/LM_18_rep1/LM_18_rep1.picard.csort.bam
+    log: bam.csort/log/LM_18_rep1.csort.log
+    jobid: 274
+    wildcards: sample=LM_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_18_rep1/LM_18_rep1.raw.bam         O=bam.csort/LM_18_rep1/LM_18_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_18_rep1.csort.log
+Submitted job 274 with external jobid '15202636.tscc-mgr.local'.
+
+[Mon Apr 29 16:00:15 2019]
+rule nsort_bam:
+    input: bam.raw/LM_18_rep1/LM_18_rep1.raw.bam
+    output: bam.nsort/LM_18_rep1/LM_18_rep1.picard.nsort.bam
+    log: bam.nsort/log/LM_18_rep1.nsort.log
+    jobid: 202
+    wildcards: sample=LM_18_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_18_rep1/LM_18_rep1.raw.bam         O=bam.nsort/LM_18_rep1/LM_18_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/LM_18_rep1.nsort.log
+Submitted job 202 with external jobid '15202637.tscc-mgr.local'.
+
+[Mon Apr 29 16:00:15 2019]
+rule count_barcode:
+    input: bam.raw/LM_18_rep1/LM_18_rep1.raw.bam
+    output: bam.raw/LM_18_rep1/LM_18_rep1.raw.barcode.cnts.txt
+    jobid: 34
+    wildcards: dir=bam.raw/LM_18_rep1, sample=LM_18_rep1.raw
+
+samtools view bam.raw/LM_18_rep1/LM_18_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/LM_18_rep1/LM_18_rep1.raw.barcode.cnts.txt
+    
+Submitted job 34 with external jobid '15202639.tscc-mgr.local'.
+[Mon Apr 29 16:02:04 2019]
+Finished job 215.
+71 of 217 steps (33%) done
+
+[Mon Apr 29 16:02:04 2019]
+rule nsort_bam:
+    input: bam.raw/FC_03_rep2/FC_03_rep2.raw.bam
+    output: bam.nsort/FC_03_rep2/FC_03_rep2.picard.nsort.bam
+    log: bam.nsort/log/FC_03_rep2.nsort.log
+    jobid: 191
+    wildcards: sample=FC_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_03_rep2/FC_03_rep2.raw.bam         O=bam.nsort/FC_03_rep2/FC_03_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/FC_03_rep2.nsort.log
+Submitted job 191 with external jobid '15202655.tscc-mgr.local'.
+
+[Mon Apr 29 16:02:11 2019]
+rule count_barcode:
+    input: bam.raw/FC_03_rep2/FC_03_rep2.raw.bam
+    output: bam.raw/FC_03_rep2/FC_03_rep2.raw.barcode.cnts.txt
+    jobid: 23
+    wildcards: dir=bam.raw/FC_03_rep2, sample=FC_03_rep2.raw
+
+samtools view bam.raw/FC_03_rep2/FC_03_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/FC_03_rep2/FC_03_rep2.raw.barcode.cnts.txt
+    
+Submitted job 23 with external jobid '15202656.tscc-mgr.local'.
+
+[Mon Apr 29 16:02:11 2019]
+rule csort_bam:
+    input: bam.raw/FC_03_rep2/FC_03_rep2.raw.bam
+    output: bam.csort/FC_03_rep2/FC_03_rep2.picard.csort.bam
+    log: bam.csort/log/FC_03_rep2.csort.log
+    jobid: 263
+    wildcards: sample=FC_03_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_03_rep2/FC_03_rep2.raw.bam         O=bam.csort/FC_03_rep2/FC_03_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_03_rep2.csort.log
+Submitted job 263 with external jobid '15202657.tscc-mgr.local'.
+[Mon Apr 29 16:03:53 2019]
+Error in rule sort_filter_bam:
+    jobid: 111
+    output: bam.filter.sort/DH_10_rep1/DH_10_rep1.filter.csort.bam
+    cluster_jobid: 15202629.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 16:11:32 2019]
+Finished job 63.
+72 of 217 steps (33%) done
+[Mon Apr 29 16:16:22 2019]
+Finished job 17.
+73 of 217 steps (34%) done
+[Mon Apr 29 16:17:11 2019]
+Finished job 37.
+74 of 217 steps (34%) done
+[Mon Apr 29 16:20:08 2019]
+Finished job 179.
+75 of 217 steps (35%) done
+
+[Mon Apr 29 16:20:08 2019]
+rule count_barcode:
+    input: bam.dedup/LM_03_rep2/LM_03_rep2.dedup.bam
+    output: bam.dedup/LM_03_rep2/LM_03_rep2.dedup.barcode.cnts.txt
+    jobid: 59
+    wildcards: dir=bam.dedup/LM_03_rep2, sample=LM_03_rep2.dedup
+
+samtools view bam.dedup/LM_03_rep2/LM_03_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/LM_03_rep2/LM_03_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 59 with external jobid '15202743.tscc-mgr.local'.
+
+[Mon Apr 29 16:20:14 2019]
+rule filter_bam:
+    input: bam.dedup/LM_03_rep2/LM_03_rep2.dedup.bam
+    output: bam.filter/LM_03_rep2/LM_03_rep2.filter.bam
+    jobid: 155
+    wildcards: sample=LM_03_rep2
+
+samtools view -h -f 2 bam.dedup/LM_03_rep2/LM_03_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/LM_03_rep2/LM_03_rep2.filter.bam 

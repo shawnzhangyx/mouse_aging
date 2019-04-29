@@ -1,0 +1,101 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	2	combine_demulti_fastq_files
+	4	demultiplex
+	1	require_demulti_fastq_files
+	7
+
+[Wed Apr 24 23:24:24 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_hiSeq2500.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 49
+    wildcards: sample=FC_03_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name FC_03_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_03_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 1-96 -index_no_replicate ../../scripts/pre_processing/barcodes_hiSeq2500.txt
+Submitted job 49 with external jobid '15170154.tscc-mgr.local'.
+
+[Wed Apr 24 23:24:30 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_hiSeq2500.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 54
+    wildcards: sample=FC_18_rep1, lane=2
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz -output_tag_name FC_18_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_18_rep1/L2 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 193-288 -index_no_replicate ../../scripts/pre_processing/barcodes_hiSeq2500.txt
+Submitted job 54 with external jobid '15170156.tscc-mgr.local'.
+
+[Wed Apr 24 23:24:30 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_hiSeq2500.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 50
+    wildcards: sample=FC_03_rep1, lane=2
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L002_I2_001.fastq.gz -output_tag_name FC_03_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_03_rep1/L2 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 1-96 -index_no_replicate ../../scripts/pre_processing/barcodes_hiSeq2500.txt
+Submitted job 50 with external jobid '15170157.tscc-mgr.local'.
+
+[Wed Apr 24 23:24:31 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_hiSeq2500.txt, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 53
+    wildcards: sample=FC_18_rep1, lane=1
+    threads: 4
+
+ATACdemultiplex  -fastq_R1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/2018_09_06_ChIP_B/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name FC_18_rep1 -max_nb_reads 0 --nbThreads 4 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/FC_18_rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 193-288 -index_no_replicate ../../scripts/pre_processing/barcodes_hiSeq2500.txt
+Submitted job 53 with external jobid '15170158.tscc-mgr.local'.
+[Wed Apr 24 23:59:26 2019]
+Finished job 49.
+1 of 7 steps (14%) done
+[Thu Apr 25 00:04:07 2019]
+Finished job 53.
+2 of 7 steps (29%) done
+[Thu Apr 25 00:07:43 2019]
+Finished job 50.
+3 of 7 steps (43%) done
+
+[Thu Apr 25 00:07:43 2019]
+localrule combine_demulti_fastq_files:
+    input: fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz, fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz
+    output: fastq.demultiplex/FC_03_rep1/FC_03_rep1.R1.fastq.gz, fastq.demultiplex/FC_03_rep1/FC_03_rep1.R2.fastq.gz
+    jobid: 7
+    wildcards: sample=FC_03_rep1
+
+cat fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R1_001_FC_03_rep1.demultiplexed.R1.repl1.fastq.gz > fastq.demultiplex/FC_03_rep1/FC_03_rep1.R1.fastq.gz;cat fastq.demultiplex/FC_03_rep1/L1/Undetermined_S0_L001_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz fastq.demultiplex/FC_03_rep1/L2/Undetermined_S0_L002_R2_001_FC_03_rep1.demultiplexed.R2.repl1.fastq.gz > fastq.demultiplex/FC_03_rep1/FC_03_rep1.R2.fastq.gz;
+[Thu Apr 25 00:08:12 2019]
+Finished job 7.
+4 of 7 steps (57%) done
+[Thu Apr 25 00:09:13 2019]
+Finished job 54.
+5 of 7 steps (71%) done
+
+[Thu Apr 25 00:09:13 2019]
+localrule combine_demulti_fastq_files:
+    input: fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz, fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz
+    output: fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz, fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz
+    jobid: 9
+    wildcards: sample=FC_18_rep1
+
+cat fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R1_001_FC_18_rep1.demultiplexed.R1.repl1.fastq.gz > fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz;cat fastq.demultiplex/FC_18_rep1/L1/Undetermined_S0_L001_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz fastq.demultiplex/FC_18_rep1/L2/Undetermined_S0_L002_R2_001_FC_18_rep1.demultiplexed.R2.repl1.fastq.gz > fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz;
+[Thu Apr 25 00:09:45 2019]
+Finished job 9.
+6 of 7 steps (86%) done
+
+[Thu Apr 25 00:09:45 2019]
+localrule require_demulti_fastq_files:
+    input: fastq.demultiplex/DH_03_rep1/DH_03_rep1.R1.fastq.gz, fastq.demultiplex/DH_10_rep1/DH_10_rep1.R1.fastq.gz, fastq.demultiplex/DH_18_rep1/DH_18_rep1.R1.fastq.gz, fastq.demultiplex/DH_03_rep2/DH_03_rep2.R1.fastq.gz, fastq.demultiplex/DH_10_rep2/DH_10_rep2.R1.fastq.gz, fastq.demultiplex/DH_18_rep2/DH_18_rep2.R1.fastq.gz, fastq.demultiplex/FC_03_rep1/FC_03_rep1.R1.fastq.gz, fastq.demultiplex/FC_10_rep1/FC_10_rep1.R1.fastq.gz, fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz, fastq.demultiplex/FC_03_rep2/FC_03_rep2.R1.fastq.gz, fastq.demultiplex/FC_10_rep2/FC_10_rep2.R1.fastq.gz, fastq.demultiplex/FC_18_rep2/FC_18_rep2.R1.fastq.gz, fastq.demultiplex/HT_03_rep1/HT_03_rep1.R1.fastq.gz, fastq.demultiplex/HT_10_rep1/HT_10_rep1.R1.fastq.gz, fastq.demultiplex/HT_18_rep1/HT_18_rep1.R1.fastq.gz, fastq.demultiplex/HT_18_rep2/HT_18_rep2.R1.fastq.gz, fastq.demultiplex/HT_03_rep2/HT_03_rep2.R1.fastq.gz, fastq.demultiplex/HT_10_rep2/HT_10_rep2.R1.fastq.gz, fastq.demultiplex/LM_03_rep1/LM_03_rep1.R1.fastq.gz, fastq.demultiplex/LM_10_rep1/LM_10_rep1.R1.fastq.gz, fastq.demultiplex/LM_18_rep1/LM_18_rep1.R1.fastq.gz, fastq.demultiplex/LM_03_rep2/LM_03_rep2.R1.fastq.gz, fastq.demultiplex/LM_10_rep2/LM_10_rep2.R1.fastq.gz, fastq.demultiplex/LM_18_rep2/LM_18_rep2.R1.fastq.gz, fastq.demultiplex/DH_03_rep1/DH_03_rep1.R2.fastq.gz, fastq.demultiplex/DH_10_rep1/DH_10_rep1.R2.fastq.gz, fastq.demultiplex/DH_18_rep1/DH_18_rep1.R2.fastq.gz, fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz, fastq.demultiplex/DH_10_rep2/DH_10_rep2.R2.fastq.gz, fastq.demultiplex/DH_18_rep2/DH_18_rep2.R2.fastq.gz, fastq.demultiplex/FC_03_rep1/FC_03_rep1.R2.fastq.gz, fastq.demultiplex/FC_10_rep1/FC_10_rep1.R2.fastq.gz, fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz, fastq.demultiplex/FC_03_rep2/FC_03_rep2.R2.fastq.gz, fastq.demultiplex/FC_10_rep2/FC_10_rep2.R2.fastq.gz, fastq.demultiplex/FC_18_rep2/FC_18_rep2.R2.fastq.gz, fastq.demultiplex/HT_03_rep1/HT_03_rep1.R2.fastq.gz, fastq.demultiplex/HT_10_rep1/HT_10_rep1.R2.fastq.gz, fastq.demultiplex/HT_18_rep1/HT_18_rep1.R2.fastq.gz, fastq.demultiplex/HT_18_rep2/HT_18_rep2.R2.fastq.gz, fastq.demultiplex/HT_03_rep2/HT_03_rep2.R2.fastq.gz, fastq.demultiplex/HT_10_rep2/HT_10_rep2.R2.fastq.gz, fastq.demultiplex/LM_03_rep1/LM_03_rep1.R2.fastq.gz, fastq.demultiplex/LM_10_rep1/LM_10_rep1.R2.fastq.gz, fastq.demultiplex/LM_18_rep1/LM_18_rep1.R2.fastq.gz, fastq.demultiplex/LM_03_rep2/LM_03_rep2.R2.fastq.gz, fastq.demultiplex/LM_10_rep2/LM_10_rep2.R2.fastq.gz, fastq.demultiplex/LM_18_rep2/LM_18_rep2.R2.fastq.gz
+    output: fastq.demultiplex.files.list.txt
+    jobid: 0
+
+ls -lh fastq.demultiplex/DH_03_rep1/DH_03_rep1.R1.fastq.gz fastq.demultiplex/DH_10_rep1/DH_10_rep1.R1.fastq.gz fastq.demultiplex/DH_18_rep1/DH_18_rep1.R1.fastq.gz fastq.demultiplex/DH_03_rep2/DH_03_rep2.R1.fastq.gz fastq.demultiplex/DH_10_rep2/DH_10_rep2.R1.fastq.gz fastq.demultiplex/DH_18_rep2/DH_18_rep2.R1.fastq.gz fastq.demultiplex/FC_03_rep1/FC_03_rep1.R1.fastq.gz fastq.demultiplex/FC_10_rep1/FC_10_rep1.R1.fastq.gz fastq.demultiplex/FC_18_rep1/FC_18_rep1.R1.fastq.gz fastq.demultiplex/FC_03_rep2/FC_03_rep2.R1.fastq.gz fastq.demultiplex/FC_10_rep2/FC_10_rep2.R1.fastq.gz fastq.demultiplex/FC_18_rep2/FC_18_rep2.R1.fastq.gz fastq.demultiplex/HT_03_rep1/HT_03_rep1.R1.fastq.gz fastq.demultiplex/HT_10_rep1/HT_10_rep1.R1.fastq.gz fastq.demultiplex/HT_18_rep1/HT_18_rep1.R1.fastq.gz fastq.demultiplex/HT_18_rep2/HT_18_rep2.R1.fastq.gz fastq.demultiplex/HT_03_rep2/HT_03_rep2.R1.fastq.gz fastq.demultiplex/HT_10_rep2/HT_10_rep2.R1.fastq.gz fastq.demultiplex/LM_03_rep1/LM_03_rep1.R1.fastq.gz fastq.demultiplex/LM_10_rep1/LM_10_rep1.R1.fastq.gz fastq.demultiplex/LM_18_rep1/LM_18_rep1.R1.fastq.gz fastq.demultiplex/LM_03_rep2/LM_03_rep2.R1.fastq.gz fastq.demultiplex/LM_10_rep2/LM_10_rep2.R1.fastq.gz fastq.demultiplex/LM_18_rep2/LM_18_rep2.R1.fastq.gz fastq.demultiplex/DH_03_rep1/DH_03_rep1.R2.fastq.gz fastq.demultiplex/DH_10_rep1/DH_10_rep1.R2.fastq.gz fastq.demultiplex/DH_18_rep1/DH_18_rep1.R2.fastq.gz fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz fastq.demultiplex/DH_10_rep2/DH_10_rep2.R2.fastq.gz fastq.demultiplex/DH_18_rep2/DH_18_rep2.R2.fastq.gz fastq.demultiplex/FC_03_rep1/FC_03_rep1.R2.fastq.gz fastq.demultiplex/FC_10_rep1/FC_10_rep1.R2.fastq.gz fastq.demultiplex/FC_18_rep1/FC_18_rep1.R2.fastq.gz fastq.demultiplex/FC_03_rep2/FC_03_rep2.R2.fastq.gz fastq.demultiplex/FC_10_rep2/FC_10_rep2.R2.fastq.gz fastq.demultiplex/FC_18_rep2/FC_18_rep2.R2.fastq.gz fastq.demultiplex/HT_03_rep1/HT_03_rep1.R2.fastq.gz fastq.demultiplex/HT_10_rep1/HT_10_rep1.R2.fastq.gz fastq.demultiplex/HT_18_rep1/HT_18_rep1.R2.fastq.gz fastq.demultiplex/HT_18_rep2/HT_18_rep2.R2.fastq.gz fastq.demultiplex/HT_03_rep2/HT_03_rep2.R2.fastq.gz fastq.demultiplex/HT_10_rep2/HT_10_rep2.R2.fastq.gz fastq.demultiplex/LM_03_rep1/LM_03_rep1.R2.fastq.gz fastq.demultiplex/LM_10_rep1/LM_10_rep1.R2.fastq.gz fastq.demultiplex/LM_18_rep1/LM_18_rep1.R2.fastq.gz fastq.demultiplex/LM_03_rep2/LM_03_rep2.R2.fastq.gz fastq.demultiplex/LM_10_rep2/LM_10_rep2.R2.fastq.gz fastq.demultiplex/LM_18_rep2/LM_18_rep2.R2.fastq.gz > fastq.demultiplex.files.list.txt
+[Thu Apr 25 00:09:46 2019]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/pre_processing/.snakemake/log/2019-04-24T232422.193437.snakemake.log

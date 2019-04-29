@@ -1,0 +1,376 @@
+#! /usr/bin/env bash
+## Snakefile
+####################
+
+
+import pandas as pd
+#BASE_DIR = workflow.basedir + "/../../data/snATAC/"
+workdir: workflow.basedir + "/../../data/snATAC/"
+
+sample_info = pd.read_table("../../scripts/pre_processing/demultiplex.sample_info.txt",sep=" ")
+# select a certain cell from table.
+#sample_info.loc["DH.03.rep1"]['run']
+tissues_dict = {}
+for x in sample_info.index:
+  if x[:2] not in tissues_dict: 
+    tissues_dict[x[:2]] = [x]
+  else:
+    tissues_dict[x[:2]].append(x)
+
+print(tissues_dict)
+
+#print(sample_info)
+
+localrules: require_everything, require_barcodes, require_filter_bam, require_dedup_bam, require_nsort_bam, require_raw_bam,require_demulti_fastq_files, combine_demulti_fastq_files
+
+rule require_everything:
+  input: 
+    "macs.peaks.files.list.txt",
+    "barcode.files.list.txt",
+    "bibWig.filter.csort.files.list.txt",
+    "bam.filter.csort.files.list.txt",
+    "bam.filter.files.list.txt",
+    "bam.dedup.files.list.txt",
+    "bam.nsort.files.list.txt",
+    "bam.raw.files.list.txt",
+    "fastq.demultiplex.files.list.txt",
+
+  params:
+    pbsName="All"
+
+rule require_count2peak:
+
+rule require_peaks:
+  output: 
+       "macs.peaks.files.list.txt"
+  input:
+    expand("peaks/{tissue}_peaks.narrowPeak", tissue=tissues_dict.keys())
+  params:
+        pbsName="All"
+  shell:
+    "wc -l {input} > {output}"
+ 
+rule call_peaks:
+  output: 
+    "peaks/{tissue}_peaks.narrowPeak"
+  input:
+    lambda wildcards: expand("bam.filter/{sample}/{sample}.filter.bam", sample= tissues_dict[wildcards.tissue])
+  threads: 1
+  params:
+    pbsName="{wildcards.tissue}"
+  shell:
+    "macs2 callpeak -t {input} -n peaks/{wildcards.tissue} -g mm -f BAMPE --keep-dup all"
+
+
+
+rule require_filter_bigWig:
+  output:
+    "bibWig.filter.csort.files.list.txt"
+  input:
+    expand("bigWig.filter/{sample}.filter.rpkm.bigWig", sample=list(sample_info.index))
+  params:
+    pbsName="All"
+  shell:
+    "ls -lh {input} > {output}"
+
+rule bamToBigWig: 
+  output: 
+    "bigWig.filter/{sample}.filter.rpkm.bigWig"
+  input:
+    "bam.filter.sort/{sample}/{sample}.filter.csort.bam"
+  threads: 4
+  params:
+    pbsName="{wildcards.sample}"
+  shell:
+   "bamCoverage --bam {input} --outFileFormat bigwig --outFileName {output} --binSize 25 --normalizeUsingRPKM -p {threads}"
+    
+
+rule require_filter_sort_bam:
+  output:
+    "bam.filter.csort.files.list.txt"
+  input:
+    expand("bam.filter.sort/{sample}/{sample}.filter.csort.bam", sample=list(sample_info.index))
+  params:
+        pbsName="All"
+  shell:
+    "ls -lh {input} > {output}"
+
+
+rule sort_filter_bam:
+  output: 
+    "bam.filter.sort/{sample}/{sample}.filter.csort.bam"
+  input: 
+    "bam.filter/{sample}/{sample}.filter.bam"
+  threads: 4
+  params:
+      pbsName="{wildcards.sample}" 
+  shell: 
+    "samtools sort -@ {threads} -m $(({threads}*4))G {input} -o {output};"
+    "samtools index {output}"
+
+
+
+rule require_barcodes: 
+  output: 
+    "barcode.files.list.txt"
+  input: 
+    expand("bam.raw/{sample}/{sample}.raw.barcode.cnts.txt", sample=list(sample_info.index)),
+    expand("bam.dedup/{sample}/{sample}.dedup.barcode.cnts.txt", sample=list(sample_info.index)),
+    expand("bam.filter/{sample}/{sample}.filter.barcode.cnts.txt", sample=list(sample_info.index))
+  params:
+      pbsName="All"
+  shell:
+    "ls -lh {input} > {output}"
+
+
+rule count_barcode:
+  output: 
+    "{dir}/{sample}.barcode.cnts.txt"
+  input:
+    "{dir}/{sample}.bam"
+  threads: 1
+  params:
+    pbsName="{wildcards.sample}"
+  shell:
+    """samtools view {input} | awk -v OF="\t" -v OFS="\t" \
+    '{{ a[substr($1,1,22)]++ }} END {{ for (i in a) print i,a[i]/2 }}' | \
+    sort -k2,2nr > {output}
+    """
+
+rule require_filter_bam: 
+  output: 
+    "bam.filter.files.list.txt"
+  input:
+    expand("bam.filter/{sample}/{sample}.filter.bam", sample=list(sample_info.index))
+  params:
+        pbsName="All"
+  shell:
+    "ls -lh {input} > {output}"
+
+rule filter_bam: 
+  output: 
+    "bam.filter/{sample}/{sample}.filter.bam"
+  input: 
+    "bam.dedup/{sample}/{sample}.dedup.bam"
+  threads: 1
+  params:
+      pbsName="{wildcards.sample}"
+  shell:
+    """samtools view -h -f 2 {input} |\
+  awk -v OFS="\t" ' function abs(v) {{return v < 0 ? -v : v}}
+  {{ if ( /^@/) {{ print $0 }} else if ( $7=="=" && abs($9)< 2000 ) {{print $0}} }}'|\
+  samtools view -bS > {output} """
+  
+
+
+rule require_dedup_bam: 
+  output:
+      "bam.dedup.files.list.txt"
+  input:
+    expand("bam.dedup/{sample}/{sample}.dedup.bam", sample=list(sample_info.index))
+  params:
+      pbsName="All"
+  shell:
+      "ls -lh {input} > {output}"
+
+
+## dedup barcoded bam files. 
+rule dedup_bam:
+  output: 
+    "bam.dedup/{sample}/{sample}.dedup.bam"
+  input: 
+    "bam.csort/{sample}/{sample}.picard.csort.bam"
+  threads: 4
+  log: 
+    "bam.dedup/{sample}/{sample}.dedup.log"
+  params:
+    pbsName="{wildcards.sample}"
+
+  shell:
+    """java -XX:ParallelGCThreads={threads} -Xmx$(({threads}*4))G -jar \
+    ../../scripts/utility/picard.jar MarkDuplicates \
+    TMP_DIR=bam.dedup/tmp/{wildcards.sample} \
+    INPUT={input} OUTPUT= {output} VALIDATION_STRINGENCY=LENIENT \
+    REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate \
+    METRICS_FILE=bam.dedup/{wildcards.sample}/{wildcards.sample}.dedup.qc BARCODE_TAG=BX \
+    2> {log}"""
+
+
+
+
+rule require_nsort_bam:
+  output:
+        "bam.nsort.files.list.txt"
+  input:
+      expand("bam.nsort/{sample}/{sample}.picard.nsort.bam", sample=list(sample_info.index))
+  params:
+      pbsName="All"
+  shell:
+        "ls -lh {input} > {output}"
+
+## name sort bam files. 
+rule nsort_bam:
+  output: 
+    "bam.nsort/{sample}/{sample}.picard.nsort.bam"
+  input: 
+    "bam.raw/{sample}/{sample}.raw.bam"
+  threads: 4
+  params:
+    pbsName="{wildcards.sample}"
+  log:
+    "bam.nsort/log/{sample}.nsort.log"
+  shell: 
+    '''java -jar -Xmx$(({threads}*4))G ../../scripts/utility/picard.jar SortSam \
+        I={input} \
+        O={output} \
+        SORT_ORDER=queryname 2> {log}'''
+
+rule require_csort_bam:
+  output:
+        "bam.csort.files.list.txt"
+  input:
+      expand("bam.csort/{sample}/{sample}.picard.csort.bam", sample=list(sample_info.index))
+  params:
+      pbsName="All"
+  shell:
+        "ls -lh {input} > {output}"
+
+## name sort bam files.
+rule csort_bam:
+  output:
+    "bam.csort/{sample}/{sample}.picard.csort.bam"
+  input:
+    "bam.raw/{sample}/{sample}.raw.bam"
+  threads: 4
+  params:
+    pbsName="{wildcards.sample}"
+  log:
+    "bam.csort/log/{sample}.csort.log"
+  shell:
+    '''java -jar -Xmx$(({threads}*4))G ../../scripts/utility/picard.jar SortSam \
+        I={input} \
+        O={output} \
+        SORT_ORDER=coordinate 2> {log}'''
+
+
+
+## add sample barcode information as BX tag
+rule require_bx_bam: 
+  output:
+          "bam.bx.files.list.txt"
+  input:
+        expand("bam.bx/{sample}/{sample}.bx.bam", sample=list(sample_info.index))
+  params:
+      pbsName="All"
+  shell:
+        "ls -lh {input} > {output}"
+
+rule bx_bam: 
+  output: 
+      "bam.bx/{sample}/{sample}.bx.bam"
+  input: 
+      "bam.raw/{sample}/{sample}.raw.bam"
+  params:
+      pbsName="{wildcards.sample}"
+  shell: 
+   """ samtools view {input} -h | \
+      awk -v id={wildcards.sample} '{{ if ($1 ~ "@"){{print $0}} else
+      {{print id "." $0"\tBX:Z:" id "."  substr($1,1,22) }} }}' | \
+    samtools view -bS - > {output}; """
+
+
+rule require_raw_bam:
+  output:
+          "bam.raw.files.list.txt"
+  input:
+        expand("bam.raw/{sample}/{sample}.raw.bam", sample=list(sample_info.index))
+  params:
+      pbsName="All"
+  shell:
+        "ls -lh {input} > {output}"
+
+
+## Align the fastq to the genome. 
+## add barcode information as BX tag
+rule align_bowtie2:
+  output: 
+    "bam.raw/{sample}/{sample}.raw.bam"
+  input: 
+    R1 = "fastq.demultiplex/{sample}/{sample}.R1.fastq.gz",
+    R2 = "fastq.demultiplex/{sample}/{sample}.R2.fastq.gz"
+  threads: 8
+  params:
+      pbsName="{wildcards.sample}"
+  shell: 
+    """bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000 \
+    -1 {input.R1} -2 {input.R2} -p {threads} | awk '{{ if ($1 ~ "@") 
+    {{print $0}} else {{print $0"\tBX:Z:" substr($1,1,22) }} }}'  | \
+    samtools view -bS > {output} """
+
+rule require_demulti_fastq_files:
+  output: 
+    "fastq.demultiplex.files.list.txt"
+  input:
+    expand("fastq.demultiplex/{sample}/{sample}.R1.fastq.gz", sample=list(sample_info.index)),
+    expand("fastq.demultiplex/{sample}/{sample}.R2.fastq.gz", sample=list(sample_info.index))
+  params:
+      pbsName="All"
+  shell:
+    "ls -lh {input} > {output}"
+
+
+rule combine_demulti_fastq_files:
+  output: 
+    r1 = "fastq.demultiplex/{sample}/{sample}.R1.fastq.gz",
+    r2 = "fastq.demultiplex/{sample}/{sample}.R2.fastq.gz",
+  input:
+    r1 = lambda wildcards: expand("fastq.demultiplex/" + wildcards.sample+ "/L{lane}/Undetermined_S0_L00{lane}_R1_001_" + wildcards.sample +".demultiplexed.R1.repl1.fastq.gz",lane=list(range(1,sample_info.loc[wildcards.sample]['lanes']+1))),
+    r2 = lambda wildcards: expand("fastq.demultiplex/" + wildcards.sample+ "/L{lane}/Undetermined_S0_L00{lane}_R2_001_" + wildcards.sample +".demultiplexed.R2.repl1.fastq.gz",lane=list(range(1,sample_info.loc[wildcards.sample]['lanes']+1))),
+  params:
+        pbsName="{wildcards.sample}"
+  shell: 
+    "cat {input.r1} > {output.r1};"
+    "cat {input.r2} > {output.r2};"
+
+## demultiplex. 
+# include: "rules/demultiplex.rules"  
+rule demultiplex:
+  output:
+    R1 = "fastq.demultiplex/{sample}/L{lane}/Undetermined_S0_L00{lane}_R1_001_{sample}.demultiplexed.R1.repl1.fastq.gz",
+    R2 = "fastq.demultiplex/{sample}/L{lane}/Undetermined_S0_L00{lane}_R2_001_{sample}.demultiplexed.R2.repl1.fastq.gz",
+  input:
+    indexF = lambda wildcards: "../../scripts/pre_processing/" + sample_info.loc[wildcards.sample]['barcodes'],
+    R1 = lambda wildcards: "fastq.raw/" + sample_info.loc[wildcards.sample]['run'] + "/" + "Undetermined_S0_L00" + wildcards.lane + "_R1_001.fastq.gz",
+    R2 = lambda wildcards: "fastq.raw/" + sample_info.loc[wildcards.sample]['run'] + "/" + "Undetermined_S0_L00" + wildcards.lane + "_R2_001.fastq.gz",
+    I1 = lambda wildcards: "fastq.raw/" + sample_info.loc[wildcards.sample]['run'] + "/" + "Undetermined_S0_L00" + wildcards.lane + "_I1_001.fastq.gz",
+    I2 = lambda wildcards: "fastq.raw/" + sample_info.loc[wildcards.sample]['run'] + "/" + "Undetermined_S0_L00" + wildcards.lane + "_I2_001.fastq.gz",
+  threads: 4 
+  params:
+    name = lambda wildcards: wildcards.sample,
+    nb_mistake = 2,
+    out_path = lambda wildcards: "fastq.demultiplex/" + wildcards.sample + "/L" + wildcards.lane,
+    i5 = lambda wildcards: sample_info.loc[wildcards.sample]['p5_range'],
+    i7 = lambda wildcards: sample_info.loc[wildcards.sample]['p7_range'],
+    pbsName="{wildcard.sample}.L{wildcards.lane}"
+  shell:
+    "ATACdemultiplex  "
+               "-fastq_R1 {input.R1} "
+               "-fastq_R2 {input.R2} "
+               "-fastq_I1 {input.I1} "
+               "-fastq_I2 {input.I2} "
+               "-output_tag_name {params.name} "
+               "-max_nb_reads 0 "
+               "--nbThreads {threads} "
+               "-max_nb_mistake {params.nb_mistake} "
+               "-shift_p5 0 "
+               "-output_path {params.out_path} "
+               "-write_logs  "
+               "-plate_size 96 "
+               "-i5_ranges {params.i5} "
+               "-p7_ranges {params.i7} "
+               "-index_no_replicate {input.indexF}"
+
+#    " echo 'test' > {output.R2};"
+
+
+

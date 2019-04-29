@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#PBS -V
+#PBS -l walltime=12:00:00
+#PBS -m a
+#PBS -A ren-group
+#PBS -j oe
+
+# properties = {properties}
+module load R
+module load picard
+module load bowtie2
+unset PYTHONPATH
+export PATH=:$PATH:/projects/ps-renlab/share/bin
+export R_LIBS=/home/shz254/R_LIB:$R_LIBS
+{exec_job}
+
+

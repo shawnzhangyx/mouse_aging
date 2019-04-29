@@ -1,0 +1,23 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	1	combine_demulti_fastq_files
+	1	demultiplex
+	1	require_demulti_fastq_files
+	3
+
+[Fri Apr 12 16:55:37 2019]
+rule demultiplex:
+    input: ../../scripts/pre_processing/barcodes_nextSeq_comp.txt, fastq.raw/180828_NB501692/Undetermined_S0_L001_R1_001.fastq.gz, fastq.raw/180828_NB501692/Undetermined_S0_L001_R2_001.fastq.gz, fastq.raw/180828_NB501692/Undetermined_S0_L001_I1_001.fastq.gz, fastq.raw/180828_NB501692/Undetermined_S0_L001_I2_001.fastq.gz
+    output: fastq.demultiplex/DH.03.rep1/L1/Undetermined_S0_L001_R1_001_DH.03.rep1.demultiplexed.R1.repl1.fastq.gz, fastq.demultiplex/DH.03.rep1/L1/Undetermined_S0_L001_R2_001_DH.03.rep1.demultiplexed.R2.repl1.fastq.gz
+    jobid: 6
+    wildcards: sample=DH.03.rep1, lane=1
+    threads: 8
+
+ATACdemultiplex  -fastq_R1 fastq.raw/180828_NB501692/Undetermined_S0_L001_R1_001.fastq.gz -fastq_R2 fastq.raw/180828_NB501692/Undetermined_S0_L001_R2_001.fastq.gz -fastq_I1 fastq.raw/180828_NB501692/Undetermined_S0_L001_I1_001.fastq.gz -fastq_I2 fastq.raw/180828_NB501692/Undetermined_S0_L001_I2_001.fastq.gz -output_tag_name DH.03.rep1 -max_nb_reads 0 --nbThreads 8 -max_nb_mistake 2 -shift_p5 0 -output_path fastq.demultiplex/DH.03.rep1/L1 -write_logs  -plate_size 96 -i5_ranges 1-768 -p7_ranges 1-96 -index_no_replicate ../../scripts/pre_processing/barcodes_nextSeq_comp.txt
+Submitted job 6 with external jobid '15080449.tscc-mgr.local'.
+Terminating processes on user request, this might take some time.
+Will exit after finishing currently running jobs.
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/pre_processing/.snakemake/log/2019-04-12T165536.356972.snakemake.log

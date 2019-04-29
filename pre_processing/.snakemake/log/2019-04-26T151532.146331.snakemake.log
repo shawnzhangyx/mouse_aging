@@ -1,0 +1,104 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	6	filter_bam
+	1	require_filter_bam
+	7
+
+[Fri Apr 26 15:15:34 2019]
+rule filter_bam:
+    input: bam.dedup/HT_18_rep1/HT_18_rep1.dedup.bam
+    output: bam.filter/HT_18_rep1/HT_18_rep1.filter.bam
+    jobid: 6
+    wildcards: sample=HT_18_rep1
+
+samtools view -h bam.dedup/HT_18_rep1/HT_18_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000) {print $0} }'|  samtools view -bS > bam.filter/HT_18_rep1/HT_18_rep1.filter.bam 
+Submitted job 6 with external jobid '15179659.tscc-mgr.local'.
+
+[Fri Apr 26 15:15:40 2019]
+rule filter_bam:
+    input: bam.dedup/HT_18_rep2/HT_18_rep2.dedup.bam
+    output: bam.filter/HT_18_rep2/HT_18_rep2.filter.bam
+    jobid: 1
+    wildcards: sample=HT_18_rep2
+
+samtools view -h bam.dedup/HT_18_rep2/HT_18_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000) {print $0} }'|  samtools view -bS > bam.filter/HT_18_rep2/HT_18_rep2.filter.bam 
+Submitted job 1 with external jobid '15179660.tscc-mgr.local'.
+
+[Fri Apr 26 15:15:40 2019]
+rule filter_bam:
+    input: bam.dedup/HT_03_rep1/HT_03_rep1.dedup.bam
+    output: bam.filter/HT_03_rep1/HT_03_rep1.filter.bam
+    jobid: 4
+    wildcards: sample=HT_03_rep1
+
+samtools view -h bam.dedup/HT_03_rep1/HT_03_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000) {print $0} }'|  samtools view -bS > bam.filter/HT_03_rep1/HT_03_rep1.filter.bam 
+Submitted job 4 with external jobid '15179661.tscc-mgr.local'.
+
+[Fri Apr 26 15:15:40 2019]
+rule filter_bam:
+    input: bam.dedup/HT_10_rep2/HT_10_rep2.dedup.bam
+    output: bam.filter/HT_10_rep2/HT_10_rep2.filter.bam
+    jobid: 3
+    wildcards: sample=HT_10_rep2
+
+samtools view -h bam.dedup/HT_10_rep2/HT_10_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000) {print $0} }'|  samtools view -bS > bam.filter/HT_10_rep2/HT_10_rep2.filter.bam 
+Submitted job 3 with external jobid '15179662.tscc-mgr.local'.
+
+[Fri Apr 26 15:15:41 2019]
+rule filter_bam:
+    input: bam.dedup/HT_03_rep2/HT_03_rep2.dedup.bam
+    output: bam.filter/HT_03_rep2/HT_03_rep2.filter.bam
+    jobid: 2
+    wildcards: sample=HT_03_rep2
+
+samtools view -h bam.dedup/HT_03_rep2/HT_03_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000) {print $0} }'|  samtools view -bS > bam.filter/HT_03_rep2/HT_03_rep2.filter.bam 
+Submitted job 2 with external jobid '15179663.tscc-mgr.local'.
+
+[Fri Apr 26 15:15:41 2019]
+rule filter_bam:
+    input: bam.dedup/HT_10_rep1/HT_10_rep1.dedup.bam
+    output: bam.filter/HT_10_rep1/HT_10_rep1.filter.bam
+    jobid: 5
+    wildcards: sample=HT_10_rep1
+
+samtools view -h bam.dedup/HT_10_rep1/HT_10_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000) {print $0} }'|  samtools view -bS > bam.filter/HT_10_rep1/HT_10_rep1.filter.bam 
+Submitted job 5 with external jobid '15179664.tscc-mgr.local'.
+[Fri Apr 26 15:29:35 2019]
+Finished job 4.
+1 of 7 steps (14%) done
+[Fri Apr 26 15:35:15 2019]
+Finished job 6.
+2 of 7 steps (29%) done
+[Fri Apr 26 15:41:56 2019]
+Finished job 5.
+3 of 7 steps (43%) done
+[Fri Apr 26 15:44:26 2019]
+Finished job 3.
+4 of 7 steps (57%) done
+[Fri Apr 26 15:47:06 2019]
+Finished job 2.
+5 of 7 steps (71%) done
+[Fri Apr 26 16:00:37 2019]
+Finished job 1.
+6 of 7 steps (86%) done
+
+[Fri Apr 26 16:00:37 2019]
+localrule require_filter_bam:
+    input: bam.filter/HT_18_rep2/HT_18_rep2.filter.bam, bam.filter/HT_03_rep2/HT_03_rep2.filter.bam, bam.filter/HT_10_rep2/HT_10_rep2.filter.bam, bam.filter/HT_03_rep1/HT_03_rep1.filter.bam, bam.filter/HT_10_rep1/HT_10_rep1.filter.bam, bam.filter/HT_18_rep1/HT_18_rep1.filter.bam
+    output: bam.filter.files.list.txt
+    jobid: 0
+
+ls -lh bam.filter/HT_18_rep2/HT_18_rep2.filter.bam bam.filter/HT_03_rep2/HT_03_rep2.filter.bam bam.filter/HT_10_rep2/HT_10_rep2.filter.bam bam.filter/HT_03_rep1/HT_03_rep1.filter.bam bam.filter/HT_10_rep1/HT_10_rep1.filter.bam bam.filter/HT_18_rep1/HT_18_rep1.filter.bam > bam.filter.files.list.txt
+[Fri Apr 26 16:00:37 2019]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/pre_processing/.snakemake/log/2019-04-26T151532.146331.snakemake.log
