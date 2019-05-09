@@ -5,14 +5,11 @@ rank=$2
 
 out_path=../../analysis/Yang_NMF_method/${tissue}/
 
-mkdir $out_path/R$rank/bams $out_path/R$rank/bigWig.cluster $out_path/R$rank/bigWig.cluster_age $out_path/R$rank/bigWig.cluster_age_rep
+mkdir $out_path/R$rank/bams $out_path/R$rank/bigWig.cluster $out_path/R$rank/bigWig.cluster_age bigWig.cluster_age_rep
 
 python split_bam_files.py \
-  --tissue $tissue \
-  --bam-prefix ../../data/snATAC/bam.filter/  \
-  --bam-suffix .filter.bam \
-  --statH $out_path/R$rank/${tissue}.R$rank.barcode.cluster.stage.rep.txt \
-  -o $out_path/R$rank/bams/${tissue}
+  --bam ../../data/snATAC/bam_bowtie2_Olivier/filter_bam/${tissue} \
+    --statH $out_path/R$rank/${tissue}.R$rank.barcode.cluster.stage.rep.txt -o $out_path/R$rank/bams/${tissue}
 
 ## sort and generate bigWig for each file. 
 
@@ -22,13 +19,11 @@ for i in $(seq 1 $rank); do
       for rep in rep1 rep2; do 
     samtools sort -m 4G $out_path/R$rank/bams/${tissue}.metacell_${i}.$age.$rep.bam -o $out_path/R$rank/bams/${tissue}.metacell_${i}.$age.$rep.sorted.bam
     samtools index $out_path/R$rank/bams/${tissue}.metacell_${i}.$age.$rep.sorted.bam
-    bamCoverage --bam $out_path/R$rank/bams/${tissue}.metacell_${i}.$age.$rep.sorted.bam --outFileFormat bigwig --outFileName $out_path/R$rank/bigWig.cluster_age_rep/${tissue}.metacell_${i}.$age.$rep.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4 
+    bamCoverage --bam $out_path/R$rank/bams/${tissue}.metacell_${i}.$age.$rep.sorted.bam --outFileFormat bigwig --outFileName $out_path/R$rank/bigWig.cluster_age_rep/${tissue}.metacell_${i}.$age.$rep.sorted.rpkm.bw --binSize 25 --normalizeUsingRPKM -p 4 
       done
     done
     ) & 
 done
-
-wait
 
 
 # merge the files in the same cluster
@@ -45,7 +40,7 @@ for i in $(seq 1 $rank); do
 wait
 
 for i in $(seq 1 $rank); do
-    bamCoverage --bam $out_path/R$rank/bams/${tissue}.metacell_${i}.sorted.bam --outFileFormat bigwig --outFileName $out_path/R$rank/bigWig.cluster/${tissue}.metacell_${i}.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM
+    bamCoverage --bam $out_path/R$rank/bams/${tissue}.metacell_${i}.sorted.bam --outFileFormat bigwig --outFileName $out_path/R$rank/bigWig.cluster/${tissue}.metacell_${i}.sorted.rpkm.bw --binSize 25 --normalizeUsingRPKM
     done
 
 
@@ -68,7 +63,7 @@ wait
 
 for i in $(seq 1 $rank); do
     for age in 03 10 18; do
-    bamCoverage --bam $out_path/R$rank/bams/${tissue}.metacell_${i}.$age.sorted.bam --outFileFormat bigwig --outFileName $out_path/R$rank/bigWig.cluster_age/${tissue}.metacell_${i}.$age.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM
+    bamCoverage --bam $out_path/R$rank/bams/${tissue}.metacell_${i}.$age.sorted.bam --outFileFormat bigwig --outFileName $out_path/R$rank/bigWig.cluster_age/${tissue}.metacell_${i}.$age.sorted.rpkm.bw --binSize 25 --normalizeUsingRPKM
     done
 done
 

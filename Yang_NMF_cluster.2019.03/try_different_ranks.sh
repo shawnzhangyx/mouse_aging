@@ -11,9 +11,9 @@ mkdir $out_path
 for rank in $(seq ${MIN_R} ${MAX_R}); do 
   echo $rank
   mkdir $out_path/R${rank}
-python snATAC_YLee/snATAC.nmf.lite.py -i $mat_path/${tissue}.merged.npz \
-      -x $mat_path/${tissue}.merged.xgi \
-      -y $mat_path/${tissue}.merged.ygi \
+python snATAC_YLee/snATAC.nmf.lite.py -i $mat_path/${tissue}.all.npz \
+      -x $mat_path/${tissue}.all.xgi \
+      -y $mat_path/${tissue}.all.ygi \
       -o $out_path/R${rank}/${tissue}.R${rank} \
       -r $rank -n 1 -p 0.05 -c 500 > $out_path/R${rank}/${tissue}.R${rank}.log &
 done 

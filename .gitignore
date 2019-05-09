@@ -1,3 +1,7 @@
+pre_processing/.snakemake
+read_to_matrix/.snakemake
+snapATAC/.snakemake
+
 .Rproj.user
 .Rhistory
 .RData

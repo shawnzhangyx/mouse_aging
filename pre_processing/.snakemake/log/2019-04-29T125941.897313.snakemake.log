@@ -1432,3 +1432,1214 @@ rule filter_bam:
 
 samtools view -h -f 2 bam.dedup/LM_03_rep2/LM_03_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
   { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/LM_03_rep2/LM_03_rep2.filter.bam 
+Submitted job 155 with external jobid '15202747.tscc-mgr.local'.
+[Mon Apr 29 16:20:42 2019]
+Finished job 34.
+76 of 217 steps (35%) done
+[Mon Apr 29 16:21:28 2019]
+Finished job 211.
+77 of 217 steps (35%) done
+
+[Mon Apr 29 16:21:28 2019]
+rule nsort_bam:
+    input: bam.raw/DH_18_rep2/DH_18_rep2.raw.bam
+    output: bam.nsort/DH_18_rep2/DH_18_rep2.picard.nsort.bam
+    log: bam.nsort/log/DH_18_rep2.nsort.log
+    jobid: 187
+    wildcards: sample=DH_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_18_rep2/DH_18_rep2.raw.bam         O=bam.nsort/DH_18_rep2/DH_18_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/DH_18_rep2.nsort.log
+Submitted job 187 with external jobid '15202748.tscc-mgr.local'.
+
+[Mon Apr 29 16:21:34 2019]
+rule count_barcode:
+    input: bam.raw/DH_18_rep2/DH_18_rep2.raw.bam
+    output: bam.raw/DH_18_rep2/DH_18_rep2.raw.barcode.cnts.txt
+    jobid: 19
+    wildcards: dir=bam.raw/DH_18_rep2, sample=DH_18_rep2.raw
+
+samtools view bam.raw/DH_18_rep2/DH_18_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/DH_18_rep2/DH_18_rep2.raw.barcode.cnts.txt
+    
+Submitted job 19 with external jobid '15202749.tscc-mgr.local'.
+
+[Mon Apr 29 16:21:34 2019]
+rule csort_bam:
+    input: bam.raw/DH_18_rep2/DH_18_rep2.raw.bam
+    output: bam.csort/DH_18_rep2/DH_18_rep2.picard.csort.bam
+    log: bam.csort/log/DH_18_rep2.csort.log
+    jobid: 259
+    wildcards: sample=DH_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_18_rep2/DH_18_rep2.raw.bam         O=bam.csort/DH_18_rep2/DH_18_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_18_rep2.csort.log
+Submitted job 259 with external jobid '15202750.tscc-mgr.local'.
+[Mon Apr 29 16:21:40 2019]
+Finished job 23.
+78 of 217 steps (36%) done
+[Mon Apr 29 16:29:17 2019]
+Finished job 59.
+79 of 217 steps (36%) done
+[Mon Apr 29 16:31:07 2019]
+Finished job 165.
+80 of 217 steps (37%) done
+
+[Mon Apr 29 16:31:07 2019]
+rule filter_bam:
+    input: bam.dedup/FC_10_rep1/FC_10_rep1.dedup.bam
+    output: bam.filter/FC_10_rep1/FC_10_rep1.filter.bam
+    jobid: 141
+    wildcards: sample=FC_10_rep1
+
+samtools view -h -f 2 bam.dedup/FC_10_rep1/FC_10_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/FC_10_rep1/FC_10_rep1.filter.bam 
+Submitted job 141 with external jobid '15202788.tscc-mgr.local'.
+
+[Mon Apr 29 16:31:13 2019]
+rule count_barcode:
+    input: bam.dedup/FC_10_rep1/FC_10_rep1.dedup.bam
+    output: bam.dedup/FC_10_rep1/FC_10_rep1.dedup.barcode.cnts.txt
+    jobid: 45
+    wildcards: dir=bam.dedup/FC_10_rep1, sample=FC_10_rep1.dedup
+
+samtools view bam.dedup/FC_10_rep1/FC_10_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/FC_10_rep1/FC_10_rep1.dedup.barcode.cnts.txt
+    
+Submitted job 45 with external jobid '15202789.tscc-mgr.local'.
+[Mon Apr 29 16:32:55 2019]
+Finished job 155.
+81 of 217 steps (37%) done
+
+[Mon Apr 29 16:32:55 2019]
+rule sort_filter_bam:
+    input: bam.filter/LM_03_rep2/LM_03_rep2.filter.bam
+    output: bam.filter.sort/LM_03_rep2/LM_03_rep2.filter.csort.bam
+    jobid: 131
+    wildcards: sample=LM_03_rep2
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/LM_03_rep2/LM_03_rep2.filter.bam -o bam.filter.sort/LM_03_rep2/LM_03_rep2.filter.csort.bam;samtools index bam.filter.sort/LM_03_rep2/LM_03_rep2.filter.csort.bam
+Submitted job 131 with external jobid '15202801.tscc-mgr.local'.
+
+[Mon Apr 29 16:33:02 2019]
+rule count_barcode:
+    input: bam.filter/LM_03_rep2/LM_03_rep2.filter.bam
+    output: bam.filter/LM_03_rep2/LM_03_rep2.filter.barcode.cnts.txt
+    jobid: 83
+    wildcards: dir=bam.filter/LM_03_rep2, sample=LM_03_rep2.filter
+
+samtools view bam.filter/LM_03_rep2/LM_03_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/LM_03_rep2/LM_03_rep2.filter.barcode.cnts.txt
+    
+Submitted job 83 with external jobid '15202805.tscc-mgr.local'.
+[Mon Apr 29 16:37:08 2019]
+Error in rule sort_filter_bam:
+    jobid: 131
+    output: bam.filter.sort/LM_03_rep2/LM_03_rep2.filter.csort.bam
+    cluster_jobid: 15202801.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 16:37:55 2019]
+Finished job 274.
+82 of 217 steps (38%) done
+
+[Mon Apr 29 16:37:55 2019]
+rule dedup_bam:
+    input: bam.csort/LM_18_rep1/LM_18_rep1.picard.csort.bam
+    output: bam.dedup/LM_18_rep1/LM_18_rep1.dedup.bam
+    log: bam.dedup/LM_18_rep1/LM_18_rep1.dedup.log
+    jobid: 178
+    wildcards: sample=LM_18_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_18_rep1     INPUT=bam.csort/LM_18_rep1/LM_18_rep1.picard.csort.bam OUTPUT= bam.dedup/LM_18_rep1/LM_18_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_18_rep1/LM_18_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_18_rep1/LM_18_rep1.dedup.log
+Submitted job 178 with external jobid '15202818.tscc-mgr.local'.
+[Mon Apr 29 16:39:45 2019]
+Finished job 83.
+83 of 217 steps (38%) done
+[Mon Apr 29 16:40:29 2019]
+Finished job 224.
+84 of 217 steps (39%) done
+
+[Mon Apr 29 16:40:29 2019]
+rule nsort_bam:
+    input: bam.raw/LM_03_rep1/LM_03_rep1.raw.bam
+    output: bam.nsort/LM_03_rep1/LM_03_rep1.picard.nsort.bam
+    log: bam.nsort/log/LM_03_rep1.nsort.log
+    jobid: 200
+    wildcards: sample=LM_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_03_rep1/LM_03_rep1.raw.bam         O=bam.nsort/LM_03_rep1/LM_03_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/LM_03_rep1.nsort.log
+Submitted job 200 with external jobid '15202830.tscc-mgr.local'.
+
+[Mon Apr 29 16:40:35 2019]
+rule csort_bam:
+    input: bam.raw/LM_03_rep1/LM_03_rep1.raw.bam
+    output: bam.csort/LM_03_rep1/LM_03_rep1.picard.csort.bam
+    log: bam.csort/log/LM_03_rep1.csort.log
+    jobid: 272
+    wildcards: sample=LM_03_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_03_rep1/LM_03_rep1.raw.bam         O=bam.csort/LM_03_rep1/LM_03_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_03_rep1.csort.log
+Submitted job 272 with external jobid '15202832.tscc-mgr.local'.
+
+[Mon Apr 29 16:40:35 2019]
+rule count_barcode:
+    input: bam.raw/LM_03_rep1/LM_03_rep1.raw.bam
+    output: bam.raw/LM_03_rep1/LM_03_rep1.raw.barcode.cnts.txt
+    jobid: 32
+    wildcards: dir=bam.raw/LM_03_rep1, sample=LM_03_rep1.raw
+
+samtools view bam.raw/LM_03_rep1/LM_03_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/LM_03_rep1/LM_03_rep1.raw.barcode.cnts.txt
+    
+Submitted job 32 with external jobid '15202833.tscc-mgr.local'.
+[Mon Apr 29 16:43:16 2019]
+Finished job 202.
+85 of 217 steps (39%) done
+[Mon Apr 29 16:43:16 2019]
+Finished job 210.
+86 of 217 steps (40%) done
+
+[Mon Apr 29 16:43:16 2019]
+rule csort_bam:
+    input: bam.raw/DH_10_rep2/DH_10_rep2.raw.bam
+    output: bam.csort/DH_10_rep2/DH_10_rep2.picard.csort.bam
+    log: bam.csort/log/DH_10_rep2.csort.log
+    jobid: 258
+    wildcards: sample=DH_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_10_rep2/DH_10_rep2.raw.bam         O=bam.csort/DH_10_rep2/DH_10_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/DH_10_rep2.csort.log
+[Mon Apr 29 16:43:17 2019]
+Finished job 19.
+87 of 217 steps (40%) done
+Submitted job 258 with external jobid '15202847.tscc-mgr.local'.
+
+[Mon Apr 29 16:43:22 2019]
+rule nsort_bam:
+    input: bam.raw/DH_10_rep2/DH_10_rep2.raw.bam
+    output: bam.nsort/DH_10_rep2/DH_10_rep2.picard.nsort.bam
+    log: bam.nsort/log/DH_10_rep2.nsort.log
+    jobid: 186
+    wildcards: sample=DH_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/DH_10_rep2/DH_10_rep2.raw.bam         O=bam.nsort/DH_10_rep2/DH_10_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/DH_10_rep2.nsort.log
+Submitted job 186 with external jobid '15202848.tscc-mgr.local'.
+
+[Mon Apr 29 16:43:23 2019]
+rule count_barcode:
+    input: bam.raw/DH_10_rep2/DH_10_rep2.raw.bam
+    output: bam.raw/DH_10_rep2/DH_10_rep2.raw.barcode.cnts.txt
+    jobid: 18
+    wildcards: dir=bam.raw/DH_10_rep2, sample=DH_10_rep2.raw
+
+samtools view bam.raw/DH_10_rep2/DH_10_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/DH_10_rep2/DH_10_rep2.raw.barcode.cnts.txt
+    
+Submitted job 18 with external jobid '15202850.tscc-mgr.local'.
+[Mon Apr 29 16:45:29 2019]
+Finished job 45.
+88 of 217 steps (41%) done
+[Mon Apr 29 16:46:16 2019]
+Finished job 216.
+89 of 217 steps (41%) done
+
+[Mon Apr 29 16:46:16 2019]
+rule csort_bam:
+    input: bam.raw/FC_10_rep2/FC_10_rep2.raw.bam
+    output: bam.csort/FC_10_rep2/FC_10_rep2.picard.csort.bam
+    log: bam.csort/log/FC_10_rep2.csort.log
+    jobid: 264
+    wildcards: sample=FC_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_10_rep2/FC_10_rep2.raw.bam         O=bam.csort/FC_10_rep2/FC_10_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_10_rep2.csort.log
+Submitted job 264 with external jobid '15202882.tscc-mgr.local'.
+
+[Mon Apr 29 16:46:23 2019]
+rule nsort_bam:
+    input: bam.raw/FC_10_rep2/FC_10_rep2.raw.bam
+    output: bam.nsort/FC_10_rep2/FC_10_rep2.picard.nsort.bam
+    log: bam.nsort/log/FC_10_rep2.nsort.log
+    jobid: 192
+    wildcards: sample=FC_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_10_rep2/FC_10_rep2.raw.bam         O=bam.nsort/FC_10_rep2/FC_10_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/FC_10_rep2.nsort.log
+Submitted job 192 with external jobid '15202883.tscc-mgr.local'.
+
+[Mon Apr 29 16:46:23 2019]
+rule count_barcode:
+    input: bam.raw/FC_10_rep2/FC_10_rep2.raw.bam
+    output: bam.raw/FC_10_rep2/FC_10_rep2.raw.barcode.cnts.txt
+    jobid: 24
+    wildcards: dir=bam.raw/FC_10_rep2, sample=FC_10_rep2.raw
+
+samtools view bam.raw/FC_10_rep2/FC_10_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/FC_10_rep2/FC_10_rep2.raw.barcode.cnts.txt
+    
+Submitted job 24 with external jobid '15202884.tscc-mgr.local'.
+[Mon Apr 29 16:49:05 2019]
+Finished job 217.
+90 of 217 steps (41%) done
+
+[Mon Apr 29 16:49:05 2019]
+rule nsort_bam:
+    input: bam.raw/FC_18_rep2/FC_18_rep2.raw.bam
+    output: bam.nsort/FC_18_rep2/FC_18_rep2.picard.nsort.bam
+    log: bam.nsort/log/FC_18_rep2.nsort.log
+    jobid: 193
+    wildcards: sample=FC_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_18_rep2/FC_18_rep2.raw.bam         O=bam.nsort/FC_18_rep2/FC_18_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/FC_18_rep2.nsort.log
+[Mon Apr 29 16:49:05 2019]
+Finished job 263.
+91 of 217 steps (42%) done
+Submitted job 193 with external jobid '15202897.tscc-mgr.local'.
+
+[Mon Apr 29 16:49:11 2019]
+rule csort_bam:
+    input: bam.raw/FC_18_rep2/FC_18_rep2.raw.bam
+    output: bam.csort/FC_18_rep2/FC_18_rep2.picard.csort.bam
+    log: bam.csort/log/FC_18_rep2.csort.log
+    jobid: 265
+    wildcards: sample=FC_18_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/FC_18_rep2/FC_18_rep2.raw.bam         O=bam.csort/FC_18_rep2/FC_18_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/FC_18_rep2.csort.log
+Submitted job 265 with external jobid '15202902.tscc-mgr.local'.
+
+[Mon Apr 29 16:49:11 2019]
+rule count_barcode:
+    input: bam.raw/FC_18_rep2/FC_18_rep2.raw.bam
+    output: bam.raw/FC_18_rep2/FC_18_rep2.raw.barcode.cnts.txt
+    jobid: 25
+    wildcards: dir=bam.raw/FC_18_rep2, sample=FC_18_rep2.raw
+
+samtools view bam.raw/FC_18_rep2/FC_18_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/FC_18_rep2/FC_18_rep2.raw.barcode.cnts.txt
+    
+Submitted job 25 with external jobid '15202903.tscc-mgr.local'.
+
+[Mon Apr 29 16:49:11 2019]
+rule dedup_bam:
+    input: bam.csort/FC_03_rep2/FC_03_rep2.picard.csort.bam
+    output: bam.dedup/FC_03_rep2/FC_03_rep2.dedup.bam
+    log: bam.dedup/FC_03_rep2/FC_03_rep2.dedup.log
+    jobid: 167
+    wildcards: sample=FC_03_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_03_rep2     INPUT=bam.csort/FC_03_rep2/FC_03_rep2.picard.csort.bam OUTPUT= bam.dedup/FC_03_rep2/FC_03_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_03_rep2/FC_03_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_03_rep2/FC_03_rep2.dedup.log
+Submitted job 167 with external jobid '15202905.tscc-mgr.local'.
+[Mon Apr 29 16:49:41 2019]
+Finished job 277.
+92 of 217 steps (42%) done
+
+[Mon Apr 29 16:49:41 2019]
+rule dedup_bam:
+    input: bam.csort/LM_18_rep2/LM_18_rep2.picard.csort.bam
+    output: bam.dedup/LM_18_rep2/LM_18_rep2.dedup.bam
+    log: bam.dedup/LM_18_rep2/LM_18_rep2.dedup.log
+    jobid: 181
+    wildcards: sample=LM_18_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_18_rep2     INPUT=bam.csort/LM_18_rep2/LM_18_rep2.picard.csort.bam OUTPUT= bam.dedup/LM_18_rep2/LM_18_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_18_rep2/LM_18_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_18_rep2/LM_18_rep2.dedup.log
+Submitted job 181 with external jobid '15202911.tscc-mgr.local'.
+[Mon Apr 29 16:50:30 2019]
+Error in rule nsort_bam:
+    jobid: 186
+    output: bam.nsort/DH_10_rep2/DH_10_rep2.picard.nsort.bam
+    log: bam.nsort/log/DH_10_rep2.nsort.log
+    cluster_jobid: 15202848.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 16:52:17 2019]
+Finished job 191.
+93 of 217 steps (43%) done
+[Mon Apr 29 16:53:05 2019]
+Finished job 257.
+94 of 217 steps (43%) done
+
+[Mon Apr 29 16:53:05 2019]
+rule dedup_bam:
+    input: bam.csort/DH_03_rep2/DH_03_rep2.picard.csort.bam
+    output: bam.dedup/DH_03_rep2/DH_03_rep2.dedup.bam
+    log: bam.dedup/DH_03_rep2/DH_03_rep2.dedup.log
+    jobid: 161
+    wildcards: sample=DH_03_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_03_rep2     INPUT=bam.csort/DH_03_rep2/DH_03_rep2.picard.csort.bam OUTPUT= bam.dedup/DH_03_rep2/DH_03_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_03_rep2/DH_03_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_03_rep2/DH_03_rep2.dedup.log
+[Mon Apr 29 16:53:05 2019]
+Finished job 185.
+95 of 217 steps (44%) done
+Submitted job 161 with external jobid '15202919.tscc-mgr.local'.
+[Mon Apr 29 16:55:55 2019]
+Finished job 205.
+96 of 217 steps (44%) done
+[Mon Apr 29 16:58:42 2019]
+Finished job 32.
+97 of 217 steps (45%) done
+[Mon Apr 29 16:58:43 2019]
+Error in rule dedup_bam:
+    jobid: 161
+    output: bam.dedup/DH_03_rep2/DH_03_rep2.dedup.bam
+    log: bam.dedup/DH_03_rep2/DH_03_rep2.dedup.log
+    cluster_jobid: 15202919.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 17:01:29 2019]
+Finished job 141.
+98 of 217 steps (45%) done
+
+[Mon Apr 29 17:01:29 2019]
+rule sort_filter_bam:
+    input: bam.filter/FC_10_rep1/FC_10_rep1.filter.bam
+    output: bam.filter.sort/FC_10_rep1/FC_10_rep1.filter.csort.bam
+    jobid: 117
+    wildcards: sample=FC_10_rep1
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/FC_10_rep1/FC_10_rep1.filter.bam -o bam.filter.sort/FC_10_rep1/FC_10_rep1.filter.csort.bam;samtools index bam.filter.sort/FC_10_rep1/FC_10_rep1.filter.csort.bam
+Submitted job 117 with external jobid '15202954.tscc-mgr.local'.
+
+[Mon Apr 29 17:01:36 2019]
+rule count_barcode:
+    input: bam.filter/FC_10_rep1/FC_10_rep1.filter.bam
+    output: bam.filter/FC_10_rep1/FC_10_rep1.filter.barcode.cnts.txt
+    jobid: 69
+    wildcards: dir=bam.filter/FC_10_rep1, sample=FC_10_rep1.filter
+
+samtools view bam.filter/FC_10_rep1/FC_10_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/FC_10_rep1/FC_10_rep1.filter.barcode.cnts.txt
+    
+Submitted job 69 with external jobid '15202955.tscc-mgr.local'.
+[Mon Apr 29 17:04:26 2019]
+Error in rule sort_filter_bam:
+    jobid: 117
+    output: bam.filter.sort/FC_10_rep1/FC_10_rep1.filter.csort.bam
+    cluster_jobid: 15202954.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 17:10:41 2019]
+Finished job 18.
+99 of 217 steps (46%) done
+[Mon Apr 29 17:10:42 2019]
+Finished job 25.
+100 of 217 steps (46%) done
+[Mon Apr 29 17:11:25 2019]
+Finished job 259.
+101 of 217 steps (47%) done
+
+[Mon Apr 29 17:11:25 2019]
+rule dedup_bam:
+    input: bam.csort/DH_18_rep2/DH_18_rep2.picard.csort.bam
+    output: bam.dedup/DH_18_rep2/DH_18_rep2.dedup.bam
+    log: bam.dedup/DH_18_rep2/DH_18_rep2.dedup.log
+    jobid: 163
+    wildcards: sample=DH_18_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_18_rep2     INPUT=bam.csort/DH_18_rep2/DH_18_rep2.picard.csort.bam OUTPUT= bam.dedup/DH_18_rep2/DH_18_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_18_rep2/DH_18_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_18_rep2/DH_18_rep2.dedup.log
+Submitted job 163 with external jobid '15203197.tscc-mgr.local'.
+[Mon Apr 29 17:13:17 2019]
+Finished job 69.
+102 of 217 steps (47%) done
+[Mon Apr 29 17:15:06 2019]
+Finished job 187.
+103 of 217 steps (47%) done
+[Mon Apr 29 17:15:07 2019]
+Finished job 24.
+104 of 217 steps (48%) done
+[Mon Apr 29 17:18:02 2019]
+Finished job 178.
+105 of 217 steps (48%) done
+
+[Mon Apr 29 17:18:02 2019]
+rule filter_bam:
+    input: bam.dedup/LM_18_rep1/LM_18_rep1.dedup.bam
+    output: bam.filter/LM_18_rep1/LM_18_rep1.filter.bam
+    jobid: 154
+    wildcards: sample=LM_18_rep1
+
+samtools view -h -f 2 bam.dedup/LM_18_rep1/LM_18_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/LM_18_rep1/LM_18_rep1.filter.bam 
+Submitted job 154 with external jobid '15203240.tscc-mgr.local'.
+
+[Mon Apr 29 17:18:09 2019]
+rule count_barcode:
+    input: bam.dedup/LM_18_rep1/LM_18_rep1.dedup.bam
+    output: bam.dedup/LM_18_rep1/LM_18_rep1.dedup.barcode.cnts.txt
+    jobid: 58
+    wildcards: dir=bam.dedup/LM_18_rep1, sample=LM_18_rep1.dedup
+
+samtools view bam.dedup/LM_18_rep1/LM_18_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/LM_18_rep1/LM_18_rep1.dedup.barcode.cnts.txt
+    
+Submitted job 58 with external jobid '15203242.tscc-mgr.local'.
+[Mon Apr 29 17:19:53 2019]
+Finished job 272.
+106 of 217 steps (49%) done
+
+[Mon Apr 29 17:19:53 2019]
+rule dedup_bam:
+    input: bam.csort/LM_03_rep1/LM_03_rep1.picard.csort.bam
+    output: bam.dedup/LM_03_rep1/LM_03_rep1.dedup.bam
+    log: bam.dedup/LM_03_rep1/LM_03_rep1.dedup.log
+    jobid: 176
+    wildcards: sample=LM_03_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_03_rep1     INPUT=bam.csort/LM_03_rep1/LM_03_rep1.picard.csort.bam OUTPUT= bam.dedup/LM_03_rep1/LM_03_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_03_rep1/LM_03_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_03_rep1/LM_03_rep1.dedup.log
+Submitted job 176 with external jobid '15203249.tscc-mgr.local'.
+[Mon Apr 29 17:22:51 2019]
+Error in rule dedup_bam:
+    jobid: 176
+    output: bam.dedup/LM_03_rep1/LM_03_rep1.dedup.bam
+    log: bam.dedup/LM_03_rep1/LM_03_rep1.dedup.log
+    cluster_jobid: 15203249.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 17:25:35 2019]
+Finished job 200.
+107 of 217 steps (49%) done
+[Mon Apr 29 17:25:36 2019]
+Finished job 58.
+108 of 217 steps (50%) done
+[Mon Apr 29 17:28:20 2019]
+Finished job 181.
+109 of 217 steps (50%) done
+
+[Mon Apr 29 17:28:20 2019]
+rule count_barcode:
+    input: bam.dedup/LM_18_rep2/LM_18_rep2.dedup.bam
+    output: bam.dedup/LM_18_rep2/LM_18_rep2.dedup.barcode.cnts.txt
+    jobid: 61
+    wildcards: dir=bam.dedup/LM_18_rep2, sample=LM_18_rep2.dedup
+
+samtools view bam.dedup/LM_18_rep2/LM_18_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/LM_18_rep2/LM_18_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 61 with external jobid '15203364.tscc-mgr.local'.
+
+[Mon Apr 29 17:28:21 2019]
+rule filter_bam:
+    input: bam.dedup/LM_18_rep2/LM_18_rep2.dedup.bam
+    output: bam.filter/LM_18_rep2/LM_18_rep2.filter.bam
+    jobid: 157
+    wildcards: sample=LM_18_rep2
+
+samtools view -h -f 2 bam.dedup/LM_18_rep2/LM_18_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/LM_18_rep2/LM_18_rep2.filter.bam 
+Submitted job 157 with external jobid '15203365.tscc-mgr.local'.
+[Mon Apr 29 17:33:29 2019]
+Finished job 61.
+110 of 217 steps (51%) done
+[Mon Apr 29 17:34:15 2019]
+Finished job 154.
+111 of 217 steps (51%) done
+
+[Mon Apr 29 17:34:15 2019]
+rule sort_filter_bam:
+    input: bam.filter/LM_18_rep1/LM_18_rep1.filter.bam
+    output: bam.filter.sort/LM_18_rep1/LM_18_rep1.filter.csort.bam
+    jobid: 130
+    wildcards: sample=LM_18_rep1
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/LM_18_rep1/LM_18_rep1.filter.bam -o bam.filter.sort/LM_18_rep1/LM_18_rep1.filter.csort.bam;samtools index bam.filter.sort/LM_18_rep1/LM_18_rep1.filter.csort.bam
+Submitted job 130 with external jobid '15203402.tscc-mgr.local'.
+
+[Mon Apr 29 17:34:21 2019]
+rule count_barcode:
+    input: bam.filter/LM_18_rep1/LM_18_rep1.filter.bam
+    output: bam.filter/LM_18_rep1/LM_18_rep1.filter.barcode.cnts.txt
+    jobid: 82
+    wildcards: dir=bam.filter/LM_18_rep1, sample=LM_18_rep1.filter
+
+samtools view bam.filter/LM_18_rep1/LM_18_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/LM_18_rep1/LM_18_rep1.filter.barcode.cnts.txt
+    
+Submitted job 82 with external jobid '15203403.tscc-mgr.local'.
+[Mon Apr 29 17:34:48 2019]
+Error in rule sort_filter_bam:
+    jobid: 130
+    output: bam.filter.sort/LM_18_rep1/LM_18_rep1.filter.csort.bam
+    cluster_jobid: 15203402.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 17:36:37 2019]
+Finished job 265.
+112 of 217 steps (52%) done
+
+[Mon Apr 29 17:36:37 2019]
+rule dedup_bam:
+    input: bam.csort/FC_18_rep2/FC_18_rep2.picard.csort.bam
+    output: bam.dedup/FC_18_rep2/FC_18_rep2.dedup.bam
+    log: bam.dedup/FC_18_rep2/FC_18_rep2.dedup.log
+    jobid: 169
+    wildcards: sample=FC_18_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_18_rep2     INPUT=bam.csort/FC_18_rep2/FC_18_rep2.picard.csort.bam OUTPUT= bam.dedup/FC_18_rep2/FC_18_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_18_rep2/FC_18_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_18_rep2/FC_18_rep2.dedup.log
+[Mon Apr 29 17:36:37 2019]
+Finished job 167.
+113 of 217 steps (52%) done
+Submitted job 169 with external jobid '15203406.tscc-mgr.local'.
+
+[Mon Apr 29 17:36:43 2019]
+rule filter_bam:
+    input: bam.dedup/FC_03_rep2/FC_03_rep2.dedup.bam
+    output: bam.filter/FC_03_rep2/FC_03_rep2.filter.bam
+    jobid: 143
+    wildcards: sample=FC_03_rep2
+
+samtools view -h -f 2 bam.dedup/FC_03_rep2/FC_03_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/FC_03_rep2/FC_03_rep2.filter.bam 
+Submitted job 143 with external jobid '15203407.tscc-mgr.local'.
+
+[Mon Apr 29 17:36:43 2019]
+rule count_barcode:
+    input: bam.dedup/FC_03_rep2/FC_03_rep2.dedup.bam
+    output: bam.dedup/FC_03_rep2/FC_03_rep2.dedup.barcode.cnts.txt
+    jobid: 47
+    wildcards: dir=bam.dedup/FC_03_rep2, sample=FC_03_rep2.dedup
+
+samtools view bam.dedup/FC_03_rep2/FC_03_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/FC_03_rep2/FC_03_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 47 with external jobid '15203408.tscc-mgr.local'.
+[Mon Apr 29 17:39:33 2019]
+Finished job 157.
+114 of 217 steps (53%) done
+
+[Mon Apr 29 17:39:33 2019]
+rule count_barcode:
+    input: bam.filter/LM_18_rep2/LM_18_rep2.filter.bam
+    output: bam.filter/LM_18_rep2/LM_18_rep2.filter.barcode.cnts.txt
+    jobid: 85
+    wildcards: dir=bam.filter/LM_18_rep2, sample=LM_18_rep2.filter
+
+samtools view bam.filter/LM_18_rep2/LM_18_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/LM_18_rep2/LM_18_rep2.filter.barcode.cnts.txt
+    
+[Mon Apr 29 17:39:33 2019]
+Finished job 225.
+115 of 217 steps (53%) done
+[Mon Apr 29 17:39:33 2019]
+Finished job 193.
+116 of 217 steps (53%) done
+Submitted job 85 with external jobid '15203423.tscc-mgr.local'.
+
+[Mon Apr 29 17:39:39 2019]
+rule sort_filter_bam:
+    input: bam.filter/LM_18_rep2/LM_18_rep2.filter.bam
+    output: bam.filter.sort/LM_18_rep2/LM_18_rep2.filter.csort.bam
+    jobid: 133
+    wildcards: sample=LM_18_rep2
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/LM_18_rep2/LM_18_rep2.filter.bam -o bam.filter.sort/LM_18_rep2/LM_18_rep2.filter.csort.bam;samtools index bam.filter.sort/LM_18_rep2/LM_18_rep2.filter.csort.bam
+Submitted job 133 with external jobid '15203424.tscc-mgr.local'.
+
+[Mon Apr 29 17:39:40 2019]
+rule nsort_bam:
+    input: bam.raw/LM_10_rep1/LM_10_rep1.raw.bam
+    output: bam.nsort/LM_10_rep1/LM_10_rep1.picard.nsort.bam
+    log: bam.nsort/log/LM_10_rep1.nsort.log
+    jobid: 201
+    wildcards: sample=LM_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_10_rep1/LM_10_rep1.raw.bam         O=bam.nsort/LM_10_rep1/LM_10_rep1.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/LM_10_rep1.nsort.log
+Submitted job 201 with external jobid '15203425.tscc-mgr.local'.
+
+[Mon Apr 29 17:39:40 2019]
+rule csort_bam:
+    input: bam.raw/LM_10_rep1/LM_10_rep1.raw.bam
+    output: bam.csort/LM_10_rep1/LM_10_rep1.picard.csort.bam
+    log: bam.csort/log/LM_10_rep1.csort.log
+    jobid: 273
+    wildcards: sample=LM_10_rep1
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_10_rep1/LM_10_rep1.raw.bam         O=bam.csort/LM_10_rep1/LM_10_rep1.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_10_rep1.csort.log
+Submitted job 273 with external jobid '15203426.tscc-mgr.local'.
+
+[Mon Apr 29 17:39:41 2019]
+rule count_barcode:
+    input: bam.raw/LM_10_rep1/LM_10_rep1.raw.bam
+    output: bam.raw/LM_10_rep1/LM_10_rep1.raw.barcode.cnts.txt
+    jobid: 33
+    wildcards: dir=bam.raw/LM_10_rep1, sample=LM_10_rep1.raw
+
+samtools view bam.raw/LM_10_rep1/LM_10_rep1.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/LM_10_rep1/LM_10_rep1.raw.barcode.cnts.txt
+    
+Submitted job 33 with external jobid '15203427.tscc-mgr.local'.
+[Mon Apr 29 17:40:17 2019]
+Finished job 82.
+117 of 217 steps (54%) done
+[Mon Apr 29 17:40:18 2019]
+Error in rule sort_filter_bam:
+    jobid: 133
+    output: bam.filter.sort/LM_18_rep2/LM_18_rep2.filter.csort.bam
+    cluster_jobid: 15203424.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 17:43:13 2019]
+Finished job 85.
+118 of 217 steps (54%) done
+[Mon Apr 29 17:46:10 2019]
+Finished job 47.
+119 of 217 steps (55%) done
+[Mon Apr 29 17:46:54 2019]
+Finished job 258.
+120 of 217 steps (55%) done
+
+[Mon Apr 29 17:46:54 2019]
+rule dedup_bam:
+    input: bam.csort/DH_10_rep2/DH_10_rep2.picard.csort.bam
+    output: bam.dedup/DH_10_rep2/DH_10_rep2.dedup.bam
+    log: bam.dedup/DH_10_rep2/DH_10_rep2.dedup.log
+    jobid: 162
+    wildcards: sample=DH_10_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/DH_10_rep2     INPUT=bam.csort/DH_10_rep2/DH_10_rep2.picard.csort.bam OUTPUT= bam.dedup/DH_10_rep2/DH_10_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/DH_10_rep2/DH_10_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/DH_10_rep2/DH_10_rep2.dedup.log
+Submitted job 162 with external jobid '15203457.tscc-mgr.local'.
+[Mon Apr 29 17:48:33 2019]
+Finished job 228.
+121 of 217 steps (56%) done
+
+[Mon Apr 29 17:48:33 2019]
+rule nsort_bam:
+    input: bam.raw/LM_10_rep2/LM_10_rep2.raw.bam
+    output: bam.nsort/LM_10_rep2/LM_10_rep2.picard.nsort.bam
+    log: bam.nsort/log/LM_10_rep2.nsort.log
+    jobid: 204
+    wildcards: sample=LM_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_10_rep2/LM_10_rep2.raw.bam         O=bam.nsort/LM_10_rep2/LM_10_rep2.picard.nsort.bam         SORT_ORDER=queryname 2> bam.nsort/log/LM_10_rep2.nsort.log
+Submitted job 204 with external jobid '15203470.tscc-mgr.local'.
+
+[Mon Apr 29 17:48:39 2019]
+localrule require_raw_bam:
+    input: bam.raw/DH_03_rep1/DH_03_rep1.raw.bam, bam.raw/DH_10_rep1/DH_10_rep1.raw.bam, bam.raw/DH_18_rep1/DH_18_rep1.raw.bam, bam.raw/DH_03_rep2/DH_03_rep2.raw.bam, bam.raw/DH_10_rep2/DH_10_rep2.raw.bam, bam.raw/DH_18_rep2/DH_18_rep2.raw.bam, bam.raw/FC_03_rep1/FC_03_rep1.raw.bam, bam.raw/FC_10_rep1/FC_10_rep1.raw.bam, bam.raw/FC_18_rep1/FC_18_rep1.raw.bam, bam.raw/FC_03_rep2/FC_03_rep2.raw.bam, bam.raw/FC_10_rep2/FC_10_rep2.raw.bam, bam.raw/FC_18_rep2/FC_18_rep2.raw.bam, bam.raw/HT_03_rep1/HT_03_rep1.raw.bam, bam.raw/HT_10_rep1/HT_10_rep1.raw.bam, bam.raw/HT_18_rep1/HT_18_rep1.raw.bam, bam.raw/HT_18_rep2/HT_18_rep2.raw.bam, bam.raw/HT_03_rep2/HT_03_rep2.raw.bam, bam.raw/HT_10_rep2/HT_10_rep2.raw.bam, bam.raw/LM_03_rep1/LM_03_rep1.raw.bam, bam.raw/LM_10_rep1/LM_10_rep1.raw.bam, bam.raw/LM_18_rep1/LM_18_rep1.raw.bam, bam.raw/LM_03_rep2/LM_03_rep2.raw.bam, bam.raw/LM_10_rep2/LM_10_rep2.raw.bam, bam.raw/LM_18_rep2/LM_18_rep2.raw.bam
+    output: bam.raw.files.list.txt
+    jobid: 8
+
+ls -lh bam.raw/DH_03_rep1/DH_03_rep1.raw.bam bam.raw/DH_10_rep1/DH_10_rep1.raw.bam bam.raw/DH_18_rep1/DH_18_rep1.raw.bam bam.raw/DH_03_rep2/DH_03_rep2.raw.bam bam.raw/DH_10_rep2/DH_10_rep2.raw.bam bam.raw/DH_18_rep2/DH_18_rep2.raw.bam bam.raw/FC_03_rep1/FC_03_rep1.raw.bam bam.raw/FC_10_rep1/FC_10_rep1.raw.bam bam.raw/FC_18_rep1/FC_18_rep1.raw.bam bam.raw/FC_03_rep2/FC_03_rep2.raw.bam bam.raw/FC_10_rep2/FC_10_rep2.raw.bam bam.raw/FC_18_rep2/FC_18_rep2.raw.bam bam.raw/HT_03_rep1/HT_03_rep1.raw.bam bam.raw/HT_10_rep1/HT_10_rep1.raw.bam bam.raw/HT_18_rep1/HT_18_rep1.raw.bam bam.raw/HT_18_rep2/HT_18_rep2.raw.bam bam.raw/HT_03_rep2/HT_03_rep2.raw.bam bam.raw/HT_10_rep2/HT_10_rep2.raw.bam bam.raw/LM_03_rep1/LM_03_rep1.raw.bam bam.raw/LM_10_rep1/LM_10_rep1.raw.bam bam.raw/LM_18_rep1/LM_18_rep1.raw.bam bam.raw/LM_03_rep2/LM_03_rep2.raw.bam bam.raw/LM_10_rep2/LM_10_rep2.raw.bam bam.raw/LM_18_rep2/LM_18_rep2.raw.bam > bam.raw.files.list.txt
+
+[Mon Apr 29 17:48:39 2019]
+rule count_barcode:
+    input: bam.raw/LM_10_rep2/LM_10_rep2.raw.bam
+    output: bam.raw/LM_10_rep2/LM_10_rep2.raw.barcode.cnts.txt
+    jobid: 36
+    wildcards: dir=bam.raw/LM_10_rep2, sample=LM_10_rep2.raw
+
+samtools view bam.raw/LM_10_rep2/LM_10_rep2.raw.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.raw/LM_10_rep2/LM_10_rep2.raw.barcode.cnts.txt
+    
+[Mon Apr 29 17:48:39 2019]
+Finished job 8.
+122 of 217 steps (56%) done
+Submitted job 36 with external jobid '15203471.tscc-mgr.local'.
+
+[Mon Apr 29 17:48:39 2019]
+rule csort_bam:
+    input: bam.raw/LM_10_rep2/LM_10_rep2.raw.bam
+    output: bam.csort/LM_10_rep2/LM_10_rep2.picard.csort.bam
+    log: bam.csort/log/LM_10_rep2.csort.log
+    jobid: 276
+    wildcards: sample=LM_10_rep2
+    threads: 4
+
+java -jar -Xmx$((4*4))G ../../scripts/utility/picard.jar SortSam         I=bam.raw/LM_10_rep2/LM_10_rep2.raw.bam         O=bam.csort/LM_10_rep2/LM_10_rep2.picard.csort.bam         SORT_ORDER=coordinate 2> bam.csort/log/LM_10_rep2.csort.log
+Submitted job 276 with external jobid '15203472.tscc-mgr.local'.
+[Mon Apr 29 17:55:09 2019]
+Finished job 264.
+123 of 217 steps (57%) done
+
+[Mon Apr 29 17:55:09 2019]
+rule dedup_bam:
+    input: bam.csort/FC_10_rep2/FC_10_rep2.picard.csort.bam
+    output: bam.dedup/FC_10_rep2/FC_10_rep2.dedup.bam
+    log: bam.dedup/FC_10_rep2/FC_10_rep2.dedup.log
+    jobid: 168
+    wildcards: sample=FC_10_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/FC_10_rep2     INPUT=bam.csort/FC_10_rep2/FC_10_rep2.picard.csort.bam OUTPUT= bam.dedup/FC_10_rep2/FC_10_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/FC_10_rep2/FC_10_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/FC_10_rep2/FC_10_rep2.dedup.log
+Submitted job 168 with external jobid '15203493.tscc-mgr.local'.
+[Mon Apr 29 17:57:01 2019]
+Finished job 163.
+124 of 217 steps (57%) done
+
+[Mon Apr 29 17:57:01 2019]
+rule count_barcode:
+    input: bam.dedup/DH_18_rep2/DH_18_rep2.dedup.bam
+    output: bam.dedup/DH_18_rep2/DH_18_rep2.dedup.barcode.cnts.txt
+    jobid: 43
+    wildcards: dir=bam.dedup/DH_18_rep2, sample=DH_18_rep2.dedup
+
+samtools view bam.dedup/DH_18_rep2/DH_18_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/DH_18_rep2/DH_18_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 43 with external jobid '15203497.tscc-mgr.local'.
+
+[Mon Apr 29 17:57:08 2019]
+rule filter_bam:
+    input: bam.dedup/DH_18_rep2/DH_18_rep2.dedup.bam
+    output: bam.filter/DH_18_rep2/DH_18_rep2.filter.bam
+    jobid: 139
+    wildcards: sample=DH_18_rep2
+
+samtools view -h -f 2 bam.dedup/DH_18_rep2/DH_18_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/DH_18_rep2/DH_18_rep2.filter.bam 
+Submitted job 139 with external jobid '15203498.tscc-mgr.local'.
+[Mon Apr 29 17:57:35 2019]
+Finished job 143.
+125 of 217 steps (58%) done
+
+[Mon Apr 29 17:57:35 2019]
+rule sort_filter_bam:
+    input: bam.filter/FC_03_rep2/FC_03_rep2.filter.bam
+    output: bam.filter.sort/FC_03_rep2/FC_03_rep2.filter.csort.bam
+    jobid: 119
+    wildcards: sample=FC_03_rep2
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/FC_03_rep2/FC_03_rep2.filter.bam -o bam.filter.sort/FC_03_rep2/FC_03_rep2.filter.csort.bam;samtools index bam.filter.sort/FC_03_rep2/FC_03_rep2.filter.csort.bam
+Submitted job 119 with external jobid '15203502.tscc-mgr.local'.
+
+[Mon Apr 29 17:57:35 2019]
+rule count_barcode:
+    input: bam.filter/FC_03_rep2/FC_03_rep2.filter.bam
+    output: bam.filter/FC_03_rep2/FC_03_rep2.filter.barcode.cnts.txt
+    jobid: 71
+    wildcards: dir=bam.filter/FC_03_rep2, sample=FC_03_rep2.filter
+
+samtools view bam.filter/FC_03_rep2/FC_03_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/FC_03_rep2/FC_03_rep2.filter.barcode.cnts.txt
+    
+Submitted job 71 with external jobid '15203503.tscc-mgr.local'.
+[Mon Apr 29 17:58:19 2019]
+Error in rule sort_filter_bam:
+    jobid: 119
+    output: bam.filter.sort/FC_03_rep2/FC_03_rep2.filter.csort.bam
+    cluster_jobid: 15203502.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 18:02:21 2019]
+Finished job 192.
+126 of 217 steps (58%) done
+[Mon Apr 29 18:04:12 2019]
+Finished job 33.
+127 of 217 steps (59%) done
+[Mon Apr 29 18:04:56 2019]
+Finished job 71.
+128 of 217 steps (59%) done
+[Mon Apr 29 18:06:13 2019]
+Finished job 43.
+129 of 217 steps (59%) done
+[Mon Apr 29 18:07:35 2019]
+Finished job 36.
+130 of 217 steps (60%) done
+[Mon Apr 29 18:16:40 2019]
+Finished job 139.
+131 of 217 steps (60%) done
+
+[Mon Apr 29 18:16:40 2019]
+rule count_barcode:
+    input: bam.filter/DH_18_rep2/DH_18_rep2.filter.bam
+    output: bam.filter/DH_18_rep2/DH_18_rep2.filter.barcode.cnts.txt
+    jobid: 67
+    wildcards: dir=bam.filter/DH_18_rep2, sample=DH_18_rep2.filter
+
+samtools view bam.filter/DH_18_rep2/DH_18_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/DH_18_rep2/DH_18_rep2.filter.barcode.cnts.txt
+    
+Submitted job 67 with external jobid '15203584.tscc-mgr.local'.
+
+[Mon Apr 29 18:16:47 2019]
+rule sort_filter_bam:
+    input: bam.filter/DH_18_rep2/DH_18_rep2.filter.bam
+    output: bam.filter.sort/DH_18_rep2/DH_18_rep2.filter.csort.bam
+    jobid: 115
+    wildcards: sample=DH_18_rep2
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/DH_18_rep2/DH_18_rep2.filter.bam -o bam.filter.sort/DH_18_rep2/DH_18_rep2.filter.csort.bam;samtools index bam.filter.sort/DH_18_rep2/DH_18_rep2.filter.csort.bam
+Submitted job 115 with external jobid '15203586.tscc-mgr.local'.
+[Mon Apr 29 18:17:10 2019]
+Error in rule sort_filter_bam:
+    jobid: 115
+    output: bam.filter.sort/DH_18_rep2/DH_18_rep2.filter.csort.bam
+    cluster_jobid: 15203586.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 18:21:21 2019]
+Finished job 169.
+132 of 217 steps (61%) done
+
+[Mon Apr 29 18:21:21 2019]
+rule count_barcode:
+    input: bam.dedup/FC_18_rep2/FC_18_rep2.dedup.bam
+    output: bam.dedup/FC_18_rep2/FC_18_rep2.dedup.barcode.cnts.txt
+    jobid: 49
+    wildcards: dir=bam.dedup/FC_18_rep2, sample=FC_18_rep2.dedup
+
+samtools view bam.dedup/FC_18_rep2/FC_18_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/FC_18_rep2/FC_18_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 49 with external jobid '15203611.tscc-mgr.local'.
+
+[Mon Apr 29 18:21:27 2019]
+rule filter_bam:
+    input: bam.dedup/FC_18_rep2/FC_18_rep2.dedup.bam
+    output: bam.filter/FC_18_rep2/FC_18_rep2.filter.bam
+    jobid: 145
+    wildcards: sample=FC_18_rep2
+
+samtools view -h -f 2 bam.dedup/FC_18_rep2/FC_18_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/FC_18_rep2/FC_18_rep2.filter.bam 
+Submitted job 145 with external jobid '15203612.tscc-mgr.local'.
+[Mon Apr 29 18:23:51 2019]
+Finished job 67.
+133 of 217 steps (61%) done
+[Mon Apr 29 18:32:32 2019]
+Finished job 49.
+134 of 217 steps (62%) done
+[Mon Apr 29 18:40:15 2019]
+Finished job 201.
+135 of 217 steps (62%) done
+[Mon Apr 29 18:45:04 2019]
+Finished job 273.
+136 of 217 steps (63%) done
+
+[Mon Apr 29 18:45:04 2019]
+rule dedup_bam:
+    input: bam.csort/LM_10_rep1/LM_10_rep1.picard.csort.bam
+    output: bam.dedup/LM_10_rep1/LM_10_rep1.dedup.bam
+    log: bam.dedup/LM_10_rep1/LM_10_rep1.dedup.log
+    jobid: 177
+    wildcards: sample=LM_10_rep1
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_10_rep1     INPUT=bam.csort/LM_10_rep1/LM_10_rep1.picard.csort.bam OUTPUT= bam.dedup/LM_10_rep1/LM_10_rep1.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_10_rep1/LM_10_rep1.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_10_rep1/LM_10_rep1.dedup.log
+[Mon Apr 29 18:45:06 2019]
+Finished job 276.
+137 of 217 steps (63%) done
+Submitted job 177 with external jobid '15203734.tscc-mgr.local'.
+
+[Mon Apr 29 18:45:12 2019]
+rule dedup_bam:
+    input: bam.csort/LM_10_rep2/LM_10_rep2.picard.csort.bam
+    output: bam.dedup/LM_10_rep2/LM_10_rep2.dedup.bam
+    log: bam.dedup/LM_10_rep2/LM_10_rep2.dedup.log
+    jobid: 180
+    wildcards: sample=LM_10_rep2
+    threads: 4
+
+java -XX:ParallelGCThreads=4 -Xmx$((4*4))G -jar     ../../scripts/utility/picard.jar MarkDuplicates     TMP_DIR=bam.dedup/tmp/LM_10_rep2     INPUT=bam.csort/LM_10_rep2/LM_10_rep2.picard.csort.bam OUTPUT= bam.dedup/LM_10_rep2/LM_10_rep2.dedup.bam VALIDATION_STRINGENCY=LENIENT     REMOVE_DUPLICATES=True ASSUME_SORT_ORDER=coordinate     METRICS_FILE=bam.dedup/LM_10_rep2/LM_10_rep2.dedup.qc BARCODE_TAG=BX     2> bam.dedup/LM_10_rep2/LM_10_rep2.dedup.log
+Submitted job 180 with external jobid '15203735.tscc-mgr.local'.
+[Mon Apr 29 18:45:47 2019]
+Finished job 145.
+138 of 217 steps (64%) done
+
+[Mon Apr 29 18:45:47 2019]
+rule sort_filter_bam:
+    input: bam.filter/FC_18_rep2/FC_18_rep2.filter.bam
+    output: bam.filter.sort/FC_18_rep2/FC_18_rep2.filter.csort.bam
+    jobid: 121
+    wildcards: sample=FC_18_rep2
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/FC_18_rep2/FC_18_rep2.filter.bam -o bam.filter.sort/FC_18_rep2/FC_18_rep2.filter.csort.bam;samtools index bam.filter.sort/FC_18_rep2/FC_18_rep2.filter.csort.bam
+Submitted job 121 with external jobid '15203736.tscc-mgr.local'.
+
+[Mon Apr 29 18:45:48 2019]
+rule count_barcode:
+    input: bam.filter/FC_18_rep2/FC_18_rep2.filter.bam
+    output: bam.filter/FC_18_rep2/FC_18_rep2.filter.barcode.cnts.txt
+    jobid: 73
+    wildcards: dir=bam.filter/FC_18_rep2, sample=FC_18_rep2.filter
+
+samtools view bam.filter/FC_18_rep2/FC_18_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/FC_18_rep2/FC_18_rep2.filter.barcode.cnts.txt
+    
+Submitted job 73 with external jobid '15203737.tscc-mgr.local'.
+[Mon Apr 29 18:48:48 2019]
+Error in rule sort_filter_bam:
+    jobid: 121
+    output: bam.filter.sort/FC_18_rep2/FC_18_rep2.filter.csort.bam
+    cluster_jobid: 15203736.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 18:48:59 2019]
+Finished job 204.
+139 of 217 steps (64%) done
+[Mon Apr 29 18:51:40 2019]
+Finished job 162.
+140 of 217 steps (65%) done
+
+[Mon Apr 29 18:51:41 2019]
+rule filter_bam:
+    input: bam.dedup/DH_10_rep2/DH_10_rep2.dedup.bam
+    output: bam.filter/DH_10_rep2/DH_10_rep2.filter.bam
+    jobid: 138
+    wildcards: sample=DH_10_rep2
+
+samtools view -h -f 2 bam.dedup/DH_10_rep2/DH_10_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/DH_10_rep2/DH_10_rep2.filter.bam 
+Submitted job 138 with external jobid '15203755.tscc-mgr.local'.
+
+[Mon Apr 29 18:51:48 2019]
+rule count_barcode:
+    input: bam.dedup/DH_10_rep2/DH_10_rep2.dedup.bam
+    output: bam.dedup/DH_10_rep2/DH_10_rep2.dedup.barcode.cnts.txt
+    jobid: 42
+    wildcards: dir=bam.dedup/DH_10_rep2, sample=DH_10_rep2.dedup
+
+samtools view bam.dedup/DH_10_rep2/DH_10_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/DH_10_rep2/DH_10_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 42 with external jobid '15203757.tscc-mgr.local'.
+[Mon Apr 29 18:56:42 2019]
+Finished job 73.
+141 of 217 steps (65%) done
+[Mon Apr 29 19:04:23 2019]
+Finished job 42.
+142 of 217 steps (65%) done
+[Mon Apr 29 19:08:56 2019]
+Finished job 168.
+143 of 217 steps (66%) done
+
+[Mon Apr 29 19:08:56 2019]
+rule filter_bam:
+    input: bam.dedup/FC_10_rep2/FC_10_rep2.dedup.bam
+    output: bam.filter/FC_10_rep2/FC_10_rep2.filter.bam
+    jobid: 144
+    wildcards: sample=FC_10_rep2
+
+samtools view -h -f 2 bam.dedup/FC_10_rep2/FC_10_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/FC_10_rep2/FC_10_rep2.filter.bam 
+Submitted job 144 with external jobid '15203822.tscc-mgr.local'.
+
+[Mon Apr 29 19:09:03 2019]
+rule count_barcode:
+    input: bam.dedup/FC_10_rep2/FC_10_rep2.dedup.bam
+    output: bam.dedup/FC_10_rep2/FC_10_rep2.dedup.barcode.cnts.txt
+    jobid: 48
+    wildcards: dir=bam.dedup/FC_10_rep2, sample=FC_10_rep2.dedup
+
+samtools view bam.dedup/FC_10_rep2/FC_10_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/FC_10_rep2/FC_10_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 48 with external jobid '15203823.tscc-mgr.local'.
+[Mon Apr 29 19:20:57 2019]
+Finished job 138.
+144 of 217 steps (66%) done
+
+[Mon Apr 29 19:20:57 2019]
+rule sort_filter_bam:
+    input: bam.filter/DH_10_rep2/DH_10_rep2.filter.bam
+    output: bam.filter.sort/DH_10_rep2/DH_10_rep2.filter.csort.bam
+    jobid: 114
+    wildcards: sample=DH_10_rep2
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/DH_10_rep2/DH_10_rep2.filter.bam -o bam.filter.sort/DH_10_rep2/DH_10_rep2.filter.csort.bam;samtools index bam.filter.sort/DH_10_rep2/DH_10_rep2.filter.csort.bam
+Submitted job 114 with external jobid '15203853.tscc-mgr.local'.
+
+[Mon Apr 29 19:21:03 2019]
+rule count_barcode:
+    input: bam.filter/DH_10_rep2/DH_10_rep2.filter.bam
+    output: bam.filter/DH_10_rep2/DH_10_rep2.filter.barcode.cnts.txt
+    jobid: 66
+    wildcards: dir=bam.filter/DH_10_rep2, sample=DH_10_rep2.filter
+
+samtools view bam.filter/DH_10_rep2/DH_10_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/DH_10_rep2/DH_10_rep2.filter.barcode.cnts.txt
+    
+Submitted job 66 with external jobid '15203854.tscc-mgr.local'.
+[Mon Apr 29 19:22:57 2019]
+Error in rule sort_filter_bam:
+    jobid: 114
+    output: bam.filter.sort/DH_10_rep2/DH_10_rep2.filter.csort.bam
+    cluster_jobid: 15203853.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 19:24:37 2019]
+Finished job 48.
+145 of 217 steps (67%) done
+[Mon Apr 29 19:32:18 2019]
+Finished job 180.
+146 of 217 steps (67%) done
+
+[Mon Apr 29 19:32:18 2019]
+rule filter_bam:
+    input: bam.dedup/LM_10_rep2/LM_10_rep2.dedup.bam
+    output: bam.filter/LM_10_rep2/LM_10_rep2.filter.bam
+    jobid: 156
+    wildcards: sample=LM_10_rep2
+
+samtools view -h -f 2 bam.dedup/LM_10_rep2/LM_10_rep2.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/LM_10_rep2/LM_10_rep2.filter.bam 
+[Mon Apr 29 19:32:18 2019]
+Finished job 66.
+147 of 217 steps (68%) done
+Submitted job 156 with external jobid '15203903.tscc-mgr.local'.
+
+[Mon Apr 29 19:32:24 2019]
+rule count_barcode:
+    input: bam.dedup/LM_10_rep2/LM_10_rep2.dedup.bam
+    output: bam.dedup/LM_10_rep2/LM_10_rep2.dedup.barcode.cnts.txt
+    jobid: 60
+    wildcards: dir=bam.dedup/LM_10_rep2, sample=LM_10_rep2.dedup
+
+samtools view bam.dedup/LM_10_rep2/LM_10_rep2.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/LM_10_rep2/LM_10_rep2.dedup.barcode.cnts.txt
+    
+Submitted job 60 with external jobid '15203904.tscc-mgr.local'.
+[Mon Apr 29 19:38:18 2019]
+Finished job 60.
+148 of 217 steps (68%) done
+[Mon Apr 29 19:44:48 2019]
+Finished job 177.
+149 of 217 steps (69%) done
+
+[Mon Apr 29 19:44:48 2019]
+rule count_barcode:
+    input: bam.dedup/LM_10_rep1/LM_10_rep1.dedup.bam
+    output: bam.dedup/LM_10_rep1/LM_10_rep1.dedup.barcode.cnts.txt
+    jobid: 57
+    wildcards: dir=bam.dedup/LM_10_rep1, sample=LM_10_rep1.dedup
+
+samtools view bam.dedup/LM_10_rep1/LM_10_rep1.dedup.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.dedup/LM_10_rep1/LM_10_rep1.dedup.barcode.cnts.txt
+    
+[Mon Apr 29 19:44:49 2019]
+Finished job 144.
+150 of 217 steps (69%) done
+[Mon Apr 29 19:44:49 2019]
+Finished job 156.
+151 of 217 steps (70%) done
+Submitted job 57 with external jobid '15203956.tscc-mgr.local'.
+
+[Mon Apr 29 19:44:55 2019]
+rule filter_bam:
+    input: bam.dedup/LM_10_rep1/LM_10_rep1.dedup.bam
+    output: bam.filter/LM_10_rep1/LM_10_rep1.filter.bam
+    jobid: 153
+    wildcards: sample=LM_10_rep1
+
+samtools view -h -f 2 bam.dedup/LM_10_rep1/LM_10_rep1.dedup.bam |  awk -v OFS="	" ' function abs(v) {return v < 0 ? -v : v}
+  { if ( /^@/) { print $0 } else if ( $7=="=" && abs($9)< 2000 ) {print $0} }'|  samtools view -bS > bam.filter/LM_10_rep1/LM_10_rep1.filter.bam 
+Submitted job 153 with external jobid '15203957.tscc-mgr.local'.
+
+[Mon Apr 29 19:44:55 2019]
+rule sort_filter_bam:
+    input: bam.filter/FC_10_rep2/FC_10_rep2.filter.bam
+    output: bam.filter.sort/FC_10_rep2/FC_10_rep2.filter.csort.bam
+    jobid: 120
+    wildcards: sample=FC_10_rep2
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/FC_10_rep2/FC_10_rep2.filter.bam -o bam.filter.sort/FC_10_rep2/FC_10_rep2.filter.csort.bam;samtools index bam.filter.sort/FC_10_rep2/FC_10_rep2.filter.csort.bam
+Submitted job 120 with external jobid '15203958.tscc-mgr.local'.
+
+[Mon Apr 29 19:44:55 2019]
+rule count_barcode:
+    input: bam.filter/FC_10_rep2/FC_10_rep2.filter.bam
+    output: bam.filter/FC_10_rep2/FC_10_rep2.filter.barcode.cnts.txt
+    jobid: 72
+    wildcards: dir=bam.filter/FC_10_rep2, sample=FC_10_rep2.filter
+
+samtools view bam.filter/FC_10_rep2/FC_10_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/FC_10_rep2/FC_10_rep2.filter.barcode.cnts.txt
+    
+Submitted job 72 with external jobid '15203959.tscc-mgr.local'.
+
+[Mon Apr 29 19:44:55 2019]
+rule call_peaks:
+    input: bam.filter/FC_03_rep1/FC_03_rep1.filter.bam, bam.filter/FC_10_rep1/FC_10_rep1.filter.bam, bam.filter/FC_18_rep1/FC_18_rep1.filter.bam, bam.filter/FC_03_rep2/FC_03_rep2.filter.bam, bam.filter/FC_10_rep2/FC_10_rep2.filter.bam, bam.filter/FC_18_rep2/FC_18_rep2.filter.bam
+    output: peaks/FC_peaks.narrowPeak
+    jobid: 11
+    wildcards: tissue=FC
+
+macs2 callpeak -t bam.filter/FC_03_rep1/FC_03_rep1.filter.bam bam.filter/FC_10_rep1/FC_10_rep1.filter.bam bam.filter/FC_18_rep1/FC_18_rep1.filter.bam bam.filter/FC_03_rep2/FC_03_rep2.filter.bam bam.filter/FC_10_rep2/FC_10_rep2.filter.bam bam.filter/FC_18_rep2/FC_18_rep2.filter.bam -n peaks/FC -g mm -f BAMPE --keep-dup all
+Submitted job 11 with external jobid '15203960.tscc-mgr.local'.
+
+[Mon Apr 29 19:44:55 2019]
+rule sort_filter_bam:
+    input: bam.filter/LM_10_rep2/LM_10_rep2.filter.bam
+    output: bam.filter.sort/LM_10_rep2/LM_10_rep2.filter.csort.bam
+    jobid: 132
+    wildcards: sample=LM_10_rep2
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/LM_10_rep2/LM_10_rep2.filter.bam -o bam.filter.sort/LM_10_rep2/LM_10_rep2.filter.csort.bam;samtools index bam.filter.sort/LM_10_rep2/LM_10_rep2.filter.csort.bam
+Submitted job 132 with external jobid '15203961.tscc-mgr.local'.
+
+[Mon Apr 29 19:44:55 2019]
+rule count_barcode:
+    input: bam.filter/LM_10_rep2/LM_10_rep2.filter.bam
+    output: bam.filter/LM_10_rep2/LM_10_rep2.filter.barcode.cnts.txt
+    jobid: 84
+    wildcards: dir=bam.filter/LM_10_rep2, sample=LM_10_rep2.filter
+
+samtools view bam.filter/LM_10_rep2/LM_10_rep2.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/LM_10_rep2/LM_10_rep2.filter.barcode.cnts.txt
+    
+Submitted job 84 with external jobid '15203962.tscc-mgr.local'.
+[Mon Apr 29 19:45:49 2019]
+Error in rule sort_filter_bam:
+    jobid: 120
+    output: bam.filter.sort/FC_10_rep2/FC_10_rep2.filter.csort.bam
+    cluster_jobid: 15203958.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 19:45:49 2019]
+Error in rule call_peaks:
+    jobid: 11
+    output: peaks/FC_peaks.narrowPeak
+    cluster_jobid: 15203960.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 19:45:49 2019]
+Error in rule sort_filter_bam:
+    jobid: 132
+    output: bam.filter.sort/LM_10_rep2/LM_10_rep2.filter.csort.bam
+    cluster_jobid: 15203961.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 19:49:29 2019]
+Finished job 84.
+152 of 217 steps (70%) done
+[Mon Apr 29 19:56:59 2019]
+Finished job 57.
+153 of 217 steps (71%) done
+[Mon Apr 29 19:56:59 2019]
+Finished job 72.
+154 of 217 steps (71%) done
+[Mon Apr 29 20:08:30 2019]
+Finished job 153.
+155 of 217 steps (71%) done
+
+[Mon Apr 29 20:08:30 2019]
+rule count_barcode:
+    input: bam.filter/LM_10_rep1/LM_10_rep1.filter.bam
+    output: bam.filter/LM_10_rep1/LM_10_rep1.filter.barcode.cnts.txt
+    jobid: 81
+    wildcards: dir=bam.filter/LM_10_rep1, sample=LM_10_rep1.filter
+
+samtools view bam.filter/LM_10_rep1/LM_10_rep1.filter.bam | awk -v OF="	" -v OFS="	"     '{ a[substr($1,1,22)]++ } END { for (i in a) print i,a[i]/2 }' |     sort -k2,2nr > bam.filter/LM_10_rep1/LM_10_rep1.filter.barcode.cnts.txt
+    
+Submitted job 81 with external jobid '15204031.tscc-mgr.local'.
+
+[Mon Apr 29 20:08:36 2019]
+rule sort_filter_bam:
+    input: bam.filter/LM_10_rep1/LM_10_rep1.filter.bam
+    output: bam.filter.sort/LM_10_rep1/LM_10_rep1.filter.csort.bam
+    jobid: 129
+    wildcards: sample=LM_10_rep1
+    threads: 4
+
+samtools sort -@ 4 -m $((4*4))G bam.filter/LM_10_rep1/LM_10_rep1.filter.bam -o bam.filter.sort/LM_10_rep1/LM_10_rep1.filter.csort.bam;samtools index bam.filter.sort/LM_10_rep1/LM_10_rep1.filter.csort.bam
+Submitted job 129 with external jobid '15204032.tscc-mgr.local'.
+[Mon Apr 29 20:09:00 2019]
+Error in rule sort_filter_bam:
+    jobid: 129
+    output: bam.filter.sort/LM_10_rep1/LM_10_rep1.filter.csort.bam
+    cluster_jobid: 15204032.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Mon Apr 29 20:18:30 2019]
+Finished job 81.
+156 of 217 steps (72%) done
+Exiting because a job execution failed. Look above for error message
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/pre_processing/.snakemake/log/2019-04-29T125941.897313.snakemake.log

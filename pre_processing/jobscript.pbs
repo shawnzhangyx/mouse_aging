@@ -4,7 +4,6 @@
 #PBS -l walltime=12:00:00
 #PBS -m a
 #PBS -A ren-group
-#PBS -j oe
 
 # properties = {properties}
 module load R

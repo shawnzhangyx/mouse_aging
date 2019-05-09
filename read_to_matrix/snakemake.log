@@ -1,0 +1,1081 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	24	count2peak
+	24	overlap_read2peak
+	1	require_count2peak
+	49
+
+[Wed May  1 16:18:37 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/FC_03_rep1/FC_03_rep1.filter.nsort.bam, peaks/FC_summits.ext1k.bed
+    output: ct2peaks/tmp.FC_03_rep1.read2peak.txt.gz
+    jobid: 31
+    wildcards: sample=FC_03_rep1
+
+intersectBed -a bam.filter.nsort/FC_03_rep1/FC_03_rep1.filter.nsort.bam -b peaks/FC_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.FC_03_rep1.read2peak.txt.gz
+Submitted job 31 with external jobid '15218945.tscc-mgr.local'.
+
+[Wed May  1 16:18:43 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/DH_03_rep2/DH_03_rep2.filter.nsort.bam, peaks/DH_summits.ext1k.bed
+    output: ct2peaks/tmp.DH_03_rep2.read2peak.txt.gz
+    jobid: 28
+    wildcards: sample=DH_03_rep2
+
+intersectBed -a bam.filter.nsort/DH_03_rep2/DH_03_rep2.filter.nsort.bam -b peaks/DH_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.DH_03_rep2.read2peak.txt.gz
+Submitted job 28 with external jobid '15218946.tscc-mgr.local'.
+
+[Wed May  1 16:18:43 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_10_rep1/LM_10_rep1.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_10_rep1.read2peak.txt.gz
+    jobid: 44
+    wildcards: sample=LM_10_rep1
+
+intersectBed -a bam.filter.nsort/LM_10_rep1/LM_10_rep1.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_10_rep1.read2peak.txt.gz
+Submitted job 44 with external jobid '15218947.tscc-mgr.local'.
+
+[Wed May  1 16:18:43 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_10_rep1/HT_10_rep1.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_10_rep1.read2peak.txt.gz
+    jobid: 38
+    wildcards: sample=HT_10_rep1
+
+intersectBed -a bam.filter.nsort/HT_10_rep1/HT_10_rep1.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_10_rep1.read2peak.txt.gz
+Submitted job 38 with external jobid '15218948.tscc-mgr.local'.
+
+[Wed May  1 16:18:43 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_18_rep2/LM_18_rep2.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_18_rep2.read2peak.txt.gz
+    jobid: 48
+    wildcards: sample=LM_18_rep2
+
+intersectBed -a bam.filter.nsort/LM_18_rep2/LM_18_rep2.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_18_rep2.read2peak.txt.gz
+Submitted job 48 with external jobid '15218949.tscc-mgr.local'.
+
+[Wed May  1 16:18:44 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/DH_18_rep1/DH_18_rep1.filter.nsort.bam, peaks/DH_summits.ext1k.bed
+    output: ct2peaks/tmp.DH_18_rep1.read2peak.txt.gz
+    jobid: 27
+    wildcards: sample=DH_18_rep1
+
+intersectBed -a bam.filter.nsort/DH_18_rep1/DH_18_rep1.filter.nsort.bam -b peaks/DH_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.DH_18_rep1.read2peak.txt.gz
+Submitted job 27 with external jobid '15218950.tscc-mgr.local'.
+
+[Wed May  1 16:18:44 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/DH_03_rep1/DH_03_rep1.filter.nsort.bam, peaks/DH_summits.ext1k.bed
+    output: ct2peaks/tmp.DH_03_rep1.read2peak.txt.gz
+    jobid: 25
+    wildcards: sample=DH_03_rep1
+
+intersectBed -a bam.filter.nsort/DH_03_rep1/DH_03_rep1.filter.nsort.bam -b peaks/DH_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.DH_03_rep1.read2peak.txt.gz
+Submitted job 25 with external jobid '15218951.tscc-mgr.local'.
+
+[Wed May  1 16:18:44 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_03_rep1/HT_03_rep1.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_03_rep1.read2peak.txt.gz
+    jobid: 37
+    wildcards: sample=HT_03_rep1
+
+intersectBed -a bam.filter.nsort/HT_03_rep1/HT_03_rep1.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_03_rep1.read2peak.txt.gz
+Submitted job 37 with external jobid '15218952.tscc-mgr.local'.
+
+[Wed May  1 16:18:44 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_03_rep1/LM_03_rep1.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_03_rep1.read2peak.txt.gz
+    jobid: 43
+    wildcards: sample=LM_03_rep1
+
+intersectBed -a bam.filter.nsort/LM_03_rep1/LM_03_rep1.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_03_rep1.read2peak.txt.gz
+Submitted job 43 with external jobid '15218953.tscc-mgr.local'.
+
+[Wed May  1 16:18:44 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_18_rep1/LM_18_rep1.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_18_rep1.read2peak.txt.gz
+    jobid: 45
+    wildcards: sample=LM_18_rep1
+
+intersectBed -a bam.filter.nsort/LM_18_rep1/LM_18_rep1.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_18_rep1.read2peak.txt.gz
+Submitted job 45 with external jobid '15218954.tscc-mgr.local'.
+
+[Wed May  1 16:18:45 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/FC_18_rep2/FC_18_rep2.filter.nsort.bam, peaks/FC_summits.ext1k.bed
+    output: ct2peaks/tmp.FC_18_rep2.read2peak.txt.gz
+    jobid: 36
+    wildcards: sample=FC_18_rep2
+
+intersectBed -a bam.filter.nsort/FC_18_rep2/FC_18_rep2.filter.nsort.bam -b peaks/FC_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.FC_18_rep2.read2peak.txt.gz
+Submitted job 36 with external jobid '15218955.tscc-mgr.local'.
+
+[Wed May  1 16:18:45 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/DH_10_rep2/DH_10_rep2.filter.nsort.bam, peaks/DH_summits.ext1k.bed
+    output: ct2peaks/tmp.DH_10_rep2.read2peak.txt.gz
+    jobid: 29
+    wildcards: sample=DH_10_rep2
+
+intersectBed -a bam.filter.nsort/DH_10_rep2/DH_10_rep2.filter.nsort.bam -b peaks/DH_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.DH_10_rep2.read2peak.txt.gz
+Submitted job 29 with external jobid '15218956.tscc-mgr.local'.
+
+[Wed May  1 16:18:45 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/FC_10_rep2/FC_10_rep2.filter.nsort.bam, peaks/FC_summits.ext1k.bed
+    output: ct2peaks/tmp.FC_10_rep2.read2peak.txt.gz
+    jobid: 35
+    wildcards: sample=FC_10_rep2
+
+intersectBed -a bam.filter.nsort/FC_10_rep2/FC_10_rep2.filter.nsort.bam -b peaks/FC_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.FC_10_rep2.read2peak.txt.gz
+Submitted job 35 with external jobid '15218957.tscc-mgr.local'.
+
+[Wed May  1 16:18:45 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/DH_18_rep2/DH_18_rep2.filter.nsort.bam, peaks/DH_summits.ext1k.bed
+    output: ct2peaks/tmp.DH_18_rep2.read2peak.txt.gz
+    jobid: 30
+    wildcards: sample=DH_18_rep2
+
+intersectBed -a bam.filter.nsort/DH_18_rep2/DH_18_rep2.filter.nsort.bam -b peaks/DH_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.DH_18_rep2.read2peak.txt.gz
+Submitted job 30 with external jobid '15218959.tscc-mgr.local'.
+
+[Wed May  1 16:18:46 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_18_rep2/HT_18_rep2.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_18_rep2.read2peak.txt.gz
+    jobid: 40
+    wildcards: sample=HT_18_rep2
+
+intersectBed -a bam.filter.nsort/HT_18_rep2/HT_18_rep2.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_18_rep2.read2peak.txt.gz
+Submitted job 40 with external jobid '15218960.tscc-mgr.local'.
+
+[Wed May  1 16:18:46 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/FC_10_rep1/FC_10_rep1.filter.nsort.bam, peaks/FC_summits.ext1k.bed
+    output: ct2peaks/tmp.FC_10_rep1.read2peak.txt.gz
+    jobid: 32
+    wildcards: sample=FC_10_rep1
+
+intersectBed -a bam.filter.nsort/FC_10_rep1/FC_10_rep1.filter.nsort.bam -b peaks/FC_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.FC_10_rep1.read2peak.txt.gz
+Submitted job 32 with external jobid '15218961.tscc-mgr.local'.
+
+[Wed May  1 16:18:46 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_03_rep2/LM_03_rep2.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_03_rep2.read2peak.txt.gz
+    jobid: 46
+    wildcards: sample=LM_03_rep2
+
+intersectBed -a bam.filter.nsort/LM_03_rep2/LM_03_rep2.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_03_rep2.read2peak.txt.gz
+Submitted job 46 with external jobid '15218962.tscc-mgr.local'.
+
+[Wed May  1 16:18:46 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/FC_18_rep1/FC_18_rep1.filter.nsort.bam, peaks/FC_summits.ext1k.bed
+    output: ct2peaks/tmp.FC_18_rep1.read2peak.txt.gz
+    jobid: 33
+    wildcards: sample=FC_18_rep1
+
+intersectBed -a bam.filter.nsort/FC_18_rep1/FC_18_rep1.filter.nsort.bam -b peaks/FC_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.FC_18_rep1.read2peak.txt.gz
+Submitted job 33 with external jobid '15218963.tscc-mgr.local'.
+
+[Wed May  1 16:18:46 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_03_rep2/HT_03_rep2.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_03_rep2.read2peak.txt.gz
+    jobid: 41
+    wildcards: sample=HT_03_rep2
+
+intersectBed -a bam.filter.nsort/HT_03_rep2/HT_03_rep2.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_03_rep2.read2peak.txt.gz
+Submitted job 41 with external jobid '15218964.tscc-mgr.local'.
+
+[Wed May  1 16:18:46 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/DH_10_rep1/DH_10_rep1.filter.nsort.bam, peaks/DH_summits.ext1k.bed
+    output: ct2peaks/tmp.DH_10_rep1.read2peak.txt.gz
+    jobid: 26
+    wildcards: sample=DH_10_rep1
+
+intersectBed -a bam.filter.nsort/DH_10_rep1/DH_10_rep1.filter.nsort.bam -b peaks/DH_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.DH_10_rep1.read2peak.txt.gz
+Submitted job 26 with external jobid '15218965.tscc-mgr.local'.
+
+[Wed May  1 16:18:46 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_10_rep2/HT_10_rep2.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_10_rep2.read2peak.txt.gz
+    jobid: 42
+    wildcards: sample=HT_10_rep2
+
+intersectBed -a bam.filter.nsort/HT_10_rep2/HT_10_rep2.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_10_rep2.read2peak.txt.gz
+Submitted job 42 with external jobid '15218966.tscc-mgr.local'.
+
+[Wed May  1 16:18:46 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/FC_03_rep2/FC_03_rep2.filter.nsort.bam, peaks/FC_summits.ext1k.bed
+    output: ct2peaks/tmp.FC_03_rep2.read2peak.txt.gz
+    jobid: 34
+    wildcards: sample=FC_03_rep2
+
+intersectBed -a bam.filter.nsort/FC_03_rep2/FC_03_rep2.filter.nsort.bam -b peaks/FC_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.FC_03_rep2.read2peak.txt.gz
+Submitted job 34 with external jobid '15218967.tscc-mgr.local'.
+
+[Wed May  1 16:18:46 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_18_rep1/HT_18_rep1.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_18_rep1.read2peak.txt.gz
+    jobid: 39
+    wildcards: sample=HT_18_rep1
+
+intersectBed -a bam.filter.nsort/HT_18_rep1/HT_18_rep1.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_18_rep1.read2peak.txt.gz
+Submitted job 39 with external jobid '15218968.tscc-mgr.local'.
+
+[Wed May  1 16:18:47 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_10_rep2/LM_10_rep2.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_10_rep2.read2peak.txt.gz
+    jobid: 47
+    wildcards: sample=LM_10_rep2
+
+intersectBed -a bam.filter.nsort/LM_10_rep2/LM_10_rep2.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_10_rep2.read2peak.txt.gz
+Submitted job 47 with external jobid '15218969.tscc-mgr.local'.
+[Wed May  1 16:19:11 2019]
+Error in rule overlap_read2peak:
+    jobid: 44
+    output: ct2peaks/tmp.LM_10_rep1.read2peak.txt.gz
+    cluster_jobid: 15218947.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:19:23 2019]
+Error in rule overlap_read2peak:
+    jobid: 38
+    output: ct2peaks/tmp.HT_10_rep1.read2peak.txt.gz
+    cluster_jobid: 15218948.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:19:23 2019]
+Error in rule overlap_read2peak:
+    jobid: 48
+    output: ct2peaks/tmp.LM_18_rep2.read2peak.txt.gz
+    cluster_jobid: 15218949.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:20:11 2019]
+Error in rule overlap_read2peak:
+    jobid: 37
+    output: ct2peaks/tmp.HT_03_rep1.read2peak.txt.gz
+    cluster_jobid: 15218952.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:20:11 2019]
+Error in rule overlap_read2peak:
+    jobid: 43
+    output: ct2peaks/tmp.LM_03_rep1.read2peak.txt.gz
+    cluster_jobid: 15218953.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:20:11 2019]
+Error in rule overlap_read2peak:
+    jobid: 45
+    output: ct2peaks/tmp.LM_18_rep1.read2peak.txt.gz
+    cluster_jobid: 15218954.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:20:23 2019]
+Error in rule overlap_read2peak:
+    jobid: 40
+    output: ct2peaks/tmp.HT_18_rep2.read2peak.txt.gz
+    cluster_jobid: 15218960.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:22:13 2019]
+Error in rule overlap_read2peak:
+    jobid: 46
+    output: ct2peaks/tmp.LM_03_rep2.read2peak.txt.gz
+    cluster_jobid: 15218962.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:22:14 2019]
+Error in rule overlap_read2peak:
+    jobid: 41
+    output: ct2peaks/tmp.HT_03_rep2.read2peak.txt.gz
+    cluster_jobid: 15218964.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:24:04 2019]
+Error in rule overlap_read2peak:
+    jobid: 42
+    output: ct2peaks/tmp.HT_10_rep2.read2peak.txt.gz
+    cluster_jobid: 15218966.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:24:04 2019]
+Error in rule overlap_read2peak:
+    jobid: 39
+    output: ct2peaks/tmp.HT_18_rep1.read2peak.txt.gz
+    cluster_jobid: 15218968.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:24:04 2019]
+Error in rule overlap_read2peak:
+    jobid: 47
+    output: ct2peaks/tmp.LM_10_rep2.read2peak.txt.gz
+    cluster_jobid: 15218969.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:25:42 2019]
+Finished job 25.
+1 of 49 steps (2%) done
+
+[Wed May  1 16:25:42 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_03_rep1.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_03_rep1/DH_03_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/DH_03_rep1.npz
+    jobid: 1
+    wildcards: sample=DH_03_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_03_rep1.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_03_rep1/DH_03_rep1.filter.barcode.cnts.txt 300 ct2peaks/DH_03_rep1
+Submitted job 1 with external jobid '15219127.tscc-mgr.local'.
+[Wed May  1 16:25:53 2019]
+Finished job 31.
+2 of 49 steps (4%) done
+
+[Wed May  1 16:25:53 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_03_rep1.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_03_rep1/FC_03_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/FC_03_rep1.npz
+    jobid: 7
+    wildcards: sample=FC_03_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_03_rep1.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_03_rep1/FC_03_rep1.filter.barcode.cnts.txt 300 ct2peaks/FC_03_rep1
+Submitted job 7 with external jobid '15219128.tscc-mgr.local'.
+[Wed May  1 16:27:33 2019]
+Error in rule count2peak:
+    jobid: 7
+    output: ct2peaks/FC_03_rep1.npz
+    cluster_jobid: 15219128.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:27:33 2019]
+Finished job 27.
+3 of 49 steps (6%) done
+
+[Wed May  1 16:27:33 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_18_rep1.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_18_rep1/DH_18_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/DH_18_rep1.npz
+    jobid: 3
+    wildcards: sample=DH_18_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_18_rep1.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_18_rep1/DH_18_rep1.filter.barcode.cnts.txt 300 ct2peaks/DH_18_rep1
+[Wed May  1 16:27:34 2019]
+Error in rule count2peak:
+    jobid: 1
+    output: ct2peaks/DH_03_rep1.npz
+    cluster_jobid: 15219127.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Submitted job 3 with external jobid '15219131.tscc-mgr.local'.
+[Wed May  1 16:30:18 2019]
+Finished job 33.
+4 of 49 steps (8%) done
+
+[Wed May  1 16:30:18 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_18_rep1.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_18_rep1/FC_18_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/FC_18_rep1.npz
+    jobid: 9
+    wildcards: sample=FC_18_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_18_rep1.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_18_rep1/FC_18_rep1.filter.barcode.cnts.txt 300 ct2peaks/FC_18_rep1
+[Wed May  1 16:30:18 2019]
+Error in rule count2peak:
+    jobid: 3
+    output: ct2peaks/DH_18_rep1.npz
+    cluster_jobid: 15219131.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Submitted job 9 with external jobid '15219138.tscc-mgr.local'.
+[Wed May  1 16:31:49 2019]
+Finished job 28.
+5 of 49 steps (10%) done
+
+[Wed May  1 16:31:49 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_03_rep2.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_03_rep2/DH_03_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/DH_03_rep2.npz
+    jobid: 4
+    wildcards: sample=DH_03_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_03_rep2.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_03_rep2/DH_03_rep2.filter.barcode.cnts.txt 300 ct2peaks/DH_03_rep2
+[Wed May  1 16:31:49 2019]
+Error in rule count2peak:
+    jobid: 9
+    output: ct2peaks/FC_18_rep1.npz
+    cluster_jobid: 15219138.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Submitted job 4 with external jobid '15219150.tscc-mgr.local'.
+[Wed May  1 16:34:19 2019]
+Finished job 30.
+6 of 49 steps (12%) done
+
+[Wed May  1 16:34:19 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_18_rep2.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_18_rep2/DH_18_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/DH_18_rep2.npz
+    jobid: 6
+    wildcards: sample=DH_18_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_18_rep2.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_18_rep2/DH_18_rep2.filter.barcode.cnts.txt 300 ct2peaks/DH_18_rep2
+Submitted job 6 with external jobid '15219153.tscc-mgr.local'.
+[Wed May  1 16:34:49 2019]
+Finished job 36.
+7 of 49 steps (14%) done
+
+[Wed May  1 16:34:49 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_18_rep2.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_18_rep2/FC_18_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/FC_18_rep2.npz
+    jobid: 12
+    wildcards: sample=FC_18_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_18_rep2.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_18_rep2/FC_18_rep2.filter.barcode.cnts.txt 300 ct2peaks/FC_18_rep2
+[Wed May  1 16:34:49 2019]
+Finished job 26.
+8 of 49 steps (16%) done
+[Wed May  1 16:34:49 2019]
+Error in rule count2peak:
+    jobid: 4
+    output: ct2peaks/DH_03_rep2.npz
+    cluster_jobid: 15219150.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Submitted job 12 with external jobid '15219154.tscc-mgr.local'.
+
+[Wed May  1 16:34:49 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_10_rep1.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_10_rep1/DH_10_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/DH_10_rep1.npz
+    jobid: 2
+    wildcards: sample=DH_10_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_10_rep1.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_10_rep1/DH_10_rep1.filter.barcode.cnts.txt 300 ct2peaks/DH_10_rep1
+Submitted job 2 with external jobid '15219155.tscc-mgr.local'.
+[Wed May  1 16:37:30 2019]
+Finished job 29.
+9 of 49 steps (18%) done
+
+[Wed May  1 16:37:30 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_10_rep2.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_10_rep2/DH_10_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/DH_10_rep2.npz
+    jobid: 5
+    wildcards: sample=DH_10_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_10_rep2.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_10_rep2/DH_10_rep2.filter.barcode.cnts.txt 300 ct2peaks/DH_10_rep2
+[Wed May  1 16:37:30 2019]
+Error in rule count2peak:
+    jobid: 6
+    output: ct2peaks/DH_18_rep2.npz
+    cluster_jobid: 15219153.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Submitted job 5 with external jobid '15219161.tscc-mgr.local'.
+[Wed May  1 16:37:50 2019]
+Finished job 32.
+10 of 49 steps (20%) done
+
+[Wed May  1 16:37:50 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_10_rep1.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_10_rep1/FC_10_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/FC_10_rep1.npz
+    jobid: 8
+    wildcards: sample=FC_10_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_10_rep1.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_10_rep1/FC_10_rep1.filter.barcode.cnts.txt 300 ct2peaks/FC_10_rep1
+Submitted job 8 with external jobid '15219162.tscc-mgr.local'.
+[Wed May  1 16:38:20 2019]
+Error in rule count2peak:
+    jobid: 12
+    output: ct2peaks/FC_18_rep2.npz
+    cluster_jobid: 15219154.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:38:20 2019]
+Error in rule count2peak:
+    jobid: 2
+    output: ct2peaks/DH_10_rep1.npz
+    cluster_jobid: 15219155.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:40:00 2019]
+Finished job 34.
+11 of 49 steps (22%) done
+
+[Wed May  1 16:40:00 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_03_rep2.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_03_rep2/FC_03_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/FC_03_rep2.npz
+    jobid: 10
+    wildcards: sample=FC_03_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_03_rep2.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_03_rep2/FC_03_rep2.filter.barcode.cnts.txt 300 ct2peaks/FC_03_rep2
+[Wed May  1 16:40:00 2019]
+Error in rule count2peak:
+    jobid: 5
+    output: ct2peaks/DH_10_rep2.npz
+    cluster_jobid: 15219161.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Submitted job 10 with external jobid '15219168.tscc-mgr.local'.
+[Wed May  1 16:40:30 2019]
+Error in rule count2peak:
+    jobid: 8
+    output: ct2peaks/FC_10_rep1.npz
+    cluster_jobid: 15219162.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Wed May  1 16:42:10 2019]
+Finished job 35.
+12 of 49 steps (24%) done
+
+[Wed May  1 16:42:10 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_10_rep2.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_10_rep2/FC_10_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/FC_10_rep2.npz
+    jobid: 11
+    wildcards: sample=FC_10_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_10_rep2.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_10_rep2/FC_10_rep2.filter.barcode.cnts.txt 300 ct2peaks/FC_10_rep2
+[Wed May  1 16:42:10 2019]
+Error in rule count2peak:
+    jobid: 10
+    output: ct2peaks/FC_03_rep2.npz
+    cluster_jobid: 15219168.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Submitted job 11 with external jobid '15219212.tscc-mgr.local'.
+[Wed May  1 16:46:40 2019]
+Error in rule count2peak:
+    jobid: 11
+    output: ct2peaks/FC_10_rep2.npz
+    cluster_jobid: 15219212.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Exiting because a job execution failed. Look above for error message
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/read_to_matrix/.snakemake/log/2019-05-01T161835.393133.snakemake.log
+SyntaxError in line 14 of /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/read_to_matrix/Snakefile:
+Unexpected keyword expand in rule definition (Snakefile, line 14)
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	12	overlap_read2peak
+	1	require_count2peak
+	13
+
+[Wed May  1 16:48:00 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_03_rep2/LM_03_rep2.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_03_rep2.read2peak.txt.gz
+    jobid: 22
+    wildcards: sample=LM_03_rep2
+
+intersectBed -a bam.filter.nsort/LM_03_rep2/LM_03_rep2.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_03_rep2.read2peak.txt.gz
+Submitted job 22 with external jobid '15219320.tscc-mgr.local'.
+
+[Wed May  1 16:48:06 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_18_rep1/HT_18_rep1.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_18_rep1.read2peak.txt.gz
+    jobid: 15
+    wildcards: sample=HT_18_rep1
+
+intersectBed -a bam.filter.nsort/HT_18_rep1/HT_18_rep1.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_18_rep1.read2peak.txt.gz
+Submitted job 15 with external jobid '15219322.tscc-mgr.local'.
+
+[Wed May  1 16:48:07 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_03_rep2/HT_03_rep2.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_03_rep2.read2peak.txt.gz
+    jobid: 17
+    wildcards: sample=HT_03_rep2
+
+intersectBed -a bam.filter.nsort/HT_03_rep2/HT_03_rep2.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_03_rep2.read2peak.txt.gz
+Submitted job 17 with external jobid '15219323.tscc-mgr.local'.
+
+[Wed May  1 16:48:08 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_18_rep2/HT_18_rep2.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_18_rep2.read2peak.txt.gz
+    jobid: 16
+    wildcards: sample=HT_18_rep2
+
+intersectBed -a bam.filter.nsort/HT_18_rep2/HT_18_rep2.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_18_rep2.read2peak.txt.gz
+Submitted job 16 with external jobid '15219324.tscc-mgr.local'.
+
+[Wed May  1 16:48:09 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_18_rep2/LM_18_rep2.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_18_rep2.read2peak.txt.gz
+    jobid: 24
+    wildcards: sample=LM_18_rep2
+
+intersectBed -a bam.filter.nsort/LM_18_rep2/LM_18_rep2.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_18_rep2.read2peak.txt.gz
+Submitted job 24 with external jobid '15219325.tscc-mgr.local'.
+
+[Wed May  1 16:48:09 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_03_rep1/HT_03_rep1.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_03_rep1.read2peak.txt.gz
+    jobid: 13
+    wildcards: sample=HT_03_rep1
+
+intersectBed -a bam.filter.nsort/HT_03_rep1/HT_03_rep1.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_03_rep1.read2peak.txt.gz
+Submitted job 13 with external jobid '15219326.tscc-mgr.local'.
+
+[Wed May  1 16:48:11 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_18_rep1/LM_18_rep1.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_18_rep1.read2peak.txt.gz
+    jobid: 21
+    wildcards: sample=LM_18_rep1
+
+intersectBed -a bam.filter.nsort/LM_18_rep1/LM_18_rep1.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_18_rep1.read2peak.txt.gz
+Submitted job 21 with external jobid '15219327.tscc-mgr.local'.
+
+[Wed May  1 16:48:12 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_10_rep1/LM_10_rep1.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_10_rep1.read2peak.txt.gz
+    jobid: 20
+    wildcards: sample=LM_10_rep1
+
+intersectBed -a bam.filter.nsort/LM_10_rep1/LM_10_rep1.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_10_rep1.read2peak.txt.gz
+Submitted job 20 with external jobid '15219328.tscc-mgr.local'.
+
+[Wed May  1 16:48:12 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_10_rep1/HT_10_rep1.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_10_rep1.read2peak.txt.gz
+    jobid: 14
+    wildcards: sample=HT_10_rep1
+
+intersectBed -a bam.filter.nsort/HT_10_rep1/HT_10_rep1.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_10_rep1.read2peak.txt.gz
+Submitted job 14 with external jobid '15219329.tscc-mgr.local'.
+
+[Wed May  1 16:48:13 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_03_rep1/LM_03_rep1.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_03_rep1.read2peak.txt.gz
+    jobid: 19
+    wildcards: sample=LM_03_rep1
+
+intersectBed -a bam.filter.nsort/LM_03_rep1/LM_03_rep1.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_03_rep1.read2peak.txt.gz
+Submitted job 19 with external jobid '15219330.tscc-mgr.local'.
+
+[Wed May  1 16:48:13 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/HT_10_rep2/HT_10_rep2.filter.nsort.bam, peaks/HT_summits.ext1k.bed
+    output: ct2peaks/tmp.HT_10_rep2.read2peak.txt.gz
+    jobid: 18
+    wildcards: sample=HT_10_rep2
+
+intersectBed -a bam.filter.nsort/HT_10_rep2/HT_10_rep2.filter.nsort.bam -b peaks/HT_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.HT_10_rep2.read2peak.txt.gz
+Submitted job 18 with external jobid '15219331.tscc-mgr.local'.
+
+[Wed May  1 16:48:14 2019]
+rule overlap_read2peak:
+    input: bam.filter.nsort/LM_10_rep2/LM_10_rep2.filter.nsort.bam, peaks/LM_summits.ext1k.bed
+    output: ct2peaks/tmp.LM_10_rep2.read2peak.txt.gz
+    jobid: 23
+    wildcards: sample=LM_10_rep2
+
+intersectBed -a bam.filter.nsort/LM_10_rep2/LM_10_rep2.filter.nsort.bam -b peaks/LM_summits.ext1k.bed -wa -wb -bed | awk -v OFS='	' '{print $4,$13,$14,$15}' |gzip > ct2peaks/tmp.LM_10_rep2.read2peak.txt.gz
+Submitted job 23 with external jobid '15219332.tscc-mgr.local'.
+[Wed May  1 16:52:23 2019]
+Finished job 22.
+1 of 13 steps (8%) done
+[Wed May  1 16:54:13 2019]
+Finished job 24.
+2 of 13 steps (15%) done
+[Wed May  1 16:54:24 2019]
+Finished job 13.
+3 of 13 steps (23%) done
+[Wed May  1 16:54:35 2019]
+Finished job 15.
+4 of 13 steps (31%) done
+[Wed May  1 16:57:05 2019]
+Finished job 21.
+5 of 13 steps (38%) done
+[Wed May  1 16:57:05 2019]
+Finished job 14.
+6 of 13 steps (46%) done
+[Wed May  1 16:57:05 2019]
+Finished job 23.
+7 of 13 steps (54%) done
+[Wed May  1 16:58:35 2019]
+Finished job 19.
+8 of 13 steps (62%) done
+[Wed May  1 16:58:35 2019]
+Finished job 18.
+9 of 13 steps (69%) done
+[Wed May  1 16:59:05 2019]
+Finished job 17.
+10 of 13 steps (77%) done
+[Wed May  1 17:02:46 2019]
+Finished job 20.
+11 of 13 steps (85%) done
+[Wed May  1 17:05:16 2019]
+Finished job 16.
+12 of 13 steps (92%) done
+
+[Wed May  1 17:05:16 2019]
+localrule require_count2peak:
+    input: ct2peaks/tmp.DH_03_rep1.read2peak.txt.gz, ct2peaks/tmp.DH_10_rep1.read2peak.txt.gz, ct2peaks/tmp.DH_18_rep1.read2peak.txt.gz, ct2peaks/tmp.DH_03_rep2.read2peak.txt.gz, ct2peaks/tmp.DH_10_rep2.read2peak.txt.gz, ct2peaks/tmp.DH_18_rep2.read2peak.txt.gz, ct2peaks/tmp.FC_03_rep1.read2peak.txt.gz, ct2peaks/tmp.FC_10_rep1.read2peak.txt.gz, ct2peaks/tmp.FC_18_rep1.read2peak.txt.gz, ct2peaks/tmp.FC_03_rep2.read2peak.txt.gz, ct2peaks/tmp.FC_10_rep2.read2peak.txt.gz, ct2peaks/tmp.FC_18_rep2.read2peak.txt.gz, ct2peaks/tmp.HT_03_rep1.read2peak.txt.gz, ct2peaks/tmp.HT_10_rep1.read2peak.txt.gz, ct2peaks/tmp.HT_18_rep1.read2peak.txt.gz, ct2peaks/tmp.HT_18_rep2.read2peak.txt.gz, ct2peaks/tmp.HT_03_rep2.read2peak.txt.gz, ct2peaks/tmp.HT_10_rep2.read2peak.txt.gz, ct2peaks/tmp.LM_03_rep1.read2peak.txt.gz, ct2peaks/tmp.LM_10_rep1.read2peak.txt.gz, ct2peaks/tmp.LM_18_rep1.read2peak.txt.gz, ct2peaks/tmp.LM_03_rep2.read2peak.txt.gz, ct2peaks/tmp.LM_10_rep2.read2peak.txt.gz, ct2peaks/tmp.LM_18_rep2.read2peak.txt.gz
+    jobid: 0
+
+[Wed May  1 17:05:16 2019]
+Finished job 0.
+13 of 13 steps (100%) done
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/read_to_matrix/.snakemake/log/2019-05-01T164758.962948.snakemake.log
+SyntaxError in line 14 of /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/read_to_matrix/Snakefile:
+invalid syntax
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	24	count2peak
+	1	require_count2peak
+	25
+
+[Thu May  2 10:36:25 2019]
+rule count2peak:
+    input: ct2peaks/tmp.LM_10_rep2.read2peak.txt.gz, peaks/LM_summits.ext1k.bed, bam.filter/LM_10_rep2/LM_10_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/LM_10_rep2.npz
+    jobid: 23
+    wildcards: sample=LM_10_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.LM_10_rep2.read2peak.txt.gz peaks/LM_summits.ext1k.bed bam.filter/LM_10_rep2/LM_10_rep2.filter.barcode.cnts.txt 300 ct2peaks/LM_10_rep2
+Submitted job 23 with external jobid '15226855.tscc-mgr.local'.
+
+[Thu May  2 10:36:31 2019]
+rule count2peak:
+    input: ct2peaks/tmp.LM_18_rep1.read2peak.txt.gz, peaks/LM_summits.ext1k.bed, bam.filter/LM_18_rep1/LM_18_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/LM_18_rep1.npz
+    jobid: 21
+    wildcards: sample=LM_18_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.LM_18_rep1.read2peak.txt.gz peaks/LM_summits.ext1k.bed bam.filter/LM_18_rep1/LM_18_rep1.filter.barcode.cnts.txt 300 ct2peaks/LM_18_rep1
+Submitted job 21 with external jobid '15226856.tscc-mgr.local'.
+
+[Thu May  2 10:36:32 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_18_rep2.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_18_rep2/FC_18_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/FC_18_rep2.npz
+    jobid: 12
+    wildcards: sample=FC_18_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_18_rep2.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_18_rep2/FC_18_rep2.filter.barcode.cnts.txt 300 ct2peaks/FC_18_rep2
+Submitted job 12 with external jobid '15226857.tscc-mgr.local'.
+
+[Thu May  2 10:36:32 2019]
+rule count2peak:
+    input: ct2peaks/tmp.HT_03_rep2.read2peak.txt.gz, peaks/HT_summits.ext1k.bed, bam.filter/HT_03_rep2/HT_03_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/HT_03_rep2.npz
+    jobid: 17
+    wildcards: sample=HT_03_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.HT_03_rep2.read2peak.txt.gz peaks/HT_summits.ext1k.bed bam.filter/HT_03_rep2/HT_03_rep2.filter.barcode.cnts.txt 300 ct2peaks/HT_03_rep2
+Submitted job 17 with external jobid '15226858.tscc-mgr.local'.
+
+[Thu May  2 10:36:32 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_03_rep1.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_03_rep1/DH_03_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/DH_03_rep1.npz
+    jobid: 1
+    wildcards: sample=DH_03_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_03_rep1.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_03_rep1/DH_03_rep1.filter.barcode.cnts.txt 300 ct2peaks/DH_03_rep1
+Submitted job 1 with external jobid '15226859.tscc-mgr.local'.
+
+[Thu May  2 10:36:32 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_18_rep2.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_18_rep2/DH_18_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/DH_18_rep2.npz
+    jobid: 6
+    wildcards: sample=DH_18_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_18_rep2.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_18_rep2/DH_18_rep2.filter.barcode.cnts.txt 300 ct2peaks/DH_18_rep2
+Submitted job 6 with external jobid '15226860.tscc-mgr.local'.
+
+[Thu May  2 10:36:32 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_03_rep1.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_03_rep1/FC_03_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/FC_03_rep1.npz
+    jobid: 7
+    wildcards: sample=FC_03_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_03_rep1.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_03_rep1/FC_03_rep1.filter.barcode.cnts.txt 300 ct2peaks/FC_03_rep1
+Submitted job 7 with external jobid '15226861.tscc-mgr.local'.
+
+[Thu May  2 10:36:32 2019]
+rule count2peak:
+    input: ct2peaks/tmp.HT_10_rep2.read2peak.txt.gz, peaks/HT_summits.ext1k.bed, bam.filter/HT_10_rep2/HT_10_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/HT_10_rep2.npz
+    jobid: 18
+    wildcards: sample=HT_10_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.HT_10_rep2.read2peak.txt.gz peaks/HT_summits.ext1k.bed bam.filter/HT_10_rep2/HT_10_rep2.filter.barcode.cnts.txt 300 ct2peaks/HT_10_rep2
+Submitted job 18 with external jobid '15226862.tscc-mgr.local'.
+
+[Thu May  2 10:36:32 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_10_rep1.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_10_rep1/FC_10_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/FC_10_rep1.npz
+    jobid: 8
+    wildcards: sample=FC_10_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_10_rep1.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_10_rep1/FC_10_rep1.filter.barcode.cnts.txt 300 ct2peaks/FC_10_rep1
+Submitted job 8 with external jobid '15226863.tscc-mgr.local'.
+
+[Thu May  2 10:36:33 2019]
+rule count2peak:
+    input: ct2peaks/tmp.HT_03_rep1.read2peak.txt.gz, peaks/HT_summits.ext1k.bed, bam.filter/HT_03_rep1/HT_03_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/HT_03_rep1.npz
+    jobid: 13
+    wildcards: sample=HT_03_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.HT_03_rep1.read2peak.txt.gz peaks/HT_summits.ext1k.bed bam.filter/HT_03_rep1/HT_03_rep1.filter.barcode.cnts.txt 300 ct2peaks/HT_03_rep1
+Submitted job 13 with external jobid '15226864.tscc-mgr.local'.
+
+[Thu May  2 10:36:33 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_03_rep2.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_03_rep2/DH_03_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/DH_03_rep2.npz
+    jobid: 4
+    wildcards: sample=DH_03_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_03_rep2.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_03_rep2/DH_03_rep2.filter.barcode.cnts.txt 300 ct2peaks/DH_03_rep2
+Submitted job 4 with external jobid '15226865.tscc-mgr.local'.
+
+[Thu May  2 10:36:33 2019]
+rule count2peak:
+    input: ct2peaks/tmp.LM_18_rep2.read2peak.txt.gz, peaks/LM_summits.ext1k.bed, bam.filter/LM_18_rep2/LM_18_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/LM_18_rep2.npz
+    jobid: 24
+    wildcards: sample=LM_18_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.LM_18_rep2.read2peak.txt.gz peaks/LM_summits.ext1k.bed bam.filter/LM_18_rep2/LM_18_rep2.filter.barcode.cnts.txt 300 ct2peaks/LM_18_rep2
+Submitted job 24 with external jobid '15226866.tscc-mgr.local'.
+
+[Thu May  2 10:36:33 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_18_rep1.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_18_rep1/FC_18_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/FC_18_rep1.npz
+    jobid: 9
+    wildcards: sample=FC_18_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_18_rep1.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_18_rep1/FC_18_rep1.filter.barcode.cnts.txt 300 ct2peaks/FC_18_rep1
+Submitted job 9 with external jobid '15226867.tscc-mgr.local'.
+
+[Thu May  2 10:36:33 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_10_rep1.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_10_rep1/DH_10_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/DH_10_rep1.npz
+    jobid: 2
+    wildcards: sample=DH_10_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_10_rep1.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_10_rep1/DH_10_rep1.filter.barcode.cnts.txt 300 ct2peaks/DH_10_rep1
+Submitted job 2 with external jobid '15226868.tscc-mgr.local'.
+
+[Thu May  2 10:36:33 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_10_rep2.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_10_rep2/FC_10_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/FC_10_rep2.npz
+    jobid: 11
+    wildcards: sample=FC_10_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_10_rep2.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_10_rep2/FC_10_rep2.filter.barcode.cnts.txt 300 ct2peaks/FC_10_rep2
+Submitted job 11 with external jobid '15226869.tscc-mgr.local'.
+
+[Thu May  2 10:36:34 2019]
+rule count2peak:
+    input: ct2peaks/tmp.HT_18_rep2.read2peak.txt.gz, peaks/HT_summits.ext1k.bed, bam.filter/HT_18_rep2/HT_18_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/HT_18_rep2.npz
+    jobid: 16
+    wildcards: sample=HT_18_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.HT_18_rep2.read2peak.txt.gz peaks/HT_summits.ext1k.bed bam.filter/HT_18_rep2/HT_18_rep2.filter.barcode.cnts.txt 300 ct2peaks/HT_18_rep2
+Submitted job 16 with external jobid '15226870.tscc-mgr.local'.
+
+[Thu May  2 10:36:34 2019]
+rule count2peak:
+    input: ct2peaks/tmp.LM_03_rep1.read2peak.txt.gz, peaks/LM_summits.ext1k.bed, bam.filter/LM_03_rep1/LM_03_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/LM_03_rep1.npz
+    jobid: 19
+    wildcards: sample=LM_03_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.LM_03_rep1.read2peak.txt.gz peaks/LM_summits.ext1k.bed bam.filter/LM_03_rep1/LM_03_rep1.filter.barcode.cnts.txt 300 ct2peaks/LM_03_rep1
+Submitted job 19 with external jobid '15226871.tscc-mgr.local'.
+
+[Thu May  2 10:36:34 2019]
+rule count2peak:
+    input: ct2peaks/tmp.HT_10_rep1.read2peak.txt.gz, peaks/HT_summits.ext1k.bed, bam.filter/HT_10_rep1/HT_10_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/HT_10_rep1.npz
+    jobid: 14
+    wildcards: sample=HT_10_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.HT_10_rep1.read2peak.txt.gz peaks/HT_summits.ext1k.bed bam.filter/HT_10_rep1/HT_10_rep1.filter.barcode.cnts.txt 300 ct2peaks/HT_10_rep1
+Submitted job 14 with external jobid '15226872.tscc-mgr.local'.
+
+[Thu May  2 10:36:35 2019]
+rule count2peak:
+    input: ct2peaks/tmp.LM_03_rep2.read2peak.txt.gz, peaks/LM_summits.ext1k.bed, bam.filter/LM_03_rep2/LM_03_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/LM_03_rep2.npz
+    jobid: 22
+    wildcards: sample=LM_03_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.LM_03_rep2.read2peak.txt.gz peaks/LM_summits.ext1k.bed bam.filter/LM_03_rep2/LM_03_rep2.filter.barcode.cnts.txt 300 ct2peaks/LM_03_rep2
+Submitted job 22 with external jobid '15226873.tscc-mgr.local'.
+
+[Thu May  2 10:36:35 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_18_rep1.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_18_rep1/DH_18_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/DH_18_rep1.npz
+    jobid: 3
+    wildcards: sample=DH_18_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_18_rep1.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_18_rep1/DH_18_rep1.filter.barcode.cnts.txt 300 ct2peaks/DH_18_rep1
+Submitted job 3 with external jobid '15226874.tscc-mgr.local'.
+
+[Thu May  2 10:36:35 2019]
+rule count2peak:
+    input: ct2peaks/tmp.FC_03_rep2.read2peak.txt.gz, peaks/FC_summits.ext1k.bed, bam.filter/FC_03_rep2/FC_03_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/FC_03_rep2.npz
+    jobid: 10
+    wildcards: sample=FC_03_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.FC_03_rep2.read2peak.txt.gz peaks/FC_summits.ext1k.bed bam.filter/FC_03_rep2/FC_03_rep2.filter.barcode.cnts.txt 300 ct2peaks/FC_03_rep2
+Submitted job 10 with external jobid '15226875.tscc-mgr.local'.
+
+[Thu May  2 10:36:35 2019]
+rule count2peak:
+    input: ct2peaks/tmp.DH_10_rep2.read2peak.txt.gz, peaks/DH_summits.ext1k.bed, bam.filter/DH_10_rep2/DH_10_rep2.filter.barcode.cnts.txt
+    output: ct2peaks/DH_10_rep2.npz
+    jobid: 5
+    wildcards: sample=DH_10_rep2
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.DH_10_rep2.read2peak.txt.gz peaks/DH_summits.ext1k.bed bam.filter/DH_10_rep2/DH_10_rep2.filter.barcode.cnts.txt 300 ct2peaks/DH_10_rep2
+Submitted job 5 with external jobid '15226876.tscc-mgr.local'.
+
+[Thu May  2 10:36:35 2019]
+rule count2peak:
+    input: ct2peaks/tmp.LM_10_rep1.read2peak.txt.gz, peaks/LM_summits.ext1k.bed, bam.filter/LM_10_rep1/LM_10_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/LM_10_rep1.npz
+    jobid: 20
+    wildcards: sample=LM_10_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.LM_10_rep1.read2peak.txt.gz peaks/LM_summits.ext1k.bed bam.filter/LM_10_rep1/LM_10_rep1.filter.barcode.cnts.txt 300 ct2peaks/LM_10_rep1
+Submitted job 20 with external jobid '15226877.tscc-mgr.local'.
+
+[Thu May  2 10:36:35 2019]
+rule count2peak:
+    input: ct2peaks/tmp.HT_18_rep1.read2peak.txt.gz, peaks/HT_summits.ext1k.bed, bam.filter/HT_18_rep1/HT_18_rep1.filter.barcode.cnts.txt
+    output: ct2peaks/HT_18_rep1.npz
+    jobid: 15
+    wildcards: sample=HT_18_rep1
+
+python ../../scripts/read_to_matrix/ct2peak_save_npz.py ct2peaks/tmp.HT_18_rep1.read2peak.txt.gz peaks/HT_summits.ext1k.bed bam.filter/HT_18_rep1/HT_18_rep1.filter.barcode.cnts.txt 300 ct2peaks/HT_18_rep1
+Submitted job 15 with external jobid '15226878.tscc-mgr.local'.
+[Thu May  2 10:38:35 2019]
+Error in rule count2peak:
+    jobid: 23
+    output: ct2peaks/LM_10_rep2.npz
+    cluster_jobid: 15226855.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:38:35 2019]
+Error in rule count2peak:
+    jobid: 21
+    output: ct2peaks/LM_18_rep1.npz
+    cluster_jobid: 15226856.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:38:35 2019]
+Error in rule count2peak:
+    jobid: 1
+    output: ct2peaks/DH_03_rep1.npz
+    cluster_jobid: 15226859.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:38:48 2019]
+Error in rule count2peak:
+    jobid: 14
+    output: ct2peaks/HT_10_rep1.npz
+    cluster_jobid: 15226872.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:38:49 2019]
+Error in rule count2peak:
+    jobid: 22
+    output: ct2peaks/LM_03_rep2.npz
+    cluster_jobid: 15226873.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:38:59 2019]
+Error in rule count2peak:
+    jobid: 17
+    output: ct2peaks/HT_03_rep2.npz
+    cluster_jobid: 15226858.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:39:12 2019]
+Error in rule count2peak:
+    jobid: 19
+    output: ct2peaks/LM_03_rep1.npz
+    cluster_jobid: 15226871.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:39:12 2019]
+Error in rule count2peak:
+    jobid: 3
+    output: ct2peaks/DH_18_rep1.npz
+    cluster_jobid: 15226874.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:39:22 2019]
+Error in rule count2peak:
+    jobid: 13
+    output: ct2peaks/HT_03_rep1.npz
+    cluster_jobid: 15226864.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:39:33 2019]
+Error in rule count2peak:
+    jobid: 12
+    output: ct2peaks/FC_18_rep2.npz
+    cluster_jobid: 15226857.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+[Thu May  2 10:39:33 2019]
+Error in rule count2peak:
+    jobid: 7
+    output: ct2peaks/FC_03_rep1.npz
+    cluster_jobid: 15226861.tscc-mgr.local
+
+Job failed, going on with independent jobs.
+Terminating processes on user request, this might take some time.
+Will exit after finishing currently running jobs.
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/read_to_matrix/.snakemake/log/2019-05-02T103618.984156.snakemake.log

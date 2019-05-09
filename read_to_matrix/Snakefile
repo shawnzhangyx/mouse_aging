@@ -1,0 +1,103 @@
+#! /usr/bin/env bash
+## Snakefile
+####################
+
+import pandas as pd
+workdir: workflow.basedir + "/../../data/snATAC/"
+
+sample_info = pd.read_table("../../scripts/read_to_matrix/read2matrix.sample_info.txt",sep=" ")
+# create tissue dict
+tissues_dict = {}
+for x in sample_info.index:
+  if sample_info.loc[x]["tissue"] not in tissues_dict:
+    tissues_dict[sample_info.loc[x]["tissue"]] = [x]
+  else: 
+    tissues_dict[sample_info.loc[x]["tissue"]].append(x)
+
+print(tissues_dict)
+
+rule require_count2peak:
+  input:
+    expand("ct2peaks/{sample}.npz",sample=list(sample_info.index)),
+    expand("ct2peaks/tmp.{sample}.read2peak.txt.gz",sample=list(sample_info.index)),
+    expand("ct2peaks/{tissue}.merged.npz",tissue=tissues_dict.keys()),
+    expand("ct2peaks/{tissue}.merged.xgi",tissue=tissues_dict.keys()),
+    expand("ct2peaks/{tissue}.merged.ygi",tissue=tissues_dict.keys()),
+    expand("ct2peaks/{sample}.FIP.barcodes.cnts.txt",sample=list(sample_info.index))
+
+rule count_read_in_peak:
+  output: 
+    "ct2peaks/{sample}.FIP.barcodes.cnts.txt"
+  input:
+    npz = "ct2peaks/{sample}.npz",
+    xgi = "ct2peaks/{sample}.xgi"
+  threads: 1
+  params: 
+    pbsName=lambda wildcards: wildcards.sample
+  shell:
+    "python ../../scripts/read_to_matrix/calculate_num_read_in_peak.py "
+    "-i {input.npz} -x {input.xgi} |sort -k2,2nr > {output}"
+
+rule merge_tissue_xgi_ygi: 
+  output: 
+    xgi="ct2peaks/{tissue}.merged.xgi",
+    ygi="ct2peaks/{tissue}.merged.ygi"
+  input: 
+    xgis=lambda wildcards: expand("ct2peaks/{sample}.xgi",sample=tissues_dict[wildcards.tissue]),
+    ygi=lambda wildcards: "ct2peaks/"+tissues_dict[wildcards.tissue][0]+".xgi"
+  threads: 1
+  params:
+    pbsName=lambda wildcards: wildcards.tissue
+  shell: 
+    ">{output.xgi};"
+    "for sample in {input.xgis}; do awk -v name=${{sample:9:-4}} '{{print name\".\"$0 }}' "
+    "$sample >> {output.xgi}; done;"
+    "ln {input.ygi} {output.ygi};"
+
+
+rule merge_tissue_npz:
+  output: 
+    "ct2peaks/{tissue}.merged.npz"
+  input:
+    lambda wildcards: expand("ct2peaks/{sample}.npz",sample=tissues_dict[wildcards.tissue])
+  threads: 1
+  params:
+    pbsName=lambda wildcards: wildcards.tissue
+  shell:
+    "python ../../scripts/utility/snATAC_YLee/snATAC.vstack.py -i {input} -o ct2peaks/{wildcards.tissue}"
+
+
+    
+
+
+
+## count the reads into the peaks, resulting in NPZ file. 
+rule count2peak:
+  output:
+    "ct2peaks/{sample}.npz"
+  input:
+    read2peak = "ct2peaks/tmp.{sample}.read2peak.txt.gz",
+    bed = lambda wildcards: "peaks/" + wildcards.sample[:2] + "_summits.ext1k.bed",
+    barcode = "bam.filter/{sample}/{sample}.filter.barcode.cnts.txt"
+  threads: 1
+  params:
+    pbsName=lambda wildcards: wildcards.sample
+  shell:
+    "python ../../scripts/read_to_matrix/ct2peak_save_npz.py {input.read2peak} {input.bed} {input.barcode} 300 "
+    "ct2peaks/{wildcards.sample}"
+
+
+rule overlap_read2peak:
+  output:
+    "ct2peaks/tmp.{sample}.read2peak.txt.gz"
+  input:
+    bam = "bam.filter.nsort/{sample}/{sample}.filter.nsort.bam",
+    bed = lambda wildcards: "peaks/" + wildcards.sample[:2] + "_summits.ext1k.bed"
+  threads:1 
+  params:
+    pbsName=lambda wildcards: wildcards.sample
+  shell:
+    "intersectBed -a {input.bam} -b {input.bed} -wa -wb -bed | "
+    "awk -v OFS='\t' '{{print $13,$14,$15,$4}}' |"  
+    "gzip > {output}"
+

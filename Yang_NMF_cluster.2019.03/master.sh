@@ -1,5 +1,5 @@
 # as a beginning, try different ranks. 
-tissue=DH
+tissue=heart
 RMIN=5
 RMAX=20
 
@@ -7,7 +7,7 @@ bash -x try_different_ranks.sh $tissue $RMIN $RMAX
 
 
 # generate bam and bigWig file for a chosen rank
-rank=15
+rank=10
 bash -x generate_bam_bigWig_rankR.sh $tissue $rank
 ### run each replicates separately
 bash -x run_replicates_separate.sh $tissue $rank

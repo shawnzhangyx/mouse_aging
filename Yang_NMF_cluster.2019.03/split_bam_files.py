@@ -4,7 +4,6 @@ import argparse
 from multiprocessing import Pool
 
 parser = argparse.ArgumentParser(description='filter bam based on QNAMES')
-parser.add_argument('--tissue', type=str, dest="tissue", help='tissue')
 parser.add_argument('--bam-prefix', type=str, dest="bamf", help='bam file prefix')
 parser.add_argument('--bam-suffix', type=str, dest="bams", help='bam file suffix')
 parser.add_argument('--statH', type=str, dest="statH", help='input statH matrix')
@@ -21,17 +20,16 @@ def run():
   """ Run standard NMF on rank """
   start_time = pc()
   """ init input files """
-  tissue = args.tissue
   bamf = args.bamf
   bams = args.bams
   statHf = args.statH
   outPrefix = args.outPrefix
   print("filter out bam files")
-  generate_bams(tissue,bamf, bams, statHf, outPrefix)
+  generate_bams(bamf, bams, statHf, outPrefix)
   end_time = pc()
   print('Used (secs): ', end_time - start_time)
 
-def generate_bams(tissue,bamf,bams, statHf, prefix):
+def generate_bams(bamf,bams, statHf, prefix):
   o_stat_H = np.genfromtxt(statHf, dtype=None, names=True)
   print(o_stat_H)
   cluster = np.max(o_stat_H['cluster']).astype(int) + 1
@@ -39,14 +37,13 @@ def generate_bams(tissue,bamf,bams, statHf, prefix):
   for idx in np.unique(o_stat_H['cluster']):
     for age in ["03","10","18"]: 
       for rep in ["rep1","rep2"]:
-        p.apply_async(generate_bam_worker, (tissue,bamf,bams, o_stat_H, idx, age, rep, prefix))
+        p.apply_async(generate_bam_worker, (bamf,bams, o_stat_H, idx, age, rep, prefix))
   p.close()
   p.join()
 
-def generate_bam_worker(tissue,bamf, bams, o_stat_H, cluster,age,rep, prefix):
+def generate_bam_worker(bamf, bams, o_stat_H, cluster,age,rep, prefix):
   print("hello")
-  sample= tissue + "_" + age + "_" + rep
-  name = bamf + "/" + sample +"/" + sample + bams
+  name = bamf + age + "." + rep + bams
   print(name)
   bamF = pysam.AlignmentFile(name)
   qnames = list(o_stat_H[np.where( (o_stat_H['cluster']==cluster) & 

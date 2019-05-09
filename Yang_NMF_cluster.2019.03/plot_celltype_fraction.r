@@ -8,8 +8,8 @@ outFile=commandArgs(trailing=T)[2]
 a=read.table(statH)
 
 a$V3 = a$V3+1
-a$stage = substr(a$V1,4,5)
-a$rep = substr(a$V1,7,10)
+a$stage = substr(a$V1,1,2)
+a$rep = substr(a$V1,4,7)
 
 a$sample = paste(a$stage,a$rep)
 
