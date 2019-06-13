@@ -45,11 +45,12 @@ with gzip.open(reads, 'rt') as inFile:
 #      break
 #    print(prev_qname)
     items = line.split('\t')
-    peak = "\t".join(items[:3])
-    if items[3].split("/")[0] == prev_qname:
+    peak = items[3] #"\t".join(items[:3])
+    if items[4].split("/")[0] == prev_qname:
       continue
-    prev_qname = items[3].split("/")[0]
-    barcode = items[3].split(":")[0]
+    prev_qname = items[4].split("/")[0]
+    barcode = items[4].split(":")[0]
+#    print(items,peak,barcode)
     if barcode in barcodes: 
       ct_list.append(1)
       xgi_list.append(barcodes[barcode])

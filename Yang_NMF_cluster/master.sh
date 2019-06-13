@@ -1,7 +1,8 @@
 # as a beginning, try different ranks. 
-tissue=DH
+tissue=LM
 RMIN=5
-RMAX=20
+RMAX=15
+
 
 bash -x try_different_ranks.sh $tissue $RMIN $RMAX
 

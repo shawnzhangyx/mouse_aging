@@ -10,12 +10,15 @@ parser.add_argument('--bam-suffix', type=str, dest="bams", help='bam file suffix
 parser.add_argument('--statH', type=str, dest="statH", help='input statH matrix')
 #parser.add_argument('--sample-id',type=bool,dest="id",help"to add sample ID to barcode")
 parser.add_argument('-o', '--outPrefix', type=str, dest="outPrefix", help='output prefix')
-NCPU = 30
+parser.add_argument('-p', '--cores',type=int,dest="cpu",help='num of CPUs')
 args = parser.parse_args()
 
 import numpy as np
 import pysam
 from time import perf_counter as pc
+
+NCPU = args.cpu
+
 
 def run():
   """ Run standard NMF on rank """

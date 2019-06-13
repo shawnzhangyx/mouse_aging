@@ -42,7 +42,8 @@ rule require_peaks:
   output: 
        "macs.peaks.files.list.txt"
   input:
-    expand("peaks/{tissue}_summits.ext1k.bed", tissue=tissues_dict.keys())
+    expand("peaks/{tissue}_summits.ext1k.bed", tissue=tissues_dict.keys()),
+    expand("peaks/{tissue}_summits.ext1k.saf", tissue=tissues_dict.keys()),
   params:
     pbsName="All"
   shell:
@@ -51,14 +52,16 @@ rule require_peaks:
 
 rule extend_peak_summits:
   output:
-    "peaks/{tissue}_summits.ext1k.bed"
+    bed="peaks/{tissue}_summits.ext1k.bed",
+    saf="peaks/{tissue}_summits.ext1k.saf"
   input: 
     "peaks/{tissue}_summits.bed"
   threads: 1
   params:
     pbsName=lambda wildcards: wildcards.tissue
   shell:
-    "awk -v OFS='\t' '{{start=$2-500; if (start<0) {{start=0}}; print $1,start,$3+500,$4,$5}}' {input} > {output}"
+    "awk -v OFS='\t' '{{start=$2-500; if (start<0) {{start=0}}; print $1,start,$3+500,$4,$5}}' {input} > {output.bed};"
+    "bash ~/software/github/seq-min-scripts/bed_to_saf.sh {output.bed} {output.saf}"
 
 
 rule call_peaks:
