@@ -12,8 +12,8 @@ def get_rank(tissue):
   f = pd.read_table(tissue+"/"+tissue+".pooled.barcode.cluster.stage.rep.txt")
   return np.max(f['cluster'])
 
-#tissues=["DH","FC","HT","LM"]
-tissues=["LM","FC"]
+tissues=["DH","FC","HT","LM"]
+#tissues=["HT"]
 #age_rep=["03_rep1","10_rep1","18_rep1","03_rep2","10_rep2","18_rep2"]
 AGES = ["03","10","18"]
 REPS = ["rep1","rep2"]
@@ -27,7 +27,8 @@ rule require_files:
   input:
     expand("{tissue}/bigWig.cluster/{tissue}.bw.xml",tissue=tissues),
     expand("{tissue}/bigWig.cluster_age/{tissue}.bw.xml",tissue=tissues),
-    expand("{tissue}/{tissue}.peaks.counts",tissue=tissues)
+    expand("{tissue}/{tissue}.peaks.counts",tissue=tissues),
+    expand("{tissue}/{tissue}.promoters.counts",tissue=tissues)
 
 
 rule count_reads:
@@ -42,7 +43,22 @@ rule count_reads:
   params:
     pbsName=lambda wildcards: wildcards.tissue
   shell:
-    "featureCounts -a ../../data/snATAC/peaks/{wildcards.tissue}_summits.ext1k.saf -o {output} {input} -F SAF -T {threads}"
+    "featureCounts -a ../../data/snATAC/peaks/{wildcards.tissue}_summits.ext1k.saf -o {output} {input} -F SAF -T {threads} -O "
+
+
+rule count_reads_prom:
+  output:
+    "{tissue}/{tissue}.promoters.counts"
+  input:
+#    dynamic(expand("{{tissue}}/bam.cluster_age_rep/{{tissue}}.metacell_{{rank}}.{age}.{rep}.sorted.bam", age=AGES,rep=REPS))
+    lambda wildcards: expand(wildcards.tissue+"/bam.cluster_age_rep/"+
+    wildcards.tissue+".metacell_{rank}.{age}.{rep}.sorted.bam",
+    rank=list(range(1,ranks[wildcards.tissue]+1)),age=AGES,rep=REPS)
+  threads: 8
+  params:
+    pbsName=lambda wildcards: wildcards.tissue
+  shell:
+    "featureCounts -a /projects/ps-renlab/yanxiao/annotations/mm10/gencode.vM10.annotation.gene.tss1k.saf -o {output} {input} -F SAF -T {threads} -O "
 
 
 

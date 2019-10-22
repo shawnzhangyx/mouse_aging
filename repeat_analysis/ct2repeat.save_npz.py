@@ -50,8 +50,8 @@ with gzip.open(reads, 'rt') as inFile:
       continue
     prev_qname = items[4].split("/")[0]
     barcode = items[4].split(":")[0]
-#    print(items,peak,barcode)
     if barcode in barcodes: 
+    #!!! could add the counts instead of storing 1s. 
       ct_list.append(1)
       xgi_list.append(barcodes[barcode])
       ygi_list.append(peaks[peak])
@@ -61,4 +61,4 @@ with gzip.open(reads, 'rt') as inFile:
   cooMx = sparse.coo_matrix((ct_list, (xgi_list,ygi_list)))
   #print(cooMx)
   sparse.save_npz(outPrev+".npz", cooMx)
-
+  mmwrite(outPrev,cooMx)

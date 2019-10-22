@@ -26,12 +26,26 @@ python split_bam_files.py \
 #bash -x generate_bam_bigWig_rankR.sh $tissue $rank
 bash -x ./run_snakemake_gen_bam_bigWig.sh
 
+## plot cluster specific QC stats.
+for tissue in DH HT LM FC; do
+Rscript plot_cluster_specific_qc.r $tissue
+done
+
+## get the rank for each tissue. 
 function get_rank (){
   local tissue=$1
   echo $(tail -n+2 ../../analysis/snapATAC/${tissue}/${tissue}.pooled.barcode.cluster.stage.rep.txt|cut -f 2|sort -k1,1nr|head -n1)
   }
 echo $(get_rank DH)
 
+## get the cluster specific genes & peaks. 
+for tissue in HT DH LM FC; do
+  rank=$(get_rank $tissue)
+  echo $tissue $rank
+  Rscript output_cluster_feature.edger.r $tissue $rank
+  done
+#### special script. Identify the difference between any two clusters. 
+# Rscript SPL.compare_cluster_feature.edger.r 
 
 ## differential analysis.
 for tissue in DH HT LM FC; do
@@ -39,3 +53,12 @@ for tissue in DH HT LM FC; do
   echo $tissue $rank
   Rscript cluster.difftest.r $tissue $rank
   done
+
+## see if there is any correlation between number of diff cluster and number of cells. 
+Rscript plot_num_diff_peak_vs_num_cells_per_cluster.r 
+
+
+
+
+
+

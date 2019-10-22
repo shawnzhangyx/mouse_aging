@@ -27,5 +27,6 @@ Rscript annotate_age_and_cluster_to_cells.r \
   $path/snapFiles/$tissue.pool.snapATAC.cluster.meta.txt \
   $path/$tissue.pooled.barcode.cluster.stage.rep.txt 
 
-
+## plot celltype fraction
+Rscript plot_celltype_fraction.r $path/$tissue.pooled.barcode.cluster.stage.rep.txt $path/$tissue.celltype.fraction.pdf
 
