@@ -21,7 +21,7 @@ b$cluster = a$x.sp.cluster[match(b$name,a$name)]
 library(gridExtra)
 
 
-pdf("HT.summary_stats.by_cluster.pdf")
+pdf(paste0(tissue,".summary_stats.by_cluster.pdf"))
 ggplot(a) + geom_boxplot(aes(x=factor(x.sp.cluster),y=TN),outlier.shape=NA) + 
   ylim(0,10000)
 

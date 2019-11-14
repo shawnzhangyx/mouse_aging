@@ -25,7 +25,7 @@ localrules: require_everything, require_barcodes, require_filter_bam, require_de
 
 rule require_everything:
   input: 
-#    "macs.peaks.files.list.txt",
+    "macs.peaks.files.list.txt",
     "barcode.files.list.txt",
     "bibWig.filter.csort.files.list.txt",
     "bam.filter.sort.files.list.txt",
@@ -36,6 +36,7 @@ rule require_everything:
     "fastq.demultiplex.files.list.txt",
   params:
     pbsName="All"
+
 
 
 rule require_peaks:
@@ -154,6 +155,30 @@ rule require_barcodes:
     pbsName="All"
   shell:
     "ls -lh {input} > {output}"
+
+rule require_tss_barcode: 
+  input: 
+    expand("tss_barcode/{sample}.barcode.TSS.cnts.txt",sample=list(sample_info.index))
+  params:
+    pbsName="All"
+
+
+rule count_bam_tss_barcode: 
+  output: 
+    "tss_barcode/{sample}.barcode.TSS.cnts.txt"
+  input:
+    "bam.filter.sort/{sample}/{sample}.filter.csort.bam"
+  threads: 1
+  params: 
+    pbsName=lambda wildcards: wildcards.sample
+  shell:
+    """intersectBed -a {input} -b /projects/ps-renlab/yanxiao/annotations/mm10/gencode.vM10.annotation.gene.tss1k.bed -bed |grep -v chrM |awk -v OF="\t" -v OFS="\t" \
+    '{{ a[substr($4,1,length($4)-2)]++ }} END {{ for (x in a) {{ b[substr(x,1,22)]++ }}
+    for (i in b) print i,b[i] }}' | \
+    sort -k2,2nr > {output} """
+
+
+
 
 rule count_bam_chrM_barcode:
   output:

@@ -1,12 +1,11 @@
 library(SnapATAC)
 
 setwd("../../analysis/snapATAC/DH/snapFiles/")
-
-system("mkdir ../subsample.age_diff_foldchange")
 load("DH.pool.snapATAC.cluster.RData")
 
 pmat = x.sp@pmat
 peak = x.sp@peak$name
+
 cluster = x.sp@cluster
 sample = x.sp@sample
 cluster_sample =paste(cluster,sample,sep=".")
@@ -14,10 +13,11 @@ cluster_sample =paste(cluster,sample,sep=".")
 #out = colSums(pmat[which(cluster_sample=="1.DH_03_rep1"),])
 # number of cells to subsample from. 
 NUM =200
-rank = 15
+
 
 #cl = "6"
 
+library(edgeR)
 library(doParallel)
 registerDoParallel(cores=rank)
 
@@ -29,22 +29,29 @@ dat = list()
 for (ss in samples) { 
   idx1 = which(cluster_sample==paste(cl,ss,sep="."))
   idx2 = sample(idx1,NUM,replace=T)
-  dat[[ss]] = colSums(pmat[idx2,])
+  dat[[ss]] = pmat[idx2,]
   }
 
-mat = do.call(cbind,dat)
+mat = Matrix::t(do.call(rbind,dat))
 rownames(mat) = peak
 
-grps = substr(colnames(mat),4,5)
+grps = rep(substr(samples,4,5),each=NUM)
 
-a03 = rowSums(mat[,grps=="03"])
-a10 = rowSums(mat[,grps=="10"])
-a18 = rowSums(mat[,grps=="18"])
-rowSum = rowSums(mat)
-fc = log( (a18/sum(a18)*1e6+1)/(a03/sum(a03)*1e6+1) )
-out = data.frame(a03,a10,a18,rowSum,fc)
+y = DGEList(mat)
+#y = y[which(rowSums(cpm(y)>1)>=2),]
+y = calcNormFactors(y)
+design = model.matrix(~0+grps)
+y<-estimateCommonDisp(y)
+y<-estimateGLMTagwiseDisp(y,design)
+fit_tag = glmFit(y,design)
 
-write.csv(out, paste0("../subsample.age_diff_foldchange/",cl,".foldchange.",NUM,".txt"))
+contrast.matrix = matrix(c(c(-1,1,0),c(0,-1,1),c(-1,0,1)),nrow=3)
+lrt = glmLRT(fit_tag, contrast =contrast.matrix)
+fdr = p.adjust(lrt$table$PValue,method="BH")
+out = cbind(cpm(y),lrt$table,fdr)
+out = out[order(out$PValue),]
+
+write.csv(out, paste0("../subsample.age_diff_edger/",cl,".edger.",NUM,".txt"))
 
 }
 
@@ -52,27 +59,24 @@ write.csv(out, paste0("../subsample.age_diff_foldchange/",cl,".foldchange.",NUM,
 
 dat = list()
 
-dat = foreach(cl=1:rank) %dopar% {
-tmp = read.csv(paste0("../subsample.age_diff_foldchange/",cl,".foldchange.",NUM,".txt"))
-tmp$cluster = cl
-tmp
+for (cl in 1:15) {
+dat[[cl]] = read.csv(paste0("../subsample.age_diff_edger/",cl,".edger.",NUM,".txt"))
+dat[[cl]]$cluster = cl
 }
 
 
 dat2 = do.call(rbind, dat)
 
-ggplot(subset(dat2,rowSum<100)) + geom_histogram(aes(x=rowSum))
-
-t2 = table(dat2$rowSum>=20 & abs(dat2$fc)>=log(2), dat2$cluster)
+t2 = table(dat2$PValue < 0.01, dat2$cluster)
 mt2 =melt(t2)
 
 ncell = table(cluster)
 mt2$ncells = ncell[match(mt2$Var2,names(ncell))]
 
-pdf("../subsample.age_diff_foldchange/number_of_diff_peaks.pdf")
+pdf("../subsample.age_diff_edger/number_of_diff_peaks.pdf")
 ggplot(subset(mt2,Var1==TRUE)) + geom_col(aes(x=Var2,y=value))
 ggplot(subset(mt2,Var1==TRUE)) + geom_text(aes(y=value,x=ncells,label=Var2)) + 
-  xlim(0,10000) + ylim(0,16000) + xlab("Number of cells") + 
+  xlim(0,10000) + ylim(0,2500) + xlab("Number of cells") + 
   ylab("Number of Differential Peaks") 
 
 dev.off()

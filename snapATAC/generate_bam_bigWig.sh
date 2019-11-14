@@ -1,4 +1,4 @@
-tisuse=$1
+tissue=$1
 rank=$2
 
 out_path=../../analysis/snapATAC/${tissue}/
@@ -8,7 +8,7 @@ python split_bam_files.py \
   --tissue $tissue \
   --bam-prefix ../../data/snATAC/bam.filter/  \
   --bam-suffix .filter.bam \
-  --statH $out_path/${tissue}.pooled.barcode.cluster.stage.rep.txt \
+  --statH $out_path/${tissue}.pool.barcode.meta_info.txt \
   -o $out_path/bam.cluster_age_rep/${tissue}
 
 
@@ -69,8 +69,8 @@ done
 
 
 
-    cd $out_path/bigWig.cluster && python ~/software/github/seq-min-scripts/make_IGV_session.py mm10 http://renlab.sdsc.edu/yanxiao/mouse_aging/analysis/Yang_NMF_method/${tissue}/bigWig.cluster/ test.xml && cd -
-    cd $out_path/bigWig.cluster_age && python ~/software/github/seq-min-scripts/make_IGV_session.py mm10 http://renlab.sdsc.edu/yanxiao/mouse_aging/analysis/Yang_NMF_method/${tissue}/bigWig.cluster_age/ test.xml && cd -
+    cd $out_path/bigWig.cluster && python ~/software/github/seq-min-scripts/make_IGV_session.py mm10 http://renlab.sdsc.edu/yanxiao/mouse_aging/analysis/snapATAC/${tissue}/bigWig.cluster/ test.xml && cd -
+    cd $out_path/bigWig.cluster_age && python ~/software/github/seq-min-scripts/make_IGV_session.py mm10 http://renlab.sdsc.edu/yanxiao/mouse_aging/analysis/snapATAC/${tissue}/bigWig.cluster_age/ test.xml && cd -
 
 
     ## feature counts

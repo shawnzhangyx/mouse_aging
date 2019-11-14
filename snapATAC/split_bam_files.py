@@ -10,7 +10,7 @@ parser.add_argument('--bam-suffix', type=str, dest="bams", help='bam file suffix
 parser.add_argument('--statH', type=str, dest="statH", help='input statH matrix')
 #parser.add_argument('--sample-id',type=bool,dest="id",help"to add sample ID to barcode")
 parser.add_argument('-o', '--outPrefix', type=str, dest="outPrefix", help='output prefix')
-parser.add_argument('-p', '--cores',type=int,dest="cpu",help='num of CPUs')
+parser.add_argument('-p', '--cores',type=int,dest="cpu",help='num of CPUs',default=30)
 args = parser.parse_args()
 
 import numpy as np
@@ -37,7 +37,7 @@ def run():
 def generate_bams(tissue,bamf,bams, statHf, prefix):
   o_stat_H = np.genfromtxt(statHf, dtype=None, names=True)
   print(o_stat_H)
-  cluster = np.max(o_stat_H['cluster']).astype(int) + 1
+  cluster = np.max(o_stat_H['cluster']).astype(int) 
   p = Pool(NCPU)
   for idx in np.unique(o_stat_H['cluster']):
     for age in ["03","10","18"]: 

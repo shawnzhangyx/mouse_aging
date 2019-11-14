@@ -16,10 +16,10 @@ with open(args.xgi, 'r') as f:
   barcodes = [x.strip() for x in f.readlines()]
 counts = np.sum(V,1)
 
-if len(barcodes) != len(counts):
-  print("length of barcodes and counts do not match. Exit!")
+if len(barcodes) < len(counts):
+  print("length of barcodes is shorter than length of counts. Exit!")
   exit(1)
 
 #with open(args.outF,'w') as f:
-for idx in range(len(barcodes)):
-  print(barcodes[idx]+"\t"+str(int(counts[idx]))+"\n")
+for idx in range(len(counts)):
+  print(barcodes[idx]+"\t"+str(int(counts[idx])))

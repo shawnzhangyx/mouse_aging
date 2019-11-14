@@ -1,7 +1,7 @@
 library(dplyr)
 library(Seurat)
 
-pbmc.data <- Read10X(data.dir = "../../analysis/repeat_analysis/DH_03_rep1")
+pbmc.data <- Read10X(data.dir = "../../analysis/repeat_analysis/DH/DH_03_rep1")
 pbmc <- CreateSeuratObject(counts = pbmc.data, project = "DH", min.cells = 1, min.features = 1)
 pbmc <- NormalizeData(object = pbmc)
 pbmc <- FindVariableFeatures(object = pbmc, selection.method = "vst", nfeatures = 2000)

@@ -20,9 +20,9 @@ rule require_count2peak:
   input:
     expand("ct2peaks/{sample}.npz",sample=list(sample_info.index)),
     expand("ct2peaks/tmp.{sample}.read2peak.txt.gz",sample=list(sample_info.index)),
-    expand("ct2peaks/{tissue}.merged.npz",tissue=tissues_dict.keys()),
-    expand("ct2peaks/{tissue}.merged.xgi",tissue=tissues_dict.keys()),
-    expand("ct2peaks/{tissue}.merged.ygi",tissue=tissues_dict.keys()),
+#    expand("ct2peaks/{tissue}.merged.npz",tissue=tissues_dict.keys()),
+#    expand("ct2peaks/{tissue}.merged.xgi",tissue=tissues_dict.keys()),
+#    expand("ct2peaks/{tissue}.merged.ygi",tissue=tissues_dict.keys()),
     expand("ct2peaks/{sample}.FIP.barcodes.cnts.txt",sample=list(sample_info.index))
 
 rule count_read_in_peak:
@@ -83,7 +83,7 @@ rule count2peak:
   params:
     pbsName=lambda wildcards: wildcards.sample
   shell:
-    "python ../../scripts/read_to_matrix/ct2peak_save_npz.py {input.read2peak} {input.bed} {input.barcode} 300 "
+    "python ../../scripts/read_to_matrix/ct2peak_save_npz.py {input.read2peak} {input.bed} {input.barcode} 0 "
     "ct2peaks/{wildcards.sample}"
 
 
