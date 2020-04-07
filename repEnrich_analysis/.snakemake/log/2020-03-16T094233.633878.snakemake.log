@@ -1,0 +1,1177 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 100
+Job counts:
+	count	jobs
+	84	alignment
+	1	all
+	84	run_repEnrich2
+	84	subset_bam
+	253
+
+[Mon Mar 16 09:42:35 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.6.R1.fastq.gz, fastq.cluster/DH_10_rep2.6.R2.fastq.gz
+    output: bam/DH_10_rep2.6.bam
+    jobid: 48
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=6
+    threads: 8
+
+Submitted job 48 with external jobid '21116591.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:35 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.5.R1.fastq.gz, fastq.cluster/DH_18_rep2.5.R2.fastq.gz
+    output: bam/DH_18_rep2.5.bam
+    jobid: 75
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=5
+    threads: 8
+
+Submitted job 75 with external jobid '21116592.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:35 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.3.R1.fastq.gz, fastq.cluster/DH_18_rep2.3.R2.fastq.gz
+    output: bam/DH_18_rep2.3.bam
+    jobid: 73
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=3
+    threads: 8
+
+Submitted job 73 with external jobid '21116593.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:35 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.9.R1.fastq.gz, fastq.cluster/DH_10_rep1.9.R2.fastq.gz
+    output: bam/DH_10_rep1.9.bam
+    jobid: 37
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=9
+    threads: 8
+
+Submitted job 37 with external jobid '21116594.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:36 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.11.R1.fastq.gz, fastq.cluster/DH_03_rep2.11.R2.fastq.gz
+    output: bam/DH_03_rep2.11.bam
+    jobid: 25
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=11
+    threads: 8
+
+Submitted job 25 with external jobid '21116595.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:36 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.4.R1.fastq.gz, fastq.cluster/DH_18_rep1.4.R2.fastq.gz
+    output: bam/DH_18_rep1.4.bam
+    jobid: 60
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=4
+    threads: 8
+
+Submitted job 60 with external jobid '21116596.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:36 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.12.R1.fastq.gz, fastq.cluster/DH_03_rep2.12.R2.fastq.gz
+    output: bam/DH_03_rep2.12.bam
+    jobid: 26
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=12
+    threads: 8
+
+Submitted job 26 with external jobid '21116597.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:36 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.7.R1.fastq.gz, fastq.cluster/DH_10_rep1.7.R2.fastq.gz
+    output: bam/DH_10_rep1.7.bam
+    jobid: 35
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=7
+    threads: 8
+
+Submitted job 35 with external jobid '21116598.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:36 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.13.R1.fastq.gz, fastq.cluster/DH_18_rep2.13.R2.fastq.gz
+    output: bam/DH_18_rep2.13.bam
+    jobid: 83
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=13
+    threads: 8
+
+Submitted job 83 with external jobid '21116599.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:36 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.1.R1.fastq.gz, fastq.cluster/DH_03_rep2.1.R2.fastq.gz
+    output: bam/DH_03_rep2.1.bam
+    jobid: 15
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=1
+    threads: 8
+
+Submitted job 15 with external jobid '21116600.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:37 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.14.R1.fastq.gz, fastq.cluster/DH_18_rep2.14.R2.fastq.gz
+    output: bam/DH_18_rep2.14.bam
+    jobid: 84
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=14
+    threads: 8
+
+Submitted job 84 with external jobid '21116601.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:37 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.7.R1.fastq.gz, fastq.cluster/DH_10_rep2.7.R2.fastq.gz
+    output: bam/DH_10_rep2.7.bam
+    jobid: 49
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=7
+    threads: 8
+
+Submitted job 49 with external jobid '21116602.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:37 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.12.R1.fastq.gz, fastq.cluster/DH_03_rep1.12.R2.fastq.gz
+    output: bam/DH_03_rep1.12.bam
+    jobid: 12
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=12
+    threads: 8
+
+Submitted job 12 with external jobid '21116603.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:37 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.1.R1.fastq.gz, fastq.cluster/DH_03_rep1.1.R2.fastq.gz
+    output: bam/DH_03_rep1.1.bam
+    jobid: 1
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=1
+    threads: 8
+
+Submitted job 1 with external jobid '21116604.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:37 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.14.R1.fastq.gz, fastq.cluster/DH_18_rep1.14.R2.fastq.gz
+    output: bam/DH_18_rep1.14.bam
+    jobid: 70
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=14
+    threads: 8
+
+Submitted job 70 with external jobid '21116605.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:38 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.6.R1.fastq.gz, fastq.cluster/DH_10_rep1.6.R2.fastq.gz
+    output: bam/DH_10_rep1.6.bam
+    jobid: 34
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=6
+    threads: 8
+
+Submitted job 34 with external jobid '21116606.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:38 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.12.R1.fastq.gz, fastq.cluster/DH_18_rep2.12.R2.fastq.gz
+    output: bam/DH_18_rep2.12.bam
+    jobid: 82
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=12
+    threads: 8
+
+Submitted job 82 with external jobid '21116607.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:38 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.5.R1.fastq.gz, fastq.cluster/DH_18_rep1.5.R2.fastq.gz
+    output: bam/DH_18_rep1.5.bam
+    jobid: 61
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=5
+    threads: 8
+
+Submitted job 61 with external jobid '21116608.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:38 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.9.R1.fastq.gz, fastq.cluster/DH_10_rep2.9.R2.fastq.gz
+    output: bam/DH_10_rep2.9.bam
+    jobid: 51
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=9
+    threads: 8
+
+Submitted job 51 with external jobid '21116609.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:38 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.3.R1.fastq.gz, fastq.cluster/DH_18_rep1.3.R2.fastq.gz
+    output: bam/DH_18_rep1.3.bam
+    jobid: 59
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=3
+    threads: 8
+
+Submitted job 59 with external jobid '21116610.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:38 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.13.R1.fastq.gz, fastq.cluster/DH_18_rep1.13.R2.fastq.gz
+    output: bam/DH_18_rep1.13.bam
+    jobid: 69
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=13
+    threads: 8
+
+Submitted job 69 with external jobid '21116611.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:39 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.11.R1.fastq.gz, fastq.cluster/DH_03_rep1.11.R2.fastq.gz
+    output: bam/DH_03_rep1.11.bam
+    jobid: 11
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=11
+    threads: 8
+
+Submitted job 11 with external jobid '21116612.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:39 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.4.R1.fastq.gz, fastq.cluster/DH_18_rep2.4.R2.fastq.gz
+    output: bam/DH_18_rep2.4.bam
+    jobid: 74
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=4
+    threads: 8
+
+Submitted job 74 with external jobid '21116613.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:39 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.6.R1.fastq.gz, fastq.cluster/DH_03_rep2.6.R2.fastq.gz
+    output: bam/DH_03_rep2.6.bam
+    jobid: 20
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=6
+    threads: 8
+
+Submitted job 20 with external jobid '21116614.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:39 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.11.R1.fastq.gz, fastq.cluster/DH_10_rep2.11.R2.fastq.gz
+    output: bam/DH_10_rep2.11.bam
+    jobid: 53
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=11
+    threads: 8
+
+Submitted job 53 with external jobid '21116615.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:39 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.2.R1.fastq.gz, fastq.cluster/DH_18_rep1.2.R2.fastq.gz
+    output: bam/DH_18_rep1.2.bam
+    jobid: 58
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=2
+    threads: 8
+
+Submitted job 58 with external jobid '21116616.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:39 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.9.R1.fastq.gz, fastq.cluster/DH_03_rep1.9.R2.fastq.gz
+    output: bam/DH_03_rep1.9.bam
+    jobid: 9
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=9
+    threads: 8
+
+Submitted job 9 with external jobid '21116617.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:40 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.8.R1.fastq.gz, fastq.cluster/DH_18_rep2.8.R2.fastq.gz
+    output: bam/DH_18_rep2.8.bam
+    jobid: 78
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=8
+    threads: 8
+
+Submitted job 78 with external jobid '21116618.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:40 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.12.R1.fastq.gz, fastq.cluster/DH_10_rep2.12.R2.fastq.gz
+    output: bam/DH_10_rep2.12.bam
+    jobid: 54
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=12
+    threads: 8
+
+Submitted job 54 with external jobid '21116619.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:40 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.7.R1.fastq.gz, fastq.cluster/DH_03_rep1.7.R2.fastq.gz
+    output: bam/DH_03_rep1.7.bam
+    jobid: 7
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=7
+    threads: 8
+
+Submitted job 7 with external jobid '21116620.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:40 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.10.R1.fastq.gz, fastq.cluster/DH_18_rep1.10.R2.fastq.gz
+    output: bam/DH_18_rep1.10.bam
+    jobid: 66
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=10
+    threads: 8
+
+Submitted job 66 with external jobid '21116621.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:40 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.1.R1.fastq.gz, fastq.cluster/DH_10_rep2.1.R2.fastq.gz
+    output: bam/DH_10_rep2.1.bam
+    jobid: 43
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=1
+    threads: 8
+
+Submitted job 43 with external jobid '21116622.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:41 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.7.R1.fastq.gz, fastq.cluster/DH_03_rep2.7.R2.fastq.gz
+    output: bam/DH_03_rep2.7.bam
+    jobid: 21
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=7
+    threads: 8
+
+Submitted job 21 with external jobid '21116623.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:41 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.12.R1.fastq.gz, fastq.cluster/DH_10_rep1.12.R2.fastq.gz
+    output: bam/DH_10_rep1.12.bam
+    jobid: 40
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=12
+    threads: 8
+
+Submitted job 40 with external jobid '21116624.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:41 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.10.R1.fastq.gz, fastq.cluster/DH_18_rep2.10.R2.fastq.gz
+    output: bam/DH_18_rep2.10.bam
+    jobid: 80
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=10
+    threads: 8
+
+Submitted job 80 with external jobid '21116625.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:41 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.1.R1.fastq.gz, fastq.cluster/DH_10_rep1.1.R2.fastq.gz
+    output: bam/DH_10_rep1.1.bam
+    jobid: 29
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=1
+    threads: 8
+
+Submitted job 29 with external jobid '21116626.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:41 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.6.R1.fastq.gz, fastq.cluster/DH_03_rep1.6.R2.fastq.gz
+    output: bam/DH_03_rep1.6.bam
+    jobid: 6
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=6
+    threads: 8
+
+Submitted job 6 with external jobid '21116627.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:41 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.11.R1.fastq.gz, fastq.cluster/DH_10_rep1.11.R2.fastq.gz
+    output: bam/DH_10_rep1.11.bam
+    jobid: 39
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=11
+    threads: 8
+
+Submitted job 39 with external jobid '21116628.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:41 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.9.R1.fastq.gz, fastq.cluster/DH_03_rep2.9.R2.fastq.gz
+    output: bam/DH_03_rep2.9.bam
+    jobid: 23
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=9
+    threads: 8
+
+Submitted job 23 with external jobid '21116629.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:42 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.8.R1.fastq.gz, fastq.cluster/DH_18_rep1.8.R2.fastq.gz
+    output: bam/DH_18_rep1.8.bam
+    jobid: 64
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=8
+    threads: 8
+
+Submitted job 64 with external jobid '21116630.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:42 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.2.R1.fastq.gz, fastq.cluster/DH_18_rep2.2.R2.fastq.gz
+    output: bam/DH_18_rep2.2.bam
+    jobid: 72
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=2
+    threads: 8
+
+Submitted job 72 with external jobid '21116631.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:42 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.7.R1.fastq.gz, fastq.cluster/DH_18_rep2.7.R2.fastq.gz
+    output: bam/DH_18_rep2.7.bam
+    jobid: 77
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=7
+    threads: 8
+
+Submitted job 77 with external jobid '21116632.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:42 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.10.R1.fastq.gz, fastq.cluster/DH_03_rep2.10.R2.fastq.gz
+    output: bam/DH_03_rep2.10.bam
+    jobid: 24
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=10
+    threads: 8
+
+Submitted job 24 with external jobid '21116633.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:42 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.10.R1.fastq.gz, fastq.cluster/DH_10_rep1.10.R2.fastq.gz
+    output: bam/DH_10_rep1.10.bam
+    jobid: 38
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=10
+    threads: 8
+
+Submitted job 38 with external jobid '21116634.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:43 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.14.R1.fastq.gz, fastq.cluster/DH_10_rep1.14.R2.fastq.gz
+    output: bam/DH_10_rep1.14.bam
+    jobid: 42
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=14
+    threads: 8
+
+Submitted job 42 with external jobid '21116635.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:43 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.5.R1.fastq.gz, fastq.cluster/DH_10_rep1.5.R2.fastq.gz
+    output: bam/DH_10_rep1.5.bam
+    jobid: 33
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=5
+    threads: 8
+
+Submitted job 33 with external jobid '21116636.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:43 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.6.R1.fastq.gz, fastq.cluster/DH_18_rep1.6.R2.fastq.gz
+    output: bam/DH_18_rep1.6.bam
+    jobid: 62
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=6
+    threads: 8
+
+Submitted job 62 with external jobid '21116637.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:43 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.4.R1.fastq.gz, fastq.cluster/DH_10_rep2.4.R2.fastq.gz
+    output: bam/DH_10_rep2.4.bam
+    jobid: 46
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=4
+    threads: 8
+
+Submitted job 46 with external jobid '21116638.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:43 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.13.R1.fastq.gz, fastq.cluster/DH_10_rep1.13.R2.fastq.gz
+    output: bam/DH_10_rep1.13.bam
+    jobid: 41
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=13
+    threads: 8
+
+Submitted job 41 with external jobid '21116639.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:43 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.8.R1.fastq.gz, fastq.cluster/DH_03_rep1.8.R2.fastq.gz
+    output: bam/DH_03_rep1.8.bam
+    jobid: 8
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=8
+    threads: 8
+
+Submitted job 8 with external jobid '21116640.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:44 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.2.R1.fastq.gz, fastq.cluster/DH_03_rep2.2.R2.fastq.gz
+    output: bam/DH_03_rep2.2.bam
+    jobid: 16
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=2
+    threads: 8
+
+Submitted job 16 with external jobid '21116641.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:44 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.3.R1.fastq.gz, fastq.cluster/DH_10_rep1.3.R2.fastq.gz
+    output: bam/DH_10_rep1.3.bam
+    jobid: 31
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=3
+    threads: 8
+
+Submitted job 31 with external jobid '21116642.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:44 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.5.R1.fastq.gz, fastq.cluster/DH_10_rep2.5.R2.fastq.gz
+    output: bam/DH_10_rep2.5.bam
+    jobid: 47
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=5
+    threads: 8
+
+Submitted job 47 with external jobid '21116643.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:44 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.6.R1.fastq.gz, fastq.cluster/DH_18_rep2.6.R2.fastq.gz
+    output: bam/DH_18_rep2.6.bam
+    jobid: 76
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=6
+    threads: 8
+
+Submitted job 76 with external jobid '21116644.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:44 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.4.R1.fastq.gz, fastq.cluster/DH_10_rep1.4.R2.fastq.gz
+    output: bam/DH_10_rep1.4.bam
+    jobid: 32
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=4
+    threads: 8
+
+Submitted job 32 with external jobid '21116645.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:44 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.9.R1.fastq.gz, fastq.cluster/DH_18_rep2.9.R2.fastq.gz
+    output: bam/DH_18_rep2.9.bam
+    jobid: 79
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=9
+    threads: 8
+
+Submitted job 79 with external jobid '21116646.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:45 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.2.R1.fastq.gz, fastq.cluster/DH_03_rep1.2.R2.fastq.gz
+    output: bam/DH_03_rep1.2.bam
+    jobid: 2
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=2
+    threads: 8
+
+Submitted job 2 with external jobid '21116647.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:45 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.8.R1.fastq.gz, fastq.cluster/DH_03_rep2.8.R2.fastq.gz
+    output: bam/DH_03_rep2.8.bam
+    jobid: 22
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=8
+    threads: 8
+
+Submitted job 22 with external jobid '21116648.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:45 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.3.R1.fastq.gz, fastq.cluster/DH_10_rep2.3.R2.fastq.gz
+    output: bam/DH_10_rep2.3.bam
+    jobid: 45
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=3
+    threads: 8
+
+Submitted job 45 with external jobid '21116649.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:45 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.13.R1.fastq.gz, fastq.cluster/DH_10_rep2.13.R2.fastq.gz
+    output: bam/DH_10_rep2.13.bam
+    jobid: 55
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=13
+    threads: 8
+
+Submitted job 55 with external jobid '21116650.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:45 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.9.R1.fastq.gz, fastq.cluster/DH_18_rep1.9.R2.fastq.gz
+    output: bam/DH_18_rep1.9.bam
+    jobid: 65
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=9
+    threads: 8
+
+Submitted job 65 with external jobid '21116651.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:45 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.7.R1.fastq.gz, fastq.cluster/DH_18_rep1.7.R2.fastq.gz
+    output: bam/DH_18_rep1.7.bam
+    jobid: 63
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=7
+    threads: 8
+
+Submitted job 63 with external jobid '21116652.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:45 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.10.R1.fastq.gz, fastq.cluster/DH_03_rep1.10.R2.fastq.gz
+    output: bam/DH_03_rep1.10.bam
+    jobid: 10
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=10
+    threads: 8
+
+Submitted job 10 with external jobid '21116653.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:46 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.14.R1.fastq.gz, fastq.cluster/DH_10_rep2.14.R2.fastq.gz
+    output: bam/DH_10_rep2.14.bam
+    jobid: 56
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=14
+    threads: 8
+
+Submitted job 56 with external jobid '21116654.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:46 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.12.R1.fastq.gz, fastq.cluster/DH_18_rep1.12.R2.fastq.gz
+    output: bam/DH_18_rep1.12.bam
+    jobid: 68
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=12
+    threads: 8
+
+Submitted job 68 with external jobid '21116655.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:46 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.1.R1.fastq.gz, fastq.cluster/DH_18_rep1.1.R2.fastq.gz
+    output: bam/DH_18_rep1.1.bam
+    jobid: 57
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=1
+    threads: 8
+
+Submitted job 57 with external jobid '21116656.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:46 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.14.R1.fastq.gz, fastq.cluster/DH_03_rep1.14.R2.fastq.gz
+    output: bam/DH_03_rep1.14.bam
+    jobid: 14
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=14
+    threads: 8
+
+Submitted job 14 with external jobid '21116657.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:46 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.10.R1.fastq.gz, fastq.cluster/DH_10_rep2.10.R2.fastq.gz
+    output: bam/DH_10_rep2.10.bam
+    jobid: 52
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=10
+    threads: 8
+
+Submitted job 52 with external jobid '21116658.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:47 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.5.R1.fastq.gz, fastq.cluster/DH_03_rep1.5.R2.fastq.gz
+    output: bam/DH_03_rep1.5.bam
+    jobid: 5
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=5
+    threads: 8
+
+Submitted job 5 with external jobid '21116659.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:47 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.13.R1.fastq.gz, fastq.cluster/DH_03_rep1.13.R2.fastq.gz
+    output: bam/DH_03_rep1.13.bam
+    jobid: 13
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=13
+    threads: 8
+
+Submitted job 13 with external jobid '21116660.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:47 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.3.R1.fastq.gz, fastq.cluster/DH_03_rep1.3.R2.fastq.gz
+    output: bam/DH_03_rep1.3.bam
+    jobid: 3
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=3
+    threads: 8
+
+Submitted job 3 with external jobid '21116661.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:48 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.8.R1.fastq.gz, fastq.cluster/DH_10_rep1.8.R2.fastq.gz
+    output: bam/DH_10_rep1.8.bam
+    jobid: 36
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=8
+    threads: 8
+
+Submitted job 36 with external jobid '21116662.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:48 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.4.R1.fastq.gz, fastq.cluster/DH_03_rep2.4.R2.fastq.gz
+    output: bam/DH_03_rep2.4.bam
+    jobid: 18
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=4
+    threads: 8
+
+Submitted job 18 with external jobid '21116663.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:48 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.2.R1.fastq.gz, fastq.cluster/DH_10_rep2.2.R2.fastq.gz
+    output: bam/DH_10_rep2.2.bam
+    jobid: 44
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=2
+    threads: 8
+
+Submitted job 44 with external jobid '21116664.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:48 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep1.11.R1.fastq.gz, fastq.cluster/DH_18_rep1.11.R2.fastq.gz
+    output: bam/DH_18_rep1.11.bam
+    jobid: 67
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=11
+    threads: 8
+
+Submitted job 67 with external jobid '21116665.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:48 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.5.R1.fastq.gz, fastq.cluster/DH_03_rep2.5.R2.fastq.gz
+    output: bam/DH_03_rep2.5.bam
+    jobid: 19
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=5
+    threads: 8
+
+Submitted job 19 with external jobid '21116666.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:49 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.3.R1.fastq.gz, fastq.cluster/DH_03_rep2.3.R2.fastq.gz
+    output: bam/DH_03_rep2.3.bam
+    jobid: 17
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=3
+    threads: 8
+
+Submitted job 17 with external jobid '21116667.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:49 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.13.R1.fastq.gz, fastq.cluster/DH_03_rep2.13.R2.fastq.gz
+    output: bam/DH_03_rep2.13.bam
+    jobid: 27
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=13
+    threads: 8
+
+Submitted job 27 with external jobid '21116668.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:49 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep1.4.R1.fastq.gz, fastq.cluster/DH_03_rep1.4.R2.fastq.gz
+    output: bam/DH_03_rep1.4.bam
+    jobid: 4
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=4
+    threads: 8
+
+Submitted job 4 with external jobid '21116669.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:49 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep1.2.R1.fastq.gz, fastq.cluster/DH_10_rep1.2.R2.fastq.gz
+    output: bam/DH_10_rep1.2.bam
+    jobid: 30
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=2
+    threads: 8
+
+Submitted job 30 with external jobid '21116670.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:49 2020]
+rule alignment:
+    input: fastq.cluster/DH_10_rep2.8.R1.fastq.gz, fastq.cluster/DH_10_rep2.8.R2.fastq.gz
+    output: bam/DH_10_rep2.8.bam
+    jobid: 50
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=8
+    threads: 8
+
+Submitted job 50 with external jobid '21116671.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:49 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.11.R1.fastq.gz, fastq.cluster/DH_18_rep2.11.R2.fastq.gz
+    output: bam/DH_18_rep2.11.bam
+    jobid: 81
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=11
+    threads: 8
+
+Submitted job 81 with external jobid '21116672.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:50 2020]
+rule alignment:
+    input: fastq.cluster/DH_18_rep2.1.R1.fastq.gz, fastq.cluster/DH_18_rep2.1.R2.fastq.gz
+    output: bam/DH_18_rep2.1.bam
+    jobid: 71
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=1
+    threads: 8
+
+Submitted job 71 with external jobid '21116673.tscc-mgr7.local'.
+
+[Mon Mar 16 09:42:50 2020]
+rule alignment:
+    input: fastq.cluster/DH_03_rep2.14.R1.fastq.gz, fastq.cluster/DH_03_rep2.14.R2.fastq.gz
+    output: bam/DH_03_rep2.14.bam
+    jobid: 28
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=14
+    threads: 8
+
+Submitted job 28 with external jobid '21116674.tscc-mgr7.local'.
+[Mon Mar 16 09:45:45 2020]
+Finished job 37.
+1 of 253 steps (0.40%) done
+
+[Mon Mar 16 09:45:45 2020]
+rule subset_bam:
+    input: bam/DH_10_rep1.9.bam
+    output: bam/DH_10_rep1.9_unique.bam, bam/DH_10_rep1.9_multimap_R1.fastq, bam/DH_10_rep1.9_multimap_R2.fastq
+    jobid: 121
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=9
+
+Submitted job 121 with external jobid '21116695.tscc-mgr7.local'.
+[Mon Mar 16 09:45:46 2020]
+Finished job 83.
+2 of 253 steps (0.79%) done
+
+[Mon Mar 16 09:45:46 2020]
+rule subset_bam:
+    input: bam/DH_18_rep2.13.bam
+    output: bam/DH_18_rep2.13_unique.bam, bam/DH_18_rep2.13_multimap_R1.fastq, bam/DH_18_rep2.13_multimap_R2.fastq
+    jobid: 167
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=13
+
+Submitted job 167 with external jobid '21116696.tscc-mgr7.local'.
+[Mon Mar 16 09:46:40 2020]
+Finished job 26.
+3 of 253 steps (1%) done
+
+[Mon Mar 16 09:46:40 2020]
+rule subset_bam:
+    input: bam/DH_03_rep2.12.bam
+    output: bam/DH_03_rep2.12_unique.bam, bam/DH_03_rep2.12_multimap_R1.fastq, bam/DH_03_rep2.12_multimap_R2.fastq
+    jobid: 110
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=12
+
+[Mon Mar 16 09:46:40 2020]
+Finished job 35.
+4 of 253 steps (2%) done
+Submitted job 110 with external jobid '21116697.tscc-mgr7.local'.
+
+[Mon Mar 16 09:46:41 2020]
+rule subset_bam:
+    input: bam/DH_10_rep1.7.bam
+    output: bam/DH_10_rep1.7_unique.bam, bam/DH_10_rep1.7_multimap_R1.fastq, bam/DH_10_rep1.7_multimap_R2.fastq
+    jobid: 119
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=7
+
+Submitted job 119 with external jobid '21116698.tscc-mgr7.local'.
+[Mon Mar 16 09:47:35 2020]
+Finished job 60.
+5 of 253 steps (2%) done
+
+[Mon Mar 16 09:47:35 2020]
+rule subset_bam:
+    input: bam/DH_18_rep1.4.bam
+    output: bam/DH_18_rep1.4_unique.bam, bam/DH_18_rep1.4_multimap_R1.fastq, bam/DH_18_rep1.4_multimap_R2.fastq
+    jobid: 144
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=4
+
+Submitted job 144 with external jobid '21116701.tscc-mgr7.local'.
+[Mon Mar 16 09:47:55 2020]
+Finished job 25.
+6 of 253 steps (2%) done
+
+[Mon Mar 16 09:47:55 2020]
+rule subset_bam:
+    input: bam/DH_03_rep2.11.bam
+    output: bam/DH_03_rep2.11_unique.bam, bam/DH_03_rep2.11_multimap_R1.fastq, bam/DH_03_rep2.11_multimap_R2.fastq
+    jobid: 109
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=11
+
+Submitted job 109 with external jobid '21116702.tscc-mgr7.local'.
+[Mon Mar 16 09:49:10 2020]
+Finished job 82.
+7 of 253 steps (3%) done
+
+[Mon Mar 16 09:49:10 2020]
+rule subset_bam:
+    input: bam/DH_18_rep2.12.bam
+    output: bam/DH_18_rep2.12_unique.bam, bam/DH_18_rep2.12_multimap_R1.fastq, bam/DH_18_rep2.12_multimap_R2.fastq
+    jobid: 166
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=12
+
+Submitted job 166 with external jobid '21116703.tscc-mgr7.local'.
+[Mon Mar 16 09:50:04 2020]
+Finished job 34.
+8 of 253 steps (3%) done
+
+[Mon Mar 16 09:50:04 2020]
+rule subset_bam:
+    input: bam/DH_10_rep1.6.bam
+    output: bam/DH_10_rep1.6_unique.bam, bam/DH_10_rep1.6_multimap_R1.fastq, bam/DH_10_rep1.6_multimap_R2.fastq
+    jobid: 118
+    wildcards: tissue=DH_10, time_rep=rep1, cluster=6
+
+Submitted job 118 with external jobid '21116704.tscc-mgr7.local'.
+[Mon Mar 16 09:50:05 2020]
+Finished job 69.
+9 of 253 steps (4%) done
+
+[Mon Mar 16 09:50:05 2020]
+rule subset_bam:
+    input: bam/DH_18_rep1.13.bam
+    output: bam/DH_18_rep1.13_unique.bam, bam/DH_18_rep1.13_multimap_R1.fastq, bam/DH_18_rep1.13_multimap_R2.fastq
+    jobid: 153
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=13
+
+Submitted job 153 with external jobid '21116705.tscc-mgr7.local'.
+[Mon Mar 16 09:50:23 2020]
+Finished job 75.
+10 of 253 steps (4%) done
+
+[Mon Mar 16 09:50:23 2020]
+rule subset_bam:
+    input: bam/DH_18_rep2.5.bam
+    output: bam/DH_18_rep2.5_unique.bam, bam/DH_18_rep2.5_multimap_R1.fastq, bam/DH_18_rep2.5_multimap_R2.fastq
+    jobid: 159
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=5
+
+Submitted job 159 with external jobid '21116706.tscc-mgr7.local'.
+[Mon Mar 16 09:50:24 2020]
+Finished job 51.
+11 of 253 steps (4%) done
+
+[Mon Mar 16 09:50:24 2020]
+rule subset_bam:
+    input: bam/DH_10_rep2.9.bam
+    output: bam/DH_10_rep2.9_unique.bam, bam/DH_10_rep2.9_multimap_R1.fastq, bam/DH_10_rep2.9_multimap_R2.fastq
+    jobid: 135
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=9
+
+Submitted job 135 with external jobid '21116707.tscc-mgr7.local'.
+[Mon Mar 16 09:51:20 2020]
+Finished job 61.
+12 of 253 steps (5%) done
+
+[Mon Mar 16 09:51:20 2020]
+rule subset_bam:
+    input: bam/DH_18_rep1.5.bam
+    output: bam/DH_18_rep1.5_unique.bam, bam/DH_18_rep1.5_multimap_R1.fastq, bam/DH_18_rep1.5_multimap_R2.fastq
+    jobid: 145
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=5
+
+[Mon Mar 16 09:51:20 2020]
+Finished job 11.
+13 of 253 steps (5%) done
+Submitted job 145 with external jobid '21116708.tscc-mgr7.local'.
+
+[Mon Mar 16 09:51:20 2020]
+rule subset_bam:
+    input: bam/DH_03_rep1.11.bam
+    output: bam/DH_03_rep1.11_unique.bam, bam/DH_03_rep1.11_multimap_R1.fastq, bam/DH_03_rep1.11_multimap_R2.fastq
+    jobid: 95
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=11
+
+Submitted job 95 with external jobid '21116709.tscc-mgr7.local'.
+[Mon Mar 16 09:53:28 2020]
+Finished job 48.
+14 of 253 steps (6%) done
+
+[Mon Mar 16 09:53:28 2020]
+rule subset_bam:
+    input: bam/DH_10_rep2.6.bam
+    output: bam/DH_10_rep2.6_unique.bam, bam/DH_10_rep2.6_multimap_R1.fastq, bam/DH_10_rep2.6_multimap_R2.fastq
+    jobid: 132
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=6
+
+Submitted job 132 with external jobid '21116710.tscc-mgr7.local'.
+[Mon Mar 16 09:53:30 2020]
+Finished job 58.
+15 of 253 steps (6%) done
+
+[Mon Mar 16 09:53:30 2020]
+rule subset_bam:
+    input: bam/DH_18_rep1.2.bam
+    output: bam/DH_18_rep1.2_unique.bam, bam/DH_18_rep1.2_multimap_R1.fastq, bam/DH_18_rep1.2_multimap_R2.fastq
+    jobid: 142
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=2
+
+[Mon Mar 16 09:53:30 2020]
+Finished job 9.
+16 of 253 steps (6%) done
+Submitted job 142 with external jobid '21116711.tscc-mgr7.local'.
+
+[Mon Mar 16 09:53:30 2020]
+rule subset_bam:
+    input: bam/DH_03_rep1.9.bam
+    output: bam/DH_03_rep1.9_unique.bam, bam/DH_03_rep1.9_multimap_R1.fastq, bam/DH_03_rep1.9_multimap_R2.fastq
+    jobid: 93
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=9
+
+Submitted job 93 with external jobid '21116712.tscc-mgr7.local'.
+[Mon Mar 16 09:54:24 2020]
+Finished job 59.
+17 of 253 steps (7%) done
+
+[Mon Mar 16 09:54:24 2020]
+rule subset_bam:
+    input: bam/DH_18_rep1.3.bam
+    output: bam/DH_18_rep1.3_unique.bam, bam/DH_18_rep1.3_multimap_R1.fastq, bam/DH_18_rep1.3_multimap_R2.fastq
+    jobid: 143
+    wildcards: tissue=DH_18, time_rep=rep1, cluster=3
+
+Submitted job 143 with external jobid '21116713.tscc-mgr7.local'.
+[Mon Mar 16 09:55:19 2020]
+Finished job 15.
+18 of 253 steps (7%) done
+
+[Mon Mar 16 09:55:19 2020]
+rule subset_bam:
+    input: bam/DH_03_rep2.1.bam
+    output: bam/DH_03_rep2.1_unique.bam, bam/DH_03_rep2.1_multimap_R1.fastq, bam/DH_03_rep2.1_multimap_R2.fastq
+    jobid: 99
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=1
+
+Submitted job 99 with external jobid '21116715.tscc-mgr7.local'.
+[Mon Mar 16 09:55:20 2020]
+Finished job 20.
+19 of 253 steps (8%) done
+
+[Mon Mar 16 09:55:20 2020]
+rule subset_bam:
+    input: bam/DH_03_rep2.6.bam
+    output: bam/DH_03_rep2.6_unique.bam, bam/DH_03_rep2.6_multimap_R1.fastq, bam/DH_03_rep2.6_multimap_R2.fastq
+    jobid: 104
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=6
+
+[Mon Mar 16 09:55:20 2020]
+Finished job 53.
+20 of 253 steps (8%) done
+[Mon Mar 16 09:55:20 2020]
+Finished job 54.
+21 of 253 steps (8%) done
+Submitted job 104 with external jobid '21116716.tscc-mgr7.local'.
+
+[Mon Mar 16 09:55:20 2020]
+rule subset_bam:
+    input: bam/DH_10_rep2.11.bam
+    output: bam/DH_10_rep2.11_unique.bam, bam/DH_10_rep2.11_multimap_R1.fastq, bam/DH_10_rep2.11_multimap_R2.fastq
+    jobid: 137
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=11
+
+Submitted job 137 with external jobid '21116717.tscc-mgr7.local'.
+
+[Mon Mar 16 09:55:20 2020]
+rule subset_bam:
+    input: bam/DH_10_rep2.12.bam
+    output: bam/DH_10_rep2.12_unique.bam, bam/DH_10_rep2.12_multimap_R1.fastq, bam/DH_10_rep2.12_multimap_R2.fastq
+    jobid: 138
+    wildcards: tissue=DH_10, time_rep=rep2, cluster=12
+
+Submitted job 138 with external jobid '21116718.tscc-mgr7.local'.
+[Mon Mar 16 09:56:16 2020]
+Finished job 74.
+22 of 253 steps (9%) done
+
+[Mon Mar 16 09:56:16 2020]
+rule subset_bam:
+    input: bam/DH_18_rep2.4.bam
+    output: bam/DH_18_rep2.4_unique.bam, bam/DH_18_rep2.4_multimap_R1.fastq, bam/DH_18_rep2.4_multimap_R2.fastq
+    jobid: 158
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=4
+
+Submitted job 158 with external jobid '21116719.tscc-mgr7.local'.
+[Mon Mar 16 09:57:10 2020]
+Finished job 7.
+23 of 253 steps (9%) done
+
+[Mon Mar 16 09:57:10 2020]
+rule subset_bam:
+    input: bam/DH_03_rep1.7.bam
+    output: bam/DH_03_rep1.7_unique.bam, bam/DH_03_rep1.7_multimap_R1.fastq, bam/DH_03_rep1.7_multimap_R2.fastq
+    jobid: 91
+    wildcards: tissue=DH_03, time_rep=rep1, cluster=7
+
+Submitted job 91 with external jobid '21116720.tscc-mgr7.local'.
+[Mon Mar 16 09:58:03 2020]
+Finished job 73.
+24 of 253 steps (9%) done
+
+[Mon Mar 16 09:58:03 2020]
+rule subset_bam:
+    input: bam/DH_18_rep2.3.bam
+    output: bam/DH_18_rep2.3_unique.bam, bam/DH_18_rep2.3_multimap_R1.fastq, bam/DH_18_rep2.3_multimap_R2.fastq
+    jobid: 157
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=3
+
+Submitted job 157 with external jobid '21116721.tscc-mgr7.local'.
+[Mon Mar 16 09:58:23 2020]
+Finished job 78.
+25 of 253 steps (10%) done
+
+[Mon Mar 16 09:58:23 2020]
+rule subset_bam:
+    input: bam/DH_18_rep2.8.bam
+    output: bam/DH_18_rep2.8_unique.bam, bam/DH_18_rep2.8_multimap_R1.fastq, bam/DH_18_rep2.8_multimap_R2.fastq
+    jobid: 162
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=8
+
+Submitted job 162 with external jobid '21116722.tscc-mgr7.local'.
+[Mon Mar 16 10:46:27 2020]
+Finished job 24.
+26 of 253 steps (10%) done
+
+[Mon Mar 16 10:46:27 2020]
+rule subset_bam:
+    input: bam/DH_03_rep2.10.bam
+    output: bam/DH_03_rep2.10_unique.bam, bam/DH_03_rep2.10_multimap_R1.fastq, bam/DH_03_rep2.10_multimap_R2.fastq
+    jobid: 108
+    wildcards: tissue=DH_03, time_rep=rep2, cluster=10
+
+Submitted job 108 with external jobid '21116847.tscc-mgr7.local'.
+[Mon Mar 16 10:50:22 2020]
+Finished job 77.
+27 of 253 steps (11%) done
+
+[Mon Mar 16 10:50:22 2020]
+rule subset_bam:
+    input: bam/DH_18_rep2.7.bam
+    output: bam/DH_18_rep2.7_unique.bam, bam/DH_18_rep2.7_multimap_R1.fastq, bam/DH_18_rep2.7_multimap_R2.fastq
+    jobid: 161
+    wildcards: tissue=DH_18, time_rep=rep2, cluster=7
+
+Submitted job 161 with external jobid '21116850.tscc-mgr7.local'.
+Terminating processes on user request, this might take some time.
+Will exit after finishing currently running jobs.
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-16T094233.633878.snakemake.log

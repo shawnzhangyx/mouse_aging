@@ -74,7 +74,9 @@ rule call_peaks:
   params:
     pbsName=lambda wildcards: wildcards.tissue
   shell:
-    "source activate py27 && macs2 callpeak -t {input} -n peaks/{wildcards.tissue} -g mm -f BAMPE --keep-dup all;"
+    "source activate py27 && macs2 callpeak -t {input} -n peaks/{wildcards.tissue} -g mm --keep-dup all;"
+# Paired-end mode does not work very well.
+#    "source activate py27 && macs2 callpeak -t {input} -n peaks/{wildcards.tissue} -g mm -f BAMPE --keep-dup all;"
 
 
 rule require_filter_bigWig:

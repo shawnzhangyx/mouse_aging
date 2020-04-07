@@ -5,7 +5,7 @@ library(SnapATAC);
 outF = "DH"
 setwd("../../analysis/snapATAC/DH/snapFiles/")
 
-load("DH.pool.snapATAC.filterTSS10.Frag500.dims20.cluster.RData")
+load("DH.pool.snapATAC.Frag500.TSS10.AllCells.seed1.dimPC20.K20.res0.7.harmony.cluster.RData")
 
 genes = read.table("../../../../scripts/snapATAC/gencode.vM16.gene.bed")
 genes.gr = GRanges(genes[,1], 
@@ -16,17 +16,17 @@ marker.genes = c("Mog","Apoe","Pdgfra","C1qb","Slc17a7","Gad2","Nov","Pink8", "L
 
 genes.sel.gr <- genes.gr[which(genes.gr$name %in% marker.genes)];
 
-x.sp = createGmatFromMat(
-    obj=x.sp, 
+x.after.sp = createGmatFromMat(
+    obj=x.after.sp, 
     input.mat="bmat",
     genes=genes.sel.gr,
     do.par=TRUE,
     num.cores=10
   );
 #
-x.sp = scaleCountMatrix(
-    obj=x.sp, 
-    cov=x.sp@metaData$UQ + 1,
+x.after.sp = scaleCountMatrix(
+    obj=x.after.sp, 
+    cov=x.after.sp@metaData$UQ + 1,
     mat="gmat",
     method = "RPM"
   );
@@ -98,8 +98,8 @@ runMag <- function(
 }
 
 
-x.sp = runMag(
-  obj=x.sp,
+x.after.sp = runMag(
+  obj=x.after.sp,
     input.mat="gmat",
       step.size=1
       )
@@ -109,8 +109,8 @@ pdf(paste(outF, "_markers_UMAP.pdf", sep = ""), height = 7, width = 8)
 par(mfrow = c(3,3),oma = c(0, 0, 2, 0))
 for(i in genes){
   plotFeatureSingle(
-    obj=x.sp,
-    feature.value=x.sp@gmat[, i],
+    obj=x.after.sp,
+    feature.value=x.after.sp@gmat[, i],
     method="umap",
     main=paste(i),
     point.size=0.1,

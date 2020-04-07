@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 38 of /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Missing input files for rule alignment:
+fastq.cluster/HT_10_rep2.2.R1.fastq.gz
+fastq.cluster/HT_10_rep2.2.R2.fastq.gz

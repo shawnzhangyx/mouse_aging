@@ -1,0 +1,106 @@
+#! /usr/bin/env bash
+## Snakefile
+####################
+
+import pandas as pd
+workdir: workflow.basedir + "/../../analysis/human_cortex/"
+
+sample_info = pd.read_table("../../data/human_cortex/sample_info.txt",sep=" ")
+# select a certain cell from table.
+#sample_info.loc["DH.03.rep1"]['run']
+tissues_dict = {}
+for x in sample_info.index:
+  if x[:2] not in tissues_dict:
+    tissues_dict[x[:2]] = [x]
+  else:
+    tissues_dict[x[:2]].append(x)
+
+print(tissues_dict)
+
+
+localrules: create_snap_list
+
+
+
+rule require_snap_pre:
+  input: 
+    expand("{tissue}/snapFiles/{tissue}.snap.list",tissue=tissues_dict.keys())
+#    expand("{tissue}/snapFiles/{tissue}.snap.list",tissue=["DH"])
+
+
+rule create_snap_list:
+  output:
+    "{tissue}/snapFiles/{tissue}.snap.list"
+  input:
+    snapFiles=lambda wildcards: expand(wildcards.tissue+"/snapFiles/{sample}.snap",sample=tissues_dict[wildcards.tissue]),
+  threads: 1
+  params:
+    pbsName=lambda wildcards: wildcards.tissue,
+    samples=lambda wildcards: " ".join(tissues_dict[wildcards.tissue])
+  shell: 
+    '''for sample in {params.samples}; do echo -e "$sample\t$sample.snap" >> {output};done
+    '''
+
+
+rule snap_add_mat:
+  output:
+    bmat = "{tissue}/snapFiles/{sample}.bmat",
+    gmat = "{tissue}/snapFiles/{sample}.gmat"
+  input:
+    "{tissue}/snapFiles/{sample}.snap",
+  threads: 1
+  params:
+      pbsName=lambda wildcards: wildcards.sample
+  shell:
+    '''source activate py27 && \
+      snaptools snap-add-bmat  \
+        --snap-file={input}  \
+        --bin-size-list 1000 5000 10000  \
+        --verbose=True && 
+      snaptools snap-add-gmat  \
+        --snap-file={input}  \
+        --gene-file=../../annotations/hg38.gencode.v28.gene.bed  \
+        --verbose=True
+    '''
+
+
+
+rule snap_pre:
+  output:
+    snap="{tissue}/snapFiles/{sample}.snap",
+  input:
+    bam="../../data/human_cortex/bam.filter.nsort/{sample}/{sample}.filter.nsort.bam",
+  threads: 1
+  params:
+    pbsName=lambda wildcards: wildcards.sample,
+    tissue=lambda wildcards: wildcards.sample[:2]
+  shell:
+    '''source activate py27 && \
+    snaptools snap-pre  \
+    --input-file={input.bam}  \
+    --output-snap={output.snap} \
+    --genome-name=hg38  \
+    --genome-size=../../annotations/hg38.chrom.sizes  \
+    --min-mapq=0  \
+    --min-flen=0  \
+    --max-flen=1000  \
+    --keep-chrm=TRUE  \
+    --keep-single=TRUE  \
+    --keep-secondary=False  \
+    --overwrite=True  \
+    --min-cov=100  \
+    --verbose=True && \
+  snaptools snap-add-bmat  \
+    --snap-file={output.snap}  \
+    --bin-size-list 1000 5000 10000  \
+    --verbose=True &&
+  snaptools snap-add-gmat  \
+    --snap-file={output.snap}  \
+    --gene-file=../../annotations/hg38.gencode.v28.gene.bed \
+    --verbose=True && 
+  snaptools snap-add-pmat \
+    --snap-file={output.snap}  \
+    --peak-file=../../data/human_cortex/peaks/{params.tissue}_summits.ext1k.bed 
+    ''' 
+
+

@@ -26,7 +26,7 @@ Rscript snapATAC.cluster.v2.r \
   --tss-cutoff 10 \
   --marker_genes DH.marker_genes.txt \
   --fragment-cutoff 500 \
-  --landmark_num 10000 \
+  --landmark_num 40000 \
   --pc_dim 20 \
   -o ../../analysis/snapATAC/DH/snapFiles/DH.pool.snapATAC
 # All cells.
@@ -37,7 +37,10 @@ Rscript snapATAC.cluster.all_cells.r \
   --fragment-cutoff 500 \
   --pc_dim 20 \
   -o ../../analysis/snapATAC/DH/snapFiles/DH.pool.snapATAC
-
+# Run harmony
+Rscript snapATAC.cluster.harmony.r \
+  ../../analysis/snapATAC/DH/snapFiles/DH.pool.snapATAC.Frag500.TSS10.AllCells.seed1.dimPC20.K20.res0.7.cluster.RData \
+  ../../analysis/snapATAC/DH/snapFiles/DH.pool.snapATAC.Frag500.TSS10.AllCells.seed1.dimPC20.K20.res0.7 
 
 # FC
 
@@ -50,15 +53,10 @@ Rscript snapATAC.cluster.v2.r \
   --landmark_num 40000 \
   --pc_dim 20 \
   -o ../../analysis/snapATAC/FC/snapFiles/FC.pool.snapATAC
-
-Rscript snapATAC.cluster.all_cells.r \
-  -i ../../analysis/snapATAC/FC/snapFiles/FC.pool.snapATAC.raw.RData \
-  --seed 1 \
-  --tss-cutoff 10 \
-  --fragment-cutoff 500 \
-  --pc_dim 20 \
-  -o ../../analysis/snapATAC/FC/snapFiles/FC.pool.snapATAC
-
+# RUn harmony
+Rscript snapATAC.cluster.harmony.r \
+  ../../analysis/snapATAC/FC/snapFiles/FC.pool.snapATAC.Frag500.TSS10.Landmark40k.seed1.dimPC20.K20.res0.7.cluster.RData \
+  ../../analysis/snapATAC/FC/snapFiles/FC.pool.snapATAC.Frag500.TSS10.Landmark40k.seed1.dimPC20.K20.res0.7
 
 # HT 
 Rscript snapATAC.cluster.v2.r \
@@ -67,9 +65,20 @@ Rscript snapATAC.cluster.v2.r \
     --tss-cutoff 7 \
     --marker_genes HT.marker_genes.txt \
     --fragment-cutoff 500 \
-    --landmark_num 10000 \
+    --landmark_num 20000 \
     --pc_dim 20 \
     -o ../../analysis/snapATAC/HT/snapFiles/HT.pool.snapATAC
+
+Rscript snapATAC.cluster.all_cells.r \
+  -i ../../analysis/snapATAC/HT/snapFiles/HT.pool.snapATAC.raw.RData \
+  --seed 1 \
+  --tss-cutoff 7 \
+  --fragment-cutoff 500 \
+  --pc_dim 20 \
+  -o ../../analysis/snapATAC/HT/snapFiles/HT.pool.snapATAC
+Rscript snapATAC.cluster.harmony.r \
+  ../../analysis/snapATAC/HT/snapFiles/HT.pool.snapATAC.Frag500.TSS7.AllCells.seed1.dimPC20.K20.res0.7.cluster.RData \
+  ../../analysis/snapATAC/HT/snapFiles/HT.pool.snapATAC.Frag500.TSS7.AllCells.seed1.dimPC20.K20.res0.7
 
 # LM 
 
@@ -79,14 +88,28 @@ Rscript snapATAC.cluster.v2.r \
     --tss-cutoff 7 \
     --marker_genes HT.marker_genes.txt \
     --fragment-cutoff 500 \
-    --landmark_num 10000 \
+    --landmark_num 40000 \
     --pc_dim 20 \
     -o ../../analysis/snapATAC/LM/snapFiles/LM.pool.snapATAC
+Rscript snapATAC.cluster.harmony.r \
+  ../../analysis/snapATAC/LM/snapFiles/LM.pool.snapATAC.Frag500.TSS7.Landmark40k.seed1.dimPC20.K20.res0.7.cluster.RData \
+  ../../analysis/snapATAC/LM/snapFiles/LM.pool.snapATAC.Frag500.TSS7.Landmark40k.seed1.dimPC20.K20.res0.7
 
 
 ## make barcode information. 
 Rscript make_barcode_information.r \
   DH \
-  DH.pool.snapATAC.Frag500.TSS10.AllCells.seed1.dimPC20.K20.res0.7.meta.txt 
+  DH.pool.snapATAC.Frag500.TSS10.AllCells.seed1.dimPC20.K20.res0.7.harmony.meta.txt 
 
+Rscript make_barcode_information.r \
+  HT \
+  HT.pool.snapATAC.Frag500.TSS7.AllCells.seed1.dimPC20.K20.res0.7.harmony.meta.txt
+
+Rscript make_barcode_information.r \
+  FC \
+  FC.pool.snapATAC.Frag500.TSS10.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.meta.txt
+
+Rscript make_barcode_information.r \
+  LM \
+  LM.pool.snapATAC.Frag500.TSS7.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.meta.txt
 

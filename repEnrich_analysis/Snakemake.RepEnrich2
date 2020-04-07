@@ -1,0 +1,77 @@
+#!/usr/bin/python
+
+workdir: "../../analysis/repeats_RepEnrich2"
+cluster_dict = {"FC":18,"DH":14,"HT":11,"LM":17}
+
+TISSUE="DH"#["DH","HT","LM"]
+CLUSTER = [x+1 for x in range(cluster_dict[TISSUE])]
+TIME_REP = ["03_rep1","03_rep2","10_rep1","10_rep2","18_rep1","18_rep2"]
+
+rule all:
+  input:
+    expand("bam/{tissue}_{time_rep}.{cluster}.bam",tissue=TISSUE,time_rep=TIME_REP,cluster=CLUSTER),
+    expand("bam/{tissue}_{time_rep}.{cluster}_unique.bam",tissue=TISSUE,time_rep=TIME_REP,cluster=CLUSTER),
+    expand("RE_out/{tissue}_{time_rep}.{cluster}/{tissue}_{time_rep}.{cluster}_fraction_counts.txt",tissue=TISSUE,time_rep=TIME_REP,cluster=CLUSTER)
+
+
+rule require_fastq:
+  input: 
+    expand("fastq.cluster/{tissue}_{time_rep}.1.R1.fastq.gz",tissue=TISSUE,time_rep=TIME_REP),
+    expand("fastq.cluster/{tissue}_{time_rep}.1.R2.fastq.gz",tissue=TISSUE,time_rep=TIME_REP)
+
+
+rule gen_fastq:
+  input: 
+    "../../data/snATAC/fastq.demultiplex/{tissue}_{time_rep}/{tissue}_{time_rep}.{rd}.fastq.gz"
+  output: 
+    "fastq.cluster/{tissue}_{time_rep}.1.{rd}.fastq.gz"
+  shell:
+    "python ~/software/github/single-cell-utils/split_fastq_by_cluster.py "
+    "--meta metaInfo/{wildcards.tissue}_{wildcards.time_rep}.meta.txt "
+    "-i {input} " 
+    "--barcode-pos 2 --cluster-pos 9 --fastq-barcode-re '@(.*?):.*' "
+    "--outPrefix fastq.cluster/{wildcards.tissue}_{wildcards.time_rep} "
+    "--outAffix {wildcards.rd}.fastq.gz"
+
+
+
+rule alignment: 
+  input: 
+    f1 = "fastq.cluster/{tissue}_{time_rep}.{cluster}.R1.fastq.gz",
+    f2 = "fastq.cluster/{tissue}_{time_rep}.{cluster}.R2.fastq.gz",
+  output: 
+    "bam/{tissue}_{time_rep}.{cluster}.bam"
+  threads: 8
+  shell:
+    "bowtie2 -q -p {threads} -x /projects/ps-renlab/share/bowtie2_indexes/mm10 "
+    "-1 <(zcat {input.f1}) -2 <(zcat {input.f2}) |"
+    "samtools view -bS - > {output}"
+  
+
+rule subset_bam:
+  input:
+    "bam/{tissue}_{time_rep}.{cluster}.bam"
+  output:
+    "bam/{tissue}_{time_rep}.{cluster}_unique.bam",
+    "bam/{tissue}_{time_rep}.{cluster}_multimap_R1.fastq",
+    "bam/{tissue}_{time_rep}.{cluster}_multimap_R2.fastq",
+  shell:
+    "source activate py27 && python2.7 ../../scripts/repEnrich_analysis/RepEnrich2/RepEnrich2_subset.py {input} 30 "
+    "bam/{wildcards.tissue}_{wildcards.time_rep}.{wildcards.cluster} --pairedend TRUE"
+
+
+rule run_repEnrich2:
+  input: 
+    bam = "bam/{tissue}_{time_rep}.{cluster}_unique.bam",
+    fq1 = "bam/{tissue}_{time_rep}.{cluster}_multimap_R1.fastq",
+    fq2 = "bam/{tissue}_{time_rep}.{cluster}_multimap_R2.fastq",
+  output:
+    "RE_out/{tissue}_{time_rep}.{cluster}/{tissue}_{time_rep}.{cluster}_fraction_counts.txt"
+  threads: 8    
+  shell:
+    "source activate py27 && python2.7 ../../scripts/repEnrich_analysis/RepEnrich2/RepEnrich2.py "
+    "~/software/RepEnrich2/refs/mm10_repeatmasker_clean.txt "
+    "./RE_out/{wildcards.tissue}_{wildcards.time_rep}.{wildcards.cluster} "
+    "{wildcards.tissue}_{wildcards.time_rep}.{wildcards.cluster} "
+    "~/software/RepEnrich2/refs/RepEnrich2_setup_mm10 "
+    "{input.fq1} --fastqfile2 {input.fq2} {input.bam} --cpus {threads} --pairedend TRUE;"  

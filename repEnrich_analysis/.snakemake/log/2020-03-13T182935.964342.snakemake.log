@@ -1,0 +1,349 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	30	gen_fastq
+	1	require_fastq
+	31
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_18_rep2/HT_18_rep2.R1.fastq.gz
+    output: fastq.cluster/HT_18_rep2.1.R1.fastq.gz
+    jobid: 10
+    wildcards: tissue=HT_18, time_rep=rep2, rd=R1
+
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_03_rep2/LM_03_rep2.R1.fastq.gz
+    output: fastq.cluster/LM_03_rep2.1.R1.fastq.gz
+    jobid: 12
+    wildcards: tissue=LM_03, time_rep=rep2, rd=R1
+
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_03_rep2/HT_03_rep2.R2.fastq.gz
+    output: fastq.cluster/HT_03_rep2.1.R2.fastq.gz
+    jobid: 22
+    wildcards: tissue=HT_03, time_rep=rep2, rd=R2
+
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_03_rep1/LM_03_rep1.R1.fastq.gz
+    output: fastq.cluster/LM_03_rep1.1.R1.fastq.gz
+    jobid: 11
+    wildcards: tissue=LM_03, time_rep=rep1, rd=R1
+
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_03_rep1/HT_03_rep1.R2.fastq.gz
+    output: fastq.cluster/HT_03_rep1.1.R2.fastq.gz
+    jobid: 21
+    wildcards: tissue=HT_03, time_rep=rep1, rd=R2
+
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_18_rep1/HT_18_rep1.R1.fastq.gz
+    output: fastq.cluster/HT_18_rep1.1.R1.fastq.gz
+    jobid: 9
+    wildcards: tissue=HT_18, time_rep=rep1, rd=R1
+
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_18_rep2/DH_18_rep2.R1.fastq.gz
+    output: fastq.cluster/DH_18_rep2.1.R1.fastq.gz
+    jobid: 5
+    wildcards: tissue=DH_18, time_rep=rep2, rd=R1
+
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_10_rep1/HT_10_rep1.R2.fastq.gz
+    output: fastq.cluster/HT_10_rep1.1.R2.fastq.gz
+    jobid: 23
+    wildcards: tissue=HT_10, time_rep=rep1, rd=R2
+
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_18_rep1/DH_18_rep1.R1.fastq.gz
+    output: fastq.cluster/DH_18_rep1.1.R1.fastq.gz
+    jobid: 4
+    wildcards: tissue=DH_18, time_rep=rep1, rd=R1
+
+
+[Fri Mar 13 18:29:36 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_03_rep1/HT_03_rep1.R1.fastq.gz
+    output: fastq.cluster/HT_03_rep1.1.R1.fastq.gz
+    jobid: 6
+    wildcards: tissue=HT_03, time_rep=rep1, rd=R1
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_03_rep1/LM_03_rep1.R2.fastq.gz
+    output: fastq.cluster/LM_03_rep1.1.R2.fastq.gz
+    jobid: 26
+    wildcards: tissue=LM_03, time_rep=rep1, rd=R2
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_18_rep1/HT_18_rep1.R2.fastq.gz
+    output: fastq.cluster/HT_18_rep1.1.R2.fastq.gz
+    jobid: 24
+    wildcards: tissue=HT_18, time_rep=rep1, rd=R2
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_18_rep2/HT_18_rep2.R2.fastq.gz
+    output: fastq.cluster/HT_18_rep2.1.R2.fastq.gz
+    jobid: 25
+    wildcards: tissue=HT_18, time_rep=rep2, rd=R2
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_03_rep2/HT_03_rep2.R1.fastq.gz
+    output: fastq.cluster/HT_03_rep2.1.R1.fastq.gz
+    jobid: 7
+    wildcards: tissue=HT_03, time_rep=rep2, rd=R1
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_03_rep2/LM_03_rep2.R2.fastq.gz
+    output: fastq.cluster/LM_03_rep2.1.R2.fastq.gz
+    jobid: 27
+    wildcards: tissue=LM_03, time_rep=rep2, rd=R2
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_18_rep1/DH_18_rep1.R2.fastq.gz
+    output: fastq.cluster/DH_18_rep1.1.R2.fastq.gz
+    jobid: 19
+    wildcards: tissue=DH_18, time_rep=rep1, rd=R2
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_18_rep2/DH_18_rep2.R2.fastq.gz
+    output: fastq.cluster/DH_18_rep2.1.R2.fastq.gz
+    jobid: 20
+    wildcards: tissue=DH_18, time_rep=rep2, rd=R2
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_10_rep1/DH_10_rep1.R2.fastq.gz
+    output: fastq.cluster/DH_10_rep1.1.R2.fastq.gz
+    jobid: 18
+    wildcards: tissue=DH_10, time_rep=rep1, rd=R2
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_10_rep1/LM_10_rep1.R2.fastq.gz
+    output: fastq.cluster/LM_10_rep1.1.R2.fastq.gz
+    jobid: 28
+    wildcards: tissue=LM_10, time_rep=rep1, rd=R2
+
+
+[Fri Mar 13 18:29:37 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_03_rep2/DH_03_rep2.R1.fastq.gz
+    output: fastq.cluster/DH_03_rep2.1.R1.fastq.gz
+    jobid: 2
+    wildcards: tissue=DH_03, time_rep=rep2, rd=R1
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_10_rep1/HT_10_rep1.R1.fastq.gz
+    output: fastq.cluster/HT_10_rep1.1.R1.fastq.gz
+    jobid: 8
+    wildcards: tissue=HT_10, time_rep=rep1, rd=R1
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_18_rep1/LM_18_rep1.R2.fastq.gz
+    output: fastq.cluster/LM_18_rep1.1.R2.fastq.gz
+    jobid: 29
+    wildcards: tissue=LM_18, time_rep=rep1, rd=R2
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_03_rep1/DH_03_rep1.R1.fastq.gz
+    output: fastq.cluster/DH_03_rep1.1.R1.fastq.gz
+    jobid: 1
+    wildcards: tissue=DH_03, time_rep=rep1, rd=R1
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_18_rep2/LM_18_rep2.R2.fastq.gz
+    output: fastq.cluster/LM_18_rep2.1.R2.fastq.gz
+    jobid: 30
+    wildcards: tissue=LM_18, time_rep=rep2, rd=R2
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_10_rep1/LM_10_rep1.R1.fastq.gz
+    output: fastq.cluster/LM_10_rep1.1.R1.fastq.gz
+    jobid: 13
+    wildcards: tissue=LM_10, time_rep=rep1, rd=R1
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_10_rep1/DH_10_rep1.R1.fastq.gz
+    output: fastq.cluster/DH_10_rep1.1.R1.fastq.gz
+    jobid: 3
+    wildcards: tissue=DH_10, time_rep=rep1, rd=R1
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_03_rep1/DH_03_rep1.R2.fastq.gz
+    output: fastq.cluster/DH_03_rep1.1.R2.fastq.gz
+    jobid: 16
+    wildcards: tissue=DH_03, time_rep=rep1, rd=R2
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_18_rep2/LM_18_rep2.R1.fastq.gz
+    output: fastq.cluster/LM_18_rep2.1.R1.fastq.gz
+    jobid: 15
+    wildcards: tissue=LM_18, time_rep=rep2, rd=R1
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz
+    output: fastq.cluster/DH_03_rep2.1.R2.fastq.gz
+    jobid: 17
+    wildcards: tissue=DH_03, time_rep=rep2, rd=R2
+
+
+[Fri Mar 13 18:29:38 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_18_rep1/LM_18_rep1.R1.fastq.gz
+    output: fastq.cluster/LM_18_rep1.1.R1.fastq.gz
+    jobid: 14
+    wildcards: tissue=LM_18, time_rep=rep1, rd=R1
+
+[Fri Mar 13 19:04:20 2020]
+Finished job 1.
+1 of 31 steps (3%) done
+[Fri Mar 13 19:07:16 2020]
+Finished job 16.
+2 of 31 steps (6%) done
+[Fri Mar 13 19:41:15 2020]
+Finished job 4.
+3 of 31 steps (10%) done
+[Fri Mar 13 19:42:49 2020]
+Finished job 6.
+4 of 31 steps (13%) done
+[Fri Mar 13 19:46:18 2020]
+Finished job 19.
+5 of 31 steps (16%) done
+[Fri Mar 13 19:51:08 2020]
+Finished job 21.
+6 of 31 steps (19%) done
+[Fri Mar 13 20:11:20 2020]
+Finished job 27.
+7 of 31 steps (23%) done
+[Fri Mar 13 20:12:34 2020]
+Finished job 3.
+8 of 31 steps (26%) done
+[Fri Mar 13 20:15:18 2020]
+Finished job 12.
+9 of 31 steps (29%) done
+[Fri Mar 13 20:16:03 2020]
+Finished job 29.
+10 of 31 steps (32%) done
+[Fri Mar 13 20:20:21 2020]
+Finished job 14.
+11 of 31 steps (35%) done
+[Fri Mar 13 20:31:21 2020]
+Finished job 9.
+12 of 31 steps (39%) done
+[Fri Mar 13 20:31:31 2020]
+Finished job 18.
+13 of 31 steps (42%) done
+[Fri Mar 13 20:43:38 2020]
+Finished job 24.
+14 of 31 steps (45%) done
+[Fri Mar 13 20:49:39 2020]
+Finished job 26.
+15 of 31 steps (48%) done
+[Fri Mar 13 20:50:08 2020]
+Finished job 30.
+16 of 31 steps (52%) done
+[Fri Mar 13 20:54:01 2020]
+Finished job 15.
+17 of 31 steps (55%) done
+[Fri Mar 13 20:54:04 2020]
+Finished job 11.
+18 of 31 steps (58%) done
+[Fri Mar 13 21:10:00 2020]
+Finished job 5.
+19 of 31 steps (61%) done
+[Fri Mar 13 21:20:38 2020]
+Finished job 2.
+20 of 31 steps (65%) done
+[Fri Mar 13 21:39:28 2020]
+Finished job 20.
+21 of 31 steps (68%) done
+[Fri Mar 13 21:51:03 2020]
+Finished job 17.
+22 of 31 steps (71%) done
+[Fri Mar 13 21:52:06 2020]
+Finished job 22.
+23 of 31 steps (74%) done
+[Fri Mar 13 21:52:43 2020]
+Finished job 7.
+24 of 31 steps (77%) done
+[Fri Mar 13 21:58:51 2020]
+Finished job 28.
+25 of 31 steps (81%) done
+[Fri Mar 13 22:06:31 2020]
+Finished job 13.
+26 of 31 steps (84%) done
+[Fri Mar 13 22:38:43 2020]
+Finished job 8.
+27 of 31 steps (87%) done
+[Fri Mar 13 23:05:34 2020]
+Finished job 23.
+28 of 31 steps (90%) done
+[Sat Mar 14 00:40:20 2020]
+Finished job 10.
+29 of 31 steps (94%) done
+[Sat Mar 14 00:53:39 2020]
+Finished job 25.
+30 of 31 steps (97%) done
+
+[Sat Mar 14 00:53:40 2020]
+localrule require_fastq:
+    input: fastq.cluster/DH_03_rep1.1.R1.fastq.gz, fastq.cluster/DH_03_rep2.1.R1.fastq.gz, fastq.cluster/DH_10_rep1.1.R1.fastq.gz, fastq.cluster/DH_18_rep1.1.R1.fastq.gz, fastq.cluster/DH_18_rep2.1.R1.fastq.gz, fastq.cluster/HT_03_rep1.1.R1.fastq.gz, fastq.cluster/HT_03_rep2.1.R1.fastq.gz, fastq.cluster/HT_10_rep1.1.R1.fastq.gz, fastq.cluster/HT_18_rep1.1.R1.fastq.gz, fastq.cluster/HT_18_rep2.1.R1.fastq.gz, fastq.cluster/LM_03_rep1.1.R1.fastq.gz, fastq.cluster/LM_03_rep2.1.R1.fastq.gz, fastq.cluster/LM_10_rep1.1.R1.fastq.gz, fastq.cluster/LM_18_rep1.1.R1.fastq.gz, fastq.cluster/LM_18_rep2.1.R1.fastq.gz, fastq.cluster/DH_03_rep1.1.R2.fastq.gz, fastq.cluster/DH_03_rep2.1.R2.fastq.gz, fastq.cluster/DH_10_rep1.1.R2.fastq.gz, fastq.cluster/DH_18_rep1.1.R2.fastq.gz, fastq.cluster/DH_18_rep2.1.R2.fastq.gz, fastq.cluster/HT_03_rep1.1.R2.fastq.gz, fastq.cluster/HT_03_rep2.1.R2.fastq.gz, fastq.cluster/HT_10_rep1.1.R2.fastq.gz, fastq.cluster/HT_18_rep1.1.R2.fastq.gz, fastq.cluster/HT_18_rep2.1.R2.fastq.gz, fastq.cluster/LM_03_rep1.1.R2.fastq.gz, fastq.cluster/LM_03_rep2.1.R2.fastq.gz, fastq.cluster/LM_10_rep1.1.R2.fastq.gz, fastq.cluster/LM_18_rep1.1.R2.fastq.gz, fastq.cluster/LM_18_rep2.1.R2.fastq.gz
+    jobid: 0
+
+[Sat Mar 14 00:53:40 2020]
+Finished job 0.
+31 of 31 steps (100%) done
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-13T182935.964342.snakemake.log

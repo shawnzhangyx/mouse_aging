@@ -1,0 +1,220 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	103	alignment
+	1	all
+	103	run_repEnrich2
+	103	subset_bam
+	310
+
+[Sat Mar 14 09:40:53 2020]
+rule alignment:
+    input: fastq.cluster/FC_10_rep2.2.R1.fastq.gz, fastq.cluster/FC_10_rep2.2.R2.fastq.gz
+    output: bam/FC_10_rep2.2.bam
+    jobid: 56
+    wildcards: tissue=FC_10, time_rep=rep2, cluster=2
+    threads: 8
+
+
+[Sat Mar 14 09:40:53 2020]
+rule alignment:
+    input: fastq.cluster/FC_10_rep2.1.R1.fastq.gz, fastq.cluster/FC_10_rep2.1.R2.fastq.gz
+    output: bam/FC_10_rep2.1.bam
+    jobid: 55
+    wildcards: tissue=FC_10, time_rep=rep2, cluster=1
+    threads: 8
+
+
+[Sat Mar 14 09:40:53 2020]
+rule alignment:
+    input: fastq.cluster/FC_03_rep2.2.R1.fastq.gz, fastq.cluster/FC_03_rep2.2.R2.fastq.gz
+    output: bam/FC_03_rep2.2.bam
+    jobid: 20
+    wildcards: tissue=FC_03, time_rep=rep2, cluster=2
+    threads: 8
+
+[Sat Mar 14 10:05:19 2020]
+Finished job 20.
+1 of 310 steps (0.32%) done
+
+[Sat Mar 14 10:05:19 2020]
+rule subset_bam:
+    input: bam/FC_03_rep2.2.bam
+    output: bam/FC_03_rep2.2_unique.bam, bam/FC_03_rep2.2_multimap_R1.fastq, bam/FC_03_rep2.2_multimap_R2.fastq
+    jobid: 128
+    wildcards: tissue=FC_03, time_rep=rep2, cluster=2
+
+
+[Sat Mar 14 10:05:19 2020]
+rule alignment:
+    input: fastq.cluster/FC_18_rep2.2.R1.fastq.gz, fastq.cluster/FC_18_rep2.2.R2.fastq.gz
+    output: bam/FC_18_rep2.2.bam
+    jobid: 92
+    wildcards: tissue=FC_18, time_rep=rep2, cluster=2
+    threads: 8
+
+[Sat Mar 14 10:11:12 2020]
+Finished job 56.
+2 of 310 steps (0.65%) done
+
+[Sat Mar 14 10:11:12 2020]
+rule subset_bam:
+    input: bam/FC_10_rep2.2.bam
+    output: bam/FC_10_rep2.2_unique.bam, bam/FC_10_rep2.2_multimap_R1.fastq, bam/FC_10_rep2.2_multimap_R2.fastq
+    jobid: 164
+    wildcards: tissue=FC_10, time_rep=rep2, cluster=2
+
+
+[Sat Mar 14 10:11:12 2020]
+rule alignment:
+    input: fastq.cluster/FC_18_rep2.1.R1.fastq.gz, fastq.cluster/FC_18_rep2.1.R2.fastq.gz
+    output: bam/FC_18_rep2.1.bam
+    jobid: 91
+    wildcards: tissue=FC_18, time_rep=rep2, cluster=1
+    threads: 8
+
+[Sat Mar 14 10:12:16 2020]
+Finished job 55.
+3 of 310 steps (0.97%) done
+
+[Sat Mar 14 10:12:16 2020]
+rule subset_bam:
+    input: bam/FC_10_rep2.1.bam
+    output: bam/FC_10_rep2.1_unique.bam, bam/FC_10_rep2.1_multimap_R1.fastq, bam/FC_10_rep2.1_multimap_R2.fastq
+    jobid: 163
+    wildcards: tissue=FC_10, time_rep=rep2, cluster=1
+
+
+[Sat Mar 14 10:12:16 2020]
+rule alignment:
+    input: fastq.cluster/FC_03_rep2.1.R1.fastq.gz, fastq.cluster/FC_03_rep2.1.R2.fastq.gz
+    output: bam/FC_03_rep2.1.bam
+    jobid: 19
+    wildcards: tissue=FC_03, time_rep=rep2, cluster=1
+    threads: 8
+
+[Sat Mar 14 10:20:53 2020]
+Finished job 128.
+4 of 310 steps (1%) done
+[Sat Mar 14 10:26:54 2020]
+Finished job 92.
+5 of 310 steps (2%) done
+
+[Sat Mar 14 10:26:54 2020]
+rule run_repEnrich2:
+    input: bam/FC_03_rep2.2_unique.bam, bam/FC_03_rep2.2_multimap_R1.fastq, bam/FC_03_rep2.2_multimap_R2.fastq
+    output: RE_out/FC_03_rep2.2/FC_03_rep2.2_fraction_counts.txt
+    jobid: 236
+    wildcards: tissue=FC_03, time_rep=rep2, cluster=2
+    threads: 8
+
+
+[Sat Mar 14 10:26:54 2020]
+rule subset_bam:
+    input: bam/FC_18_rep2.2.bam
+    output: bam/FC_18_rep2.2_unique.bam, bam/FC_18_rep2.2_multimap_R1.fastq, bam/FC_18_rep2.2_multimap_R2.fastq
+    jobid: 200
+    wildcards: tissue=FC_18, time_rep=rep2, cluster=2
+
+[Sat Mar 14 10:30:55 2020]
+Finished job 164.
+6 of 310 steps (2%) done
+[Sat Mar 14 10:32:25 2020]
+Finished job 163.
+7 of 310 steps (2%) done
+[Sat Mar 14 10:32:55 2020]
+Finished job 91.
+8 of 310 steps (3%) done
+
+[Sat Mar 14 10:32:55 2020]
+rule run_repEnrich2:
+    input: bam/FC_10_rep2.1_unique.bam, bam/FC_10_rep2.1_multimap_R1.fastq, bam/FC_10_rep2.1_multimap_R2.fastq
+    output: RE_out/FC_10_rep2.1/FC_10_rep2.1_fraction_counts.txt
+    jobid: 271
+    wildcards: tissue=FC_10, time_rep=rep2, cluster=1
+    threads: 8
+
+
+[Sat Mar 14 10:32:55 2020]
+rule subset_bam:
+    input: bam/FC_18_rep2.1.bam
+    output: bam/FC_18_rep2.1_unique.bam, bam/FC_18_rep2.1_multimap_R1.fastq, bam/FC_18_rep2.1_multimap_R2.fastq
+    jobid: 199
+    wildcards: tissue=FC_18, time_rep=rep2, cluster=1
+
+[Sat Mar 14 10:34:00 2020]
+Finished job 19.
+9 of 310 steps (3%) done
+
+[Sat Mar 14 10:34:00 2020]
+rule run_repEnrich2:
+    input: bam/FC_10_rep2.2_unique.bam, bam/FC_10_rep2.2_multimap_R1.fastq, bam/FC_10_rep2.2_multimap_R2.fastq
+    output: RE_out/FC_10_rep2.2/FC_10_rep2.2_fraction_counts.txt
+    jobid: 272
+    wildcards: tissue=FC_10, time_rep=rep2, cluster=2
+    threads: 8
+
+
+[Sat Mar 14 10:34:00 2020]
+rule subset_bam:
+    input: bam/FC_03_rep2.1.bam
+    output: bam/FC_03_rep2.1_unique.bam, bam/FC_03_rep2.1_multimap_R1.fastq, bam/FC_03_rep2.1_multimap_R2.fastq
+    jobid: 127
+    wildcards: tissue=FC_03, time_rep=rep2, cluster=1
+
+[Sat Mar 14 10:40:45 2020]
+Finished job 200.
+10 of 310 steps (3%) done
+[Sat Mar 14 10:46:36 2020]
+Finished job 199.
+11 of 310 steps (4%) done
+[Sat Mar 14 10:47:14 2020]
+Finished job 127.
+12 of 310 steps (4%) done
+[Sat Mar 14 13:43:41 2020]
+Finished job 236.
+13 of 310 steps (4%) done
+
+[Sat Mar 14 13:43:41 2020]
+rule run_repEnrich2:
+    input: bam/FC_18_rep2.1_unique.bam, bam/FC_18_rep2.1_multimap_R1.fastq, bam/FC_18_rep2.1_multimap_R2.fastq
+    output: RE_out/FC_18_rep2.1/FC_18_rep2.1_fraction_counts.txt
+    jobid: 307
+    wildcards: tissue=FC_18, time_rep=rep2, cluster=1
+    threads: 8
+
+Terminating processes on user request, this might take some time.
+[Sat Mar 14 14:02:10 2020]
+[Sat Mar 14 14:02:10 2020]
+Error in rule run_repEnrich2:
+[Sat Mar 14 14:02:10 2020]
+Error in rule run_repEnrich2:
+    jobid: 307
+Error in rule run_repEnrich2:
+    jobid: 271
+    output: RE_out/FC_18_rep2.1/FC_18_rep2.1_fraction_counts.txt
+    jobid: 272
+    output: RE_out/FC_10_rep2.1/FC_10_rep2.1_fraction_counts.txt
+
+    output: RE_out/FC_10_rep2.2/FC_10_rep2.2_fraction_counts.txt
+
+
+RuleException:
+CalledProcessError in line 77 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2/RepEnrich2.py ~/software/RepEnrich2/refs/mm10_repeatmasker_clean.txt ./RE_out/FC_18_rep2.1 FC_18_rep2.1 ~/software/RepEnrich2/refs/RepEnrich2_setup_mm10 bam/FC_18_rep2.1_multimap_R1.fastq --fastqfile2 bam/FC_18_rep2.1_multimap_R2.fastq bam/FC_18_rep2.1_unique.bam --cpus 8 --pairedend TRUE; ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 77, in __rule_run_repEnrich2
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 77 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2/RepEnrich2.py ~/software/RepEnrich2/refs/mm10_repeatmasker_clean.txt ./RE_out/FC_10_rep2.2 FC_10_rep2.2 ~/software/RepEnrich2/refs/RepEnrich2_setup_mm10 bam/FC_10_rep2.2_multimap_R1.fastq --fastqfile2 bam/FC_10_rep2.2_multimap_R2.fastq bam/FC_10_rep2.2_unique.bam --cpus 8 --pairedend TRUE; ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 77, in __rule_run_repEnrich2
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 77 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2/RepEnrich2.py ~/software/RepEnrich2/refs/mm10_repeatmasker_clean.txt ./RE_out/FC_10_rep2.1 FC_10_rep2.1 ~/software/RepEnrich2/refs/RepEnrich2_setup_mm10 bam/FC_10_rep2.1_multimap_R1.fastq --fastqfile2 bam/FC_10_rep2.1_multimap_R2.fastq bam/FC_10_rep2.1_unique.bam --cpus 8 --pairedend TRUE; ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 77, in __rule_run_repEnrich2
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-14T094052.294402.snakemake.log

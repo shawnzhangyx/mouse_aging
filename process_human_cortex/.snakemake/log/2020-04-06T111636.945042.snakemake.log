@@ -1,0 +1,135 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 24
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	3	align_bowtie2
+	3	bamToBigWig
+	1	call_peaks
+	9	count_bam_barcode
+	3	count_bam_chrM_barcode
+	3	count_fastq_barcode
+	3	csort_bam
+	3	dedup_bam
+	1	extend_peak_summits
+	3	filter_bam
+	3	nsort_bam
+	3	nsort_filter_bam
+	1	require_barcodes
+	1	require_dedup_bam
+	1	require_everything
+	1	require_filter_bam
+	1	require_filter_bigWig
+	1	require_filter_sort_bam
+	1	require_nsort_bam
+	1	require_peaks
+	1	require_raw_bam
+	3	sort_filter_bam
+	50
+
+[Mon Apr  6 11:16:38 2020]
+rule count_fastq_barcode:
+    input: fastq.relabel/FC_30y_rep2.R1.fastq.gz
+    output: fastq.relabel/FC_30y_rep2.barcode.cnts.txt
+    jobid: 23
+    wildcards: dir=fastq.relabel, sample=FC_30y_rep2
+
+
+[Mon Apr  6 11:16:38 2020]
+rule count_fastq_barcode:
+    input: fastq.relabel/FC_30y_rep1.R1.fastq.gz
+    output: fastq.relabel/FC_30y_rep1.barcode.cnts.txt
+    jobid: 22
+    wildcards: dir=fastq.relabel, sample=FC_30y_rep1
+
+
+[Mon Apr  6 11:16:38 2020]
+rule align_bowtie2:
+    input: fastq.relabel/FC_90y_rep1.R1.fastq.gz, fastq.relabel/FC_90y_rep1.R2.fastq.gz
+    output: bam.raw/FC_90y_rep1/FC_90y_rep1.raw.bam
+    jobid: 45
+    wildcards: sample=FC_90y_rep1
+    threads: 8
+
+
+[Mon Apr  6 11:16:38 2020]
+rule count_fastq_barcode:
+    input: fastq.relabel/FC_90y_rep1.R1.fastq.gz
+    output: fastq.relabel/FC_90y_rep1.barcode.cnts.txt
+    jobid: 24
+    wildcards: dir=fastq.relabel, sample=FC_90y_rep1
+
+
+[Mon Apr  6 11:16:38 2020]
+rule align_bowtie2:
+    input: fastq.relabel/FC_30y_rep2.R1.fastq.gz, fastq.relabel/FC_30y_rep2.R2.fastq.gz
+    output: bam.raw/FC_30y_rep2/FC_30y_rep2.raw.bam
+    jobid: 44
+    wildcards: sample=FC_30y_rep2
+    threads: 8
+
+[Mon Apr  6 11:16:39 2020]
+[Mon Apr  6 11:16:39 2020]
+Error in rule align_bowtie2:
+Error in rule align_bowtie2:
+    jobid: 44
+    jobid: 45
+    output: bam.raw/FC_30y_rep2/FC_30y_rep2.raw.bam
+    output: bam.raw/FC_90y_rep1/FC_90y_rep1.raw.bam
+
+
+RuleException:
+CalledProcessError in line 393 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile:
+Command ' set -euo pipefail;  bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/hg38 -X 2000     -1 fastq.relabel/FC_30y_rep2.R1.fastq.gz -2 fastq.relabel/FC_30y_rep2.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/FC_30y_rep2/FC_30y_rep2.raw.bam ' returned non-zero exit status 255.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile", line 393, in __rule_align_bowtie2
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 393 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile:
+Command ' set -euo pipefail;  bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/hg38 -X 2000     -1 fastq.relabel/FC_90y_rep1.R1.fastq.gz -2 fastq.relabel/FC_90y_rep1.R2.fastq.gz -p 8 | awk '{ if ($1 ~ "@") 
+    {print $0} else {print $0"	BX:Z:" substr($1,1,22) } }'  |     samtools view -bS > bam.raw/FC_90y_rep1/FC_90y_rep1.raw.bam ' returned non-zero exit status 255.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile", line 393, in __rule_align_bowtie2
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job align_bowtie2 since they might be corrupted:
+bam.raw/FC_30y_rep2/FC_30y_rep2.raw.bam
+Removing output files of failed job align_bowtie2 since they might be corrupted:
+bam.raw/FC_90y_rep1/FC_90y_rep1.raw.bam
+Terminating processes on user request, this might take some time.
+[Mon Apr  6 11:18:12 2020]
+[Mon Apr  6 11:18:12 2020]
+[Mon Apr  6 11:18:12 2020]
+Error in rule count_fastq_barcode:
+Error in rule count_fastq_barcode:
+Error in rule count_fastq_barcode:
+    jobid: 24
+    jobid: 23
+    jobid: 22
+    output: fastq.relabel/FC_90y_rep1.barcode.cnts.txt
+    output: fastq.relabel/FC_30y_rep2.barcode.cnts.txt
+    output: fastq.relabel/FC_30y_rep1.barcode.cnts.txt
+
+
+
+RuleException:
+CalledProcessError in line 223 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile:
+Command ' set -euo pipefail;  zcat fastq.relabel/FC_90y_rep1.R1.fastq.gz | awk -v OF="	" -v OFS="	"     '{ if(NR%4==1) { a[substr($1,2,22)]++} } END { for (i in a) print i,a[i] }' |     sort -k2,2nr > fastq.relabel/FC_90y_rep1.barcode.cnts.txt ' died with <Signals.SIGINT: 2>.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile", line 223, in __rule_count_fastq_barcode
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 223 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile:
+Command ' set -euo pipefail;  zcat fastq.relabel/FC_30y_rep1.R1.fastq.gz | awk -v OF="	" -v OFS="	"     '{ if(NR%4==1) { a[substr($1,2,22)]++} } END { for (i in a) print i,a[i] }' |     sort -k2,2nr > fastq.relabel/FC_30y_rep1.barcode.cnts.txt ' died with <Signals.SIGINT: 2>.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile", line 223, in __rule_count_fastq_barcode
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 223 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile:
+Command ' set -euo pipefail;  zcat fastq.relabel/FC_30y_rep2.R1.fastq.gz | awk -v OF="	" -v OFS="	"     '{ if(NR%4==1) { a[substr($1,2,22)]++} } END { for (i in a) print i,a[i] }' |     sort -k2,2nr > fastq.relabel/FC_30y_rep2.barcode.cnts.txt ' died with <Signals.SIGINT: 2>.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile", line 223, in __rule_count_fastq_barcode
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job count_fastq_barcode since they might be corrupted:
+fastq.relabel/FC_90y_rep1.barcode.cnts.txt
+Removing output files of failed job count_fastq_barcode since they might be corrupted:
+fastq.relabel/FC_30y_rep1.barcode.cnts.txt
+Removing output files of failed job count_fastq_barcode since they might be corrupted:
+fastq.relabel/FC_30y_rep2.barcode.cnts.txt
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/.snakemake/log/2020-04-06T111636.945042.snakemake.log

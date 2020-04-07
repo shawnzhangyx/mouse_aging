@@ -1,0 +1,23 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1
+Job counts:
+	count	jobs
+	97	alignment
+	1	all
+	102	run_repEnrich2
+	97	subset_bam
+	297
+
+[Sat Mar 14 14:14:02 2020]
+rule run_repEnrich2:
+    input: bam/FC_10_rep2.1_unique.bam, bam/FC_10_rep2.1_multimap_R1.fastq, bam/FC_10_rep2.1_multimap_R2.fastq
+    output: RE_out/FC_10_rep2.1/FC_10_rep2.1_fraction_counts.txt
+    jobid: 271
+    wildcards: tissue=FC_10, time_rep=rep2, cluster=1
+    threads: 8
+
+Submitted job 271 with external jobid '21085961.tscc-mgr7.local'.
+Terminating processes on user request, this might take some time.
+Will exit after finishing currently running jobs.
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-14T141400.787806.snakemake.log

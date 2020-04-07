@@ -1,0 +1,85 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	6	gen_fastq
+	1	require_fastq
+	7
+
+[Sun Mar 15 12:20:19 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_10_rep2/HT_10_rep2.R2.fastq.gz
+    output: fastq.cluster/HT_10_rep2.1.R2.fastq.gz
+    jobid: 28
+    wildcards: tissue=HT_10, time_rep=rep2, rd=R2
+
+
+[Sun Mar 15 12:20:19 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_10_rep2/DH_10_rep2.R2.fastq.gz
+    output: fastq.cluster/DH_10_rep2.1.R2.fastq.gz
+    jobid: 22
+    wildcards: tissue=DH_10, time_rep=rep2, rd=R2
+
+
+[Sun Mar 15 12:20:19 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_10_rep2/LM_10_rep2.R2.fastq.gz
+    output: fastq.cluster/LM_10_rep2.1.R2.fastq.gz
+    jobid: 34
+    wildcards: tissue=LM_10, time_rep=rep2, rd=R2
+
+
+[Sun Mar 15 12:20:19 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_10_rep2/DH_10_rep2.R1.fastq.gz
+    output: fastq.cluster/DH_10_rep2.1.R1.fastq.gz
+    jobid: 4
+    wildcards: tissue=DH_10, time_rep=rep2, rd=R1
+
+
+[Sun Mar 15 12:20:19 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_10_rep2/HT_10_rep2.R1.fastq.gz
+    output: fastq.cluster/HT_10_rep2.1.R1.fastq.gz
+    jobid: 10
+    wildcards: tissue=HT_10, time_rep=rep2, rd=R1
+
+
+[Sun Mar 15 12:20:19 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/LM_10_rep2/LM_10_rep2.R1.fastq.gz
+    output: fastq.cluster/LM_10_rep2.1.R1.fastq.gz
+    jobid: 16
+    wildcards: tissue=LM_10, time_rep=rep2, rd=R1
+
+[Sun Mar 15 14:29:34 2020]
+Finished job 34.
+1 of 7 steps (14%) done
+[Sun Mar 15 14:33:18 2020]
+Finished job 16.
+2 of 7 steps (29%) done
+[Sun Mar 15 15:01:46 2020]
+Finished job 28.
+3 of 7 steps (43%) done
+[Sun Mar 15 15:03:26 2020]
+Finished job 10.
+4 of 7 steps (57%) done
+[Sun Mar 15 15:43:54 2020]
+Finished job 4.
+5 of 7 steps (71%) done
+[Sun Mar 15 16:28:15 2020]
+Finished job 22.
+6 of 7 steps (86%) done
+
+[Sun Mar 15 16:28:15 2020]
+localrule require_fastq:
+    input: fastq.cluster/DH_03_rep1.1.R1.fastq.gz, fastq.cluster/DH_03_rep2.1.R1.fastq.gz, fastq.cluster/DH_10_rep1.1.R1.fastq.gz, fastq.cluster/DH_10_rep2.1.R1.fastq.gz, fastq.cluster/DH_18_rep1.1.R1.fastq.gz, fastq.cluster/DH_18_rep2.1.R1.fastq.gz, fastq.cluster/HT_03_rep1.1.R1.fastq.gz, fastq.cluster/HT_03_rep2.1.R1.fastq.gz, fastq.cluster/HT_10_rep1.1.R1.fastq.gz, fastq.cluster/HT_10_rep2.1.R1.fastq.gz, fastq.cluster/HT_18_rep1.1.R1.fastq.gz, fastq.cluster/HT_18_rep2.1.R1.fastq.gz, fastq.cluster/LM_03_rep1.1.R1.fastq.gz, fastq.cluster/LM_03_rep2.1.R1.fastq.gz, fastq.cluster/LM_10_rep1.1.R1.fastq.gz, fastq.cluster/LM_10_rep2.1.R1.fastq.gz, fastq.cluster/LM_18_rep1.1.R1.fastq.gz, fastq.cluster/LM_18_rep2.1.R1.fastq.gz, fastq.cluster/DH_03_rep1.1.R2.fastq.gz, fastq.cluster/DH_03_rep2.1.R2.fastq.gz, fastq.cluster/DH_10_rep1.1.R2.fastq.gz, fastq.cluster/DH_10_rep2.1.R2.fastq.gz, fastq.cluster/DH_18_rep1.1.R2.fastq.gz, fastq.cluster/DH_18_rep2.1.R2.fastq.gz, fastq.cluster/HT_03_rep1.1.R2.fastq.gz, fastq.cluster/HT_03_rep2.1.R2.fastq.gz, fastq.cluster/HT_10_rep1.1.R2.fastq.gz, fastq.cluster/HT_10_rep2.1.R2.fastq.gz, fastq.cluster/HT_18_rep1.1.R2.fastq.gz, fastq.cluster/HT_18_rep2.1.R2.fastq.gz, fastq.cluster/LM_03_rep1.1.R2.fastq.gz, fastq.cluster/LM_03_rep2.1.R2.fastq.gz, fastq.cluster/LM_10_rep1.1.R2.fastq.gz, fastq.cluster/LM_10_rep2.1.R2.fastq.gz, fastq.cluster/LM_18_rep1.1.R2.fastq.gz, fastq.cluster/LM_18_rep2.1.R2.fastq.gz
+    jobid: 0
+
+[Sun Mar 15 16:28:15 2020]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-15T122019.051132.snakemake.log

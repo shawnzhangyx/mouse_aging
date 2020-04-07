@@ -84,6 +84,19 @@ cat("bound\n")
 x.sp = x.sp[order(x.sp@sample),]; # IMPORTANT
 rm(x.landmark.sp, x.query.sp); # free memory
 
+plotDimReductElbow(
+   obj=x.sp,
+   point.size=1.5,
+   point.shape=19,
+   point.color="red",
+   point.alpha=1,
+   pdf.height=7,
+   pdf.width=7,
+   labs.title="PCA Elbow plot",
+   labs.subtitle=NULL,
+   pdf.file.name=paste(outF,params, ".Elbow.pdf" ,sep = ""),
+   );
+
 plotDimReductPW(
   obj=x.sp,
   eigs.dims=1:50,

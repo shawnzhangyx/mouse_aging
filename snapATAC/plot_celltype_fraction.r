@@ -25,10 +25,21 @@ g2 = ggplot(melted) +
   guides(fill=guide_legend(title="Age Group"))  +
   theme_bw()
 
+tab2 = sweep(tab,1,rowSums(tab),'/')
+melted2 = melt(tab2)
+
+g3 = ggplot(melted2) + 
+  geom_col(aes(factor(Var1),value,fill=factor(Var2)),position="dodge")+
+  xlab("Clusters") + ylab("Percentage of Samples in cluster(Normlized)")+
+  geom_hline(yintercept=1/6,color="red",linetype="dashed") + 
+  theme_bw()
+
+
 library(gridExtra)
 pdf(outFile,height=5,width=10)
 g1
 g2
+g3
 #grid.arrange(g1,g2,nrow=1)
 dev.off()
 

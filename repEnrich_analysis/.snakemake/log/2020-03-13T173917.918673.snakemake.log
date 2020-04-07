@@ -1,0 +1,68 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	5	run_repEnrich2
+	6
+
+[Fri Mar 13 17:39:18 2020]
+rule run_repEnrich2:
+    input: bam/FC_18_rep1.18_unique.bam, bam/FC_18_rep1.18_multimap_R1.fastq, bam/FC_18_rep1.18_multimap_R2.fastq
+    output: FC_18_rep1.18.test
+    jobid: 14
+    wildcards: tissue=FC_18, time_rep=rep1, cluster=18
+    threads: 8
+
+
+[Fri Mar 13 17:39:18 2020]
+rule run_repEnrich2:
+    input: bam/FC_18_rep2.18_unique.bam, bam/FC_18_rep2.18_multimap_R1.fastq, bam/FC_18_rep2.18_multimap_R2.fastq
+    output: FC_18_rep2.18.test
+    jobid: 15
+    wildcards: tissue=FC_18, time_rep=rep2, cluster=18
+    threads: 8
+
+
+[Fri Mar 13 17:39:18 2020]
+rule run_repEnrich2:
+    input: bam/FC_10_rep1.18_unique.bam, bam/FC_10_rep1.18_multimap_R1.fastq, bam/FC_10_rep1.18_multimap_R2.fastq
+    output: FC_10_rep1.18.test
+    jobid: 13
+    wildcards: tissue=FC_10, time_rep=rep1, cluster=18
+    threads: 8
+
+Terminating processes on user request, this might take some time.
+[Fri Mar 13 18:07:21 2020]
+Error in rule run_repEnrich2:
+    jobid: 13
+    output: FC_10_rep1.18.test
+
+[Fri Mar 13 18:07:21 2020]
+Error in rule run_repEnrich2:
+    jobid: 14
+    output: FC_18_rep1.18.test
+
+RuleException:
+CalledProcessError in line 56 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2/RepEnrich2.py ~/software/RepEnrich2/refs/mm10_repeatmasker.txt ./RE_out/FC_10_rep1.18 FC_10_rep1.18 ~/software/RepEnrich2/refs/setup_folder_mm10 bam/FC_10_rep1.18_multimap_R1.fastq --fastqfile2 bam/FC_10_rep1.18_multimap_R2.fastq bam/FC_10_rep1.18_unique.bam --cpus 8 --pairedend TRUE;touch FC_10_rep1.18.test ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 56, in __rule_run_repEnrich2
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+[Fri Mar 13 18:07:21 2020]
+Error in rule run_repEnrich2:
+    jobid: 15
+    output: FC_18_rep2.18.test
+
+RuleException:
+CalledProcessError in line 56 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2/RepEnrich2.py ~/software/RepEnrich2/refs/mm10_repeatmasker.txt ./RE_out/FC_18_rep1.18 FC_18_rep1.18 ~/software/RepEnrich2/refs/setup_folder_mm10 bam/FC_18_rep1.18_multimap_R1.fastq --fastqfile2 bam/FC_18_rep1.18_multimap_R2.fastq bam/FC_18_rep1.18_unique.bam --cpus 8 --pairedend TRUE;touch FC_18_rep1.18.test ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 56, in __rule_run_repEnrich2
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 56 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2/RepEnrich2.py ~/software/RepEnrich2/refs/mm10_repeatmasker.txt ./RE_out/FC_18_rep2.18 FC_18_rep2.18 ~/software/RepEnrich2/refs/setup_folder_mm10 bam/FC_18_rep2.18_multimap_R1.fastq --fastqfile2 bam/FC_18_rep2.18_multimap_R2.fastq bam/FC_18_rep2.18_unique.bam --cpus 8 --pairedend TRUE;touch FC_18_rep2.18.test ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 56, in __rule_run_repEnrich2
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-13T173917.918673.snakemake.log

@@ -1,21 +1,19 @@
 library(SnapATAC)
-tissue="HT"
-rank = 15
+tissue="DH"
 
 setwd(paste0("../../analysis/snapATAC/",tissue,"/snapFiles/"))
-load(paste0(tissue,".pool.snapATAC.cluster.RData"))
+#load(paste0(tissue,".pool.snapATAC.cluster.RData"))
+load("DH.pool.snapATAC.Frag500.TSS10.AllCells.seed1.dimPC20.K20.res0.7.cluster.RData")
+
 set.seed(1997)
 
 pmat = x.sp@pmat
-
-
 peak = x.sp@peak$name
-
 cluster = x.sp@cluster
 sample = x.sp@sample
 cluster_sample =paste(cluster,sample,sep=".")
 
-#out = colSums(pmat[which(cluster_sample=="1.DH_03_rep1"),])
+max_cluster=max(as.numeric(cluster))
 # number of cells to subsample from. 
 NUM =200
 
@@ -23,7 +21,7 @@ library(edgeR)
 library(doParallel)
 registerDoParallel(cores=10)
 
-num_diff_out = foreach(cl=1:rank) %dopar% {
+num_diff_out = foreach(cl=1:max_cluster) %dopar% {
 # repeat 20 times. 
 num_diff = NULL
 for (i in 1:20){
@@ -72,10 +70,9 @@ readmean = aggregate(rsums~cluster,data,mean)
 tab$readmean = readmean$rsums[match(tab$L1,readmean$cluster)]
 
 
-save(tab, "../subsample.age_diff_edger/tab.Rdata")
-
-system("mkdir ../subsample.age_diff_edger")
-pdf("../subsample.age_diff_edger/number_of_diff_peaks.bootstrap.pdf")
+system("mkdir -p ../age_diff_edgeR.subsample")
+save(tab,file= "../age_diff_edgeR.subsample/tab.RData")
+pdf("../age_diff_edgeR.subsample/number_of_diff_peaks.bootstrap.pdf")
 
 ggplot(tab) + geom_boxplot(aes(x=factor(L1),y=value))
 ggplot(tab) + geom_point(aes(ncells,value,color=factor(L1))) + 

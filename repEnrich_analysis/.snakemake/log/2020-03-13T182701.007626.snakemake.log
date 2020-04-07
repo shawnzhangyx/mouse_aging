@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	10	gen_fastq
+	1	require_fastq
+	11
+
+[Fri Mar 13 18:27:01 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/DH_03_rep2/DH_03_rep2.R2.fastq.gz
+    output: fastq.cluster/DH_03_rep2.1.R2.fastq.gz
+    jobid: 7
+    wildcards: tissue=DH_03, time_rep=rep2, rd=R2
+
+RuleException in line 17 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+NameError: The name 'tissue' is unknown in this context. Please make sure that you defined that variable. Also note that braces not used for variable access have to be escaped by repeating them, i.e. {{print $1}}

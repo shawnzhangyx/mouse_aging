@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	108	alignment
+	1	all
+	109
+
+[Fri Mar 13 16:43:29 2020]
+rule alignment:
+    input: fastq.cluster/FC_10_rep2.1.R1.fastq.gz, fastq.cluster/FC_10_rep2.1.R2.fastq.gz
+    output: bam/FC_10_rep2.1.bam
+    jobid: 55
+    wildcards: tissue=FC_10, time_rep=rep2, cluster=1
+
+[Fri Mar 13 16:43:29 2020]
+Error in rule alignment:
+    jobid: 55
+    output: bam/FC_10_rep2.1.bam
+
+RuleException:
+CalledProcessError in line 25 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  bowtie2 -q -p 1 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -1 <(zcat fastq.cluster/FC_10_rep2.1.R1.fastq.gz> -2 <(zcat fastq.cluster/FC_10_rep2.1.R2.fastq.gz) |samtools view -bS - > bam/FC_10_rep2.1.bam ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 25, in __rule_alignment
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-13T164329.104034.snakemake.log

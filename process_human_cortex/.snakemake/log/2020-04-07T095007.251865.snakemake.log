@@ -1,0 +1,73 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	create_snap_list
+	1	require_snap_pre
+	3	snap_pre
+	5
+
+[Tue Apr  7 09:50:11 2020]
+rule snap_pre:
+    input: ../../data/human_cortex/bam.filter.nsort/FC_90y_rep1/FC_90y_rep1.filter.nsort.bam
+    output: FC/snapFiles/FC_90y_rep1.snap
+    jobid: 4
+    wildcards: tissue=FC, sample=FC_90y_rep1
+
+
+[Tue Apr  7 09:50:11 2020]
+rule snap_pre:
+    input: ../../data/human_cortex/bam.filter.nsort/FC_30y_rep2/FC_30y_rep2.filter.nsort.bam
+    output: FC/snapFiles/FC_30y_rep2.snap
+    jobid: 3
+    wildcards: tissue=FC, sample=FC_30y_rep2
+
+
+[Tue Apr  7 09:50:11 2020]
+rule snap_pre:
+    input: ../../data/human_cortex/bam.filter.nsort/FC_30y_rep1/FC_30y_rep1.filter.nsort.bam
+    output: FC/snapFiles/FC_30y_rep1.snap
+    jobid: 2
+    wildcards: tissue=FC, sample=FC_30y_rep1
+
+[Tue Apr  7 09:50:16 2020]
+[Tue Apr  7 09:50:16 2020]
+Error in rule snap_pre:
+Error in rule snap_pre:
+    jobid: 4
+    jobid: 3
+    output: FC/snapFiles/FC_90y_rep1.snap
+    output: FC/snapFiles/FC_30y_rep2.snap
+
+
+RuleException:
+CalledProcessError in line 78 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_cortex/Snakefile_snap_pre:
+Command ' set -euo pipefail;  source activate py27 &&     snaptools snap-pre      --input-file=../../data/human_cortex/bam.filter.nsort/FC_90y_rep1/FC_90y_rep1.filter.nsort.bam      --output-snap=FC/snapFiles/FC_90y_rep1.snap     --genome-name=hg38      --genome-size=../../scripts/human_cortex/hg38.chrom.sizes      --min-mapq=0      --min-flen=0      --max-flen=1000      --keep-chrm=TRUE      --keep-single=TRUE      --keep-secondary=False      --overwrite=True      --min-cov=100      --verbose=True &&   snaptools snap-add-bmat      --snap-file=FC/snapFiles/FC_90y_rep1.snap      --bin-size-list 1000 5000 10000      --verbose=True &&
+  snaptools snap-add-gmat      --snap-file=FC/snapFiles/FC_90y_rep1.snap      --gene-file=../../annotations/hg38.gencode.v28.gene.bed     --verbose=True && 
+  snaptools snap-add-pmat     --snap-file=FC/snapFiles/FC_90y_rep1.snap      --peak-file=../../data/human_cortex/peaks/FC_summits.ext1k.bed ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_cortex/Snakefile_snap_pre", line 78, in __rule_snap_pre
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 78 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_cortex/Snakefile_snap_pre:
+Command ' set -euo pipefail;  source activate py27 &&     snaptools snap-pre      --input-file=../../data/human_cortex/bam.filter.nsort/FC_30y_rep2/FC_30y_rep2.filter.nsort.bam      --output-snap=FC/snapFiles/FC_30y_rep2.snap     --genome-name=hg38      --genome-size=../../scripts/human_cortex/hg38.chrom.sizes      --min-mapq=0      --min-flen=0      --max-flen=1000      --keep-chrm=TRUE      --keep-single=TRUE      --keep-secondary=False      --overwrite=True      --min-cov=100      --verbose=True &&   snaptools snap-add-bmat      --snap-file=FC/snapFiles/FC_30y_rep2.snap      --bin-size-list 1000 5000 10000      --verbose=True &&
+  snaptools snap-add-gmat      --snap-file=FC/snapFiles/FC_30y_rep2.snap      --gene-file=../../annotations/hg38.gencode.v28.gene.bed     --verbose=True && 
+  snaptools snap-add-pmat     --snap-file=FC/snapFiles/FC_30y_rep2.snap      --peak-file=../../data/human_cortex/peaks/FC_summits.ext1k.bed ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_cortex/Snakefile_snap_pre", line 78, in __rule_snap_pre
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+[Tue Apr  7 09:50:16 2020]
+Error in rule snap_pre:
+    jobid: 2
+    output: FC/snapFiles/FC_30y_rep1.snap
+
+RuleException:
+CalledProcessError in line 78 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_cortex/Snakefile_snap_pre:
+Command ' set -euo pipefail;  source activate py27 &&     snaptools snap-pre      --input-file=../../data/human_cortex/bam.filter.nsort/FC_30y_rep1/FC_30y_rep1.filter.nsort.bam      --output-snap=FC/snapFiles/FC_30y_rep1.snap     --genome-name=hg38      --genome-size=../../scripts/human_cortex/hg38.chrom.sizes      --min-mapq=0      --min-flen=0      --max-flen=1000      --keep-chrm=TRUE      --keep-single=TRUE      --keep-secondary=False      --overwrite=True      --min-cov=100      --verbose=True &&   snaptools snap-add-bmat      --snap-file=FC/snapFiles/FC_30y_rep1.snap      --bin-size-list 1000 5000 10000      --verbose=True &&
+  snaptools snap-add-gmat      --snap-file=FC/snapFiles/FC_30y_rep1.snap      --gene-file=../../annotations/hg38.gencode.v28.gene.bed     --verbose=True && 
+  snaptools snap-add-pmat     --snap-file=FC/snapFiles/FC_30y_rep1.snap      --peak-file=../../data/human_cortex/peaks/FC_summits.ext1k.bed ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_cortex/Snakefile_snap_pre", line 78, in __rule_snap_pre
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_cortex/.snakemake/log/2020-04-07T095007.251865.snakemake.log

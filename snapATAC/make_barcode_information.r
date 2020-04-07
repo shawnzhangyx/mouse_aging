@@ -25,10 +25,12 @@ a$TSS.pc = b$TSS.pc[match(paste(a$sample,a$barcode),paste(b$sample,b$barcode))]
 
 # some adjustment of column names. 
 a$sample=NULL
-colnames(a)[c(1,9)]= c("sample","cluster")
-
+#colnames(a)[match(c("x.sp.sample","x.sp.cluster"),colnames(a))]= c("sample","cluster")
+# after harmony
+colnames(a)[match(c("x.after.sp.sample","x.after.sp.cluster"),colnames(a))]= c("sample","cluster")
 a$stage = substr(a$sample,4,5)
 a$rep = substr(a$sample,7,10)
+a$landmark = NULL
 
 write.table(a,paste0(tissue,".pool.barcode.meta_info.txt"),row.names=F,quote=F,
   sep="\t")

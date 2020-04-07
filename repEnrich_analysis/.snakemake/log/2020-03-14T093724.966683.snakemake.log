@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 61 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Missing input files for rule run_repEnrich2:
+bam/FC_03_rep1.1_multimap_R2.fastq
+bam/FC_03_rep1.1_multimap_R1.fastq

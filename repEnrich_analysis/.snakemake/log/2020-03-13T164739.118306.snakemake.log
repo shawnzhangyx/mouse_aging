@@ -1,0 +1,93 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	6	alignment
+	1	all
+	7
+
+[Fri Mar 13 16:47:39 2020]
+rule alignment:
+    input: fastq.cluster/FC_10_rep1.18.R1.fastq.gz, fastq.cluster/FC_10_rep1.18.R2.fastq.gz
+    output: bam/FC_10_rep1.18.bam
+    jobid: 3
+    wildcards: tissue=FC_10, time_rep=rep1, cluster=18
+    threads: 8
+
+
+[Fri Mar 13 16:47:39 2020]
+rule alignment:
+    input: fastq.cluster/FC_10_rep2.18.R1.fastq.gz, fastq.cluster/FC_10_rep2.18.R2.fastq.gz
+    output: bam/FC_10_rep2.18.bam
+    jobid: 4
+    wildcards: tissue=FC_10, time_rep=rep2, cluster=18
+    threads: 8
+
+
+[Fri Mar 13 16:47:39 2020]
+rule alignment:
+    input: fastq.cluster/FC_18_rep2.18.R1.fastq.gz, fastq.cluster/FC_18_rep2.18.R2.fastq.gz
+    output: bam/FC_18_rep2.18.bam
+    jobid: 6
+    wildcards: tissue=FC_18, time_rep=rep2, cluster=18
+    threads: 8
+
+[Fri Mar 13 16:48:21 2020]
+Finished job 6.
+1 of 7 steps (14%) done
+
+[Fri Mar 13 16:48:21 2020]
+rule alignment:
+    input: fastq.cluster/FC_18_rep1.18.R1.fastq.gz, fastq.cluster/FC_18_rep1.18.R2.fastq.gz
+    output: bam/FC_18_rep1.18.bam
+    jobid: 5
+    wildcards: tissue=FC_18, time_rep=rep1, cluster=18
+    threads: 8
+
+[Fri Mar 13 16:48:32 2020]
+Finished job 3.
+2 of 7 steps (29%) done
+
+[Fri Mar 13 16:48:32 2020]
+rule alignment:
+    input: fastq.cluster/FC_03_rep2.18.R1.fastq.gz, fastq.cluster/FC_03_rep2.18.R2.fastq.gz
+    output: bam/FC_03_rep2.18.bam
+    jobid: 2
+    wildcards: tissue=FC_03, time_rep=rep2, cluster=18
+    threads: 8
+
+[Fri Mar 13 16:48:51 2020]
+Finished job 5.
+3 of 7 steps (43%) done
+
+[Fri Mar 13 16:48:51 2020]
+rule alignment:
+    input: fastq.cluster/FC_03_rep1.18.R1.fastq.gz, fastq.cluster/FC_03_rep1.18.R2.fastq.gz
+    output: bam/FC_03_rep1.18.bam
+    jobid: 1
+    wildcards: tissue=FC_03, time_rep=rep1, cluster=18
+    threads: 8
+
+[Fri Mar 13 16:48:54 2020]
+Finished job 2.
+4 of 7 steps (57%) done
+[Fri Mar 13 16:48:59 2020]
+Error in rule alignment:
+    jobid: 4
+    output: bam/FC_10_rep2.18.bam
+
+RuleException:
+CalledProcessError in line 26 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  bowtie2 -q -p 8 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -1 <(zcat fastq.cluster/FC_10_rep2.18.R1.fastq.gz) -2 <(zcat fastq.cluster/FC_10_rep2.18.R2.fastq.gz) |samtools view -bS - > bam/FC_10_rep2.18.bam ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 26, in __rule_alignment
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job alignment since they might be corrupted:
+bam/FC_10_rep2.18.bam
+[Fri Mar 13 16:49:05 2020]
+Finished job 1.
+5 of 7 steps (71%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-13T164739.118306.snakemake.log

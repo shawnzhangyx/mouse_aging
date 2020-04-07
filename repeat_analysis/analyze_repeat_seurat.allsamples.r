@@ -16,7 +16,7 @@ for ( sample in samples) {
   seurat.list[[sample]] = tmp
   }
 
-pbmc = merge(x=seurat.list[[1]], y = seurat.list[2:6], add.cell.ids = samples, project = "DH")
+pbmc = merge(x=seurat.list[[1]], y = seurat.list[2:6], add.cell.ids = samples, project = tissue)
 
 #pbmc[["percent.simple"]] <- PercentageFeatureSet(object = pbmc, pattern = "n$")
 #summary(pbmc$percent.simple)
@@ -30,8 +30,9 @@ plot1 <- VariableFeaturePlot(object = pbmc)
 plot2 <- LabelPoints(plot = plot1, points = top10, repel = TRUE)
 # CombinePlots(plots = list(plot1, plot2))
 
-d=read.delim("../../analysis/snapATAC/DH/DH.pooled.barcode.cluster.stage.rep.txt")
+d=read.delim(paste0("../../analysis/snapATAC/",tissue,"/",tissue,".pool.barcode.meta_info.txt"))
 d$names = paste0(tissue,"_",str_pad(d$stage,2,'left',"0"),"_",d$rep,"_",d$barcode)
+
 
 pbmc$cluster = d$cluster[match(rownames(pbmc@meta.data),d$names)]
 pbmc = subset( pbmc, cluster>0)

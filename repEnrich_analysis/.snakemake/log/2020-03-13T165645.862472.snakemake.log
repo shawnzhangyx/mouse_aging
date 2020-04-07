@@ -1,0 +1,102 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	5	subset_bam
+	6
+
+[Fri Mar 13 16:56:45 2020]
+rule subset_bam:
+    input: bam/FC_18_rep2.18.bam
+    output: bam/FC_18_rep2.18_unique.bam
+    jobid: 10
+    wildcards: tissue=FC_18, time_rep=rep2, cluster=18
+
+
+[Fri Mar 13 16:56:45 2020]
+rule subset_bam:
+    input: bam/FC_18_rep1.18.bam
+    output: bam/FC_18_rep1.18_unique.bam
+    jobid: 9
+    wildcards: tissue=FC_18, time_rep=rep1, cluster=18
+
+
+[Fri Mar 13 16:56:45 2020]
+rule subset_bam:
+    input: bam/FC_03_rep1.18.bam
+    output: bam/FC_03_rep1.18_unique.bam
+    jobid: 6
+    wildcards: tissue=FC_03, time_rep=rep1, cluster=18
+
+
+[Fri Mar 13 16:56:45 2020]
+rule subset_bam:
+    input: bam/FC_03_rep2.18.bam
+    output: bam/FC_03_rep2.18_unique.bam
+    jobid: 7
+    wildcards: tissue=FC_03, time_rep=rep2, cluster=18
+
+
+[Fri Mar 13 16:56:46 2020]
+rule subset_bam:
+    input: bam/FC_10_rep1.18.bam
+    output: bam/FC_10_rep1.18_unique.bam
+    jobid: 8
+    wildcards: tissue=FC_10, time_rep=rep1, cluster=18
+
+[Fri Mar 13 16:56:46 2020]
+Error in rule subset_bam:
+[Fri Mar 13 16:56:46 2020]
+    jobid: 10
+[Fri Mar 13 16:56:46 2020]
+Error in rule subset_bam:
+    output: bam/FC_18_rep2.18_unique.bam
+Error in rule subset_bam:
+    jobid: 9
+
+    jobid: 6
+    output: bam/FC_18_rep1.18_unique.bam
+    output: bam/FC_03_rep1.18_unique.bam
+
+
+RuleException:
+CalledProcessError in line 37 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2_subset.py bam/FC_18_rep1.18.bam 30 bam/FC_18_rep1.18 --pairedend TRUE ' returned non-zero exit status 2.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 37, in __rule_subset_bam
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 37 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2_subset.py bam/FC_18_rep2.18.bam 30 bam/FC_18_rep2.18 --pairedend TRUE ' returned non-zero exit status 2.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 37, in __rule_subset_bam
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 37 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2_subset.py bam/FC_03_rep1.18.bam 30 bam/FC_03_rep1.18 --pairedend TRUE ' returned non-zero exit status 2.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 37, in __rule_subset_bam
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+[Fri Mar 13 16:56:46 2020]
+Error in rule subset_bam:
+    jobid: 7
+    output: bam/FC_03_rep2.18_unique.bam
+
+RuleException:
+CalledProcessError in line 37 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2_subset.py bam/FC_03_rep2.18.bam 30 bam/FC_03_rep2.18 --pairedend TRUE ' returned non-zero exit status 2.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 37, in __rule_subset_bam
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+[Fri Mar 13 16:56:46 2020]
+Error in rule subset_bam:
+    jobid: 8
+    output: bam/FC_10_rep1.18_unique.bam
+
+RuleException:
+CalledProcessError in line 37 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python2.7 ../../scripts/repEnrich_analysis/RepEnrich2_subset.py bam/FC_10_rep1.18.bam 30 bam/FC_10_rep1.18 --pairedend TRUE ' returned non-zero exit status 2.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 37, in __rule_subset_bam
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-13T165645.862472.snakemake.log

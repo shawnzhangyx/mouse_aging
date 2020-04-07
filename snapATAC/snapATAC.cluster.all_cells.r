@@ -139,7 +139,9 @@ plotViz(
 ## Create chromatin lanscape and identify cis-elements for each cluster seperately.
 
 outmetaf <- paste0(outF,params,".meta.txt")
-outmetamx <- cbind(x.sp@sample, x.sp@metaData, x.sp@cluster, x.sp@umap)
+# add the landmark column to be consistent with the landmark cluster approach. 
+landmark=1
+outmetamx <- cbind(x.sp@sample, x.sp@metaData,landmark,x.sp@cluster, x.sp@umap)
 write.table(outmetamx, outmetaf, row.names=F, col.names=T, sep="\t", quote=F)
 
 outfname = paste(outF,params, ".cluster.RData",sep="")

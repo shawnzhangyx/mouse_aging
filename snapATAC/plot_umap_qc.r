@@ -1,4 +1,5 @@
-tissue="DH"
+#tissue="DH"
+tissue=commandArgs(trailing=T)[1]
 library(viridis)
 
 setwd(paste0("../../analysis/snapATAC/",tissue))

@@ -1,0 +1,51 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	2	gen_fastq
+	1	require_fastq
+	3
+
+[Sun Mar 15 11:59:47 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_10_rep2/HT_10_rep2.R1.fastq.gz
+    output: fastq.cluster/HT_10_rep2.1.R1.fastq.gz
+    jobid: 4
+    wildcards: tissue=HT_10, time_rep=rep2, rd=R1
+
+
+[Sun Mar 15 11:59:47 2020]
+rule gen_fastq:
+    input: ../../data/snATAC/fastq.demultiplex/HT_10_rep2/HT_10_rep2.R2.fastq.gz
+    output: fastq.cluster/HT_10_rep2.1.R2.fastq.gz
+    jobid: 10
+    wildcards: tissue=HT_10, time_rep=rep2, rd=R2
+
+Terminating processes on user request, this might take some time.
+[Sun Mar 15 12:19:41 2020]
+[Sun Mar 15 12:19:41 2020]
+Error in rule gen_fastq:
+Error in rule gen_fastq:
+    jobid: 4
+    jobid: 10
+    output: fastq.cluster/HT_10_rep2.1.R1.fastq.gz
+    output: fastq.cluster/HT_10_rep2.1.R2.fastq.gz
+
+
+RuleException:
+CalledProcessError in line 34 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python ~/software/github/single-cell-utils/split_fastq_by_cluster.py --meta metaInfo/HT_10_rep2.meta.txt -i ../../data/snATAC/fastq.demultiplex/HT_10_rep2/HT_10_rep2.R1.fastq.gz --barcode-pos 2 --cluster-pos 9 --fastq-barcode-re '@(.*?):.*' --outPrefix fastq.cluster/HT_10_rep2 --outAffix R1.fastq.gz ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 34, in __rule_gen_fastq
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+RuleException:
+CalledProcessError in line 34 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2:
+Command ' set -euo pipefail;  python ~/software/github/single-cell-utils/split_fastq_by_cluster.py --meta metaInfo/HT_10_rep2.meta.txt -i ../../data/snATAC/fastq.demultiplex/HT_10_rep2/HT_10_rep2.R2.fastq.gz --barcode-pos 2 --cluster-pos 9 --fastq-barcode-re '@(.*?):.*' --outPrefix fastq.cluster/HT_10_rep2 --outAffix R2.fastq.gz ' returned non-zero exit status 1.
+  File "/mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/Snakemake.RepEnrich2", line 34, in __rule_gen_fastq
+  File "/projects/ps-renlab/yanxiao/software/miniconda3/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job gen_fastq since they might be corrupted:
+fastq.cluster/HT_10_rep2.1.R1.fastq.gz
+Removing output files of failed job gen_fastq since they might be corrupted:
+fastq.cluster/HT_10_rep2.1.R2.fastq.gz
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-15T115947.259113.snakemake.log

@@ -1,0 +1,74 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	5	subset_bam
+	6
+
+[Fri Mar 13 16:59:36 2020]
+rule subset_bam:
+    input: bam/FC_03_rep2.18.bam
+    output: bam/FC_03_rep2.18_unique.bam
+    jobid: 7
+    wildcards: tissue=FC_03, time_rep=rep2, cluster=18
+
+
+[Fri Mar 13 16:59:36 2020]
+rule subset_bam:
+    input: bam/FC_18_rep2.18.bam
+    output: bam/FC_18_rep2.18_unique.bam
+    jobid: 10
+    wildcards: tissue=FC_18, time_rep=rep2, cluster=18
+
+
+[Fri Mar 13 16:59:36 2020]
+rule subset_bam:
+    input: bam/FC_03_rep1.18.bam
+    output: bam/FC_03_rep1.18_unique.bam
+    jobid: 6
+    wildcards: tissue=FC_03, time_rep=rep1, cluster=18
+
+
+[Fri Mar 13 16:59:36 2020]
+rule subset_bam:
+    input: bam/FC_18_rep1.18.bam
+    output: bam/FC_18_rep1.18_unique.bam
+    jobid: 9
+    wildcards: tissue=FC_18, time_rep=rep1, cluster=18
+
+
+[Fri Mar 13 16:59:36 2020]
+rule subset_bam:
+    input: bam/FC_10_rep1.18.bam
+    output: bam/FC_10_rep1.18_unique.bam
+    jobid: 8
+    wildcards: tissue=FC_10, time_rep=rep1, cluster=18
+
+[Fri Mar 13 16:59:42 2020]
+Finished job 6.
+1 of 6 steps (17%) done
+[Fri Mar 13 16:59:46 2020]
+Finished job 7.
+2 of 6 steps (33%) done
+[Fri Mar 13 16:59:49 2020]
+Finished job 9.
+3 of 6 steps (50%) done
+[Fri Mar 13 16:59:55 2020]
+Finished job 10.
+4 of 6 steps (67%) done
+[Fri Mar 13 16:59:59 2020]
+Finished job 8.
+5 of 6 steps (83%) done
+
+[Fri Mar 13 16:59:59 2020]
+localrule all:
+    input: bam/FC_03_rep1.18.bam, bam/FC_03_rep2.18.bam, bam/FC_10_rep1.18.bam, bam/FC_18_rep1.18.bam, bam/FC_18_rep2.18.bam, bam/FC_03_rep1.18_unique.bam, bam/FC_03_rep2.18_unique.bam, bam/FC_10_rep1.18_unique.bam, bam/FC_18_rep1.18_unique.bam, bam/FC_18_rep2.18_unique.bam
+    jobid: 0
+
+[Fri Mar 13 16:59:59 2020]
+Finished job 0.
+6 of 6 steps (100%) done
+Complete log: /mnt/tscc/yanxiao/projects/mouse_aging/scripts/repEnrich_analysis/.snakemake/log/2020-03-13T165936.264459.snakemake.log
