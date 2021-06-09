@@ -23,3 +23,10 @@ LM_18_rep1 LM
 LM_03_rep2 LM
 LM_10_rep2 LM
 LM_18_rep2 LM
+BM_03_rep1 BM
+BM_10_rep1 BM
+BM_18_rep1 BM
+BM_03_rep2 BM
+BM_10_rep2 BM
+BM_18_rep2 BM
+

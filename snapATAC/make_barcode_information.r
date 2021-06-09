@@ -20,8 +20,8 @@ b = do.call(rbind,ll)
 
 a$TN = b$raw[match(paste(a$sample,a$barcode),paste(b$sample,b$barcode))]
 a$MT.pc = b$mt.pc[match(paste(a$sample,a$barcode),paste(b$sample,b$barcode))]
-a$FIP.pc = b$FIP.pc[match(paste(a$sample,a$barcode),paste(b$sample,b$barcode))]
-a$TSS.pc = b$TSS.pc[match(paste(a$sample,a$barcode),paste(b$sample,b$barcode))]
+#a$FIP.pc = b$FIP.pc[match(paste(a$sample,a$barcode),paste(b$sample,b$barcode))]
+#a$TSS.pc = b$TSS.pc[match(paste(a$sample,a$barcode),paste(b$sample,b$barcode))]
 
 # some adjustment of column names. 
 a$sample=NULL

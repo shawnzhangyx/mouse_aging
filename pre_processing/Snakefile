@@ -17,7 +17,7 @@ for x in sample_info.index:
   else:
     tissues_dict[x[:2]].append(x)
 
-print(tissues_dict)
+#print(tissues_dict)
 
 #print(sample_info)
 
@@ -31,9 +31,11 @@ rule require_everything:
     "bam.filter.sort.files.list.txt",
     "bam.filter.files.list.txt",
     "bam.dedup.files.list.txt",
-    "bam.nsort.files.list.txt",
+    "bam.csort.files.list.txt",
+    "bam.mapq10.files.list.txt",
     "bam.raw.files.list.txt",
     "fastq.demultiplex.files.list.txt",
+    expand("qc.TSSvsFrag.out/{sample}/stat.txt",sample=list(sample_info.index))
   params:
     pbsName="All"
 
@@ -101,6 +103,30 @@ rule bamToBigWig:
    "bamCoverage --bam {input} --outFileFormat bigwig --outFileName {output} --binSize 25 --normalizeUsing RPKM -p {threads}"
     
 
+rule generate_tss_enrichment:
+  output: 
+    "qc.TSSvsFrag.out/{sample}/stat.txt"
+  input: 
+    "bam.filter.fixmate/{sample}/{sample}.fixmate.bam"
+  threads: 1
+  params:
+      pbsName=lambda wildcards: wildcards.sample
+  shell:
+    '''../../scripts/utility/snapATAC.qc.TSSvsFrag \
+    ../../annotations/mm10.gencode.vM16.annotation.gtf \
+    {input} qc.TSSvsFrag.out/{wildcards.sample}/'''
+
+rule fixmate_bam:
+  output:
+    "bam.filter.fixmate/{sample}/{sample}.fixmate.bam"
+  input:
+    "bam.filter.nsort/{sample}/{sample}.filter.nsort.bam"
+  threads: 4
+  params: 
+    pbsName=lambda wildcards: wildcards.sample
+  shell:
+    "samtools fixmate -m {input} {output} -@ {threads}"
+
 rule require_filter_sort_bam:
   output:
     "bam.filter.sort.files.list.txt"
@@ -128,7 +154,7 @@ rule nsort_filter_bam:
         SORT_ORDER=queryname '''
 
 
-rule sort_filter_bam:
+rule csort_filter_bam:
   output: 
     "bam.filter.sort/{sample}/{sample}.filter.csort.bam"
   input: 
@@ -192,7 +218,7 @@ rule count_bam_chrM_barcode:
     pbsName=lambda wildcards: wildcards.sample
   shell:
     """samtools view {input} |grep chrM| awk -v OF="\t" -v OFS="\t" \
-    '{{ a[substr($1,1,22)]++ }} END {{ for (i in a) print i,a[i]/2 }}' | \
+    '{{match($1,/([ATCG]*):.*/,ary); a[ary[1]]++ }} END {{ for (i in a) print i,a[i]/2 }}' | \
     sort -k2,2nr > {output}
     """
 
@@ -207,7 +233,7 @@ rule count_bam_barcode:
     pbsName=lambda wildcards: wildcards.sample
   shell:
     """samtools view {input} | awk -v OF="\t" -v OFS="\t" \
-    '{{ a[substr($1,1,22)]++ }} END {{ for (i in a) print i,a[i]/2 }}' | \
+    '{{match($1,/([ATCG]*):.*/,ary); a[ary[1]]++ }} END {{ for (i in a) print i,a[i]/2 }}' | \
     sort -k2,2nr > {output}
     """
 
@@ -225,7 +251,7 @@ rule count_fastq_barcode:
     pbsName=lambda wildcards: wildcards.sample
   shell:
     """zcat {input} | awk -v OF="\t" -v OFS="\t" \
-    '{{ if(NR%4==1) {{ a[substr($1,2,22)]++}} }} END {{ for (i in a) print i,a[i] }}' | \
+    '{{ if(NR%4==1) {{match($1,/([ATCG]*):.*/,ary); a[ary[1]]++}} }} END {{ for (i in a) print i,a[i] }}' | \
     sort -k2,2nr > {output}
     """
 
@@ -240,7 +266,7 @@ rule require_filter_bam:
   shell:
     "ls -lh {input} > {output}"
 
-rule filter_bam: 
+rule filter_proper_pair_bam: 
   output: 
     "bam.filter/{sample}/{sample}.filter.bam"
   input: 
@@ -288,35 +314,6 @@ rule dedup_bam:
     2> {log}"""
 
 
-
-
-rule require_nsort_bam:
-  output:
-        "bam.nsort.files.list.txt"
-  input:
-      expand("bam.nsort/{sample}/{sample}.picard.nsort.bam", sample=list(sample_info.index))
-  params:
-    pbsName="All"
-  shell:
-        "ls -lh {input} > {output}"
-
-## name sort bam files. 
-rule nsort_bam:
-  output: 
-    "bam.nsort/{sample}/{sample}.picard.nsort.bam"
-  input: 
-    "bam.raw/{sample}/{sample}.raw.bam"
-  threads: 4
-  params:
-    pbsName=lambda wildcards: wildcards.sample
-  log:
-    "bam.nsort/log/{sample}.nsort.log"
-  shell: 
-    '''java -jar -Xmx$(({threads}*4))G ../../scripts/utility/picard.jar SortSam \
-        I={input} \
-        O={output} \
-        SORT_ORDER=queryname 2> {log}'''
-
 rule require_csort_bam:
   output:
         "bam.csort.files.list.txt"
@@ -327,12 +324,13 @@ rule require_csort_bam:
   shell:
         "ls -lh {input} > {output}"
 
-## name sort bam files.
+## sort bam files by coordinates.
 rule csort_bam:
   output:
     "bam.csort/{sample}/{sample}.picard.csort.bam"
   input:
     "bam.raw/{sample}/{sample}.raw.bam"
+#    "bam.filter.mapq/{sample}/{sample}.mapq10.bam"
   threads: 4
   params:
     pbsName=lambda wildcards: wildcards.sample
@@ -345,31 +343,26 @@ rule csort_bam:
         SORT_ORDER=coordinate 2> {log}'''
 
 
-
-## add sample barcode information as BX tag
-rule require_bx_bam: 
+rule require_mapq_bam:
   output:
-          "bam.bx.files.list.txt"
+    "bam.mapq10.files.list.txt"
   input:
-        expand("bam.bx/{sample}/{sample}.bx.bam", sample=list(sample_info.index))
+    expand("bam.filter.mapq/{sample}/{sample}.mapq10.bam", sample=list(sample_info.index))
   params:
     pbsName="All"
   shell:
         "ls -lh {input} > {output}"
 
-rule bx_bam: 
-  output: 
-      "bam.bx/{sample}/{sample}.bx.bam"
+
+rule filter_low_mapq_bam: 
+  output:
+    "bam.filter.mapq/{sample}/{sample}.mapq10.bam"
   input: 
-      "bam.raw/{sample}/{sample}.raw.bam"
+    "bam.filter/{sample}/{sample}.filter.bam"
   params:
     pbsName=lambda wildcards: wildcards.sample
   shell: 
-   """ samtools view {input} -h | \
-      awk -v id={wildcards.sample} '{{ if ($1 ~ "@"){{print $0}} else
-      {{print id "." $0"\tBX:Z:" id "."  substr($1,1,22) }} }}' | \
-    samtools view -bS - > {output}; """
-
+    "samtools view -q 10 {input} -b -o {output}"
 
 rule require_raw_bam:
   output:
@@ -395,8 +388,8 @@ rule align_bowtie2:
     pbsName=lambda wildcards: wildcards.sample
   shell: 
     """bowtie2 -x /projects/ps-renlab/share/bowtie2_indexes/mm10 -X 2000 \
-    -1 {input.R1} -2 {input.R2} -p {threads} | awk '{{ if ($1 ~ "@") 
-    {{print $0}} else {{print $0"\tBX:Z:" substr($1,1,22) }} }}'  | \
+    -1 {input.R1} -2 {input.R2} -p {threads} | gawk '{{ if ($1 ~ "@") 
+    {{print $0}} else {{match($1,/([ATCG]*):.*/,ary); print $0"\tBX:Z:" ary[1]  }} }}'| \
     samtools view -bS > {output} """
 
 rule require_demulti_fastq_files:

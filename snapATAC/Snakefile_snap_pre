@@ -64,28 +64,6 @@ rule create_snap_list:
     '''
 
 
-rule snap_add_mat:
-  output:
-    bmat = "{tissue}/snapFiles/{sample}.bmat",
-    gmat = "{tissue}/snapFiles/{sample}.gmat"
-  input:
-    "{tissue}/snapFiles/{sample}.snap",
-  threads: 1
-  params:
-      pbsName=lambda wildcards: wildcards.sample
-  shell:
-    '''source activate py27 && \
-      snaptools snap-add-bmat  \
-        --snap-file={input}  \
-        --bin-size-list 1000 5000 10000  \
-        --verbose=True && 
-      snaptools snap-add-gmat  \
-        --snap-file={input}  \
-        --gene-file=../../scripts/snapATAC/gencode.vM16.gene.bed  \
-        --verbose=True
-    '''
-
-
 
 rule snap_pre:
   output:
@@ -103,7 +81,7 @@ rule snap_pre:
     --input-file={input.bam}  \
     --output-snap={output.snap} \
     --genome-name=mm10  \
-    --genome-size=../../scripts/snapATAC/mm10.chrom.sizes  \
+    --genome-size=../../annotations/mm10.chrom.sizes  \
     --min-mapq=0  \
     --min-flen=0  \
     --max-flen=1000  \
@@ -119,11 +97,11 @@ rule snap_pre:
     --verbose=True &&
   snaptools snap-add-gmat  \
     --snap-file={output.snap}  \
-    --gene-file=../../scripts/snapATAC/gencode.vM16.gene.bed  \
+    --gene-file=../../annotations/mm10.gencode.vM16.gene.bed  \
     --verbose=True && 
   snaptools snap-add-pmat \
     --snap-file={output.snap}  \
-    --peak-file=../../data/snATAC/peaks/{params.tissue}_summits.ext1k.bed 
+    --peak-file=../../data/snATAC/peaks/{params.tissue}_summits.ext1k.filter_highSignal_repeats.bed 
     ''' 
 
 

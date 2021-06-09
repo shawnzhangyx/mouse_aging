@@ -23,3 +23,10 @@ LM_18_rep1 2019_04_03_DIP_A7 barcodes_nextSeq_comp.txt 193-288 1-768 1
 LM_03_rep2 2019_04_03_DIP_A8 barcodes_nextSeq_comp.txt 1-96 1-768 1
 LM_10_rep2 2019_04_03_DIP_A8 barcodes_nextSeq_comp.txt 97-192 1-768 1
 LM_18_rep2 2019_04_03_DIP_A8 barcodes_nextSeq_comp.txt 193-288 1-768 1
+BM_03_rep1 210219_A00953_0237_AHTNGNDSXY barcodes_nextSeq_comp_768_p7.txt 1-96 1-768 1
+BM_10_rep1 210219_A00953_0237_AHTNGNDSXY barcodes_nextSeq_comp_768_p7.txt 97-192 1-768 1
+BM_18_rep1 210219_A00953_0237_AHTNGNDSXY barcodes_nextSeq_comp_768_p7.txt 193-288 1-768 1
+BM_03_rep2 210219_A00953_0237_AHTNGNDSXY barcodes_nextSeq_comp_768_p7.txt 289-384 1-768 1
+BM_10_rep2 210219_A00953_0237_AHTNGNDSXY barcodes_nextSeq_comp_768_p7.txt 385-480 1-768 1
+BM_18_rep2 210219_A00953_0237_AHTNGNDSXY barcodes_nextSeq_comp_768_p7.txt 481-576 1-768 1
+

@@ -1,0 +1,13 @@
+ID	sample
+01	DH_18_Rep1
+02	DH_18_Rep1
+03	DH_18_Rep2
+04	DH_18_Rep2
+05	FC_18_Rep1
+06	FC_18_Rep1
+07	FC_18_Rep2
+08	FC_18_Rep2
+09	DH_03_Rep1
+10	VH_03_Rep1
+11	FC_03_Rep1
+12	FC_03_Rep2

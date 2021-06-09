@@ -1,0 +1,3386 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 1000
+Job counts:
+	count	jobs
+	239	bamToBigWig
+	3	generate_bw_cluster_age_rep_xml
+	1	require_files
+	243
+
+[Wed May 13 10:53:02 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_3.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_3.18.rep1.sorted.rpkm.bw
+    jobid: 469
+    wildcards: tissue=HT, path=cluster_age_rep, info=3.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_3.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_3.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 469 with external jobid '21754164.tscc-mgr7.local'.
+
+[Wed May 13 10:53:19 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_4.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_4.03.rep1.sorted.rpkm.bw
+    jobid: 471
+    wildcards: tissue=HT, path=cluster_age_rep, info=4.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_4.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_4.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 471 with external jobid '21754166.tscc-mgr7.local'.
+
+[Wed May 13 10:53:29 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_6.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_6.03.rep2.sorted.rpkm.bw
+    jobid: 550
+    wildcards: tissue=LM, path=cluster_age_rep, info=6.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_6.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_6.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 550 with external jobid '21754168.tscc-mgr7.local'.
+
+[Wed May 13 10:53:37 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_8.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_8.03.rep1.sorted.rpkm.bw
+    jobid: 561
+    wildcards: tissue=LM, path=cluster_age_rep, info=8.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_8.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_8.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 561 with external jobid '21754171.tscc-mgr7.local'.
+
+[Wed May 13 10:53:48 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_6.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_6.03.rep2.sorted.rpkm.bw
+    jobid: 484
+    wildcards: tissue=HT, path=cluster_age_rep, info=6.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_6.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_6.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 484 with external jobid '21754182.tscc-mgr7.local'.
+
+[Wed May 13 10:54:00 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_9.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_9.10.rep2.sorted.rpkm.bw
+    jobid: 396
+    wildcards: tissue=FC, path=cluster_age_rep, info=9.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_9.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_9.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 396 with external jobid '21754209.tscc-mgr7.local'.
+
+[Wed May 13 10:54:10 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_17.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_17.10.rep2.sorted.rpkm.bw
+    jobid: 444
+    wildcards: tissue=FC, path=cluster_age_rep, info=17.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_17.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_17.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 444 with external jobid '21754229.tscc-mgr7.local'.
+
+[Wed May 13 10:54:17 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_8.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_8.03.rep1.sorted.rpkm.bw
+    jobid: 495
+    wildcards: tissue=HT, path=cluster_age_rep, info=8.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_8.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_8.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 495 with external jobid '21754253.tscc-mgr7.local'.
+
+[Wed May 13 10:54:32 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_15.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_15.18.rep1.sorted.rpkm.bw
+    jobid: 607
+    wildcards: tissue=LM, path=cluster_age_rep, info=15.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_15.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_15.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:54:42 2020]
+Finished job 550.
+1 of 243 steps (0.41%) done
+Submitted job 607 with external jobid '21754304.tscc-mgr7.local'.
+
+[Wed May 13 10:54:45 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_15.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_15.18.rep2.sorted.rpkm.bw
+    jobid: 608
+    wildcards: tissue=LM, path=cluster_age_rep, info=15.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_15.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_15.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 608 with external jobid '21754332.tscc-mgr7.local'.
+
+[Wed May 13 10:54:56 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_4.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_4.03.rep1.sorted.rpkm.bw
+    jobid: 537
+    wildcards: tissue=LM, path=cluster_age_rep, info=4.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_4.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_4.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:55:02 2020]
+Finished job 469.
+2 of 243 steps (0.82%) done
+[Wed May 13 10:55:02 2020]
+Finished job 471.
+3 of 243 steps (1%) done
+Submitted job 537 with external jobid '21754346.tscc-mgr7.local'.
+
+[Wed May 13 10:55:05 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_13.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_13.18.rep2.sorted.rpkm.bw
+    jobid: 422
+    wildcards: tissue=FC, path=cluster_age_rep, info=13.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_13.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_13.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 422 with external jobid '21754379.tscc-mgr7.local'.
+
+[Wed May 13 10:55:18 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_16.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_16.18.rep1.sorted.rpkm.bw
+    jobid: 613
+    wildcards: tissue=LM, path=cluster_age_rep, info=16.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_16.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_16.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:55:22 2020]
+Finished job 561.
+4 of 243 steps (2%) done
+Submitted job 613 with external jobid '21754403.tscc-mgr7.local'.
+
+[Wed May 13 10:55:27 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_7.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_7.03.rep1.sorted.rpkm.bw
+    jobid: 555
+    wildcards: tissue=LM, path=cluster_age_rep, info=7.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_7.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_7.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 555 with external jobid '21754432.tscc-mgr7.local'.
+
+[Wed May 13 10:55:44 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_4.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_4.18.rep2.sorted.rpkm.bw
+    jobid: 542
+    wildcards: tissue=LM, path=cluster_age_rep, info=4.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_4.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_4.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:55:52 2020]
+Finished job 484.
+5 of 243 steps (2%) done
+Waiting at most 5 seconds for missing files.
+Submitted job 542 with external jobid '21754475.tscc-mgr7.local'.
+
+[Wed May 13 10:55:55 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_5.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_5.10.rep2.sorted.rpkm.bw
+    jobid: 480
+    wildcards: tissue=HT, path=cluster_age_rep, info=5.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_5.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_5.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+MissingOutputException in line 118 of /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/snapATAC/Snakefile_generate_bamBigWig:
+Missing files after 5 seconds:
+FC/bigWig.cluster_age_rep/FC.metacell_17.10.rep2.sorted.rpkm.bw
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Job failed, going on with independent jobs.
+Submitted job 480 with external jobid '21754492.tscc-mgr7.local'.
+
+[Wed May 13 10:56:03 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_13.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_13.03.rep2.sorted.rpkm.bw
+    jobid: 592
+    wildcards: tissue=LM, path=cluster_age_rep, info=13.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_13.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_13.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 592 with external jobid '21754521.tscc-mgr7.local'.
+
+[Wed May 13 10:56:15 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_18.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_18.18.rep2.sorted.rpkm.bw
+    jobid: 452
+    wildcards: tissue=FC, path=cluster_age_rep, info=18.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_18.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_18.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 452 with external jobid '21754544.tscc-mgr7.local'.
+
+[Wed May 13 10:56:23 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_11.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_11.03.rep1.sorted.rpkm.bw
+    jobid: 405
+    wildcards: tissue=FC, path=cluster_age_rep, info=11.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_11.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_11.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 405 with external jobid '21754559.tscc-mgr7.local'.
+
+[Wed May 13 10:56:31 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_3.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_3.03.rep2.sorted.rpkm.bw
+    jobid: 466
+    wildcards: tissue=HT, path=cluster_age_rep, info=3.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_3.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_3.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 466 with external jobid '21754582.tscc-mgr7.local'.
+
+[Wed May 13 10:56:40 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_7.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_7.03.rep1.sorted.rpkm.bw
+    jobid: 489
+    wildcards: tissue=HT, path=cluster_age_rep, info=7.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_7.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_7.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:56:40 2020]
+Finished job 396.
+6 of 243 steps (2%) done
+Submitted job 489 with external jobid '21754604.tscc-mgr7.local'.
+
+[Wed May 13 10:56:55 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_11.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_11.03.rep2.sorted.rpkm.bw
+    jobid: 514
+    wildcards: tissue=HT, path=cluster_age_rep, info=11.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_11.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_11.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 514 with external jobid '21754634.tscc-mgr7.local'.
+
+[Wed May 13 10:57:08 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_5.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_5.10.rep2.sorted.rpkm.bw
+    jobid: 546
+    wildcards: tissue=LM, path=cluster_age_rep, info=5.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_5.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_5.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:57:14 2020]
+Finished job 495.
+7 of 243 steps (3%) done
+Submitted job 546 with external jobid '21754636.tscc-mgr7.local'.
+
+[Wed May 13 10:57:18 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_3.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_3.03.rep2.sorted.rpkm.bw
+    jobid: 532
+    wildcards: tissue=LM, path=cluster_age_rep, info=3.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_3.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_3.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 532 with external jobid '21754638.tscc-mgr7.local'.
+
+[Wed May 13 10:57:30 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_13.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_13.10.rep2.sorted.rpkm.bw
+    jobid: 420
+    wildcards: tissue=FC, path=cluster_age_rep, info=13.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_13.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_13.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:57:36 2020]
+Finished job 607.
+8 of 243 steps (3%) done
+[Wed May 13 10:57:36 2020]
+Finished job 608.
+9 of 243 steps (4%) done
+[Wed May 13 10:57:36 2020]
+Finished job 613.
+10 of 243 steps (4%) done
+Submitted job 420 with external jobid '21754639.tscc-mgr7.local'.
+
+[Wed May 13 10:57:37 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_5.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_5.18.rep1.sorted.rpkm.bw
+    jobid: 373
+    wildcards: tissue=FC, path=cluster_age_rep, info=5.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_5.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_5.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 373 with external jobid '21754641.tscc-mgr7.local'.
+
+[Wed May 13 10:57:44 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_11.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_11.03.rep2.sorted.rpkm.bw
+    jobid: 580
+    wildcards: tissue=LM, path=cluster_age_rep, info=11.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_11.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_11.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 580 with external jobid '21754642.tscc-mgr7.local'.
+
+[Wed May 13 10:57:51 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_16.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_16.03.rep1.sorted.rpkm.bw
+    jobid: 435
+    wildcards: tissue=FC, path=cluster_age_rep, info=16.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_16.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_16.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:57:58 2020]
+Finished job 555.
+11 of 243 steps (5%) done
+Submitted job 435 with external jobid '21754643.tscc-mgr7.local'.
+
+[Wed May 13 10:58:04 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_14.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_14.10.rep1.sorted.rpkm.bw
+    jobid: 599
+    wildcards: tissue=LM, path=cluster_age_rep, info=14.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_14.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_14.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 599 with external jobid '21754644.tscc-mgr7.local'.
+
+[Wed May 13 10:58:12 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_16.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_16.10.rep1.sorted.rpkm.bw
+    jobid: 611
+    wildcards: tissue=LM, path=cluster_age_rep, info=16.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_16.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_16.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 611 with external jobid '21754645.tscc-mgr7.local'.
+
+[Wed May 13 10:58:19 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_7.10.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_7.10.rep1.sorted.rpkm.bw
+    jobid: 491
+    wildcards: tissue=HT, path=cluster_age_rep, info=7.10.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_7.10.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_7.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:58:20 2020]
+Finished job 537.
+12 of 243 steps (5%) done
+[Wed May 13 10:58:20 2020]
+Finished job 422.
+13 of 243 steps (5%) done
+Submitted job 491 with external jobid '21754646.tscc-mgr7.local'.
+
+[Wed May 13 10:58:26 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_12.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_12.03.rep2.sorted.rpkm.bw
+    jobid: 586
+    wildcards: tissue=LM, path=cluster_age_rep, info=12.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_12.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_12.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 586 with external jobid '21754647.tscc-mgr7.local'.
+
+[Wed May 13 10:58:34 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_1.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_1.03.rep1.sorted.rpkm.bw
+    jobid: 453
+    wildcards: tissue=HT, path=cluster_age_rep, info=1.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_1.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_1.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 453 with external jobid '21754648.tscc-mgr7.local'.
+
+[Wed May 13 10:58:40 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_17.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_17.10.rep1.sorted.rpkm.bw
+    jobid: 443
+    wildcards: tissue=FC, path=cluster_age_rep, info=17.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_17.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_17.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 443 with external jobid '21754649.tscc-mgr7.local'.
+
+[Wed May 13 10:58:45 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_18.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_18.03.rep1.sorted.rpkm.bw
+    jobid: 447
+    wildcards: tissue=FC, path=cluster_age_rep, info=18.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_18.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_18.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 447 with external jobid '21754650.tscc-mgr7.local'.
+
+[Wed May 13 10:58:52 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_3.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_3.10.rep1.sorted.rpkm.bw
+    jobid: 359
+    wildcards: tissue=FC, path=cluster_age_rep, info=3.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_3.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_3.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 359 with external jobid '21754651.tscc-mgr7.local'.
+
+[Wed May 13 10:59:00 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_6.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_6.18.rep1.sorted.rpkm.bw
+    jobid: 379
+    wildcards: tissue=FC, path=cluster_age_rep, info=6.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_6.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_6.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 379 with external jobid '21754652.tscc-mgr7.local'.
+
+[Wed May 13 10:59:15 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_7.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_7.18.rep2.sorted.rpkm.bw
+    jobid: 560
+    wildcards: tissue=LM, path=cluster_age_rep, info=7.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_7.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_7.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 560 with external jobid '21754653.tscc-mgr7.local'.
+
+[Wed May 13 10:59:22 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_7.18.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_7.18.rep2.sorted.rpkm.bw
+    jobid: 494
+    wildcards: tissue=HT, path=cluster_age_rep, info=7.18.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_7.18.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_7.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:59:29 2020]
+Finished job 452.
+14 of 243 steps (6%) done
+Submitted job 494 with external jobid '21754654.tscc-mgr7.local'.
+
+[Wed May 13 10:59:30 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_17.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_17.18.rep2.sorted.rpkm.bw
+    jobid: 620
+    wildcards: tissue=LM, path=cluster_age_rep, info=17.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_17.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_17.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 620 with external jobid '21754655.tscc-mgr7.local'.
+
+[Wed May 13 10:59:35 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_7.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_7.10.rep1.sorted.rpkm.bw
+    jobid: 557
+    wildcards: tissue=LM, path=cluster_age_rep, info=7.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_7.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_7.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:59:41 2020]
+Finished job 405.
+15 of 243 steps (6%) done
+[Wed May 13 10:59:41 2020]
+Finished job 489.
+16 of 243 steps (7%) done
+[Wed May 13 10:59:41 2020]
+Finished job 514.
+17 of 243 steps (7%) done
+Submitted job 557 with external jobid '21754656.tscc-mgr7.local'.
+
+[Wed May 13 10:59:42 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_11.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_11.18.rep1.sorted.rpkm.bw
+    jobid: 409
+    wildcards: tissue=FC, path=cluster_age_rep, info=11.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_11.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_11.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 409 with external jobid '21754657.tscc-mgr7.local'.
+
+[Wed May 13 10:59:50 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_9.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_9.18.rep1.sorted.rpkm.bw
+    jobid: 505
+    wildcards: tissue=HT, path=cluster_age_rep, info=9.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_9.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_9.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 10:59:53 2020]
+Finished job 546.
+18 of 243 steps (7%) done
+Submitted job 505 with external jobid '21754659.tscc-mgr7.local'.
+
+[Wed May 13 10:59:57 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_8.18.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_8.18.rep2.sorted.rpkm.bw
+    jobid: 500
+    wildcards: tissue=HT, path=cluster_age_rep, info=8.18.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_8.18.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_8.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 500 with external jobid '21754673.tscc-mgr7.local'.
+
+[Wed May 13 11:00:08 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_2.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_2.18.rep1.sorted.rpkm.bw
+    jobid: 463
+    wildcards: tissue=HT, path=cluster_age_rep, info=2.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_2.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_2.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:00:17 2020]
+Finished job 466.
+19 of 243 steps (8%) done
+[Wed May 13 11:00:17 2020]
+Finished job 532.
+20 of 243 steps (8%) done
+Submitted job 463 with external jobid '21754690.tscc-mgr7.local'.
+
+[Wed May 13 11:00:23 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_10.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_10.18.rep2.sorted.rpkm.bw
+    jobid: 578
+    wildcards: tissue=LM, path=cluster_age_rep, info=10.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_10.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_10.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 578 with external jobid '21754719.tscc-mgr7.local'.
+
+[Wed May 13 11:00:32 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_9.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_9.03.rep1.sorted.rpkm.bw
+    jobid: 393
+    wildcards: tissue=FC, path=cluster_age_rep, info=9.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_9.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_9.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 393 with external jobid '21754720.tscc-mgr7.local'.
+
+[Wed May 13 11:00:40 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_10.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_10.10.rep1.sorted.rpkm.bw
+    jobid: 401
+    wildcards: tissue=FC, path=cluster_age_rep, info=10.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_10.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_10.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 401 with external jobid '21754722.tscc-mgr7.local'.
+
+[Wed May 13 11:00:49 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_12.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_12.10.rep2.sorted.rpkm.bw
+    jobid: 414
+    wildcards: tissue=FC, path=cluster_age_rep, info=12.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_12.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_12.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 414 with external jobid '21754723.tscc-mgr7.local'.
+
+[Wed May 13 11:00:56 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_8.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_8.18.rep1.sorted.rpkm.bw
+    jobid: 499
+    wildcards: tissue=HT, path=cluster_age_rep, info=8.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_8.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_8.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 499 with external jobid '21754724.tscc-mgr7.local'.
+
+[Wed May 13 11:01:03 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_3.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_3.03.rep1.sorted.rpkm.bw
+    jobid: 357
+    wildcards: tissue=FC, path=cluster_age_rep, info=3.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_3.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_3.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 357 with external jobid '21754725.tscc-mgr7.local'.
+
+[Wed May 13 11:01:14 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_12.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_12.10.rep1.sorted.rpkm.bw
+    jobid: 587
+    wildcards: tissue=LM, path=cluster_age_rep, info=12.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_12.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_12.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 587 with external jobid '21754726.tscc-mgr7.local'.
+
+[Wed May 13 11:01:22 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_8.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_8.18.rep1.sorted.rpkm.bw
+    jobid: 565
+    wildcards: tissue=LM, path=cluster_age_rep, info=8.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_8.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_8.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 565 with external jobid '21754728.tscc-mgr7.local'.
+
+[Wed May 13 11:01:35 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_13.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_13.10.rep1.sorted.rpkm.bw
+    jobid: 593
+    wildcards: tissue=LM, path=cluster_age_rep, info=13.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_13.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_13.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 593 with external jobid '21754729.tscc-mgr7.local'.
+
+[Wed May 13 11:01:45 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_9.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_9.18.rep1.sorted.rpkm.bw
+    jobid: 571
+    wildcards: tissue=LM, path=cluster_age_rep, info=9.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_9.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_9.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:01:56 2020]
+Finished job 420.
+21 of 243 steps (9%) done
+[Wed May 13 11:01:56 2020]
+Finished job 373.
+22 of 243 steps (9%) done
+Submitted job 571 with external jobid '21754731.tscc-mgr7.local'.
+
+[Wed May 13 11:01:57 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_2.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_2.18.rep2.sorted.rpkm.bw
+    jobid: 530
+    wildcards: tissue=LM, path=cluster_age_rep, info=2.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_2.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_2.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 530 with external jobid '21754733.tscc-mgr7.local'.
+
+[Wed May 13 11:02:06 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_8.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_8.10.rep1.sorted.rpkm.bw
+    jobid: 389
+    wildcards: tissue=FC, path=cluster_age_rep, info=8.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_8.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_8.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 389 with external jobid '21754734.tscc-mgr7.local'.
+
+[Wed May 13 11:02:14 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_10.18.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_10.18.rep2.sorted.rpkm.bw
+    jobid: 512
+    wildcards: tissue=HT, path=cluster_age_rep, info=10.18.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_10.18.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_10.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 512 with external jobid '21754735.tscc-mgr7.local'.
+
+[Wed May 13 11:02:23 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_2.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_2.18.rep1.sorted.rpkm.bw
+    jobid: 529
+    wildcards: tissue=LM, path=cluster_age_rep, info=2.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_2.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_2.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 529 with external jobid '21754736.tscc-mgr7.local'.
+
+[Wed May 13 11:02:33 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_8.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_8.18.rep2.sorted.rpkm.bw
+    jobid: 566
+    wildcards: tissue=LM, path=cluster_age_rep, info=8.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_8.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_8.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 566 with external jobid '21754738.tscc-mgr7.local'.
+
+[Wed May 13 11:02:48 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_6.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_6.18.rep1.sorted.rpkm.bw
+    jobid: 553
+    wildcards: tissue=LM, path=cluster_age_rep, info=6.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_6.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_6.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 553 with external jobid '21754741.tscc-mgr7.local'.
+
+[Wed May 13 11:02:57 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_7.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_7.18.rep2.sorted.rpkm.bw
+    jobid: 386
+    wildcards: tissue=FC, path=cluster_age_rep, info=7.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_7.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_7.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:03:01 2020]
+Finished job 480.
+23 of 243 steps (9%) done
+[Wed May 13 11:03:02 2020]
+Finished job 611.
+24 of 243 steps (10%) done
+[Wed May 13 11:03:02 2020]
+Finished job 491.
+25 of 243 steps (10%) done
+[Wed May 13 11:03:02 2020]
+Finished job 586.
+26 of 243 steps (11%) done
+Submitted job 386 with external jobid '21754745.tscc-mgr7.local'.
+
+[Wed May 13 11:03:08 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_1.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_1.03.rep2.sorted.rpkm.bw
+    jobid: 520
+    wildcards: tissue=LM, path=cluster_age_rep, info=1.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_1.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_1.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 520 with external jobid '21754747.tscc-mgr7.local'.
+
+[Wed May 13 11:03:18 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_17.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_17.10.rep1.sorted.rpkm.bw
+    jobid: 617
+    wildcards: tissue=LM, path=cluster_age_rep, info=17.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_17.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_17.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:03:28 2020]
+Finished job 542.
+27 of 243 steps (11%) done
+Submitted job 617 with external jobid '21754748.tscc-mgr7.local'.
+
+[Wed May 13 11:03:28 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_12.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_12.03.rep2.sorted.rpkm.bw
+    jobid: 412
+    wildcards: tissue=FC, path=cluster_age_rep, info=12.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_12.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_12.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:03:29 2020]
+Finished job 453.
+28 of 243 steps (12%) done
+[Wed May 13 11:03:29 2020]
+Finished job 443.
+29 of 243 steps (12%) done
+Submitted job 412 with external jobid '21754751.tscc-mgr7.local'.
+
+[Wed May 13 11:03:38 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_11.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_11.18.rep1.sorted.rpkm.bw
+    jobid: 517
+    wildcards: tissue=HT, path=cluster_age_rep, info=11.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_11.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_11.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 517 with external jobid '21754753.tscc-mgr7.local'.
+
+[Wed May 13 11:03:56 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_11.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_11.18.rep1.sorted.rpkm.bw
+    jobid: 583
+    wildcards: tissue=LM, path=cluster_age_rep, info=11.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_11.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_11.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 583 with external jobid '21754754.tscc-mgr7.local'.
+
+[Wed May 13 11:04:05 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_6.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_6.18.rep1.sorted.rpkm.bw
+    jobid: 487
+    wildcards: tissue=HT, path=cluster_age_rep, info=6.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_6.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_6.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 487 with external jobid '21754756.tscc-mgr7.local'.
+
+[Wed May 13 11:04:14 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_17.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_17.18.rep2.sorted.rpkm.bw
+    jobid: 446
+    wildcards: tissue=FC, path=cluster_age_rep, info=17.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_17.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_17.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 446 with external jobid '21754758.tscc-mgr7.local'.
+
+[Wed May 13 11:04:22 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_3.10.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_3.10.rep1.sorted.rpkm.bw
+    jobid: 467
+    wildcards: tissue=HT, path=cluster_age_rep, info=3.10.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_3.10.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_3.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 467 with external jobid '21754760.tscc-mgr7.local'.
+
+[Wed May 13 11:04:30 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_6.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_6.10.rep2.sorted.rpkm.bw
+    jobid: 552
+    wildcards: tissue=LM, path=cluster_age_rep, info=6.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_6.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_6.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 552 with external jobid '21754761.tscc-mgr7.local'.
+
+[Wed May 13 11:04:37 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_12.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_12.10.rep1.sorted.rpkm.bw
+    jobid: 413
+    wildcards: tissue=FC, path=cluster_age_rep, info=12.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_12.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_12.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 413 with external jobid '21754762.tscc-mgr7.local'.
+
+[Wed May 13 11:04:45 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_9.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_9.03.rep1.sorted.rpkm.bw
+    jobid: 567
+    wildcards: tissue=LM, path=cluster_age_rep, info=9.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_9.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_9.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 567 with external jobid '21754763.tscc-mgr7.local'.
+
+[Wed May 13 11:04:52 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_12.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_12.10.rep2.sorted.rpkm.bw
+    jobid: 588
+    wildcards: tissue=LM, path=cluster_age_rep, info=12.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_12.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_12.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 588 with external jobid '21754764.tscc-mgr7.local'.
+
+[Wed May 13 11:05:06 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_10.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_10.10.rep1.sorted.rpkm.bw
+    jobid: 575
+    wildcards: tissue=LM, path=cluster_age_rep, info=10.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_10.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_10.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 575 with external jobid '21754766.tscc-mgr7.local'.
+
+[Wed May 13 11:05:16 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_10.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_10.18.rep2.sorted.rpkm.bw
+    jobid: 404
+    wildcards: tissue=FC, path=cluster_age_rep, info=10.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_10.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_10.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 404 with external jobid '21754768.tscc-mgr7.local'.
+
+[Wed May 13 11:05:22 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_10.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_10.10.rep2.sorted.rpkm.bw
+    jobid: 576
+    wildcards: tissue=LM, path=cluster_age_rep, info=10.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_10.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_10.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 576 with external jobid '21754769.tscc-mgr7.local'.
+
+[Wed May 13 11:05:29 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_8.10.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_8.10.rep1.sorted.rpkm.bw
+    jobid: 497
+    wildcards: tissue=HT, path=cluster_age_rep, info=8.10.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_8.10.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_8.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 497 with external jobid '21754770.tscc-mgr7.local'.
+
+[Wed May 13 11:05:39 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_8.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_8.18.rep2.sorted.rpkm.bw
+    jobid: 392
+    wildcards: tissue=FC, path=cluster_age_rep, info=8.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_8.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_8.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 392 with external jobid '21754771.tscc-mgr7.local'.
+
+[Wed May 13 11:05:47 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_10.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_10.10.rep2.sorted.rpkm.bw
+    jobid: 510
+    wildcards: tissue=HT, path=cluster_age_rep, info=10.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_10.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_10.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 510 with external jobid '21754772.tscc-mgr7.local'.
+
+[Wed May 13 11:05:55 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_9.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_9.18.rep1.sorted.rpkm.bw
+    jobid: 397
+    wildcards: tissue=FC, path=cluster_age_rep, info=9.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_9.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_9.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 397 with external jobid '21754773.tscc-mgr7.local'.
+
+[Wed May 13 11:06:04 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_1.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_1.10.rep2.sorted.rpkm.bw
+    jobid: 522
+    wildcards: tissue=LM, path=cluster_age_rep, info=1.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_1.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_1.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 522 with external jobid '21754774.tscc-mgr7.local'.
+
+[Wed May 13 11:06:19 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_8.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_8.10.rep1.sorted.rpkm.bw
+    jobid: 563
+    wildcards: tissue=LM, path=cluster_age_rep, info=8.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_8.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_8.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 563 with external jobid '21754775.tscc-mgr7.local'.
+
+[Wed May 13 11:06:26 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_13.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_13.10.rep1.sorted.rpkm.bw
+    jobid: 419
+    wildcards: tissue=FC, path=cluster_age_rep, info=13.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_13.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_13.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:06:28 2020]
+Finished job 592.
+30 of 243 steps (12%) done
+Submitted job 419 with external jobid '21754776.tscc-mgr7.local'.
+
+[Wed May 13 11:06:32 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_3.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_3.03.rep1.sorted.rpkm.bw
+    jobid: 465
+    wildcards: tissue=HT, path=cluster_age_rep, info=3.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_3.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_3.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 465 with external jobid '21754781.tscc-mgr7.local'.
+
+[Wed May 13 11:06:39 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_6.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_6.10.rep2.sorted.rpkm.bw
+    jobid: 486
+    wildcards: tissue=HT, path=cluster_age_rep, info=6.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_6.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_6.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 486 with external jobid '21754782.tscc-mgr7.local'.
+
+[Wed May 13 11:06:48 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_9.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_9.03.rep1.sorted.rpkm.bw
+    jobid: 501
+    wildcards: tissue=HT, path=cluster_age_rep, info=9.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_9.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_9.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 501 with external jobid '21754783.tscc-mgr7.local'.
+
+[Wed May 13 11:06:54 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_8.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_8.18.rep1.sorted.rpkm.bw
+    jobid: 391
+    wildcards: tissue=FC, path=cluster_age_rep, info=8.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_8.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_8.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:06:58 2020]
+Finished job 409.
+31 of 243 steps (13%) done
+[Wed May 13 11:06:59 2020]
+Finished job 505.
+32 of 243 steps (13%) done
+[Wed May 13 11:06:59 2020]
+Finished job 500.
+33 of 243 steps (14%) done
+[Wed May 13 11:06:59 2020]
+Finished job 578.
+34 of 243 steps (14%) done
+Submitted job 391 with external jobid '21754784.tscc-mgr7.local'.
+
+[Wed May 13 11:07:01 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_10.10.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_10.10.rep1.sorted.rpkm.bw
+    jobid: 509
+    wildcards: tissue=HT, path=cluster_age_rep, info=10.10.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_10.10.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_10.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 509 with external jobid '21754786.tscc-mgr7.local'.
+
+[Wed May 13 11:07:10 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_8.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_8.03.rep1.sorted.rpkm.bw
+    jobid: 387
+    wildcards: tissue=FC, path=cluster_age_rep, info=8.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_8.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_8.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:07:14 2020]
+Finished job 463.
+35 of 243 steps (14%) done
+Submitted job 387 with external jobid '21754788.tscc-mgr7.local'.
+
+[Wed May 13 11:07:17 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_9.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_9.10.rep2.sorted.rpkm.bw
+    jobid: 504
+    wildcards: tissue=HT, path=cluster_age_rep, info=9.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_9.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_9.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:07:29 2020]
+Finished job 393.
+36 of 243 steps (15%) done
+Submitted job 504 with external jobid '21754790.tscc-mgr7.local'.
+
+[Wed May 13 11:07:31 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_6.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_6.03.rep2.sorted.rpkm.bw
+    jobid: 376
+    wildcards: tissue=FC, path=cluster_age_rep, info=6.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_6.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_6.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 376 with external jobid '21754792.tscc-mgr7.local'.
+
+[Wed May 13 11:07:41 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_18.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_18.10.rep1.sorted.rpkm.bw
+    jobid: 449
+    wildcards: tissue=FC, path=cluster_age_rep, info=18.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_18.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_18.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 449 with external jobid '21754794.tscc-mgr7.local'.
+
+[Wed May 13 11:07:50 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_4.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_4.03.rep1.sorted.rpkm.bw
+    jobid: 363
+    wildcards: tissue=FC, path=cluster_age_rep, info=4.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_4.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_4.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 363 with external jobid '21754796.tscc-mgr7.local'.
+
+[Wed May 13 11:08:01 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_15.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_15.18.rep2.sorted.rpkm.bw
+    jobid: 434
+    wildcards: tissue=FC, path=cluster_age_rep, info=15.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_15.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_15.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 434 with external jobid '21754797.tscc-mgr7.local'.
+
+[Wed May 13 11:08:14 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_3.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_3.18.rep1.sorted.rpkm.bw
+    jobid: 361
+    wildcards: tissue=FC, path=cluster_age_rep, info=3.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_3.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_3.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 361 with external jobid '21754798.tscc-mgr7.local'.
+
+[Wed May 13 11:08:23 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_15.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_15.18.rep1.sorted.rpkm.bw
+    jobid: 433
+    wildcards: tissue=FC, path=cluster_age_rep, info=15.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_15.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_15.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 433 with external jobid '21754800.tscc-mgr7.local'.
+
+[Wed May 13 11:08:38 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_16.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_16.18.rep1.sorted.rpkm.bw
+    jobid: 439
+    wildcards: tissue=FC, path=cluster_age_rep, info=16.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_16.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_16.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 439 with external jobid '21754802.tscc-mgr7.local'.
+
+[Wed May 13 11:08:48 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_9.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_9.10.rep2.sorted.rpkm.bw
+    jobid: 570
+    wildcards: tissue=LM, path=cluster_age_rep, info=9.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_9.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_9.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 570 with external jobid '21754803.tscc-mgr7.local'.
+
+[Wed May 13 11:09:03 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_4.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_4.10.rep1.sorted.rpkm.bw
+    jobid: 365
+    wildcards: tissue=FC, path=cluster_age_rep, info=4.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_4.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_4.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 365 with external jobid '21754804.tscc-mgr7.local'.
+
+[Wed May 13 11:09:12 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_17.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_17.10.rep2.sorted.rpkm.bw
+    jobid: 618
+    wildcards: tissue=LM, path=cluster_age_rep, info=17.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_17.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_17.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 618 with external jobid '21754806.tscc-mgr7.local'.
+
+[Wed May 13 11:09:20 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_5.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_5.18.rep1.sorted.rpkm.bw
+    jobid: 481
+    wildcards: tissue=HT, path=cluster_age_rep, info=5.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_5.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_5.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 481 with external jobid '21754807.tscc-mgr7.local'.
+
+[Wed May 13 11:09:30 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_2.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_2.03.rep1.sorted.rpkm.bw
+    jobid: 459
+    wildcards: tissue=HT, path=cluster_age_rep, info=2.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_2.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_2.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 459 with external jobid '21754808.tscc-mgr7.local'.
+
+[Wed May 13 11:09:47 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_7.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_7.03.rep1.sorted.rpkm.bw
+    jobid: 381
+    wildcards: tissue=FC, path=cluster_age_rep, info=7.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_7.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_7.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 381 with external jobid '21754810.tscc-mgr7.local'.
+
+[Wed May 13 11:09:56 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_11.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_11.03.rep1.sorted.rpkm.bw
+    jobid: 579
+    wildcards: tissue=LM, path=cluster_age_rep, info=11.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_11.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_11.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 579 with external jobid '21754811.tscc-mgr7.local'.
+
+[Wed May 13 11:10:05 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_13.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_13.03.rep2.sorted.rpkm.bw
+    jobid: 418
+    wildcards: tissue=FC, path=cluster_age_rep, info=13.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_13.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_13.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 418 with external jobid '21754813.tscc-mgr7.local'.
+
+[Wed May 13 11:10:17 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_4.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_4.18.rep2.sorted.rpkm.bw
+    jobid: 368
+    wildcards: tissue=FC, path=cluster_age_rep, info=4.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_4.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_4.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:10:19 2020]
+Finished job 512.
+37 of 243 steps (15%) done
+[Wed May 13 11:10:21 2020]
+Finished job 389.
+38 of 243 steps (16%) done
+Submitted job 368 with external jobid '21754814.tscc-mgr7.local'.
+
+[Wed May 13 11:10:25 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_7.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_7.03.rep2.sorted.rpkm.bw
+    jobid: 490
+    wildcards: tissue=HT, path=cluster_age_rep, info=7.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_7.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_7.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 490 with external jobid '21754815.tscc-mgr7.local'.
+
+[Wed May 13 11:10:31 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_13.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_13.18.rep2.sorted.rpkm.bw
+    jobid: 596
+    wildcards: tissue=LM, path=cluster_age_rep, info=13.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_13.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_13.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 596 with external jobid '21754816.tscc-mgr7.local'.
+
+[Wed May 13 11:10:31 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_2.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_2.03.rep2.sorted.rpkm.bw
+    jobid: 460
+    wildcards: tissue=HT, path=cluster_age_rep, info=2.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_2.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_2.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 460 with external jobid '21754817.tscc-mgr7.local'.
+
+[Wed May 13 11:10:37 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_7.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_7.03.rep2.sorted.rpkm.bw
+    jobid: 556
+    wildcards: tissue=LM, path=cluster_age_rep, info=7.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_7.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_7.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 556 with external jobid '21754818.tscc-mgr7.local'.
+
+[Wed May 13 11:10:43 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_16.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_16.10.rep1.sorted.rpkm.bw
+    jobid: 437
+    wildcards: tissue=FC, path=cluster_age_rep, info=16.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_16.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_16.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:10:54 2020]
+Finished job 530.
+39 of 243 steps (16%) done
+Submitted job 437 with external jobid '21754819.tscc-mgr7.local'.
+
+[Wed May 13 11:10:57 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_16.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_16.03.rep1.sorted.rpkm.bw
+    jobid: 609
+    wildcards: tissue=LM, path=cluster_age_rep, info=16.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_16.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_16.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 609 with external jobid '21754820.tscc-mgr7.local'.
+
+[Wed May 13 11:11:15 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_2.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_2.03.rep2.sorted.rpkm.bw
+    jobid: 526
+    wildcards: tissue=LM, path=cluster_age_rep, info=2.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_2.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_2.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 526 with external jobid '21754822.tscc-mgr7.local'.
+
+[Wed May 13 11:11:23 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_13.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_13.10.rep2.sorted.rpkm.bw
+    jobid: 594
+    wildcards: tissue=LM, path=cluster_age_rep, info=13.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_13.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_13.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 594 with external jobid '21754823.tscc-mgr7.local'.
+
+[Wed May 13 11:11:32 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_3.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_3.03.rep2.sorted.rpkm.bw
+    jobid: 358
+    wildcards: tissue=FC, path=cluster_age_rep, info=3.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_3.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_3.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 358 with external jobid '21754824.tscc-mgr7.local'.
+
+[Wed May 13 11:11:41 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_11.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_11.03.rep2.sorted.rpkm.bw
+    jobid: 406
+    wildcards: tissue=FC, path=cluster_age_rep, info=11.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_11.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_11.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 406 with external jobid '21754825.tscc-mgr7.local'.
+
+[Wed May 13 11:11:51 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_14.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_14.10.rep1.sorted.rpkm.bw
+    jobid: 425
+    wildcards: tissue=FC, path=cluster_age_rep, info=14.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_14.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_14.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:12:01 2020]
+Finished job 617.
+40 of 243 steps (16%) done
+Submitted job 425 with external jobid '21754826.tscc-mgr7.local'.
+
+[Wed May 13 11:12:07 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_11.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_11.03.rep1.sorted.rpkm.bw
+    jobid: 513
+    wildcards: tissue=HT, path=cluster_age_rep, info=11.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_11.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_11.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 513 with external jobid '21754827.tscc-mgr7.local'.
+
+[Wed May 13 11:12:17 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_5.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_5.18.rep1.sorted.rpkm.bw
+    jobid: 547
+    wildcards: tissue=LM, path=cluster_age_rep, info=5.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_5.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_5.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:12:18 2020]
+Finished job 517.
+41 of 243 steps (17%) done
+Submitted job 547 with external jobid '21754828.tscc-mgr7.local'.
+
+[Wed May 13 11:12:24 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_14.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_14.03.rep1.sorted.rpkm.bw
+    jobid: 423
+    wildcards: tissue=FC, path=cluster_age_rep, info=14.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_14.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_14.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:12:37 2020]
+Finished job 520.
+42 of 243 steps (17%) done
+Submitted job 423 with external jobid '21754829.tscc-mgr7.local'.
+
+[Wed May 13 11:12:37 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_5.10.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_5.10.rep1.sorted.rpkm.bw
+    jobid: 479
+    wildcards: tissue=HT, path=cluster_age_rep, info=5.10.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_5.10.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_5.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:12:38 2020]
+Finished job 412.
+43 of 243 steps (18%) done
+[Wed May 13 11:12:38 2020]
+Finished job 583.
+44 of 243 steps (18%) done
+Submitted job 479 with external jobid '21754830.tscc-mgr7.local'.
+
+[Wed May 13 11:12:44 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_14.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_14.10.rep2.sorted.rpkm.bw
+    jobid: 600
+    wildcards: tissue=LM, path=cluster_age_rep, info=14.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_14.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_14.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 600 with external jobid '21754831.tscc-mgr7.local'.
+
+[Wed May 13 11:12:53 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_14.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_14.18.rep2.sorted.rpkm.bw
+    jobid: 602
+    wildcards: tissue=LM, path=cluster_age_rep, info=14.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_14.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_14.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 602 with external jobid '21754832.tscc-mgr7.local'.
+
+[Wed May 13 11:13:00 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_17.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_17.03.rep2.sorted.rpkm.bw
+    jobid: 442
+    wildcards: tissue=FC, path=cluster_age_rep, info=17.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_17.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_17.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 442 with external jobid '21754833.tscc-mgr7.local'.
+
+[Wed May 13 11:13:15 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_14.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_14.18.rep1.sorted.rpkm.bw
+    jobid: 427
+    wildcards: tissue=FC, path=cluster_age_rep, info=14.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_14.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_14.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 427 with external jobid '21754834.tscc-mgr7.local'.
+
+[Wed May 13 11:13:27 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_3.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_3.10.rep2.sorted.rpkm.bw
+    jobid: 360
+    wildcards: tissue=FC, path=cluster_age_rep, info=3.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_3.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_3.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 360 with external jobid '21754835.tscc-mgr7.local'.
+
+[Wed May 13 11:13:37 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_12.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_12.03.rep1.sorted.rpkm.bw
+    jobid: 585
+    wildcards: tissue=LM, path=cluster_age_rep, info=12.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_12.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_12.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 585 with external jobid '21754837.tscc-mgr7.local'.
+
+[Wed May 13 11:13:47 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_6.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_6.03.rep1.sorted.rpkm.bw
+    jobid: 375
+    wildcards: tissue=FC, path=cluster_age_rep, info=6.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_6.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_6.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 375 with external jobid '21754838.tscc-mgr7.local'.
+
+[Wed May 13 11:13:57 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_17.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_17.03.rep1.sorted.rpkm.bw
+    jobid: 441
+    wildcards: tissue=FC, path=cluster_age_rep, info=17.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_17.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_17.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 441 with external jobid '21754840.tscc-mgr7.local'.
+
+[Wed May 13 11:14:07 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_5.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_5.10.rep1.sorted.rpkm.bw
+    jobid: 545
+    wildcards: tissue=LM, path=cluster_age_rep, info=5.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_5.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_5.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:14:23 2020]
+Finished job 529.
+45 of 243 steps (19%) done
+Submitted job 545 with external jobid '21754842.tscc-mgr7.local'.
+
+[Wed May 13 11:14:23 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_9.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_9.18.rep2.sorted.rpkm.bw
+    jobid: 398
+    wildcards: tissue=FC, path=cluster_age_rep, info=9.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_9.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_9.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 398 with external jobid '21754844.tscc-mgr7.local'.
+
+[Wed May 13 11:14:34 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_10.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_10.03.rep1.sorted.rpkm.bw
+    jobid: 399
+    wildcards: tissue=FC, path=cluster_age_rep, info=10.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_10.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_10.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 399 with external jobid '21754845.tscc-mgr7.local'.
+
+[Wed May 13 11:14:42 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_4.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_4.03.rep2.sorted.rpkm.bw
+    jobid: 538
+    wildcards: tissue=LM, path=cluster_age_rep, info=4.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_4.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_4.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 538 with external jobid '21754846.tscc-mgr7.local'.
+
+[Wed May 13 11:14:49 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_15.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_15.03.rep2.sorted.rpkm.bw
+    jobid: 604
+    wildcards: tissue=LM, path=cluster_age_rep, info=15.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_15.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_15.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 604 with external jobid '21754847.tscc-mgr7.local'.
+
+[Wed May 13 11:15:01 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_4.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_4.10.rep2.sorted.rpkm.bw
+    jobid: 366
+    wildcards: tissue=FC, path=cluster_age_rep, info=4.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_4.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_4.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 366 with external jobid '21754848.tscc-mgr7.local'.
+
+[Wed May 13 11:15:13 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_18.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_18.10.rep2.sorted.rpkm.bw
+    jobid: 450
+    wildcards: tissue=FC, path=cluster_age_rep, info=18.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_18.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_18.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:15:16 2020]
+Finished job 499.
+46 of 243 steps (19%) done
+Submitted job 450 with external jobid '21754849.tscc-mgr7.local'.
+
+[Wed May 13 11:15:32 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_9.18.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_9.18.rep2.sorted.rpkm.bw
+    jobid: 506
+    wildcards: tissue=HT, path=cluster_age_rep, info=9.18.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_9.18.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_9.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:15:34 2020]
+Finished job 401.
+47 of 243 steps (19%) done
+[Wed May 13 11:15:35 2020]
+Finished job 357.
+48 of 243 steps (20%) done
+[Wed May 13 11:15:35 2020]
+Finished job 552.
+49 of 243 steps (20%) done
+Submitted job 506 with external jobid '21754850.tscc-mgr7.local'.
+
+[Wed May 13 11:15:44 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_11.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_11.18.rep2.sorted.rpkm.bw
+    jobid: 584
+    wildcards: tissue=LM, path=cluster_age_rep, info=11.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_11.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_11.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 584 with external jobid '21754851.tscc-mgr7.local'.
+
+[Wed May 13 11:15:57 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_16.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_16.18.rep2.sorted.rpkm.bw
+    jobid: 614
+    wildcards: tissue=LM, path=cluster_age_rep, info=16.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_16.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_16.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 614 with external jobid '21754852.tscc-mgr7.local'.
+
+[Wed May 13 11:16:04 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_11.18.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_11.18.rep2.sorted.rpkm.bw
+    jobid: 518
+    wildcards: tissue=HT, path=cluster_age_rep, info=11.18.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_11.18.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_11.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:16:11 2020]
+Finished job 414.
+50 of 243 steps (21%) done
+[Wed May 13 11:16:11 2020]
+Finished job 566.
+51 of 243 steps (21%) done
+Submitted job 518 with external jobid '21754854.tscc-mgr7.local'.
+
+[Wed May 13 11:16:12 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_9.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_9.18.rep2.sorted.rpkm.bw
+    jobid: 572
+    wildcards: tissue=LM, path=cluster_age_rep, info=9.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_9.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_9.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 572 with external jobid '21754855.tscc-mgr7.local'.
+
+[Wed May 13 11:16:22 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_12.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_12.18.rep1.sorted.rpkm.bw
+    jobid: 589
+    wildcards: tissue=LM, path=cluster_age_rep, info=12.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_12.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_12.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:16:28 2020]
+Finished job 446.
+52 of 243 steps (21%) done
+[Wed May 13 11:16:30 2020]
+Finished job 553.
+53 of 243 steps (22%) done
+[Wed May 13 11:16:30 2020]
+Finished job 487.
+54 of 243 steps (22%) done
+Submitted job 589 with external jobid '21754856.tscc-mgr7.local'.
+
+[Wed May 13 11:16:30 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_8.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_8.10.rep2.sorted.rpkm.bw
+    jobid: 390
+    wildcards: tissue=FC, path=cluster_age_rep, info=8.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_8.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_8.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 390 with external jobid '21754857.tscc-mgr7.local'.
+
+[Wed May 13 11:16:44 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_4.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_4.03.rep2.sorted.rpkm.bw
+    jobid: 472
+    wildcards: tissue=HT, path=cluster_age_rep, info=4.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_4.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_4.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:16:49 2020]
+Finished job 467.
+55 of 243 steps (23%) done
+[Wed May 13 11:16:49 2020]
+Finished job 413.
+56 of 243 steps (23%) done
+Submitted job 472 with external jobid '21754858.tscc-mgr7.local'.
+
+[Wed May 13 11:16:52 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_16.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_16.10.rep2.sorted.rpkm.bw
+    jobid: 612
+    wildcards: tissue=LM, path=cluster_age_rep, info=16.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_16.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_16.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 612 with external jobid '21754859.tscc-mgr7.local'.
+
+[Wed May 13 11:16:59 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_2.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_2.10.rep2.sorted.rpkm.bw
+    jobid: 528
+    wildcards: tissue=LM, path=cluster_age_rep, info=2.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_2.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_2.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:17:07 2020]
+Finished job 386.
+57 of 243 steps (23%) done
+Submitted job 528 with external jobid '21754876.tscc-mgr7.local'.
+
+[Wed May 13 11:17:09 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_11.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_11.10.rep1.sorted.rpkm.bw
+    jobid: 407
+    wildcards: tissue=FC, path=cluster_age_rep, info=11.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_11.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_11.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 407 with external jobid '21754899.tscc-mgr7.local'.
+
+[Wed May 13 11:17:18 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_16.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_16.03.rep2.sorted.rpkm.bw
+    jobid: 436
+    wildcards: tissue=FC, path=cluster_age_rep, info=16.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_16.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_16.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:17:25 2020]
+Finished job 567.
+58 of 243 steps (24%) done
+Submitted job 436 with external jobid '21754921.tscc-mgr7.local'.
+
+[Wed May 13 11:17:28 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_14.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_14.03.rep2.sorted.rpkm.bw
+    jobid: 598
+    wildcards: tissue=LM, path=cluster_age_rep, info=14.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_14.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_14.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 598 with external jobid '21754922.tscc-mgr7.local'.
+
+[Wed May 13 11:17:36 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_7.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_7.18.rep1.sorted.rpkm.bw
+    jobid: 493
+    wildcards: tissue=HT, path=cluster_age_rep, info=7.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_7.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_7.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 493 with external jobid '21754923.tscc-mgr7.local'.
+
+[Wed May 13 11:17:54 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_3.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_3.18.rep2.sorted.rpkm.bw
+    jobid: 362
+    wildcards: tissue=FC, path=cluster_age_rep, info=3.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_3.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_3.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:18:04 2020]
+Finished job 588.
+59 of 243 steps (24%) done
+Submitted job 362 with external jobid '21754924.tscc-mgr7.local'.
+
+[Wed May 13 11:18:06 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_7.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_7.18.rep1.sorted.rpkm.bw
+    jobid: 559
+    wildcards: tissue=LM, path=cluster_age_rep, info=7.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_7.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_7.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 559 with external jobid '21754925.tscc-mgr7.local'.
+
+[Wed May 13 11:18:16 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_15.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_15.10.rep1.sorted.rpkm.bw
+    jobid: 605
+    wildcards: tissue=LM, path=cluster_age_rep, info=15.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_15.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_15.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 605 with external jobid '21754926.tscc-mgr7.local'.
+
+[Wed May 13 11:18:23 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_4.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_4.18.rep1.sorted.rpkm.bw
+    jobid: 367
+    wildcards: tissue=FC, path=cluster_age_rep, info=4.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_4.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_4.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 367 with external jobid '21754927.tscc-mgr7.local'.
+
+[Wed May 13 11:18:31 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_17.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_17.18.rep1.sorted.rpkm.bw
+    jobid: 445
+    wildcards: tissue=FC, path=cluster_age_rep, info=17.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_17.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_17.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 445 with external jobid '21754928.tscc-mgr7.local'.
+
+[Wed May 13 11:18:40 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_2.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_2.10.rep2.sorted.rpkm.bw
+    jobid: 462
+    wildcards: tissue=HT, path=cluster_age_rep, info=2.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_2.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_2.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 462 with external jobid '21754929.tscc-mgr7.local'.
+
+[Wed May 13 11:18:51 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_15.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_15.10.rep2.sorted.rpkm.bw
+    jobid: 432
+    wildcards: tissue=FC, path=cluster_age_rep, info=15.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_15.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_15.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 432 with external jobid '21754930.tscc-mgr7.local'.
+
+[Wed May 13 11:19:07 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_11.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_11.10.rep2.sorted.rpkm.bw
+    jobid: 408
+    wildcards: tissue=FC, path=cluster_age_rep, info=11.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_11.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_11.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 408 with external jobid '21754932.tscc-mgr7.local'.
+
+[Wed May 13 11:19:17 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_12.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_12.18.rep2.sorted.rpkm.bw
+    jobid: 590
+    wildcards: tissue=LM, path=cluster_age_rep, info=12.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_12.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_12.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 590 with external jobid '21754933.tscc-mgr7.local'.
+
+[Wed May 13 11:19:26 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_15.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_15.03.rep1.sorted.rpkm.bw
+    jobid: 603
+    wildcards: tissue=LM, path=cluster_age_rep, info=15.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_15.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_15.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 603 with external jobid '21754934.tscc-mgr7.local'.
+
+[Wed May 13 11:19:34 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_2.10.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_2.10.rep1.sorted.rpkm.bw
+    jobid: 461
+    wildcards: tissue=HT, path=cluster_age_rep, info=2.10.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_2.10.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_2.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 461 with external jobid '21754935.tscc-mgr7.local'.
+
+[Wed May 13 11:19:41 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_10.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_10.03.rep2.sorted.rpkm.bw
+    jobid: 400
+    wildcards: tissue=FC, path=cluster_age_rep, info=10.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_10.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_10.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 400 with external jobid '21754936.tscc-mgr7.local'.
+
+[Wed May 13 11:19:49 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_8.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_8.03.rep2.sorted.rpkm.bw
+    jobid: 562
+    wildcards: tissue=LM, path=cluster_age_rep, info=8.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_8.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_8.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 562 with external jobid '21754938.tscc-mgr7.local'.
+
+[Wed May 13 11:19:59 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_10.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_10.18.rep1.sorted.rpkm.bw
+    jobid: 403
+    wildcards: tissue=FC, path=cluster_age_rep, info=10.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_10.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_10.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 403 with external jobid '21754948.tscc-mgr7.local'.
+
+[Wed May 13 11:20:15 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_13.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_13.03.rep1.sorted.rpkm.bw
+    jobid: 417
+    wildcards: tissue=FC, path=cluster_age_rep, info=13.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_13.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_13.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:20:18 2020]
+Finished job 576.
+60 of 243 steps (25%) done
+[Wed May 13 11:20:18 2020]
+Finished job 575.
+61 of 243 steps (25%) done
+[Wed May 13 11:20:19 2020]
+Finished job 447.
+62 of 243 steps (26%) done
+[Wed May 13 11:20:20 2020]
+Finished job 587.
+63 of 243 steps (26%) done
+[Wed May 13 11:20:20 2020]
+Finished job 565.
+64 of 243 steps (26%) done
+[Wed May 13 11:20:20 2020]
+Finished job 497.
+65 of 243 steps (27%) done
+Submitted job 417 with external jobid '21754977.tscc-mgr7.local'.
+
+[Wed May 13 11:20:27 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_5.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_5.18.rep2.sorted.rpkm.bw
+    jobid: 548
+    wildcards: tissue=LM, path=cluster_age_rep, info=5.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_5.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_5.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 548 with external jobid '21754995.tscc-mgr7.local'.
+
+[Wed May 13 11:20:39 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_1.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_1.18.rep1.sorted.rpkm.bw
+    jobid: 457
+    wildcards: tissue=HT, path=cluster_age_rep, info=1.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_1.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_1.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:20:39 2020]
+Finished job 404.
+66 of 243 steps (27%) done
+Submitted job 457 with external jobid '21754996.tscc-mgr7.local'.
+
+[Wed May 13 11:20:49 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_9.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_9.03.rep2.sorted.rpkm.bw
+    jobid: 394
+    wildcards: tissue=FC, path=cluster_age_rep, info=9.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_9.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_9.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 394 with external jobid '21754997.tscc-mgr7.local'.
+
+[Wed May 13 11:20:59 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_5.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_5.03.rep1.sorted.rpkm.bw
+    jobid: 543
+    wildcards: tissue=LM, path=cluster_age_rep, info=5.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_5.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_5.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 543 with external jobid '21754999.tscc-mgr7.local'.
+
+[Wed May 13 11:21:06 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_5.18.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_5.18.rep2.sorted.rpkm.bw
+    jobid: 482
+    wildcards: tissue=HT, path=cluster_age_rep, info=5.18.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_5.18.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_5.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 482 with external jobid '21755000.tscc-mgr7.local'.
+
+[Wed May 13 11:21:14 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_8.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_8.03.rep2.sorted.rpkm.bw
+    jobid: 496
+    wildcards: tissue=HT, path=cluster_age_rep, info=8.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_8.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_8.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:21:19 2020]
+Finished job 571.
+67 of 243 steps (28%) done
+[Wed May 13 11:21:19 2020]
+Finished job 593.
+68 of 243 steps (28%) done
+Submitted job 496 with external jobid '21755001.tscc-mgr7.local'.
+
+[Wed May 13 11:21:27 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_5.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_5.03.rep1.sorted.rpkm.bw
+    jobid: 477
+    wildcards: tissue=HT, path=cluster_age_rep, info=5.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_5.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_5.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 477 with external jobid '21755003.tscc-mgr7.local'.
+
+[Wed May 13 11:21:39 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_13.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_13.18.rep1.sorted.rpkm.bw
+    jobid: 421
+    wildcards: tissue=FC, path=cluster_age_rep, info=13.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_13.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_13.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:21:39 2020]
+Finished job 359.
+69 of 243 steps (28%) done
+Submitted job 421 with external jobid '21755004.tscc-mgr7.local'.
+
+[Wed May 13 11:21:48 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_5.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_5.03.rep2.sorted.rpkm.bw
+    jobid: 370
+    wildcards: tissue=FC, path=cluster_age_rep, info=5.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_5.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_5.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 370 with external jobid '21755005.tscc-mgr7.local'.
+
+[Wed May 13 11:21:56 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_9.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_9.10.rep1.sorted.rpkm.bw
+    jobid: 395
+    wildcards: tissue=FC, path=cluster_age_rep, info=9.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_9.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_9.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:21:59 2020]
+Finished job 392.
+70 of 243 steps (29%) done
+Submitted job 395 with external jobid '21755006.tscc-mgr7.local'.
+
+[Wed May 13 11:22:10 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_3.18.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_3.18.rep2.sorted.rpkm.bw
+    jobid: 470
+    wildcards: tissue=HT, path=cluster_age_rep, info=3.18.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_3.18.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_3.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 470 with external jobid '21755007.tscc-mgr7.local'.
+
+[Wed May 13 11:22:22 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_14.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_14.03.rep2.sorted.rpkm.bw
+    jobid: 424
+    wildcards: tissue=FC, path=cluster_age_rep, info=14.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_14.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_14.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 424 with external jobid '21755008.tscc-mgr7.local'.
+
+[Wed May 13 11:22:40 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_16.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_16.03.rep2.sorted.rpkm.bw
+    jobid: 610
+    wildcards: tissue=LM, path=cluster_age_rep, info=16.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_16.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_16.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 610 with external jobid '21755009.tscc-mgr7.local'.
+
+[Wed May 13 11:22:51 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_11.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_11.10.rep1.sorted.rpkm.bw
+    jobid: 581
+    wildcards: tissue=LM, path=cluster_age_rep, info=11.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_11.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_11.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:23:00 2020]
+Finished job 510.
+71 of 243 steps (29%) done
+Submitted job 581 with external jobid '21755010.tscc-mgr7.local'.
+
+[Wed May 13 11:23:05 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_11.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_11.10.rep2.sorted.rpkm.bw
+    jobid: 516
+    wildcards: tissue=HT, path=cluster_age_rep, info=11.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_11.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_11.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 516 with external jobid '21755018.tscc-mgr7.local'.
+
+[Wed May 13 11:23:19 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_6.18.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_6.18.rep2.sorted.rpkm.bw
+    jobid: 488
+    wildcards: tissue=HT, path=cluster_age_rep, info=6.18.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_6.18.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_6.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:23:20 2020]
+Finished job 397.
+72 of 243 steps (30%) done
+Submitted job 488 with external jobid '21755045.tscc-mgr7.local'.
+
+[Wed May 13 11:23:32 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_16.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_16.10.rep2.sorted.rpkm.bw
+    jobid: 438
+    wildcards: tissue=FC, path=cluster_age_rep, info=16.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_16.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_16.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:23:40 2020]
+Finished job 522.
+73 of 243 steps (30%) done
+Submitted job 438 with external jobid '21755049.tscc-mgr7.local'.
+
+[Wed May 13 11:23:51 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_4.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_4.18.rep1.sorted.rpkm.bw
+    jobid: 475
+    wildcards: tissue=HT, path=cluster_age_rep, info=4.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_4.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_4.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 475 with external jobid '21755051.tscc-mgr7.local'.
+
+[Wed May 13 11:24:11 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_11.10.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_11.10.rep1.sorted.rpkm.bw
+    jobid: 515
+    wildcards: tissue=HT, path=cluster_age_rep, info=11.10.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_11.10.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_11.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 515 with external jobid '21755052.tscc-mgr7.local'.
+
+[Wed May 13 11:24:28 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_15.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_15.10.rep2.sorted.rpkm.bw
+    jobid: 606
+    wildcards: tissue=LM, path=cluster_age_rep, info=15.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_15.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_15.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 606 with external jobid '21755053.tscc-mgr7.local'.
+
+[Wed May 13 11:24:40 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_12.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_12.18.rep2.sorted.rpkm.bw
+    jobid: 416
+    wildcards: tissue=FC, path=cluster_age_rep, info=12.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_12.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_12.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 416 with external jobid '21755054.tscc-mgr7.local'.
+
+[Wed May 13 11:24:59 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_15.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_15.03.rep1.sorted.rpkm.bw
+    jobid: 429
+    wildcards: tissue=FC, path=cluster_age_rep, info=15.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_15.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_15.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 429 with external jobid '21755056.tscc-mgr7.local'.
+
+[Wed May 13 11:25:16 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_6.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_6.18.rep2.sorted.rpkm.bw
+    jobid: 554
+    wildcards: tissue=LM, path=cluster_age_rep, info=6.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_6.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_6.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 554 with external jobid '21755057.tscc-mgr7.local'.
+
+[Wed May 13 11:25:28 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_4.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_4.18.rep1.sorted.rpkm.bw
+    jobid: 541
+    wildcards: tissue=LM, path=cluster_age_rep, info=4.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_4.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_4.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 541 with external jobid '21755059.tscc-mgr7.local'.
+
+[Wed May 13 11:25:44 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_11.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_11.10.rep2.sorted.rpkm.bw
+    jobid: 582
+    wildcards: tissue=LM, path=cluster_age_rep, info=11.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_11.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_11.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:26:05 2020]
+Finished job 618.
+74 of 243 steps (30%) done
+[Wed May 13 11:26:05 2020]
+Finished job 434.
+75 of 243 steps (31%) done
+Submitted job 582 with external jobid '21755060.tscc-mgr7.local'.
+
+[Wed May 13 11:26:06 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_17.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_17.18.rep1.sorted.rpkm.bw
+    jobid: 619
+    wildcards: tissue=LM, path=cluster_age_rep, info=17.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_17.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_17.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:26:07 2020]
+Finished job 361.
+76 of 243 steps (31%) done
+[Wed May 13 11:26:07 2020]
+Finished job 433.
+77 of 243 steps (32%) done
+[Wed May 13 11:26:07 2020]
+Finished job 439.
+78 of 243 steps (32%) done
+[Wed May 13 11:26:07 2020]
+Finished job 365.
+79 of 243 steps (33%) done
+Submitted job 619 with external jobid '21755062.tscc-mgr7.local'.
+
+[Wed May 13 11:26:23 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_15.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_15.10.rep1.sorted.rpkm.bw
+    jobid: 431
+    wildcards: tissue=FC, path=cluster_age_rep, info=15.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_15.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_15.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:26:26 2020]
+Finished job 570.
+80 of 243 steps (33%) done
+[Wed May 13 11:26:27 2020]
+Finished job 563.
+81 of 243 steps (33%) done
+Submitted job 431 with external jobid '21755063.tscc-mgr7.local'.
+
+[Wed May 13 11:26:44 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_3.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_3.18.rep2.sorted.rpkm.bw
+    jobid: 536
+    wildcards: tissue=LM, path=cluster_age_rep, info=3.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_3.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_3.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:26:48 2020]
+Finished job 465.
+82 of 243 steps (34%) done
+Submitted job 536 with external jobid '21755064.tscc-mgr7.local'.
+
+[Wed May 13 11:26:57 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_7.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_7.18.rep1.sorted.rpkm.bw
+    jobid: 385
+    wildcards: tissue=FC, path=cluster_age_rep, info=7.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_7.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_7.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:27:08 2020]
+Finished job 419.
+83 of 243 steps (34%) done
+Submitted job 385 with external jobid '21755065.tscc-mgr7.local'.
+
+[Wed May 13 11:27:22 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_5.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_5.03.rep1.sorted.rpkm.bw
+    jobid: 369
+    wildcards: tissue=FC, path=cluster_age_rep, info=5.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_5.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_5.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 369 with external jobid '21755084.tscc-mgr7.local'.
+
+[Wed May 13 11:27:34 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_9.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_9.03.rep2.sorted.rpkm.bw
+    jobid: 502
+    wildcards: tissue=HT, path=cluster_age_rep, info=9.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_9.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_9.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 502 with external jobid '21755107.tscc-mgr7.local'.
+
+[Wed May 13 11:27:45 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_5.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_5.18.rep2.sorted.rpkm.bw
+    jobid: 374
+    wildcards: tissue=FC, path=cluster_age_rep, info=5.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_5.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_5.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 374 with external jobid '21755109.tscc-mgr7.local'.
+
+[Wed May 13 11:28:00 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_8.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_8.03.rep2.sorted.rpkm.bw
+    jobid: 388
+    wildcards: tissue=FC, path=cluster_age_rep, info=8.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_8.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_8.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 388 with external jobid '21755110.tscc-mgr7.local'.
+
+[Wed May 13 11:28:12 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_10.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_10.18.rep1.sorted.rpkm.bw
+    jobid: 577
+    wildcards: tissue=LM, path=cluster_age_rep, info=10.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_10.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_10.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 577 with external jobid '21755112.tscc-mgr7.local'.
+
+[Wed May 13 11:28:22 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_5.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_5.03.rep2.sorted.rpkm.bw
+    jobid: 478
+    wildcards: tissue=HT, path=cluster_age_rep, info=5.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_5.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_5.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 478 with external jobid '21755114.tscc-mgr7.local'.
+
+[Wed May 13 11:28:39 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_6.10.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_6.10.rep1.sorted.rpkm.bw
+    jobid: 485
+    wildcards: tissue=HT, path=cluster_age_rep, info=6.10.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_6.10.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_6.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:28:55 2020]
+Finished job 481.
+84 of 243 steps (35%) done
+Submitted job 485 with external jobid '21755117.tscc-mgr7.local'.
+
+[Wed May 13 11:28:56 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_9.10.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_9.10.rep1.sorted.rpkm.bw
+    jobid: 503
+    wildcards: tissue=HT, path=cluster_age_rep, info=9.10.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_9.10.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_9.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 503 with external jobid '21755118.tscc-mgr7.local'.
+
+[Wed May 13 11:29:07 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_10.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_10.03.rep2.sorted.rpkm.bw
+    jobid: 574
+    wildcards: tissue=LM, path=cluster_age_rep, info=10.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_10.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_10.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 574 with external jobid '21755119.tscc-mgr7.local'.
+
+[Wed May 13 11:29:17 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_13.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_13.03.rep1.sorted.rpkm.bw
+    jobid: 591
+    wildcards: tissue=LM, path=cluster_age_rep, info=13.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_13.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_13.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 591 with external jobid '21755120.tscc-mgr7.local'.
+
+[Wed May 13 11:29:28 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_5.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_5.03.rep2.sorted.rpkm.bw
+    jobid: 544
+    wildcards: tissue=LM, path=cluster_age_rep, info=5.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_5.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_5.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 544 with external jobid '21755122.tscc-mgr7.local'.
+
+[Wed May 13 11:29:39 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_9.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_9.10.rep1.sorted.rpkm.bw
+    jobid: 569
+    wildcards: tissue=LM, path=cluster_age_rep, info=9.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_9.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_9.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 569 with external jobid '21755124.tscc-mgr7.local'.
+
+[Wed May 13 11:30:00 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_10.03.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_10.03.rep2.sorted.rpkm.bw
+    jobid: 508
+    wildcards: tissue=HT, path=cluster_age_rep, info=10.03.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_10.03.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_10.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 508 with external jobid '21755127.tscc-mgr7.local'.
+
+[Wed May 13 11:30:13 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_6.10.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_6.10.rep1.sorted.rpkm.bw
+    jobid: 551
+    wildcards: tissue=LM, path=cluster_age_rep, info=6.10.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_6.10.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_6.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:30:21 2020]
+Finished job 486.
+85 of 243 steps (35%) done
+[Wed May 13 11:30:22 2020]
+Finished job 556.
+86 of 243 steps (35%) done
+Submitted job 551 with external jobid '21755129.tscc-mgr7.local'.
+
+[Wed May 13 11:30:25 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_13.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_13.18.rep1.sorted.rpkm.bw
+    jobid: 595
+    wildcards: tissue=LM, path=cluster_age_rep, info=13.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_13.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_13.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 595 with external jobid '21755131.tscc-mgr7.local'.
+
+[Wed May 13 11:30:39 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_1.18.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_1.18.rep2.sorted.rpkm.bw
+    jobid: 524
+    wildcards: tissue=LM, path=cluster_age_rep, info=1.18.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_1.18.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_1.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 524 with external jobid '21755134.tscc-mgr7.local'.
+
+[Wed May 13 11:30:51 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_9.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_9.03.rep2.sorted.rpkm.bw
+    jobid: 568
+    wildcards: tissue=LM, path=cluster_age_rep, info=9.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_9.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_9.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:31:04 2020]
+Finished job 460.
+87 of 243 steps (36%) done
+Submitted job 568 with external jobid '21755136.tscc-mgr7.local'.
+
+[Wed May 13 11:31:12 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_18.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_18.18.rep1.sorted.rpkm.bw
+    jobid: 451
+    wildcards: tissue=FC, path=cluster_age_rep, info=18.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_18.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_18.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 451 with external jobid '21755139.tscc-mgr7.local'.
+
+[Wed May 13 11:31:24 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_10.18.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_10.18.rep1.sorted.rpkm.bw
+    jobid: 511
+    wildcards: tissue=HT, path=cluster_age_rep, info=10.18.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_10.18.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_10.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 511 with external jobid '21755142.tscc-mgr7.local'.
+
+[Wed May 13 11:31:38 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_3.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_3.10.rep2.sorted.rpkm.bw
+    jobid: 468
+    wildcards: tissue=HT, path=cluster_age_rep, info=3.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_3.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_3.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 468 with external jobid '21755144.tscc-mgr7.local'.
+
+[Wed May 13 11:31:50 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_17.03.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_17.03.rep2.sorted.rpkm.bw
+    jobid: 616
+    wildcards: tissue=LM, path=cluster_age_rep, info=17.03.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_17.03.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_17.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 616 with external jobid '21755147.tscc-mgr7.local'.
+
+[Wed May 13 11:32:03 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_14.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_14.18.rep2.sorted.rpkm.bw
+    jobid: 428
+    wildcards: tissue=FC, path=cluster_age_rep, info=14.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_14.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_14.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 428 with external jobid '21755150.tscc-mgr7.local'.
+
+[Wed May 13 11:32:24 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_6.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_6.03.rep1.sorted.rpkm.bw
+    jobid: 483
+    wildcards: tissue=HT, path=cluster_age_rep, info=6.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_6.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_6.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 483 with external jobid '21755153.tscc-mgr7.local'.
+
+[Wed May 13 11:32:35 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_14.10.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_14.10.rep2.sorted.rpkm.bw
+    jobid: 426
+    wildcards: tissue=FC, path=cluster_age_rep, info=14.10.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_14.10.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_14.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 426 with external jobid '21755155.tscc-mgr7.local'.
+
+[Wed May 13 11:32:46 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_14.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_14.03.rep1.sorted.rpkm.bw
+    jobid: 597
+    wildcards: tissue=LM, path=cluster_age_rep, info=14.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_14.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_14.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:32:54 2020]
+Finished job 513.
+88 of 243 steps (36%) done
+Submitted job 597 with external jobid '21755157.tscc-mgr7.local'.
+
+[Wed May 13 11:32:55 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_5.10.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_5.10.rep1.sorted.rpkm.bw
+    jobid: 371
+    wildcards: tissue=FC, path=cluster_age_rep, info=5.10.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_5.10.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_5.10.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:32:56 2020]
+Finished job 358.
+89 of 243 steps (37%) done
+[Wed May 13 11:32:57 2020]
+Finished job 406.
+90 of 243 steps (37%) done
+[Wed May 13 11:32:57 2020]
+Finished job 425.
+91 of 243 steps (37%) done
+[Wed May 13 11:32:57 2020]
+Finished job 547.
+92 of 243 steps (38%) done
+Submitted job 371 with external jobid '21755160.tscc-mgr7.local'.
+
+[Wed May 13 11:33:06 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_6.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_6.03.rep1.sorted.rpkm.bw
+    jobid: 549
+    wildcards: tissue=LM, path=cluster_age_rep, info=6.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_6.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_6.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 549 with external jobid '21755163.tscc-mgr7.local'.
+
+[Wed May 13 11:33:18 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_17.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_17.03.rep1.sorted.rpkm.bw
+    jobid: 615
+    wildcards: tissue=LM, path=cluster_age_rep, info=17.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_17.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_17.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 615 with external jobid '21755166.tscc-mgr7.local'.
+
+[Wed May 13 11:33:34 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_12.03.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_12.03.rep1.sorted.rpkm.bw
+    jobid: 411
+    wildcards: tissue=FC, path=cluster_age_rep, info=12.03.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_12.03.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_12.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 411 with external jobid '21755169.tscc-mgr7.local'.
+
+[Wed May 13 11:33:45 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_14.18.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_14.18.rep1.sorted.rpkm.bw
+    jobid: 601
+    wildcards: tissue=LM, path=cluster_age_rep, info=14.18.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_14.18.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_14.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 601 with external jobid '21755172.tscc-mgr7.local'.
+
+[Wed May 13 11:34:04 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_18.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_18.03.rep2.sorted.rpkm.bw
+    jobid: 448
+    wildcards: tissue=FC, path=cluster_age_rep, info=18.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_18.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_18.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 448 with external jobid '21755176.tscc-mgr7.local'.
+
+[Wed May 13 11:34:20 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_11.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_11.18.rep2.sorted.rpkm.bw
+    jobid: 410
+    wildcards: tissue=FC, path=cluster_age_rep, info=11.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_11.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_11.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 410 with external jobid '21755178.tscc-mgr7.local'.
+
+[Wed May 13 11:34:31 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_4.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_4.10.rep2.sorted.rpkm.bw
+    jobid: 540
+    wildcards: tissue=LM, path=cluster_age_rep, info=4.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_4.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_4.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:34:49 2020]
+Finished job 594.
+93 of 243 steps (38%) done
+[Wed May 13 11:34:49 2020]
+Finished job 609.
+94 of 243 steps (39%) done
+[Wed May 13 11:34:49 2020]
+Finished job 437.
+95 of 243 steps (39%) done
+[Wed May 13 11:34:52 2020]
+Finished job 526.
+96 of 243 steps (40%) done
+Submitted job 540 with external jobid '21755180.tscc-mgr7.local'.
+
+[Wed May 13 11:34:55 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_7.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_7.10.rep2.sorted.rpkm.bw
+    jobid: 492
+    wildcards: tissue=HT, path=cluster_age_rep, info=7.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_7.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_7.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 492 with external jobid '21755183.tscc-mgr7.local'.
+
+[Wed May 13 11:35:05 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_8.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_8.10.rep2.sorted.rpkm.bw
+    jobid: 498
+    wildcards: tissue=HT, path=cluster_age_rep, info=8.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_8.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_8.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+[Wed May 13 11:35:12 2020]
+Finished job 423.
+97 of 243 steps (40%) done
+Submitted job 498 with external jobid '21755186.tscc-mgr7.local'.
+
+[Wed May 13 11:35:18 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_4.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_4.03.rep2.sorted.rpkm.bw
+    jobid: 364
+    wildcards: tissue=FC, path=cluster_age_rep, info=4.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_4.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_4.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 364 with external jobid '21755189.tscc-mgr7.local'.
+
+[Wed May 13 11:35:29 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_15.03.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_15.03.rep2.sorted.rpkm.bw
+    jobid: 430
+    wildcards: tissue=FC, path=cluster_age_rep, info=15.03.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_15.03.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_15.03.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 430 with external jobid '21755191.tscc-mgr7.local'.
+
+[Wed May 13 11:35:40 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_10.03.rep1.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_10.03.rep1.sorted.rpkm.bw
+    jobid: 573
+    wildcards: tissue=LM, path=cluster_age_rep, info=10.03.rep1
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_10.03.rep1.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_10.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 573 with external jobid '21755194.tscc-mgr7.local'.
+
+[Wed May 13 11:35:51 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_8.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_8.10.rep2.sorted.rpkm.bw
+    jobid: 564
+    wildcards: tissue=LM, path=cluster_age_rep, info=8.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_8.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_8.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 564 with external jobid '21755197.tscc-mgr7.local'.
+
+[Wed May 13 11:36:09 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_10.03.rep1.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_10.03.rep1.sorted.rpkm.bw
+    jobid: 507
+    wildcards: tissue=HT, path=cluster_age_rep, info=10.03.rep1
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_10.03.rep1.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_10.03.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 507 with external jobid '21755203.tscc-mgr7.local'.
+
+[Wed May 13 11:36:21 2020]
+rule bamToBigWig:
+    input: HT/bam.cluster_age_rep/HT.metacell_4.10.rep2.sorted.bam
+    output: HT/bigWig.cluster_age_rep/HT.metacell_4.10.rep2.sorted.rpkm.bw
+    jobid: 474
+    wildcards: tissue=HT, path=cluster_age_rep, info=4.10.rep2
+    threads: 4
+
+bamCoverage --bam HT/bam.cluster_age_rep/HT.metacell_4.10.rep2.sorted.bam --outFileFormat bigwig --outFileName HT/bigWig.cluster_age_rep/HT.metacell_4.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 474 with external jobid '21755207.tscc-mgr7.local'.
+
+[Wed May 13 11:36:34 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_12.18.rep1.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_12.18.rep1.sorted.rpkm.bw
+    jobid: 415
+    wildcards: tissue=FC, path=cluster_age_rep, info=12.18.rep1
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_12.18.rep1.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_12.18.rep1.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 415 with external jobid '21755210.tscc-mgr7.local'.
+
+[Wed May 13 11:36:43 2020]
+rule bamToBigWig:
+    input: LM/bam.cluster_age_rep/LM.metacell_7.10.rep2.sorted.bam
+    output: LM/bigWig.cluster_age_rep/LM.metacell_7.10.rep2.sorted.rpkm.bw
+    jobid: 558
+    wildcards: tissue=LM, path=cluster_age_rep, info=7.10.rep2
+    threads: 4
+
+bamCoverage --bam LM/bam.cluster_age_rep/LM.metacell_7.10.rep2.sorted.bam --outFileFormat bigwig --outFileName LM/bigWig.cluster_age_rep/LM.metacell_7.10.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 558 with external jobid '21755213.tscc-mgr7.local'.
+
+[Wed May 13 11:36:57 2020]
+rule bamToBigWig:
+    input: FC/bam.cluster_age_rep/FC.metacell_16.18.rep2.sorted.bam
+    output: FC/bigWig.cluster_age_rep/FC.metacell_16.18.rep2.sorted.rpkm.bw
+    jobid: 440
+    wildcards: tissue=FC, path=cluster_age_rep, info=16.18.rep2
+    threads: 4
+
+bamCoverage --bam FC/bam.cluster_age_rep/FC.metacell_16.18.rep2.sorted.bam --outFileFormat bigwig --outFileName FC/bigWig.cluster_age_rep/FC.metacell_16.18.rep2.sorted.rpkm.bw --binSize 25 --normalizeUsing RPKM -p 4
+Submitted job 440 with external jobid '21755216.tscc-mgr7.local'.
+[Wed May 13 11:39:08 2020]
+Finished job 600.
+98 of 243 steps (40%) done
+[Wed May 13 11:39:31 2020]
+Finished job 604.
+99 of 243 steps (41%) done
+[Wed May 13 11:39:31 2020]
+Finished job 399.
+100 of 243 steps (41%) done
+[Wed May 13 11:39:34 2020]
+Finished job 479.
+101 of 243 steps (42%) done
+[Wed May 13 11:39:55 2020]
+Finished job 366.
+102 of 243 steps (42%) done
+[Wed May 13 11:39:58 2020]
+Finished job 398.
+103 of 243 steps (42%) done
+[Wed May 13 11:39:58 2020]
+Finished job 538.
+104 of 243 steps (43%) done
+[Wed May 13 11:41:54 2020]
+Finished job 506.
+105 of 243 steps (43%) done
+[Wed May 13 11:41:54 2020]
+Finished job 614.
+106 of 243 steps (44%) done
+[Wed May 13 11:42:14 2020]
+Finished job 518.
+107 of 243 steps (44%) done
+[Wed May 13 11:42:14 2020]
+Finished job 584.
+108 of 243 steps (44%) done
+[Wed May 13 11:42:14 2020]
+Finished job 450.
+109 of 243 steps (45%) done
+[Wed May 13 11:45:10 2020]
+Finished job 390.
+110 of 243 steps (45%) done
+[Wed May 13 11:45:10 2020]
+Finished job 472.
+111 of 243 steps (46%) done
+[Wed May 13 11:45:10 2020]
+Finished job 589.
+112 of 243 steps (46%) done
+[Wed May 13 11:45:14 2020]
+Finished job 572.
+113 of 243 steps (47%) done
+[Wed May 13 11:45:58 2020]
+Finished job 598.
+114 of 243 steps (47%) done
+[Wed May 13 11:45:58 2020]
+Finished job 493.
+115 of 243 steps (47%) done
+[Wed May 13 11:45:58 2020]
+Finished job 559.
+116 of 243 steps (48%) done
+[Wed May 13 11:46:16 2020]
+Finished job 362.
+117 of 243 steps (48%) done
+[Wed May 13 11:46:16 2020]
+Finished job 436.
+118 of 243 steps (49%) done
+[Wed May 13 11:48:06 2020]
+Finished job 528.
+119 of 243 steps (49%) done
+[Wed May 13 11:48:09 2020]
+Finished job 442.
+120 of 243 steps (49%) done
+[Wed May 13 11:48:09 2020]
+Finished job 612.
+121 of 243 steps (50%) done
+[Wed May 13 11:48:28 2020]
+Finished job 427.
+122 of 243 steps (50%) done
+[Wed May 13 11:50:14 2020]
+Finished job 445.
+123 of 243 steps (51%) done
+[Wed May 13 11:50:14 2020]
+Finished job 605.
+124 of 243 steps (51%) done
+[Wed May 13 11:50:14 2020]
+Finished job 585.
+125 of 243 steps (51%) done
+[Wed May 13 11:50:17 2020]
+Finished job 602.
+126 of 243 steps (52%) done
+[Wed May 13 11:50:17 2020]
+Finished job 360.
+127 of 243 steps (52%) done
+[Wed May 13 11:50:17 2020]
+Finished job 407.
+128 of 243 steps (53%) done
+[Wed May 13 11:50:17 2020]
+Finished job 367.
+129 of 243 steps (53%) done
+[Wed May 13 11:52:15 2020]
+Finished job 545.
+130 of 243 steps (53%) done
+[Wed May 13 11:52:15 2020]
+Finished job 441.
+131 of 243 steps (54%) done
+[Wed May 13 11:52:17 2020]
+Finished job 375.
+132 of 243 steps (54%) done
+[Wed May 13 11:52:17 2020]
+Finished job 462.
+133 of 243 steps (55%) done
+[Wed May 13 11:53:55 2020]
+Finished job 579.
+134 of 243 steps (55%) done
+[Wed May 13 11:53:55 2020]
+Finished job 459.
+135 of 243 steps (56%) done
+[Wed May 13 11:53:55 2020]
+Finished job 504.
+136 of 243 steps (56%) done
+[Wed May 13 11:53:57 2020]
+Finished job 381.
+137 of 243 steps (56%) done
+[Wed May 13 11:53:57 2020]
+Finished job 418.
+138 of 243 steps (57%) done
+[Wed May 13 11:53:57 2020]
+Finished job 368.
+139 of 243 steps (57%) done
+[Wed May 13 11:55:51 2020]
+Finished job 501.
+140 of 243 steps (58%) done
+[Wed May 13 11:55:51 2020]
+Finished job 509.
+141 of 243 steps (58%) done
+[Wed May 13 11:55:51 2020]
+Finished job 387.
+142 of 243 steps (58%) done
+[Wed May 13 11:55:51 2020]
+Finished job 490.
+143 of 243 steps (59%) done
+[Wed May 13 11:55:51 2020]
+Finished job 596.
+144 of 243 steps (59%) done
+[Wed May 13 11:55:52 2020]
+Finished job 432.
+145 of 243 steps (60%) done
+[Wed May 13 11:56:10 2020]
+Finished job 391.
+146 of 243 steps (60%) done
+[Wed May 13 11:57:46 2020]
+Finished job 590.
+147 of 243 steps (60%) done
+[Wed May 13 11:57:46 2020]
+Finished job 603.
+148 of 243 steps (61%) done
+[Wed May 13 11:58:04 2020]
+Finished job 408.
+149 of 243 steps (61%) done
+[Wed May 13 11:58:05 2020]
+Finished job 376.
+150 of 243 steps (62%) done
+[Wed May 13 11:58:23 2020]
+Finished job 461.
+151 of 243 steps (62%) done
+[Wed May 13 11:58:24 2020]
+Finished job 400.
+152 of 243 steps (63%) done
+[Wed May 13 12:00:28 2020]
+Finished job 370.
+153 of 243 steps (63%) done
+[Wed May 13 12:00:28 2020]
+Finished job 477.
+154 of 243 steps (63%) done
+[Wed May 13 12:00:28 2020]
+Finished job 403.
+155 of 243 steps (64%) done
+[Wed May 13 12:00:28 2020]
+Finished job 562.
+156 of 243 steps (64%) done
+[Wed May 13 12:00:30 2020]
+Finished job 417.
+157 of 243 steps (65%) done
+[Wed May 13 12:00:30 2020]
+Finished job 421.
+158 of 243 steps (65%) done
+[Wed May 13 12:02:16 2020]
+Finished job 581.
+159 of 243 steps (65%) done
+[Wed May 13 12:02:16 2020]
+Finished job 424.
+160 of 243 steps (66%) done
+[Wed May 13 12:02:17 2020]
+Finished job 470.
+161 of 243 steps (66%) done
+[Wed May 13 12:02:18 2020]
+Finished job 395.
+162 of 243 steps (67%) done
+[Wed May 13 12:02:18 2020]
+Finished job 610.
+163 of 243 steps (67%) done
+[Wed May 13 12:03:09 2020]
+Finished job 516.
+164 of 243 steps (67%) done
+[Wed May 13 12:05:09 2020]
+Finished job 488.
+165 of 243 steps (68%) done
+[Wed May 13 12:05:09 2020]
+Finished job 438.
+166 of 243 steps (68%) done
+[Wed May 13 12:05:09 2020]
+Finished job 475.
+167 of 243 steps (69%) done
+[Wed May 13 12:05:24 2020]
+Finished job 582.
+168 of 243 steps (69%) done
+[Wed May 13 12:05:24 2020]
+Finished job 541.
+169 of 243 steps (70%) done
+[Wed May 13 12:05:24 2020]
+Finished job 554.
+170 of 243 steps (70%) done
+[Wed May 13 12:07:17 2020]
+Finished job 606.
+171 of 243 steps (70%) done
+[Wed May 13 12:07:19 2020]
+Finished job 515.
+172 of 243 steps (71%) done
+[Wed May 13 12:08:04 2020]
+Finished job 485.
+173 of 243 steps (71%) done
+[Wed May 13 12:08:05 2020]
+Finished job 478.
+174 of 243 steps (72%) done
+[Wed May 13 12:08:05 2020]
+Finished job 416.
+175 of 243 steps (72%) done
+[Wed May 13 12:08:07 2020]
+Finished job 577.
+176 of 243 steps (72%) done
+[Wed May 13 12:08:07 2020]
+Finished job 503.
+177 of 243 steps (73%) done
+[Wed May 13 12:08:52 2020]
+Finished job 551.
+178 of 243 steps (73%) done
+[Wed May 13 12:08:54 2020]
+Finished job 429.
+179 of 243 steps (74%) done
+[Wed May 13 12:08:55 2020]
+Finished job 508.
+180 of 243 steps (74%) done
+[Wed May 13 12:09:08 2020]
+Finished job 595.
+181 of 243 steps (74%) done
+[Wed May 13 12:09:11 2020]
+Finished job 568.
+182 of 243 steps (75%) done
+[Wed May 13 12:09:56 2020]
+Finished job 524.
+183 of 243 steps (75%) done
+[Wed May 13 12:11:39 2020]
+Finished job 451.
+184 of 243 steps (76%) done
+[Wed May 13 12:11:39 2020]
+Finished job 388.
+185 of 243 steps (76%) done
+[Wed May 13 12:11:41 2020]
+Finished job 502.
+186 of 243 steps (77%) done
+[Wed May 13 12:11:42 2020]
+Finished job 511.
+187 of 243 steps (77%) done
+[Wed May 13 12:12:26 2020]
+Finished job 374.
+188 of 243 steps (77%) done
+[Wed May 13 12:14:09 2020]
+Finished job 597.
+189 of 243 steps (78%) done
+[Wed May 13 12:14:09 2020]
+Finished job 483.
+190 of 243 steps (78%) done
+[Wed May 13 12:14:09 2020]
+Finished job 468.
+191 of 243 steps (79%) done
+[Wed May 13 12:14:11 2020]
+Finished job 616.
+192 of 243 steps (79%) done
+[Wed May 13 12:14:11 2020]
+Finished job 428.
+193 of 243 steps (79%) done
+[Wed May 13 12:14:12 2020]
+Finished job 426.
+194 of 243 steps (80%) done
+[Wed May 13 12:14:54 2020]
+Finished job 371.
+195 of 243 steps (80%) done
+[Wed May 13 12:15:47 2020]
+Finished job 549.
+196 of 243 steps (81%) done
+[Wed May 13 12:16:29 2020]
+Finished job 411.
+197 of 243 steps (81%) done
+[Wed May 13 12:16:32 2020]
+Finished job 615.
+198 of 243 steps (81%) done
+[Wed May 13 12:17:14 2020]
+Finished job 364.
+199 of 243 steps (82%) done
+[Wed May 13 12:17:25 2020]
+Finished job 430.
+200 of 243 steps (82%) done
+[Wed May 13 12:17:25 2020]
+Finished job 498.
+201 of 243 steps (83%) done
+[Wed May 13 12:18:04 2020]
+Finished job 601.
+202 of 243 steps (83%) done
+[Wed May 13 12:18:07 2020]
+Finished job 448.
+203 of 243 steps (84%) done
+[Wed May 13 12:18:17 2020]
+Finished job 410.
+204 of 243 steps (84%) done
+[Wed May 13 12:18:33 2020]
+Finished job 492.
+205 of 243 steps (84%) done
+[Wed May 13 12:19:09 2020]
+Finished job 540.
+206 of 243 steps (85%) done
+[Wed May 13 12:20:01 2020]
+Finished job 507.
+207 of 243 steps (85%) done
+[Wed May 13 12:20:54 2020]
+Finished job 415.
+208 of 243 steps (86%) done
+[Wed May 13 12:20:56 2020]
+Finished job 573.
+209 of 243 steps (86%) done
+[Wed May 13 12:20:56 2020]
+Finished job 564.
+210 of 243 steps (86%) done
+[Wed May 13 12:21:09 2020]
+Finished job 474.
+211 of 243 steps (87%) done
+[Wed May 13 12:21:55 2020]
+Finished job 431.
+212 of 243 steps (87%) done
+[Wed May 13 12:22:07 2020]
+Finished job 440.
+213 of 243 steps (88%) done
+[Wed May 13 12:22:21 2020]
+Finished job 558.
+214 of 243 steps (88%) done
+[Wed May 13 12:22:55 2020]
+Finished job 548.
+215 of 243 steps (88%) done
+[Wed May 13 12:22:57 2020]
+Finished job 536.
+216 of 243 steps (89%) done
+[Wed May 13 12:22:57 2020]
+Finished job 385.
+217 of 243 steps (89%) done
+[Wed May 13 12:23:08 2020]
+Finished job 457.
+218 of 243 steps (90%) done
+[Wed May 13 12:24:55 2020]
+Finished job 544.
+219 of 243 steps (90%) done
+[Wed May 13 12:24:55 2020]
+Finished job 369.
+220 of 243 steps (91%) done
+[Wed May 13 12:24:55 2020]
+Finished job 394.
+221 of 243 steps (91%) done
+[Wed May 13 12:24:56 2020]
+Finished job 543.
+222 of 243 steps (91%) done
+[Wed May 13 12:24:56 2020]
+Finished job 482.
+223 of 243 steps (92%) done
+[Wed May 13 12:25:41 2020]
+Finished job 496.
+224 of 243 steps (92%) done
+[Wed May 13 12:25:51 2020]
+Finished job 574.
+225 of 243 steps (93%) done
+[Wed May 13 12:25:52 2020]
+Finished job 619.
+226 of 243 steps (93%) done
+[Wed May 13 12:25:52 2020]
+Finished job 560.
+227 of 243 steps (93%) done
+[Wed May 13 12:25:53 2020]
+Finished job 591.
+228 of 243 steps (94%) done
+[Wed May 13 12:26:25 2020]
+Finished job 494.
+229 of 243 steps (94%) done
+
+[Wed May 13 12:26:25 2020]
+rule generate_bw_cluster_age_rep_xml:
+    input: HT/bigWig.cluster_age_rep/HT.metacell_1.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_1.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_1.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_1.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_1.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_1.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_2.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_2.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_2.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_2.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_2.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_2.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_3.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_3.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_3.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_3.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_3.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_3.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_4.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_4.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_4.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_4.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_4.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_4.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_5.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_5.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_5.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_5.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_5.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_5.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_6.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_6.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_6.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_6.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_6.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_6.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_7.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_7.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_7.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_7.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_7.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_7.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_8.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_8.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_8.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_8.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_8.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_8.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_9.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_9.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_9.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_9.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_9.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_9.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_10.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_10.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_10.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_10.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_10.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_10.18.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_11.03.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_11.03.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_11.10.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_11.10.rep2.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_11.18.rep1.sorted.rpkm.bw, HT/bigWig.cluster_age_rep/HT.metacell_11.18.rep2.sorted.rpkm.bw
+    output: HT/bigWig.cluster_age_rep/HT.bw.xml
+    jobid: 11
+    wildcards: tissue=HT
+
+cd HT/bigWig.cluster_age_rep/ &&python ~/software/github/seq-min-scripts/make_IGV_session.py mm10 http://renlab.sdsc.edu/yanxiao/mouse_aging/analysis/snapATAC/HT/bigWig.cluster_age_rep HT.bw.xml
+[Wed May 13 12:26:25 2020]
+Finished job 379.
+230 of 243 steps (95%) done
+Submitted job 11 with external jobid '21755333.tscc-mgr7.local'.
+[Wed May 13 12:28:26 2020]
+Finished job 569.
+231 of 243 steps (95%) done
+[Wed May 13 12:28:26 2020]
+Finished job 363.
+232 of 243 steps (95%) done
+[Wed May 13 12:28:26 2020]
+Finished job 580.
+233 of 243 steps (96%) done
+[Wed May 13 12:28:26 2020]
+Finished job 435.
+234 of 243 steps (96%) done
+[Wed May 13 12:28:26 2020]
+Finished job 449.
+235 of 243 steps (97%) done
+[Wed May 13 12:29:06 2020]
+Finished job 11.
+236 of 243 steps (97%) done
+[Wed May 13 12:29:36 2020]
+Finished job 599.
+237 of 243 steps (98%) done
+[Wed May 13 12:29:36 2020]
+Finished job 620.
+238 of 243 steps (98%) done
+[Wed May 13 12:30:06 2020]
+Finished job 557.
+239 of 243 steps (98%) done
+
+[Wed May 13 12:30:06 2020]
+rule generate_bw_cluster_age_rep_xml:
+    input: LM/bigWig.cluster_age_rep/LM.metacell_1.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_1.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_1.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_1.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_1.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_1.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_2.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_2.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_2.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_2.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_2.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_2.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_3.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_3.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_3.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_3.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_3.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_3.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_4.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_4.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_4.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_4.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_4.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_4.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_5.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_5.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_5.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_5.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_5.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_5.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_6.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_6.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_6.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_6.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_6.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_6.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_7.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_7.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_7.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_7.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_7.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_7.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_8.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_8.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_8.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_8.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_8.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_8.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_9.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_9.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_9.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_9.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_9.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_9.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_10.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_10.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_10.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_10.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_10.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_10.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_11.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_11.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_11.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_11.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_11.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_11.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_12.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_12.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_12.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_12.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_12.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_12.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_13.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_13.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_13.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_13.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_13.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_13.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_14.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_14.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_14.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_14.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_14.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_14.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_15.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_15.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_15.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_15.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_15.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_15.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_16.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_16.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_16.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_16.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_16.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_16.18.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_17.03.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_17.03.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_17.10.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_17.10.rep2.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_17.18.rep1.sorted.rpkm.bw, LM/bigWig.cluster_age_rep/LM.metacell_17.18.rep2.sorted.rpkm.bw
+    output: LM/bigWig.cluster_age_rep/LM.bw.xml
+    jobid: 12
+    wildcards: tissue=LM
+
+cd LM/bigWig.cluster_age_rep/ &&python ~/software/github/seq-min-scripts/make_IGV_session.py mm10 http://renlab.sdsc.edu/yanxiao/mouse_aging/analysis/snapATAC/LM/bigWig.cluster_age_rep LM.bw.xml
+Submitted job 12 with external jobid '21755341.tscc-mgr7.local'.
+[Wed May 13 12:32:06 2020]
+Finished job 12.
+240 of 243 steps (99%) done
+Exiting because a job execution failed. Look above for error message
+Complete log: /projects/ps-renlab/yanxiao/projects/mouse_aging/scripts/snapATAC/.snakemake/log/2020-05-13T105257.891937.snakemake.log

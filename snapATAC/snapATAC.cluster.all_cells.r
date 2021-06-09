@@ -147,7 +147,7 @@ write.table(outmetamx, outmetaf, row.names=F, col.names=T, sep="\t", quote=F)
 outfname = paste(outF,params, ".cluster.RData",sep="")
 save(x.sp, file=outfname)
 
-genes = read.table("gencode.vM16.gene.bed")
+genes = read.table("../../annotations/mm10.gencode.vM16.gene.bed")
 genes.gr = GRanges(genes[,1],
     IRanges(genes[,2], genes[,3]), name=genes[,4]
      );

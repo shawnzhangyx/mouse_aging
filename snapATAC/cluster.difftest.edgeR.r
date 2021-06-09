@@ -56,7 +56,8 @@ write.csv(out, paste0("../age_diff_edgeR.snap/",cl,".edger.txt"))
 for (cl in 1:max_cluster) {
   print(cl)
   tmp = read.csv(paste0("../age_diff_edgeR.snap/",cl,".edger.txt"))
-  sig = tmp[which(tmp$PValue<0.001),]
+  sig = tmp[which(tmp$PValue<0.01),]
+#  sig = tmp[which(tmp$PValue< quantile(tmp$PValue,0.01)),]
   chr= sub("(chr.*):(.*)-(.*)","\\1",sig$X)
   start = sub("(chr.*):(.*)-(.*)","\\2",sig$X)
   end = sub("(chr.*):(.*)-(.*)","\\3",sig$X)

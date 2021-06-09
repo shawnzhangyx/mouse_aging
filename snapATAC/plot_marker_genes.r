@@ -7,7 +7,7 @@ setwd("../../analysis/snapATAC/DH/snapFiles/")
 
 load("DH.pool.snapATAC.Frag500.TSS10.AllCells.seed1.dimPC20.K20.res0.7.harmony.cluster.RData")
 
-genes = read.table("../../../../scripts/snapATAC/gencode.vM16.gene.bed")
+genes = read.table("../../../../annotations/mm10.gencode.vM16.gene.bed")
 genes.gr = GRanges(genes[,1], 
     IRanges(genes[,2], genes[,3]), name=genes[,4]
      );

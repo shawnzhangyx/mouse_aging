@@ -1,4 +1,6 @@
-setwd("../../analysis/snapATAC/DH/age_diff_edgeR.snap/motif.homer")
+tissue=commandArgs(trailing=T)[1]
+
+setwd(paste0("../../analysis/snapATAC/",tissue,"/age_diff_edgeR.snap/motif.homer"))
 
 files = list.files(pattern = "knownResults.txt",full.names=T,recursive=T)
 

@@ -5,7 +5,7 @@ server=$(hostname)
 rule=$1  ## first argument specific rules to run
 
 if [ $server == "silencer.sdsc.edu" ]; then
-  snakemake --snakefile Snakefile_generate_bamBigWig $rule -j 20 
+  snakemake --snakefile Snakefile_generate_bamBigWig $rule -j 30 
 elif [ $server == "tscc-login1.sdsc.edu" ] || [ $server == "tscc-login2.sdsc.edu" ]; then
   snakemake $rule --snakefile Snakefile_generate_bamBigWig -p  -k -j 1000 --ri \
   --cluster "qsub -l nodes=1:ppn={threads} -N {rule} -q hotel -o pbslog/{rule}.{params.pbsName}.pbs.out -e pbslog/{rule}.{params.pbsName}.pbs.err" \

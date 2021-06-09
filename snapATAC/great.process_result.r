@@ -1,4 +1,5 @@
-setwd("../../analysis/snapATAC/DH/age_diff_edgeR.snap/")
+tissue=commandArgs(trailing=T)[1]
+setwd(paste0("../../analysis/snapATAC/",tissue,"/age_diff_edgeR.snap/"))
 
 files = list.files(path="great_chipseq",pattern = "*great.red.tsv",full.names=T,recursive=T)
 
@@ -12,6 +13,7 @@ for (file in files){
   tab = read.csv(text=tmp,sep='\t',nrows=length(tmp),stringsAsFactors=F,skip=3)
 
   gobp = tab[which(tab$X..Ontology=="GO Biological Process"),]
+  if (length(gobp) <1) { next }
   gobp_red = gobp
   gobp_red = gobp_red[which(gobp_red$TotalGenes>5  & gobp_red$RegionFoldEnrich>=1.5 & gobp_red$HyperFdrQ < 0.1),]
 

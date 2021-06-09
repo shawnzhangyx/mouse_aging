@@ -12,7 +12,7 @@ def get_rank(tissue):
   f = pd.read_table(tissue+"/"+tissue+".pool.barcode.meta_info.txt")
   return np.max(f['cluster'])
 
-tissues=["DH"]
+tissues=["DH","FC","LM","HT","BM"]
 #tissues=["FC"]
 #age_rep=["03_rep1","10_rep1","18_rep1","03_rep2","10_rep2","18_rep2"]
 AGES = ["03","10","18"]
@@ -29,7 +29,9 @@ rule require_files:
     expand("{tissue}/bigWig.cluster_age/{tissue}.bw.xml",tissue=tissues),
     expand("{tissue}/bigWig.cluster_age_rep/{tissue}.bw.xml",tissue=tissues),
     expand("{tissue}/{tissue}.peaks.counts",tissue=tissues),
-    expand("{tissue}/{tissue}.promoters.counts",tissue=tissues)
+    expand("{tissue}/{tissue}.promoters.counts",tissue=tissues),
+    expand("{tissue}/peak.cluster/{tissue}.peak_summary.txt",tissue=tissues)
+
 
 
 
@@ -45,7 +47,7 @@ rule count_reads:
   params:
     pbsName=lambda wildcards: wildcards.tissue
   shell:
-    "featureCounts -a ../../data/snATAC/peaks/{wildcards.tissue}_summits.ext1k.saf -o {output} {input} -F SAF -T {threads} -O "
+    "featureCounts -a ../../data/snATAC/peaks/{wildcards.tissue}_summits.ext1k.filter_highSignal_repeats.saf -o {output} {input} -F SAF -T {threads} -O "
 
 
 rule count_reads_prom:
@@ -164,27 +166,28 @@ rule merge_bam_cluster_age:
     "samtools merge -f {output} {input}"
 
 
-#rule split_bam_file:
-#  output:
-#      dynamic(expand("{{tissue}}/bam.cluster_age_rep/{{tissue}}.metacell_{{rank}}.{age}.{rep}.bam",
-#      age=AGES,rep=REPS))
-#    #lambda wildcards: expand(wildcards.tissue+"/bam.cluster_age_rep/"+
-#    #wildcards.tissue+".metacell_{rank}.{age}.{rep}.bam",
-#    #rank=list(range(1,ranks[wildcards.tissue]+1)),age=AGES,rep=REPS)
-#  input:
-#    "{tissue}/{tissue}.pooled.barcode.cluster.stage.rep.txt"
-#  threads: 30 
-#  params:
-#    pbsName=lambda wildcards: wildcards.tissue
-#  shell:
-#    '''python ../../scripts/snapATAC/split_bam_files.py \
-#    --tissue {wildcards.tissue} \
-#    --bam-prefix ../../data/snATAC/bam.filter/  \
-#    --bam-suffix .filter.bam \
-#    --statH {input} \
-#    -o {wildcards.tissue}/bam.cluster_age_rep/{wildcards.tissue} \
-#    -p {threads} '''
+rule callpeaks: 
+  input: 
+    "{tissue}/bam.cluster/{tissue}.metacell_{cluster}.bam"
+  output: 
+    "{tissue}/peak.cluster/{tissue}.metacell_{cluster}_peaks.narrowPeak"
+  threads: 1
+  params: 
+    pbsName=lambda wildcards: wildcards.tissue+"."+wildcards.cluster
+  shell:
+    "source activate py27 && macs2 callpeak -t {input} -n {wildcards.tissue}/peak.cluster/{wildcards.tissue}.metacell_{wildcards.cluster} -g mm --keep-dup all;"
 
 
-
+rule generate_peaks_by_tissue:
+  output:
+    "{tissue}/peak.cluster/{tissue}.peak_summary.txt"
+  input:
+    lambda wildcards: expand(wildcards.tissue+"/peak.cluster/"+
+    wildcards.tissue+".metacell_{rank}_peaks.narrowPeak",
+    rank=list(range(1,ranks[wildcards.tissue]+1)))
+  threads: 1
+  params:
+    pbsName=lambda wildcards: wildcards.tissue
+  shell:
+    "wc -l {input} > {output}"
 
