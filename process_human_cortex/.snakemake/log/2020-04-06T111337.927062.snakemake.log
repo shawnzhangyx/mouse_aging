@@ -1,8 +1,0 @@
-localrules directive specifies rules that are not present in the Snakefile:
-	combine_demulti_fastq_files
-	require_demulti_fastq_files
-
-Building DAG of jobs...
-MissingInputException in line 200 of /mnt/tscc/yanxiao/projects/mouse_aging/scripts/process_human_data/Snakefile:
-Missing input files for rule count_bam_barcode:
-fastq.demultiplex/FC_30y_rep1/FC_30y_rep1.bam
