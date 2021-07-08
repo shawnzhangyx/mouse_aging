@@ -59,21 +59,38 @@ Rscript cluster.difftest.edgeR.r FC FC.pool.snapATAC.Frag500.TSS10.Landmark40k.s
 Rscript cluster.difftest.edgeR.r HT HT.pool.snapATAC.Frag500.TSS7.AllCells.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
 Rscript cluster.difftest.edgeR.r LM LM.pool.snapATAC.Frag500.TSS7.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
 Rscript cluster.difftest.edgeR.r BM BM.pool.snapATAC.Frag500.TSS10.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
+# Differential peak analysis with sample swap 
+Rscript cluster.difftest.edgeR.control.r DH DH.pool.snapATAC.Frag500.TSS10.AllCells.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
+Rscript cluster.difftest.edgeR.control.r FC FC.pool.snapATAC.Frag500.TSS10.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
+Rscript cluster.difftest.edgeR.control.r HT HT.pool.snapATAC.Frag500.TSS7.AllCells.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
+Rscript cluster.difftest.edgeR.control.r LM LM.pool.snapATAC.Frag500.TSS7.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
+Rscript cluster.difftest.edgeR.control.r BM BM.pool.snapATAC.Frag500.TSS10.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
 
-## combine all up and down regulated peaks during aging. 
-cat ../../analysis/snapATAC/*/age_diff_edgeR.snap/*.up.bed > ../../analysis/snapATAC/all_celltypes/allcelltypes.age_up.peaks.bed
-cat ../../analysis/snapATAC/*/age_diff_edgeR.snap/*.down.bed > ../../analysis/snapATAC/all_celltypes/allcelltypes.age_down.peaks.bed
+# 
+Rscript cluster.difftest.edgeR.compare_control.r DH $(get_rank DH)
+for tissue in  HT LM FC BM; do 
+mkdir -p ../../analysis/snapATAC/$tissue/age_diff_edgeR.case_control/
+Rscript cluster.difftest.edgeR.compare_control.r $tissue $(get_rank $tissue) &
+done
 
+for tissue in DH HT LM FC BM; do
+Rscript test.cluster.difftest.edgeR.case_control.cutoff.r $tissue $(get_rank $tissue)
+done
 
-
+## Run PePr 
+for tissue in DH HT LM FC BM; do
+rank=$(get_rank $tissue)
+bash -x diffPeak.pepr.sh $tissue $rank 
+wait
+done
 
 ## see if there is any correlation between number of diff cluster and number of cells. 
 #Rscript plot_num_diff_peak_vs_num_cells_per_cluster.r 
 
 ## find motifs in each set of differential peaks 
-for tissue in FC HT LM BM; do 
+for tissue in DH FC HT LM BM; do 
 cd ../../analysis/snapATAC/$tissue/age_diff_edgeR.snap/
-mkdir -p motif.homer motif.homer.bg
+mkdir -p motif.homer motif.homer.bg motif.homer.csbg
 for file in *{up,down}.bed; do 
   findMotifsGenome.pl $file mm10 motif.homer/${file/.bed/.homer} -nomotif &
 done 
@@ -83,6 +100,13 @@ wait
 for file in *{up,down}.bed; do
 findMotifsGenome.pl $file mm10 motif.homer.bg/${file/.bed/.homer} -nomotif -bg ../../../../data/snATAC/peaks/${tissue}_summits.ext1k.bed &
 done
+wait 
+
+## use cell type specific peaks as the background
+for file in *{up,down}.bed; do
+findMotifsGenome.pl $file mm10 motif.homer.csbg/${file/.bed/.homer} -nomotif -bg ../peak.cluster/${tissue}.metacell_${file/.*.bed/}_peaks.narrowPeak &
+done
+
 wait 
 cd -
 Rscript combine_de_peak_motif.results.r $tissue
@@ -102,10 +126,4 @@ cd -
 Rscript great.process_result.r $tissue
 done 
 
-########## All celltype processing #######
-mkdir ../../analysis/snapATAC/all_celltypes
-cd ../../analysis/snapATAC/
-bams=*/bam.cluster/*.sorted.bam
-featureCounts -a ../../data/snATAC/peaks/all_tissue.merged.peaks.saf -o all_celltypes/all_celltypes.counts $bams -F SAF -T 20 -O
-cd -
-Rscript all_celltype.clustering.r
+

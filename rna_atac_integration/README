@@ -1,0 +1,9 @@
+# gene to peak table
+/mnt/tscc/lamaral/projects/aging_hippocampus_RNA/analysis/final_pairs_table_concat.txt
+
+
+# pearson
+# spearman
+# weight regression
+/mnt/tscc/lamaral/projects/aging_hippocampus_RNA/analysis/weighted_regression.txt
+

@@ -154,6 +154,18 @@ rule merge_bam_cluster:
   shell: 
     "samtools merge -f {output} {input}"
 
+rule merge_bam_cluster_rep:
+  output:
+    "{tissue}/bam.cluster_rep/{tissue}.metacell_{cluster}.{rep}.bam"
+  input:
+    expand("{{tissue}}/bam.cluster_age_rep/{{tissue}}.metacell_{{cluster}}.{age}.{{rep}}.bam",age=AGES)
+  threads: 1
+  params:
+    pbsName=lambda wildcards: wildcards.tissue+"."+wildcards.cluster
+  shell:
+    "samtools merge -f {output} {input}"
+
+
 rule merge_bam_cluster_age:
   output:
     "{tissue}/bam.cluster_age/{tissue}.metacell_{cluster}.{age}.bam"
@@ -177,17 +189,53 @@ rule callpeaks:
   shell:
     "source activate py27 && macs2 callpeak -t {input} -n {wildcards.tissue}/peak.cluster/{wildcards.tissue}.metacell_{wildcards.cluster} -g mm --keep-dup all;"
 
+rule callpeaks_rep:
+  input:
+    "{tissue}/bam.cluster_rep/{tissue}.metacell_{cluster}.{rep}.bam"
+  output:
+    "{tissue}/peak.cluster/{tissue}.metacell_{cluster}_{rep}_peaks.narrowPeak"
+  threads: 1
+  params:
+    pbsName=lambda wildcards: wildcards.tissue+"."+wildcards.cluster
+  shell:
+    "source activate py27 && macs2 callpeak -t {input} -n {wildcards.tissue}/peak.cluster/{wildcards.tissue}.metacell_{wildcards.cluster}_{wildcards.rep} -g mm --keep-dup all --nomodel --extsize 147;"
+
+rule find_replicated_peaks:
+  input: 
+    merged = "{tissue}/peak.cluster/{tissue}.metacell_{cluster}_peaks.narrowPeak",
+    rep1 = "{tissue}/peak.cluster/{tissue}.metacell_{cluster}_rep1_peaks.narrowPeak",
+    rep2 = "{tissue}/peak.cluster/{tissue}.metacell_{cluster}_rep2_peaks.narrowPeak"
+  output: 
+    "{tissue}/peak.cluster/{tissue}.metacell_{cluster}.replicated_peaks.narrowPeak"
+  threads: 1
+  params: 
+    pbsName=lambda wildcards: wildcards.tissue+"."+wildcards.cluster
+  shell:
+    "intersectBed -a {input.merged} -b {input.rep1} -f 0.5 -F 0.5 -u > {output};"
+    "intersectBed -a {input.merged} -b {input.rep1} -f 0.5 -F 0.5 -v > {wildcards.tissue}/peak.cluster/{wildcards.tissue}.metacell_{wildcards.cluster}_no_ovlp.txt;"
+    "intersectBed -a {wildcards.tissue}/peak.cluster/{wildcards.tissue}.metacell_{wildcards.cluster}_no_ovlp.txt -b {input.rep2} -f 0.5 -F 0.5 -u >> {output};"
+    "rm {wildcards.tissue}/peak.cluster/{wildcards.tissue}.metacell_{wildcards.cluster}_no_ovlp.txt" 
+
+
+
 
 rule generate_peaks_by_tissue:
   output:
     "{tissue}/peak.cluster/{tissue}.peak_summary.txt"
   input:
-    lambda wildcards: expand(wildcards.tissue+"/peak.cluster/"+
+    cluster=lambda wildcards: expand(wildcards.tissue+"/peak.cluster/"+
     wildcards.tissue+".metacell_{rank}_peaks.narrowPeak",
-    rank=list(range(1,ranks[wildcards.tissue]+1)))
+    rank=list(range(1,ranks[wildcards.tissue]+1))), 
+    cluster_rep = lambda wildcards: expand(wildcards.tissue+"/peak.cluster/"+
+    wildcards.tissue+".metacell_{rank}_{rep}_peaks.narrowPeak",
+    rank=list(range(1,ranks[wildcards.tissue]+1)),rep=["rep1","rep2"] ),
+    replicated=lambda wildcards: expand(wildcards.tissue+"/peak.cluster/"+
+    wildcards.tissue+".metacell_{rank}.replicated_peaks.narrowPeak",
+    rank=list(range(1,ranks[wildcards.tissue]+1))),
   threads: 1
   params:
     pbsName=lambda wildcards: wildcards.tissue
   shell:
-    "wc -l {input} > {output}"
+    "wc -l {input.cluster} {input.cluster_rep} {input.replicated} > {output}"
+
 

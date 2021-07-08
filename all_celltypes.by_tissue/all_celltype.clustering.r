@@ -37,12 +37,14 @@ hc.sp = hclust(d=as.dist(1-dist.sp))
 dist.log = cor(log.cpm)
 hc.log = hclust(d=as.dist(1-dist.log))
 
+write.csv(dist.sp,"Spearman.correlation.celltypes.csv")
 
-pdf("all_celltypes.hierarchical_clustering.pdf",width=10,height=15)
+write.table(rownames(dist.sp)[hc.sp$order],"Spearman.clustering.celltypes.ordered.txt",quote=F,col.names=F,row.names=F)
+
+pdf("all_celltypes.hierarchical_clustering.pdf",width=6,height=15)
 par(mar=c(2,10,2,10))
 plot(as.dendrogram(hc.sp),horiz=T,main="Spearman")
-plot(as.dendrogram(hc.log),horiz=T,main="log.Cpm")
-
+#plot(as.dendrogram(hc.log),horiz=T,main="log.Cpm")
 dev.off()
 
 #library(pheatmap)

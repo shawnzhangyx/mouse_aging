@@ -20,8 +20,10 @@ rownames(out)= 1:nrow(out)
 
 meta =read.delim("../../aging_share/figures/celltype_annotation.txt",stringsAsFactors=F)
 out$celltype = paste0(meta$Tissue,".",meta$Name)[match(paste(out$tissue,out$cluster),paste(meta$Tissue,meta$Cluster))]
+out = out[-which(out$celltype %in% paste0(meta$Tissue,".",meta$Name)[is.na(meta$Clade)]),]
 
-up = out[which(out$category=="up" & out$q.value..Benjamini.<0.1),]
+
+up = out[which(out$category=="up" & out$q.value..Benjamini.<0.05),]
 
 #up$celltype = paste(up$tissue,up$cluster)
 up = up[,c("celltype","Motif.Name","q.value..Benjamini.")]
@@ -30,15 +32,21 @@ rownames(reup) = reup$celltype
 colnames(reup) = sub("q.value..Benjamini..(.*?)\\/.*","\\1",colnames(reup))
 reup$celltype=NULL
 reup[is.na(reup)] = 1
-reup.log = -log10(reup+0.0001)
+#reup = reup[,which(colSums(reup<0.05) >1)]
+
+reup.log = -log10(reup+1e-5)
 
 library(pheatmap)
-pdf("all_celltypes/all_celltypes.Motif.up.pdf", width=20,height=10)
+pdf("all_celltypes/all_celltypes.Motif.up.bg.pdf", width=35,height=15)
 #pheatmap(reup.log)
-pheatmap(reup.log,clustering_distance_cols="correlation",clustering_distance_rows="correlation")
+pheatmap(reup.log,
+#  clustering_distance_cols="correlation", 
+#clustering_method = "single"
+#  clustering_distance_rows="correlation"
+)
 dev.off()
 
-down = out[which(out$category=="down" & out$q.value..Benjamini.<0.1),]
+down = out[which(out$category=="down" & out$q.value..Benjamini.<0.05),]
 
 #down$celltype = paste(down$tissue,down$cluster)
 down = down[,c("celltype","Motif.Name","q.value..Benjamini.")]
@@ -47,12 +55,17 @@ rownames(redown) = redown$celltype
 colnames(redown) = sub("q.value..Benjamini..(.*?)\\/.*","\\1",colnames(redown))
 redown$celltype=NULL
 redown[is.na(redown)] = 1
-redown.log = -log10(redown+0.0001)
+#redown = redown[,which(colSums(redown<0.05) >1)]
+
+redown.log = -log10(redown+1e-5)
 
 library(pheatmap)
-pdf("all_celltypes/all_celltypes.Motif.down.pdf", width=20,height=10)
+pdf("all_celltypes/all_celltypes.Motif.down.bg.pdf", width=35,height=15)
 #pheatmap(redown.log)
-pheatmap(redown.log,clustering_distance_cols="correlation",clustering_distance_rows="correlation")
+pheatmap(redown.log,
+  #clustering_distance_cols="correlation",
+  #clustering_distance_rows="correlation"
+  )
 dev.off()
 
 
