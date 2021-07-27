@@ -11,7 +11,7 @@ for (file in files){
   tissue = sub("\\.\\/(.*?)\\/.*","\\1",file)
   cluster = sub(".*\\/(.*)\\.(.*)\\.homer.*","\\1",file)
   category = sub(".*\\/(.*)\\.(.*)\\.homer.*","\\2",file)
-  tmp = read.delim(file)
+  tmp = read.delim(file)[1:50,]
   dat[[file]] = data.frame(tissue=tissue,cluster=cluster,category=category,tmp[,c(1,2,3,5)])
   }
 
@@ -22,6 +22,10 @@ meta =read.delim("../../aging_share/figures/celltype_annotation.txt",stringsAsFa
 out$celltype = paste0(meta$Tissue,".",meta$Name)[match(paste(out$tissue,out$cluster),paste(meta$Tissue,meta$Cluster))]
 out = out[-which(out$celltype %in% paste0(meta$Tissue,".",meta$Name)[is.na(meta$Clade)]),]
 
+outp = out[,c(1,2,8,3,4,5,6,7)]
+outp = outp[which(outp$P.value<1),]
+
+write.csv(outp, "all_celltypes/all_celltypes.motifs.csv",row.names=F)
 
 up = out[which(out$category=="up" & out$q.value..Benjamini.<0.05),]
 

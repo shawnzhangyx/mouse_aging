@@ -31,7 +31,12 @@ out = do.call(rbind,dat)
 rownames(out)= 1:nrow(out)
 
 meta =read.delim("../../aging_share/figures/celltype_annotation.txt",stringsAsFactors=F)
-out$celltype = paste0(meta$Tissue,".",meta$Name)[match(paste(out$tissue,out$cluster),paste(meta$Tissue,meta$Cluster))]
+out$celltype = paste0(meta$Tissue,".",meta$Cluster,".",meta$Name)[match(paste(out$tissue,out$cluster),paste(meta$Tissue,meta$Cluster))]
+
+outp = out[,c(1,2,11,3,4,5,6,10)]
+rownames(outp) = NULL
+write.csv(outp, "all_celltypes/all_celltypes.great.gobp.csv",row.names=F)
+
 
 up = out[which(out$category=="up" & out$BinomFdrQ<0.05 & 
           out$HyperFdrQ<0.01 & out$RegionFoldEnrich>=2),]

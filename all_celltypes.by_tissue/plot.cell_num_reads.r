@@ -26,8 +26,23 @@ cellnum = data.frame(table(dat$ct))
 
 cellnum = cellnum[match(ct,cellnum$Var1),]
 
+## num of differential peaks per cluster
+dat_list = list()
+for (  tissue in c("DH","FC","HT","LM","BM") ){
+  fs = list.files(pattern="edger.txt",path=paste0("../../../analysis/snapATAC/",tissue,"/age_diff_edgeR.snap"),full.names=T)
+  for ( n in 1:length(fs)) {
+    diff = data.frame(fread(fs[n]))
+    cl = as.numeric(sub(".*snap\\/(.*).edger.txt","\\1",fs[n]))
+    len = length(which(diff$PValue < 0.01))
+    dat_list[[length(dat_list)+1]] = data.frame(tissue,cl,len)
+}
+}
+diff = do.call(rbind,dat_list)
+diffnum = diff$len[match(ct, paste0(diff$tissue,".",diff$cl))]
+
+
 # combine the columns. 
-a = data.frame(od=factor(od,levels=od),reads=reads$reads,cellnum = cellnum$Freq)
+a = data.frame(od=factor(od,levels=od),reads=reads$reads,cellnum = cellnum$Freq,diffnum = diffnum)
 
 
 g1 = 
@@ -40,13 +55,18 @@ g2 =
   ggplot(a) + geom_col(aes(x=od,y=reads/1e6)) + 
   geom_text(aes(x=od,y=reads/1e6,label=paste0(format(reads/1e6,digits=2),"M")),hjust=-0.2) +
   coord_flip() + scale_y_continuous(name="reads(million)",limits=c(0,1e2))+
-  theme_bw()# + 
-#  theme(axis.text.y = element_blank())
+  theme_bw()
+
+g3 =
+  ggplot(a) + geom_col(aes(x=od,y=diffnum)) +
+  geom_text(aes(x=od,y=diffnum,label=diffnum),hjust=-0.2) +
+  coord_flip() + ylim(0,5000) +
+  theme_bw()
 
 
 library(gridExtra)
 pdf("all_celltypes.cell_num_reads.pdf",width=10,height=15)
-grid.arrange(g1,g2,nrow=1)
+grid.arrange(g1,g2,g3,nrow=1)
 dev.off()
 
 

@@ -26,6 +26,6 @@ foreach(i=celltypes) %dopar% {
 #,verbose = FALSE)
 
   head(x = f, n = 15)
-  write.table(f[which(f$p_val<1.1),], paste(i,"_03vs18_nocutoff.txt", sep = ""), sep = "\t", quote = F)
+  write.table(f[which(f$p_val<1.1),], paste("RNA_diff/",i,"_03vs18_nocutoff.txt", sep = ""), sep = "\t", quote = F)
 }
 
