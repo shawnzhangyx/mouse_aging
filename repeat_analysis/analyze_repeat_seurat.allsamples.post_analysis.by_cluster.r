@@ -6,7 +6,7 @@ library(gridExtra)
 library(edgeR)
 
 tissue=commandArgs(trailing=T)[1]
-tissue="FC"
+#tissue="FC"
 
 setwd("../../analysis/repeat_analysis/")
 ## read the matrix
@@ -44,27 +44,28 @@ fit_tag = glmFit(y,design)
 
 lrt = glmLRT(fit_tag, contrast =c(-1,0,1))
 fdr = p.adjust(lrt$table$PValue,method="BH")
-out = cbind(cpm(y),lrt$table,fdr)
+out = cbind(lrt$table,fdr)
 out = out[order(out$PValue),]
 out = out[-which(rownames(out) %in% c("Others")),]
-print(c(clu, length(which(out$fdr<0.05))))
+write.csv(out[which(out$PValue<0.05),], paste0(tissue,".",clu,".diff.txt"))
+print(c(clu, length(which(out$PValue<0.05))))
 }
 
 
-ggplotly(ggplot(out) + geom_point(aes(x=`3.DH_03_rep2`, y=`3.DH_18_rep2`,label=rownames(out))) + 
-          geom_abline(intercept=0,slope=1)
-         
-         )
+#ggplotly(ggplot(out) + geom_point(aes(x=`3.DH_03_rep2`, y=`3.DH_18_rep2`,label=rownames(out))) + 
+#          geom_abline(intercept=0,slope=1)
+#         
+#         )
 
 
-mat1 = data.frame(sweep(mat_cluster_sample,2,colSums(mat_cluster_sample),'/'))
-mat1$name = rownames(mat1)
-mat1 = mat1[-which(mat1$name=="Others"),]
+#mat1 = data.frame(sweep(mat_cluster_sample,2,colSums(mat_cluster_sample),'/'))
+#mat1$name = rownames(mat1)
+#mat1 = mat1[-which(mat1$name=="Others"),]
+#
+#g1 = ggplot(mat1, aes(x=X2.DH_03_rep1,y=X11.DH_03_rep1,text=name)) + geom_point() +
+ # geom_abline(intercept=0,slope=1,color='red') + scale_x_log10() +scale_y_log10()
 
-g1 = ggplot(mat1, aes(x=X2.DH_03_rep1,y=X11.DH_03_rep1,text=name)) + geom_point() +
-  geom_abline(intercept=0,slope=1,color='red') + scale_x_log10() +scale_y_log10()
-
-ggplotly(g1)
+#ggplotly(g1)
 
 
 

@@ -12,6 +12,9 @@ bash -x intersect_uniq_bam_w_rep.sh $tissue
 bash -x count2repeat.sh $tissue
 
 ### plot the classes of repeats during aging. 
+for tissue in DH FC LM HT; do 
 Rscript analyze_repeat_seurat.allsamples.r $tissue
-Rscript analyze_repeat_seurat.allsamples.post_analysis.r $tissue
+#Rscript analyze_repeat_seurat.allsamples.post_analysis.r $tissue
+Rscript analyze_repeat_seurat.allsamples.post_analysis.by_cluster.r $tissue
+done
 
