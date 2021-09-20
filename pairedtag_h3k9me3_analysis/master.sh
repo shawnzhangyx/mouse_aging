@@ -13,6 +13,7 @@ bamCoverage -p 30 -e 100 --binSize 25 -b PT_Ageing_DNA_merge_sorted.10.bam -o PT
 
 
 #featureCounts
+cd ../../analysis/paired_tag_h3k9me3 
 awk -v OFS="\t" '{print "peak"NR,$1,$2,$3,"."}' peaks/PT_Ageing_DNA_merge_sorted.10-W5000-G10000-E0.01.scoreisland.bed > peaks/PT_Ageing_DNA_merge_sorted.10-W5000-G10000-E0.01.scoreisland.saf
 
 featureCounts -a peaks/PT_Ageing_DNA_merge_sorted.10-W5000-G10000-E0.01.scoreisland.saf -o SICER-W5000-G10000.read.counts $(ls bam_merge_rep/*.bam) -F SAF -T 16
@@ -20,7 +21,13 @@ featureCounts -a peaks/PT_Ageing_DNA_merge_sorted.10-W5000-G10000-E0.01.scoreisl
 featureCounts -a peaks/PT_Ageing_DNA_merge_sorted.10-W5000-G10000-E0.01.scoreisland.saf -o SICER-W5000-G10000.reps.read.counts $(ls bam_merge/*.bam) -F SAF -T 16
 
 #run differential analysis. 
-process_h3k9me3domain.edger.r
+Rscript process_h3k9me3domain.edger.r
+
+# count RNA reads into h3k9me3 domains and run differential analysis. 
+featureCounts -a peaks/PT_Ageing_DNA_merge_sorted.10-W5000-G10000-E0.01.scoreisland.saf -o SICER-W5000-G10000.FC.RNA.read.counts $(ls /projects/ps-renlab/lamaral/projects/aging_RNA/FC/data/snRNA_deep_2/split_bams/consistent_clusters/*.bam) -F SAF -T 16
+featureCounts -a peaks/PT_Ageing_DNA_merge_sorted.10-W5000-G10000-E0.01.scoreisland.saf -o SICER-W5000-G10000.DH.RNA.read.counts $(ls /projects/ps-renlab/lamaral/projects/aging_RNA/DH/data/split_bams/consistent_clusters/*.bam) -F SAF -T 16 
+# differential analysis of RNAs in these regions. 
+Rscript process_rna_at_h3k9me3domain.edger.r
 
 
 ## test if the down-regulation of H3K9me3 domains are happening in every cells or just in a subset of cells. 

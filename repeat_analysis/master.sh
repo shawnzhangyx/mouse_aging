@@ -3,6 +3,7 @@ bash -x build_repeat_names.sh
 
 
 tissue=DH
+### !!! this is a memory intenstive process. 
 ### intersect the bam file with the repeat annotation. 
 bash -x intersect_uniq_bam_w_rep.sh $tissue
 

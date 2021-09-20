@@ -1,9 +1,9 @@
-link=data.frame(fread("/mnt/tscc/lamaral/projects/aging_RNA/DH/analysis/weighted_regression_500kb+500kb-.txt"))
+link=data.frame(fread("/mnt/tscc/lamaral/projects/aging_RNA/FC/analysis/weighted_regression_500kb+500kb-.txt"))
 #link=data.frame(fread("/mnt/tscc/lamaral/projects/aging_hippocampus_RNA/analysis/weighted_regression.txt"))
 
 colnames(link) = c("Geneid","Chr","Start","End","Peakid","ATAC_Chr","ATAC_start","ATAC_end","slope","adj.r.squared","Pvalue")
 
-setwd("/projects/ps-renlab/yanxiao/projects/mouse_aging/analysis/snapATAC/DH/age_diff_edgeR.snap/")
+setwd("/projects/ps-renlab/yanxiao/projects/mouse_aging/analysis/snapATAC/FC/age_diff_edgeR.snap/")
 
 files = list.files(pattern="*(up|down).bed")
 
@@ -19,15 +19,15 @@ atac$peak = paste(atac$V1,atac$V2,atac$V3)
 atac$cluster = sub("(.*)\\.(.*)\\.bed","\\1",atac$file)
 atac$direction = sub("(.*)\\.(.*)\\.bed","\\2",atac$file)
 
-atacm = read.delim("../../../../aging_share/figures/celltype_annotation.txt")
-atacm = atacm[which(atacm$Tissue=="DH"),]
-atacm$Name = c("Ogc","DG","DG","CA1","DG","Inh","Sub_Ent","Asc","CA23","Mgc","CP","Opc","Endo","Peri","SMC")
-atacm = atacm[-11,]
+atacm = read.delim("../../../../aging_share/figures/celltype_annotation.txt",stringsAsFactors=F)
+atacm = atacm[which(atacm$Tissue=="FC"),]
+#atacm$Name = c("Ogc","DG","DG","CA1","DG","Inh","Sub_Ent","Asc","CA23","Mgc","CP","Opc","Endo","Peri","SMC")
+atacm$Name[1] = "L2-3"
 atac$ct = atacm$Name[match(atac$cluster,atacm$Cluster)]
 
 link$peak = paste(link$ATAC_Chr,link$ATAC_start,link$ATAC_end)
 link$fdr = p.adjust(link$Pvalue,method="BH")
-# only limit to peaks with fdr < 0.05
+# only limit to peaks withfdr < 0.05
 link = link[link$fdr<0.05,]
 
 ## overlap with diff peaks. 
@@ -35,10 +35,9 @@ b = link[which(link$peak %in% atac$peak),]
 peaks = atac[which(atac$peak %in% link$peak),]
 peaks$gene = b$Geneid[match(peaks$peak,b$peak)] # there is possibility that one peak get assigned to multiple gene. 
 
-setwd("/projects/ps-renlab/yanxiao/projects/mouse_aging/analysis/rna_atac_integration")
+setwd("/projects/ps-renlab/lamaral/projects/aging_RNA/FC/analysis/seurat_DE_results/")
 
-
-fs2 = list.files(pattern="3vs18_nocutoff.txt",path="RNA_diff",full.names=T)
+fs2 = list.files(pattern="3vs18_nocutoff.txt",path=".",full.names=T)
 
 dat.list = list()
 
@@ -56,17 +55,17 @@ rna$direction = ifelse(rna$avg_logFC<0,"up","down")
 colnames(rna)[1] = "Geneid"
 genes = unique(rna$Geneid)
 library(Seurat)
-pbmc = readRDS("/projects/ps-renlab/lamaral/projects/aging_RNA/DH/analysis/DH_seurat_rmdoub_filtered.rds")
-meta =read.table("../../scripts/rna_atac_integration/rna_cell_type.consistent.txt",header=T)
-pbmc$celltype = meta$celltype[match(pbmc$seurat_clusters,meta$cluster)]
-pbmc =pbmc[,!is.na(pbmc$celltype)]
-Idents(object = pbmc) <- "celltype"
+#pbmc = readRDS("/projects/ps-renlab/lamaral/projects/aging_RNA/FC/analysis/FC_seurat_rmdoub_filtered.rds")
+#meta =read.table("../../scripts/rna_atac_integration/rna_cell_type.consistent.txt",header=T)
+#pbmc$celltype = meta$celltype[match(pbmc$seurat_clusters,meta$cluster)]
+#pbmc =pbmc[,!is.na(pbmc$celltype)]
+#Idents(object = pbmc) <- "celltype"
 
-dot = DotPlot(pbmc,features=genes)
+#dot = DotPlot(pbmc,features=genes)
 
-dot.data = dot$data
+#dot.data = dot$data
 
-rna$avgRNA = dot.data$avg.exp[match(paste(rna$Geneid,rna$ct), paste(dot.data$features.plot,dot.data$id))]
+#rna$avgRNA = dot.data$avg.exp[match(paste(rna$Geneid,rna$ct), paste(dot.data$features.plot,dot.data$id))]
 
 
 #> table(rna$ct)
@@ -141,16 +140,17 @@ up_out  = do.call(rbind, up_gene_list)
 down_out  = do.call(rbind, down_gene_list)
 #ctrl_out  = do.call(rbind, ctrl_gene_list)
 
-
-pdf("logFC_up_down_peaks.DH.pdf",width=4,height=2)
+setwd("/projects/ps-renlab/yanxiao/projects/mouse_aging/analysis/rna_atac_integration")
+pdf("logFC_up_down_peaks.FC.pdf",width=4,height=2)
 ggplot(up_out) + #geom_boxplot(aes(x=1,y=avg_logFC),outlier.shape=NA) +
   geom_boxplot(data=up_out, aes(x="up",y=-avg_logFC),outlier.shape=NA,width=0.3) + 
   geom_boxplot(data=down_out,aes(x="down",y=-avg_logFC),outlier.shape=NA,width=0.3) + 
   geom_hline(yintercept=0,linetype="dashed") + 
   ylim(-0.3,0.3) + coord_flip() + theme_bw() 
 dev.off()
-write.csv(up_out,"DH.up.out.csv")
-write.csv(down_out,"DH.down.out.csv")
+
+write.csv(up_out,"FC.up.out.csv")
+write.csv(down_out,"FC.down.out.csv")
 
   
 
@@ -174,18 +174,18 @@ mat = matrix(c(dd,du,ud,uu),nrow=2)
 mat
 # col: change in ATAC. row: change in RNA. (down,up)
 #     [,1] [,2]
-# [1,]  133  124
-# [2,]  111  231
+# [1,]  260 233
+# [2,]  325 345
 
 fisher.test(mat)
-# p-value = 0.0000007856
+# p-value = 0.1551
 
 concord.out = do.call(rbind,concord_list)
-colnames(concord.out) = c("peak","gene","rna.fc","rna.pct1","rna.pct2","rna.p.adj","ct","direction","rna.avg","cor.fdr","GenePos","atac.fc","atac.logP")
-concord.out = concord.out[,c(1,2,11,7,8,9,3:6,10,12,13)]
+colnames(concord.out) = c("peak","gene","rna.fc","rna.pct1","rna.pct2","rna.p.adj","ct","direction","cor.fdr","GenePos","atac.fc","atac.logP")
+concord.out = concord.out[,c(1,2,10,7,8,3:6,9,11,12)]
 concord.out$rna.fc = -concord.out$rna.fc
 
-write.table(concord.out,"concordant_changes_in_rna_atac.500kb.DH.txt",row.names=F,quote=F,sep="\t")
+write.table(concord.out,"concordant_changes_in_rna_atac.500kb.FC.txt",row.names=F,quote=F,sep="\t")
 
 
 
