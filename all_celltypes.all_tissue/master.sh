@@ -20,6 +20,8 @@ for i in {1..33}; do
 # merge all peaks
 cat ../../analysis/all_celltypes.all_tissue/peaks/*.narrowPeak |bedtools sort|mergeBed > ../../analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.bed
 cat ../../analysis/all_celltypes.all_tissue/peaks.thresh/*.narrowPeak |bedtools sort|mergeBed > ../../analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.thresh.bed
+intersectBed -a ../../analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.thresh.bed -b ../../annotations/mm10-blacklist.v2.bed -v |grep chrM -v > ../../analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.thresh.filter.bed
+
 
 # overlap with histone marks and CTCF
 
@@ -51,11 +53,11 @@ intersectBed -a control.peaks.thresh.bed \
 Rscript annotate_elements.all_celltypeCluster.r
 cd -
 
-bash ~/software/github/seq-min-scripts/bed_to_saf.sh ../../analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.thresh.bed ../../analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.thresh.saf
+bash ~/software/github/seq-min-scripts/bed_to_saf.sh ../../analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.thresh.filter.bed ../../analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.thresh.filter.saf
 ## count reads to these elements. 
 cd /projects/ps-renlab/lamaral/projects/Aging/all_tissues/split_bams/cluster_bams/
 bams=*.metacell.bam
-featureCounts -a ~/projects/mouse_aging/analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.thresh.saf -o ~/projects/mouse_aging/analysis/all_celltypes.all_tissue/all_celltypes.thresh.counts $bams -F SAF -T 20 -O
+featureCounts -a ~/projects/mouse_aging/analysis/all_celltypes.all_tissue/all_celltypes.merged.peaks.thresh.filter.saf -o ~/projects/mouse_aging/analysis/all_celltypes.all_tissue/all_celltypes.thresh.filter.counts $bams -F SAF -T 20 -O
 cd -
 
 

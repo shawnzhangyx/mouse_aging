@@ -29,6 +29,12 @@ featureCounts -a peaks/PT_Ageing_DNA_merge_sorted.10-W5000-G10000-E0.01.scoreisl
 # differential analysis of RNAs in these regions. 
 Rscript process_rna_at_h3k9me3domain.edger.r
 
+#count ATAC reads into h3k9me3 domains and run differential analysis. 
+featureCounts -a peaks/PT_Ageing_DNA_merge_sorted.10-W5000-G10000-E0.01.scoreisland.saf -o SICER-W5000-G10000.ATAC.read.counts $(ls  /projects/ps-renlab/yanxiao/projects/mouse_aging/analysis/snapATAC/DH/bam.cluster_age_rep/*.sorted.bam) $(ls  /projects/ps-renlab/yanxiao/projects/mouse_aging/analysis/snapATAC/FC/bam.cluster_age_rep/*.sorted.bam) -F SAF -T 16 
+Rscript process_atac_at_h3k9me3domain.edger.r
+
+
+
 
 ## test if the down-regulation of H3K9me3 domains are happening in every cells or just in a subset of cells. 
 

@@ -1,7 +1,8 @@
 library(amap)
 library(edgeR)
+set.seed(1)
 
-mark="all_celltypes.thresh"
+mark="all_celltypes.thresh.filter"
 setwd(paste0("../../analysis/all_celltypes.all_tissue"))
 a=data.frame(fread(paste0(mark,".counts"),skip=1))
 #b=data.frame(fread(paste0(mark,"_ATACpeak.overlaped.bed")))
@@ -65,20 +66,26 @@ norm_ordered2 = norm_ordered[seq(1,nrow(norm_ordered),10),]
 
 melted = melt(norm_ordered)
 melted$cl = km$cluster[order(cluster_ordered)]
+## reorganize the clusters manually. 
+melted$cl = factor(melted$cl, levels=c(26,4,34,5,10,35,9,3,22,25,29,13,24,27,32,21,31,23,30,2,17,33,1,14,16,8,11,12,19,28,18,20,7,15,6))
+melted = melted[order(melted$cl),]
+
 melted$Var1 = factor(melted$Var1,levels=unique(melted$Var1))
 melted$Var2 = factor(melted$Var2,levels=paste0("C",c(1:28,30:33))[hc$order] )
-melted$cl = factor(melted$cl, levels=c(1:35)[order(spike_list)])
-
+#melted$cl = factor(melted$cl, levels=c(1:35)[order(spike_list)])
 
 #system("mkdir H3K9me3_clusters")
 library(viridis)
-png(paste0(mark,"_ATACpeak_clusters.log10.png"),units="in",height=8,width=10,res=300)
+png(paste0(mark,"_ATACpeak_clusters.log10.png"),units="in",height=25,width=30,res=300)
+#pdf(paste0(mark,"_ATACpeak_clusters.log10.pdf"),height=10,width=12)
 ggplot(melted) +geom_tile(aes(x=Var1,y=Var2,fill=value))+
   scale_fill_viridis() +
   geom_point(aes(x=Var1,y=-1,color=factor(cl)))+
+  facet_grid(.~cl,scales="free_x",space="free_x") +
+  theme_bw(base_size=20) + 
   theme(axis.text.x = element_blank(),
-  axis.ticks.x = element_blank())  + 
-  facet_grid(.~cl,scales="free_x",space="free_x")
+  axis.ticks.x = element_blank(),
+  panel.spacing = unit(0, "lines"))
 dev.off()
 
 
