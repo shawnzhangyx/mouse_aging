@@ -26,8 +26,9 @@ outp = out[,c(1,2,8,3,4,5,6,7)]
 outp = outp[which(outp$P.value<1),]
 
 write.csv(outp, "all_celltypes/all_celltypes.motifs.csv",row.names=F)
+write.csv(outp[which(outp$q.value..Benjamini.<0.05),], "all_celltypes/all_celltypes.motifs.q0.05.csv",row.names=F)
 
-up = out[which(out$category=="up" & out$q.value..Benjamini.<0.05),]
+up = outp[which(outp$category=="up" & outp$q.value..Benjamini.<0.05),]
 
 #up$celltype = paste(up$tissue,up$cluster)
 up = up[,c("celltype","Motif.Name","q.value..Benjamini.")]
@@ -50,7 +51,7 @@ pheatmap(reup.log,
 )
 dev.off()
 
-down = out[which(out$category=="down" & out$q.value..Benjamini.<0.05),]
+down = outp[which(outp$category=="down" & outp$q.value..Benjamini.<0.05),]
 
 #down$celltype = paste(down$tissue,down$cluster)
 down = down[,c("celltype","Motif.Name","q.value..Benjamini.")]
@@ -72,4 +73,18 @@ pheatmap(redown.log,
   )
 dev.off()
 
+# up 
+up.cnt = table(up$Motif.Name)
+up.agg = aggregate(celltype~Motif.Name,up,function(vec){paste(vec,collapse=",")})
+up.agg$count = up.cnt[match(up.agg$Motif.Name, names(up.cnt))]
+up.agg = up.agg[order(-up.agg$count),]
+
+# down 
+down.cnt = table(down$Motif.Name)
+down.agg = aggregate(celltype~Motif.Name,down,function(vec){paste(vec,collapse=",")})
+down.agg$count = down.cnt[match(down.agg$Motif.Name, names(down.cnt))]
+down.agg = down.agg[order(-down.agg$count),]
+
+write.csv(up.agg,"frequency_up_Motifs.csv")
+write.csv(down.agg,"frequency_down_Motifs.csv")
 

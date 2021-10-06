@@ -47,20 +47,25 @@ meta =read.delim("../../../aging_share/figures/celltype_annotation.txt")
 dat$name = paste0(meta$Tissue,".",meta$Name)[match(dat$ct, paste0(meta$Tissue,".",meta$Cluster))]
 dat$class = meta$Clade[match(dat$ct, paste0(meta$Tissue,".",meta$Cluster))]
 dat$tissue =meta$Tissue[match(dat$ct, paste0(meta$Tissue,".",meta$Cluster))] 
+dat$mitotic = meta$Mitotic[match(dat$ct, paste0(meta$Tissue,".",meta$Cluster))]
 dat = subset(dat, !is.na(class))
 dat = dat[order(dat$de),]
 #dat$name = factor(dat$name,levels=unique(dat$name))
 
 library(gridExtra)
 g1 = ggplot(dat) + geom_boxplot(aes(x=class,y=de)) + 
-  geom_jitter(aes(x=class,y=de)) + 
+  geom_jitter(aes(x=class,y=de),width=0.2) + 
   facet_grid(pval~.,scales="free")  
 g2 = ggplot(dat) + geom_boxplot(aes(x=tissue,y=de)) + 
-  geom_jitter(aes(x=tissue,y=de)) + 
+  geom_jitter(aes(x=tissue,y=de),width=0.2) + 
   facet_grid(pval~.,scales="free")  
+g3 = ggplot(dat) + geom_boxplot(aes(x=mitotic,y=de)) +
+  geom_jitter(aes(x=mitotic,y=de),width=0.2) +
+  facet_grid(pval~.,scales="free")
 
 pdf("de_peaks_by_class_tissue.0.5M.pdf",height=8,width=12)
-grid.arrange(g1,g2,ncol=2)
+#grid.arrange(grobs=list(g1,g2,g3),ncol=3,layout_matrix=rbind(c(rep(1,8),rep(2,6),rep(3,3))))
+grid.arrange(grobs=list(g1,g2,g3),ncol=3,widths=c(8,6,3))
 dev.off()
 
 dat1 = subset(dat,pval==0.01)
@@ -73,11 +78,11 @@ dat3 = subset(dat,pval==0.0001)
 dat3 = dat3[order(dat3$de),]
 dat3$name = factor(dat3$name,levels=dat3$name)
 
-g3 = ggplot(dat1) + geom_point(aes(x=name,y=de)) + ylim(0,NA) + coord_flip()
-g4 = ggplot(dat2) + geom_point(aes(x=name,y=de)) + ylim(0,NA) + coord_flip() 
-g5 = ggplot(dat3) + geom_point(aes(x=name,y=de)) + ylim(0,NA) + coord_flip() 
+g4 = ggplot(dat1) + geom_point(aes(x=name,y=de)) + ylim(0,NA) + coord_flip()
+g5 = ggplot(dat2) + geom_point(aes(x=name,y=de)) + ylim(0,NA) + coord_flip() 
+g6 = ggplot(dat3) + geom_point(aes(x=name,y=de)) + ylim(0,NA) + coord_flip() 
 pdf("de_peaks_by_celltypes.0.5M.pdf",height=6,width=12)
-grid.arrange(grobs=list(g3,g4,g5), ncol=3)
+grid.arrange(grobs=list(g4,g5,g6), ncol=3)
 dev.off()
 
 #ggplot(dat) + geom_col(aes(x=name,y=de,fill=class)) + coord_flip()

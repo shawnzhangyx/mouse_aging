@@ -35,11 +35,15 @@ out$celltype = paste0(meta$Tissue,".",meta$Cluster,".",meta$Name)[match(paste(ou
 
 outp = out[,c(1,2,11,3,4,5,6,10)]
 rownames(outp) = NULL
+outp$ID.Desc = paste0(outp$ID,":",outp$Desc)
+outp = outp[,c(1:4,9,7,8)]
 write.csv(outp, "all_celltypes/all_celltypes.great.gobp.csv",row.names=F)
+write.csv(outp[which(outp$BinomFdrQ<0.05 & outp$RegionFoldEnrich>=2),], "all_celltypes/all_celltypes.great.gobp.qval_0.05.fe_2.csv",row.names=F)
 
 
-up = out[which(out$category=="up" & out$BinomFdrQ<0.05 & 
-          out$HyperFdrQ<0.01 & out$RegionFoldEnrich>=2),]
+#out$HyperFdrQ<0.01
+up = outp[which(outp$category=="up" & outp$BinomFdrQ<0.05 & 
+           outp$RegionFoldEnrich>=2),]
 
 #up$celltype = paste(up$tissue,up$cluster)
 up = up[,c("celltype","Desc","BinomFdrQ")]
@@ -58,5 +62,23 @@ pheatmap(reup.log)
 #,clustering_distance_cols="correlation",clustering_distance_rows="correlation") 
 dev.off()
 
+
+down = outp[which(outp$category=="down" & outp$BinomFdrQ<0.05 &
+           outp$RegionFoldEnrich>=2),]
+
+# up 
+up.cnt = table(up$ID.Desc)
+up.agg = aggregate(celltype~ID.Desc,up,function(vec){paste(vec,collapse=",")})
+up.agg$count = up.cnt[match(up.agg$ID.Desc, names(up.cnt))]
+up.agg = up.agg[order(-up.agg$count),]
+
+# down 
+down.cnt = table(down$ID.Desc)
+down.agg = aggregate(celltype~ID.Desc,down,function(vec){paste(vec,collapse=",")})
+down.agg$count = down.cnt[match(down.agg$ID.Desc, names(down.cnt))]
+down.agg = down.agg[order(-down.agg$count),]
+
+write.csv(up.agg,"frequency_up_GO.csv")
+write.csv(down.agg,"frequency_down_GO.csv")
 
 
