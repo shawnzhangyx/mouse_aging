@@ -3,7 +3,7 @@ library(ggplot2)
 
 setwd("../../analysis/rna_atac_integration")
 
-pbmc = readRDS("/projects/ps-renlab/lamaral/projects/aging_hippocampus_RNA/analysis/DH_seurat_rmdoub_filtered.rds")
+pbmc = readRDS("/projects/ps-renlab/lamaral/projects/aging_RNA/DH/analysis/DH_seurat_rmdoub_filtered.rds")
 meta =read.table("../../scripts/rna_atac_integration/rna_cell_type.consistent.txt",header=T)
 #pbmc$seurat_clusters.stage = paste0(pbmc$seurat_clusters,"_",pbmc$stage)
 #Idents(object = pbmc) <- "seurat_clusters.stage"
@@ -25,7 +25,7 @@ Idents(a) = "celltype.stage"
 #Idents(a) = "celltype.stage.rep"
 
 dot = 
-DotPlot(a,features=c("Robo1","Apoe","Nrg1"),
+DotPlot(a,features=c("Robo1","Itgb5","Nrg1"),
  # cols = c("yellow","red")
 #  cols=viridis(3)
 )
@@ -44,7 +44,7 @@ g1 = ggplot(subset(dot$data,features.plot=="Robo1")) +
   geom_col(aes(x=celltype.stage,y=avg.exp,fill=ct),width=0.8) + 
   coord_flip() + theme_bw()
 
-g2 = ggplot(subset(dot$data,features.plot=="Apoe")) +
+g2 = ggplot(subset(dot$data,features.plot=="Itgb5")) +
   geom_col(aes(x=celltype.stage,y=avg.exp,fill=ct),width=0.8) +
   coord_flip() + theme_bw()
 
@@ -57,7 +57,7 @@ g4 = ggplot(subset(dot$data,features.plot=="Robo1")) +
   geom_col(aes(x=celltype.stage,y=pct.exp,fill=ct),width=0.8) +
   coord_flip() + theme_bw()
 
-g5 = ggplot(subset(dot$data,features.plot=="Apoe")) +
+g5 = ggplot(subset(dot$data,features.plot=="Itgb5")) +
   geom_col(aes(x=celltype.stage,y=pct.exp,fill=ct),width=0.8) +
   coord_flip() + theme_bw()
 

@@ -14,4 +14,8 @@ cd -
 
 Rscript diff_analysis_edger.0.5M.r
 
-
+cd ../../analysis/snapATAC/de_peaks.subsample
+bams=bam.subsample.grids/*.bam
+featureCounts -a ../../../data/snATAC/peaks/all_tissue.merged.peaks.saf -o select_celltypes.grid.subsample.counts $bams -F SAF -T 20 -O
+cd -
+Rscript diff_analysis_edger.grids.r

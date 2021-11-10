@@ -59,6 +59,9 @@ Rscript cluster.difftest.edgeR.r FC FC.pool.snapATAC.Frag500.TSS10.Landmark40k.s
 Rscript cluster.difftest.edgeR.r HT HT.pool.snapATAC.Frag500.TSS7.AllCells.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
 Rscript cluster.difftest.edgeR.r LM LM.pool.snapATAC.Frag500.TSS7.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
 Rscript cluster.difftest.edgeR.r BM BM.pool.snapATAC.Frag500.TSS10.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
+# Differential peak analysis with 10 month data:
+Rscript cluster.difftest.include_10m.edger.r  FC FC.pool.snapATAC.Frag500.TSS10.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
+
 # Differential peak analysis with sample swap 
 Rscript cluster.difftest.edgeR.control.r DH DH.pool.snapATAC.Frag500.TSS10.AllCells.seed1.dimPC20.K20.res0.7.harmony.cluster.RData
 Rscript cluster.difftest.edgeR.control.r FC FC.pool.snapATAC.Frag500.TSS10.Landmark40k.seed1.dimPC20.K20.res0.7.harmony.cluster.RData

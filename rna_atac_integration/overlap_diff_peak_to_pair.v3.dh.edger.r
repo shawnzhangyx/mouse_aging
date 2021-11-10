@@ -48,7 +48,7 @@ for (file in fs2) {
     }
 rna = do.call(rbind,dat.list)
 rownames(rna) = NULL
-rna = rna[which(rna$fdr<0.05),]
+rna = rna[which(rna$fdr<0.1),]
 
 rna$PValue = -log10(rna$PValue)
 rna$fdr = -log10(rna$fdr)
@@ -177,8 +177,8 @@ mat = matrix(c(dd,du,ud,uu),nrow=2)
 mat
 # col: change in ATAC. row: change in RNA. (down,up)
 #     [,1] [,2]
-# [1,]  41 24
-# [2,]  35  69
+#[1,]   50   40
+#[2,]   45   93
 
 fisher.test(mat)
 # p-value = 0.0002423

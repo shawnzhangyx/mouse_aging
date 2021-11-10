@@ -1,6 +1,6 @@
 setwd("../../analysis/rna_atac_integration")
 
-a=read.delim("concordant_changes_in_rna_atac.500kb.txt")
+a=read.delim("concordant_changes_in_rna_atac.500kb.FC.txt")
 
 b = read.delim("concordant_changes_in_rna_atac.txt")
 

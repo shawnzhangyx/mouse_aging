@@ -1,4 +1,4 @@
-setwd("../../analysis/snapATAC/all_celltypes")
+s(etwd("../../analysis/snapATAC/all_celltypes")
 # read the order of cell types
 od = read.delim("Spearman.clustering.celltypes.ordered.txt",
     header=F,stringsAsFactors=F)$V1
@@ -69,6 +69,13 @@ pdf("all_celltypes.cell_num_reads.pdf",width=10,height=15)
 grid.arrange(g1,g2,g3,nrow=1)
 dev.off()
 
+#ggplot(a) + geom_point(aes(x=log10(reads),y=log10(diffnum)))
+g4 = ggplot(a) + geom_point(aes(x=reads,y=diffnum))
+g5 = ggplot(a) + geom_point(aes(x=cellnum,y=diffnum))
+
+pdf("all_celltypes.cellnum_reads.vs.diffnum.pdf",width=5,height=10)
+grid.arrange(g4,g5,nrow=2)
+dev.off()
 
 
 

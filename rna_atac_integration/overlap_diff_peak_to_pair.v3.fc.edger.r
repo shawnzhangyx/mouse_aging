@@ -21,8 +21,8 @@ atac$direction = sub("(.*)\\.(.*)\\.bed","\\2",atac$file)
 
 atacm = read.delim("../../../../aging_share/figures/celltype_annotation.txt")
 atacm = atacm[which(atacm$Tissue=="FC"),]
-atacm$Name = c("Ogc","DG","DG","CA1","DG","Inh","Sub_Ent","Asc","CA23","Mgc","CP","Opc","Endo","Peri","SMC")
-atacm = atacm[-11,]
+#atacm$Name = c("Ogc","DG","DG","CA1","DG","Inh","Sub_Ent","Asc","CA23","Mgc","CP","Opc","Endo","Peri","SMC")
+atacm$Name[1] = "L2-3"
 atac$ct = atacm$Name[match(atac$cluster,atacm$Cluster)]
 
 link$peak = paste(link$ATAC_Chr,link$ATAC_start,link$ATAC_end)
@@ -48,7 +48,7 @@ for (file in fs2) {
     }
 rna = do.call(rbind,dat.list)
 rownames(rna) = NULL
-rna = rna[which(rna$fdr<0.05),]
+rna = rna[which(rna$fdr<0.1),]
 
 rna$PValue = -log10(rna$PValue)
 rna$fdr = -log10(rna$fdr)
@@ -177,8 +177,8 @@ mat = matrix(c(dd,du,ud,uu),nrow=2)
 mat
 # col: change in ATAC. row: change in RNA. (down,up)
 #     [,1] [,2]
-# [1,] 77  25 
-# [2,]  16  49
+# [1,] 57  30 
+# [2,]  21  55
 
 fisher.test(mat)
 # p-value = 0.0000000001538
